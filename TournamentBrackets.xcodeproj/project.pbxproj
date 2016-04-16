@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		771E19631CC27DEF00125F9E /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771E19621CC27DEF00125F9E /* Scheduler.swift */; };
 		7770C60E1CC0C290008C5A6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7770C60D1CC0C290008C5A6B /* AppDelegate.swift */; };
 		7770C6101CC0C290008C5A6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7770C60F1CC0C290008C5A6B /* ViewController.swift */; };
 		7770C6131CC0C290008C5A6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7770C6111CC0C290008C5A6B /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		771E19621CC27DEF00125F9E /* Scheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
 		7770C60A1CC0C290008C5A6B /* TournamentBrackets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TournamentBrackets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7770C60D1CC0C290008C5A6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7770C60F1CC0C290008C5A6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		7770C60C1CC0C290008C5A6B /* TournamentBrackets */ = {
 			isa = PBXGroup;
 			children = (
+				771E19621CC27DEF00125F9E /* Scheduler.swift */,
 				7770C60D1CC0C290008C5A6B /* AppDelegate.swift */,
 				7770C60F1CC0C290008C5A6B /* ViewController.swift */,
 				7770C6111CC0C290008C5A6B /* Main.storyboard */,
@@ -256,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				771E19631CC27DEF00125F9E /* Scheduler.swift in Sources */,
 				7770C6101CC0C290008C5A6B /* ViewController.swift in Sources */,
 				7770C60E1CC0C290008C5A6B /* AppDelegate.swift in Sources */,
 			);
@@ -482,6 +486,7 @@
 				7770C6341CC0C290008C5A6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7770C6351CC0C290008C5A6B /* Build configuration list for PBXNativeTarget "TournamentBracketsTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +495,7 @@
 				7770C6371CC0C290008C5A6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7770C6381CC0C290008C5A6B /* Build configuration list for PBXNativeTarget "TournamentBracketsUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +504,7 @@
 				7770C63A1CC0C290008C5A6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
