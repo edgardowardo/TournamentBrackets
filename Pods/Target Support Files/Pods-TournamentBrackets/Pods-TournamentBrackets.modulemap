@@ -1,0 +1,6 @@
+framework module Pods_TournamentBrackets {
+  umbrella header "Pods-TournamentBrackets-umbrella.h"
+
+  export *
+  module * { export * }
+}
