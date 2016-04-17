@@ -8,6 +8,13 @@
 
 import Foundation
 
+///
+/// Scheduler creates sports fixtures from a set of generic elements.
+/// - Round Robin
+/// - Round Robin Pairs
+/// - Single Elimination
+/// - Double Elimination
+///
 class Scheduler {
     
     ///
@@ -112,4 +119,107 @@ class Scheduler {
         
         return roundRobinPair(round + 1, row: nextrow) + schedules
     }
+    
+    ///
+    /// Builds single elimination match schedule from a given set
+    ///
+    /// - Returns: a list of game matches in single elimination format.
+    ///
+    static func singleElimination<T>(round : Int, row : [T?]) -> [Game<T>] {
+        
+        var index = 0
+        var elements = row
+        var schedules = [Game<T>]()
+        
+        guard elements.count <= 64 && round < elements.count  else { return schedules }
+        
+        //
+        // Adjust the number of teams necessary to construct the brackets which are 2, 4, 8, 16, 32 and 64
+        //
+        for i in 1...8 {
+            let minimum = 2^^i
+            if elements.count < minimum {
+                let diff = minimum - elements.count
+                for _ in 1...diff {
+                    elements.append(nil) // bye
+                }
+                break
+            } else if elements.count == minimum {
+                break
+            }
+        }
+        
+        //
+        // process half the elements to create the pairs
+        //
+        let endIndex = elements.count - 1
+        for i in (0 ..< elements.count / 2).reverse() {
+            let home = elements[i]
+            let away = elements[endIndex - i]
+            index = index + 1
+            let game = Game<T>()
+            game.index = index
+            game.round = round
+            game.home = home
+            game.away = away
+            schedules.append(game)
+        }
+        
+        //
+        // apply rainbow pairing for the new game winners instead of teams
+        //
+        return singleElimination(&index, round: round + 1, row: schedules) + schedules
+    }
+    
+    ///
+    /// Builds single elimination match schedule from a set of match schedules from round 2 and up
+    ///
+    /// - Returns: a list of game matches in single elimination format.
+    ///
+    private static func singleElimination<T>(inout index : Int, round : Int, row : [Game<T>]) -> [Game<T>] {
+        
+        var schedules = [Game<T>]()
+        
+        guard row.count > 1 else { return schedules}
+        
+        //
+        // process all the game winners to create new games for the round
+        //
+        let endIndex = row.count - 1
+        for i in (0 ..< row.count / 2).reverse() {
+            let prevhome = row[i]
+            let prevaway = row[endIndex - i]
+            index = index + 1
+            let game = Game<T>()
+            game.index = index
+            game.round = round
+            game.prevHomeGame = prevhome
+            game.prevAwayGame = prevaway
+            
+            //
+            // auto progress previous matches of home and away game players if it's a bye and round is 1 or 2. From round 3, there will be no more byes.
+            //
+            if round < 3 {
+                if let h = prevhome.home where prevhome.away == nil {
+                    game.home = h
+                } else if let a = prevhome.away where prevhome.home == nil {
+                    game.home = a
+                }
+                
+                if let h = prevaway.home where prevaway.away == nil {
+                    game.away = h
+                } else if let a = prevaway.away where prevaway.home == nil {
+                    game.away = a
+                }
+            }
+            
+            schedules.append(game)
+        }
+        
+        //
+        // apply rainbow pairing for the new game winners until the base case happens
+        //
+        return singleElimination(&index, round: round + 1, row: schedules) + schedules
+    }
+    
 }

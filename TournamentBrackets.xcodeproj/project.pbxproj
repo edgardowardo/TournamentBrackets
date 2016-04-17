@@ -15,6 +15,8 @@
 		7770C6181CC0C290008C5A6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7770C6161CC0C290008C5A6B /* LaunchScreen.storyboard */; };
 		7770C6231CC0C290008C5A6B /* TournamentBracketsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7770C6221CC0C290008C5A6B /* TournamentBracketsTests.swift */; };
 		7770C62E1CC0C290008C5A6B /* TournamentBracketsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7770C62D1CC0C290008C5A6B /* TournamentBracketsUITests.swift */; };
+		77D3D65E1CC3BFA6001EF359 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D3D65D1CC3BFA6001EF359 /* Game.swift */; };
+		77D3D6601CC3C0F5001EF359 /* Power.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D3D65F1CC3C0F5001EF359 /* Power.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		7770C6291CC0C290008C5A6B /* TournamentBracketsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TournamentBracketsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7770C62D1CC0C290008C5A6B /* TournamentBracketsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentBracketsUITests.swift; sourceTree = "<group>"; };
 		7770C62F1CC0C290008C5A6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77D3D65D1CC3BFA6001EF359 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		77D3D65F1CC3C0F5001EF359 /* Power.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Power.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 		7770C60C1CC0C290008C5A6B /* TournamentBrackets */ = {
 			isa = PBXGroup;
 			children = (
+				77D3D65C1CC3BF30001EF359 /* Models */,
 				771E19621CC27DEF00125F9E /* Scheduler.swift */,
 				7770C60D1CC0C290008C5A6B /* AppDelegate.swift */,
 				7770C60F1CC0C290008C5A6B /* ViewController.swift */,
@@ -126,6 +131,15 @@
 				7770C62F1CC0C290008C5A6B /* Info.plist */,
 			);
 			path = TournamentBracketsUITests;
+			sourceTree = "<group>";
+		};
+		77D3D65C1CC3BF30001EF359 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				77D3D65D1CC3BFA6001EF359 /* Game.swift */,
+				77D3D65F1CC3C0F5001EF359 /* Power.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,7 +275,9 @@
 			files = (
 				771E19631CC27DEF00125F9E /* Scheduler.swift in Sources */,
 				7770C6101CC0C290008C5A6B /* ViewController.swift in Sources */,
+				77D3D6601CC3C0F5001EF359 /* Power.swift in Sources */,
 				7770C60E1CC0C290008C5A6B /* AppDelegate.swift in Sources */,
+				77D3D65E1CC3BFA6001EF359 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
