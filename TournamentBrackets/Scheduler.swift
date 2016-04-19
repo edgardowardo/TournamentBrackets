@@ -195,4 +195,120 @@ class Scheduler {
     }
 
     
+    ///
+    /// Builds double elimination match schedule from a given set
+    ///
+    /// - Returns: a list of game matches in double elimination format.
+    ///
+    static func doubleElimination<U>(round : Int, row : [U?]) -> [Game<U>] {
+        
+        var elements = row
+        var schedules = [Game<U>]()
+        
+        //
+        // If two teams, make it 4 beacause it needs 4 to make the losers bracket
+        //
+        if elements.count == 2 {
+            for _ in 3...4 {
+                elements.append(nil)
+            }
+        }
+        
+        //
+        // Build single elimination tree aka winners bracket
+        //
+        schedules = singleElimination(1, row: elements)
+        
+        //
+        // Remember the last loser from the last game of the winners bracket
+        //
+        let lastWinnersGame = schedules.last
+        
+        //
+        // Build losers bracket and accumulate in schedules
+        //
+        schedules = schedules + createLosersBracket(fromBracket : schedules, whereBracketIsLoser: false, withWinnersRound: round, orLosersRound: round + 1)
+        
+        //
+        // Find the last winner of the losers bracket and add the final game
+        //
+        let lastLosersGame = schedules.last
+        if let home = lastWinnersGame, away = lastLosersGame where !home.isLoserBracket && away.isLoserBracket {
+            var index = schedules.count
+            let game = Game(index: &index, round: home.round + 1, home: nil, away: nil, prevHomeGame: home, prevAwayGame: away, isLoserBracket: false)
+            schedules.append(game)
+        }
+        
+        return schedules
+    }
+    
+    ///
+    /// Builds the loser bracket of double elimination match schedule
+    ///
+    /// - Returns: a list of game matches of the losers bracket.
+    ///
+    static func createLosersBracket<U>(fromBracket bracket: [Game<U>], whereBracketIsLoser isLoserBracket : Bool, withWinnersRound winnersround : Int, orLosersRound losersround : Int) -> [Game<U>] {
+        
+        var winnersround = winnersround
+        var losersround = losersround
+        var survivors = [Game<U>]()
+        let round = (isLoserBracket) ? losersround - 1 : winnersround
+        
+        //
+        // The first loser index determines progress of a game on the losers bracket. When the index of a previous game is lower than this number, it comes from the winners bracket and hence interested in the losing team. Otherwise higher or equal to this index of a previous game, we are insterested to the winner of this loser game.
+        //
+        var firstLoserIndex = Int.max
+        let winnerGames = bracket.filter{ g in !g.isLoserBracket }
+        if let lastWinnerGame = winnerGames.last {
+            firstLoserIndex = lastWinnerGame.index + 1
+        }
+        
+        //
+        // Look for games on the previous round
+        //
+        var games = bracket.filter{ g in g.round == round && g.isLoserBracket == isLoserBracket }
+        guard games.count > 1 else { return survivors }
+        games.sortInPlace({ (g,h) in g.index < h.index })
+        var index = bracket.count
+        
+        //
+        // Look for losers for previous round and create games sequentially (no rainbows)
+        //
+        var i = 0
+        while i < games.count - 1 {
+            let prevhome = games[i]
+            let prevaway = games[i+1]
+            let game = Game(index: &index, round: losersround, home: nil, away: nil, prevHomeGame: prevhome, prevAwayGame: prevaway, isLoserBracket: true)
+            game.firstLoserIndex = firstLoserIndex
+            survivors.append(game)
+            i = i + 2
+        }
+        
+        //
+        // Look for losers for the next round of winners bracket and match them with winners in this current round of games
+        //
+        winnersround = winnersround + 1
+        var newlosers = bracket.filter{ g in g.round == winnersround && g.isLoserBracket == false }
+        guard newlosers.count > 0 && newlosers.count == survivors.count else { return [Game<U>]() }
+        newlosers.sortInPlace({ (g, h) in g.index < h.index })
+        
+        //
+        // Create padded rounds as result of matching the new losers of winners round and survivors
+        //
+        losersround = losersround + 1
+        for i in 0...survivors.count - 1 {
+            let newloser = newlosers[i]
+            let survivor = survivors[i]
+            let game = Game(index: &index, round: losersround, home: nil, away: nil, prevHomeGame: newloser, prevAwayGame: survivor, isLoserBracket: true)
+            game.firstLoserIndex = firstLoserIndex
+            survivors.append(game)
+        }
+        
+        //
+        // Increment losers round again to create the next branch of the brackets
+        //
+        losersround = losersround + 1
+        return survivors + createLosersBracket(fromBracket: survivors + bracket, whereBracketIsLoser: true, withWinnersRound: winnersround, orLosersRound: losersround)
+    }
+
 }
