@@ -20,11 +20,12 @@ class Scheduler {
     ///
     /// Builds a round robin schedule from a given set
     ///
-    /// - Returns: a list of home versus away pairs in that order. [(round, home, away)]
+    /// - Returns: a list of home versus away pairs in that order. [(round, index, home, away)]
     ///
-    static func roundRobin<T>(round : Int, row : [T?]) -> [(Int, T?,T?)] {
+    static func roundRobin<T>(round : Int, startindex : Int = 1, row : [T?]) -> [(Int, Int, T?,T?)] {
+        var index = startindex
         var elements = row
-        var schedules = [(Int, T?, T?)]()
+        var schedules = [(Int, Int, T?, T?)]()
         
         //
         // if odd then add a bye
@@ -45,7 +46,8 @@ class Scheduler {
         for i in (0 ..< elements.count / 2).reverse() {
             let home = elements[i]
             let away = elements[endIndex - i]
-            let pair = (round, home, away)
+            let pair = (round, index, home, away)
+            index = index + 1
             schedules.append(pair)
         }
         
@@ -56,17 +58,18 @@ class Scheduler {
         let displaced = nextrow.removeAtIndex(elements.count - 1)
         nextrow.insert(displaced, atIndex: 1)
         
-        return roundRobin(round + 1, row: nextrow) + schedules
+        return schedules + roundRobin(round + 1, startindex: index, row: nextrow)
     }
     
     ///
     /// Builds a round robin paired schedule from a given set
     ///
-    /// - Returns: a list of home pairs and away pairs in that order. [(round, home1, home2, away1, away2)]
+    /// - Returns: a list of home pairs and away pairs in that order. [(round, index, home1, home2, away1, away2)]
     ///
-    static func roundRobinPair<T>(round : Int, row : [T?]) -> [(Int, T?,T?,T?,T?)] {
+    static func roundRobinPair<T>(round : Int, startindex : Int = 1, row : [T?]) -> [(Int, Int, T?,T?,T?,T?)] {
+        var index = startindex
         var elements = row
-        var schedules = [(Int,T?,T?,T?,T?)]()
+        var schedules = [(Int,Int,T?,T?,T?,T?)]()
         
         //
         // if odd then add a bye
@@ -104,8 +107,10 @@ class Scheduler {
             
             guard let _ = home1, _ = home2, _ = away1, _ = away2 else { continue }
             
-            let pair = (round, home1, home2, away1, away2)
+            let pair = (round, index, home1, home2, away1, away2)
             schedules.append(pair)
+            index = index + 1
+            
             
             tophalf = tophalf - 2
         }
@@ -117,9 +122,8 @@ class Scheduler {
         let displaced = nextrow.removeAtIndex(elements.count - 2)
         nextrow.insert(displaced, atIndex: 0)
         
-        return roundRobinPair(round + 1, row: nextrow) + schedules
+        return schedules + roundRobinPair(round + 1, startindex : index, row: nextrow)
     }
-    
     ///
     /// Builds single elimination match schedule from a given set
     ///
@@ -171,7 +175,7 @@ class Scheduler {
     ///
     /// - Returns: a list of game matches in single elimination format.
     ///
-    static func singleElimination<U>(inout index : Int, round : Int, row : [Game<U>]) -> [Game<U>] {
+    private static func singleElimination<U>(inout index : Int, round : Int, row : [Game<U>]) -> [Game<U>] {
         
         var schedules = [Game<U>]()
         
@@ -247,7 +251,7 @@ class Scheduler {
     ///
     /// - Returns: a list of game matches of the losers bracket.
     ///
-    static func createLosersBracket<U>(fromBracket bracket: [Game<U>], whereBracketIsLoser isLoserBracket : Bool, withWinnersRound winnersround : Int, orLosersRound losersround : Int) -> [Game<U>] {
+    private static func createLosersBracket<U>(fromBracket bracket: [Game<U>], whereBracketIsLoser isLoserBracket : Bool, withWinnersRound winnersround : Int, orLosersRound losersround : Int) -> [Game<U>] {
         
         var winnersround = winnersround
         var losersround = losersround
