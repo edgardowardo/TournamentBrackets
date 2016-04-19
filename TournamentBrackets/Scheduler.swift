@@ -125,11 +125,11 @@ class Scheduler {
     ///
     /// - Returns: a list of game matches in single elimination format.
     ///
-    static func singleElimination<T>(round : Int, row : [T?]) -> [Game<T>] {
+    static func singleElimination<U>(round : Int, row : [U?]) -> [Game<U>] {
         
         var index = 0
         var elements = row
-        var schedules = [Game<T>]()
+        var schedules = [Game<U>]()
         
         guard elements.count <= 64 && round < elements.count  else { return schedules }
         
@@ -156,19 +156,14 @@ class Scheduler {
         for i in (0 ..< elements.count / 2).reverse() {
             let home = elements[i]
             let away = elements[endIndex - i]
-            index = index + 1
-            let game = Game<T>()
-            game.index = index
-            game.round = round
-            game.home = home
-            game.away = away
+            let game = Game(index: &index, round: round, home: home, away: away, prevHomeGame: nil, prevAwayGame: nil, isLoserBracket: false)
             schedules.append(game)
         }
         
         //
         // apply rainbow pairing for the new game winners instead of teams
         //
-        return singleElimination(&index, round: round + 1, row: schedules) + schedules
+        return schedules + singleElimination(&index, round: round + 1, row: schedules)
     }
     
     ///
@@ -176,9 +171,9 @@ class Scheduler {
     ///
     /// - Returns: a list of game matches in single elimination format.
     ///
-    private static func singleElimination<T>(inout index : Int, round : Int, row : [Game<T>]) -> [Game<T>] {
+    static func singleElimination<U>(inout index : Int, round : Int, row : [Game<U>]) -> [Game<U>] {
         
-        var schedules = [Game<T>]()
+        var schedules = [Game<U>]()
         
         guard row.count > 1 else { return schedules}
         
@@ -189,37 +184,15 @@ class Scheduler {
         for i in (0 ..< row.count / 2).reverse() {
             let prevhome = row[i]
             let prevaway = row[endIndex - i]
-            index = index + 1
-            let game = Game<T>()
-            game.index = index
-            game.round = round
-            game.prevHomeGame = prevhome
-            game.prevAwayGame = prevaway
-            
-            //
-            // auto progress previous matches of home and away game players if it's a bye and round is 1 or 2. From round 3, there will be no more byes.
-            //
-            if round < 3 {
-                if let h = prevhome.home where prevhome.away == nil {
-                    game.home = h
-                } else if let a = prevhome.away where prevhome.home == nil {
-                    game.home = a
-                }
-                
-                if let h = prevaway.home where prevaway.away == nil {
-                    game.away = h
-                } else if let a = prevaway.away where prevaway.home == nil {
-                    game.away = a
-                }
-            }
-            
+            let game = Game(index: &index, round: round, home: nil, away: nil, prevHomeGame: prevhome, prevAwayGame: prevaway, isLoserBracket: false)
             schedules.append(game)
         }
         
         //
         // apply rainbow pairing for the new game winners until the base case happens
         //
-        return singleElimination(&index, round: round + 1, row: schedules) + schedules
+        return schedules + singleElimination(&index, round: round + 1, row: schedules)
     }
+
     
 }
