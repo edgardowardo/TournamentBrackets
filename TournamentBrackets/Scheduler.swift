@@ -18,7 +18,7 @@ import Foundation
 class Scheduler {
     
     ///
-    /// Builds a round robin schedule from a given set
+    /// Builds a classic round robin schedule from a given set of elements.
     ///
     /// - Returns: a list of home versus away pairs in that order. [(round, index, home, away)]
     ///
@@ -62,11 +62,12 @@ class Scheduler {
     }
     
     ///
-    /// Builds a round robin paired schedule from a given set
+    /// Builds round robin doubles schedule from a given set. The characteristic of this scheme is that each
+    /// individual player plays with multiple doubles partners. This permutation is the round robin scheme.
     ///
     /// - Returns: a list of home pairs and away pairs in that order. [(round, index, home1, home2, away1, away2)]
     ///
-    static func roundRobinPair<T>(round : Int, startindex : Int = 1, row : [T?]) -> [(Int, Int, T?,T?,T?,T?)] {
+    static func roundRobinDoubles<T>(round : Int, startindex : Int = 1, row : [T?]) -> [(Int, Int, T?,T?,T?,T?)] {
         var index = startindex
         var elements = row
         var schedules = [(Int,Int,T?,T?,T?,T?)]()
@@ -105,7 +106,7 @@ class Scheduler {
             let away1 = elements[i - 1]
             let away2 = elements[endIndex - (i - 1)]
             
-            guard let _ = home1, _ = home2, _ = away1, _ = away2 else { continue }
+            guard let _ = home1, _ = home2, _ = away1, _ = away2 else { break }
             
             let pair = (round, index, home1, home2, away1, away2)
             schedules.append(pair)
@@ -122,7 +123,7 @@ class Scheduler {
         let displaced = nextrow.removeAtIndex(elements.count - 2)
         nextrow.insert(displaced, atIndex: 0)
         
-        return schedules + roundRobinPair(round + 1, startindex : index, row: nextrow)
+        return schedules + roundRobinDoubles(round + 1, startindex : index, row: nextrow)
     }
     ///
     /// Builds single elimination match schedule from a given set
