@@ -5,6 +5,9 @@ def shared_pods
 end
 
 target 'TournamentBrackets' do
+    pod 'RxSwift',    '~> 2.0'
+    pod 'RxCocoa',    '~> 2.0'
+    pod 'RxBlocking', '~> 2.0'
     pod "AKPickerView"
     pod 'RealmSwift'
     pod 'MBProgressHUD'

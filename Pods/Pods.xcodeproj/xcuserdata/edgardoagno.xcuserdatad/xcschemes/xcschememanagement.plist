@@ -8,88 +8,106 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>Nimble.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>Pods-TournamentBrackets.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
 		</dict>
 		<key>Pods-TournamentBracketsTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
 		</dict>
 		<key>Pods-TournamentBracketsUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>6</integer>
 		</dict>
 		<key>Quick.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>7</integer>
 		</dict>
 		<key>Realm.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>8</integer>
 		</dict>
 		<key>RealmSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>9</integer>
+		</dict>
+		<key>RxBlocking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RxCocoa.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RxSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>UIColor+FlatColors.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>10</integer>
 		</dict>
 		<key>VTAcknowledgementsViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>11</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>02557BCC95AD606732AE349115E8C8C4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>281B341C7F67D18E4F8E1EA623F6A577</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3721C4BFAC95FF8B45005AE4E6214D6C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4A6A25552E7F0148BAA879F347C1A695</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>4FA852B36637F5FBFB642C28D8B6C6BC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>62EE229D07D846A848055C6E571E3641</key>
+		<key>5E164F625D6F991F574A6E75751E7FBE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>608DF74B6BB98F8E70D4174EC7A25AF9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -99,22 +117,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6953B1A37FF49514EF024266551735D7</key>
+		<key>BEE06D5B12F0B172438CF4D7CC81268E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>78D2EDCB9AE10D476330422A0E997642</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>919FCE316A2B830F701AD3EBF5B0EA87</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E5FBFBF72E85AB14ABAB7F4744433AA6</key>
+		<key>DB9A5D12FD26882A3F23B32DC246AABB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

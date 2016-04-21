@@ -88,6 +88,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-TournamentBrackets/MBProgressHUD.framework"
   install_framework "Pods-TournamentBrackets/Realm.framework"
   install_framework "Pods-TournamentBrackets/RealmSwift.framework"
+  install_framework "Pods-TournamentBrackets/RxBlocking.framework"
+  install_framework "Pods-TournamentBrackets/RxCocoa.framework"
+  install_framework "Pods-TournamentBrackets/RxSwift.framework"
   install_framework "Pods-TournamentBrackets/UIColor_FlatColors.framework"
   install_framework "Pods-TournamentBrackets/VTAcknowledgementsViewController.framework"
 fi
@@ -96,6 +99,9 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-TournamentBrackets/MBProgressHUD.framework"
   install_framework "Pods-TournamentBrackets/Realm.framework"
   install_framework "Pods-TournamentBrackets/RealmSwift.framework"
+  install_framework "Pods-TournamentBrackets/RxBlocking.framework"
+  install_framework "Pods-TournamentBrackets/RxCocoa.framework"
+  install_framework "Pods-TournamentBrackets/RxSwift.framework"
   install_framework "Pods-TournamentBrackets/UIColor_FlatColors.framework"
   install_framework "Pods-TournamentBrackets/VTAcknowledgementsViewController.framework"
 fi
