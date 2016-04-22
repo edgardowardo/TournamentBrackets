@@ -10,6 +10,8 @@
 		39F94C8292324BE017C08131 /* Pods_TournamentBracketsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AE8E80DB60ED1D38CF64F5 /* Pods_TournamentBracketsUITests.framework */; };
 		770080B01CC4052600EE04E2 /* TestScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770080AF1CC4052600EE04E2 /* TestScheduler.swift */; };
 		771E19631CC27DEF00125F9E /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771E19621CC27DEF00125F9E /* Scheduler.swift */; };
+		774A48D41CC90992006DCD4F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A48D31CC90992006DCD4F /* RootViewController.swift */; };
+		774A48D71CC916AC006DCD4F /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A48D61CC916AC006DCD4F /* Wireframe.swift */; };
 		7770C60E1CC0C290008C5A6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7770C60D1CC0C290008C5A6B /* AppDelegate.swift */; };
 		7770C6101CC0C290008C5A6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7770C60F1CC0C290008C5A6B /* ViewController.swift */; };
 		7770C6131CC0C290008C5A6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7770C6111CC0C290008C5A6B /* Main.storyboard */; };
@@ -46,6 +48,8 @@
 		510F90D1FEC3E1FCB1A186C7 /* Pods-TournamentBracketsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TournamentBracketsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TournamentBracketsUITests/Pods-TournamentBracketsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		770080AF1CC4052600EE04E2 /* TestScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestScheduler.swift; sourceTree = "<group>"; };
 		771E19621CC27DEF00125F9E /* Scheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
+		774A48D31CC90992006DCD4F /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		774A48D61CC916AC006DCD4F /* Wireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wireframe.swift; sourceTree = "<group>"; };
 		7770C60A1CC0C290008C5A6B /* TournamentBrackets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TournamentBrackets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7770C60D1CC0C290008C5A6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7770C60F1CC0C290008C5A6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +99,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		774A48D51CC91698006DCD4F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				774A48D61CC916AC006DCD4F /* Wireframe.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		7770C6011CC0C28F008C5A6B = {
 			isa = PBXGroup;
 			children = (
@@ -120,9 +132,11 @@
 		7770C60C1CC0C290008C5A6B /* TournamentBrackets */ = {
 			isa = PBXGroup;
 			children = (
+				774A48D51CC91698006DCD4F /* Services */,
 				77D3D65C1CC3BF30001EF359 /* Models */,
 				771E19621CC27DEF00125F9E /* Scheduler.swift */,
 				7770C60D1CC0C290008C5A6B /* AppDelegate.swift */,
+				774A48D31CC90992006DCD4F /* RootViewController.swift */,
 				7770C60F1CC0C290008C5A6B /* ViewController.swift */,
 				7770C6111CC0C290008C5A6B /* Main.storyboard */,
 				7770C6141CC0C290008C5A6B /* Assets.xcassets */,
@@ -445,7 +459,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				771E19631CC27DEF00125F9E /* Scheduler.swift in Sources */,
+				774A48D71CC916AC006DCD4F /* Wireframe.swift in Sources */,
 				7770C6101CC0C290008C5A6B /* ViewController.swift in Sources */,
+				774A48D41CC90992006DCD4F /* RootViewController.swift in Sources */,
 				77D3D6601CC3C0F5001EF359 /* Power.swift in Sources */,
 				7770C60E1CC0C290008C5A6B /* AppDelegate.swift in Sources */,
 				77D3D65E1CC3BFA6001EF359 /* Game.swift in Sources */,
