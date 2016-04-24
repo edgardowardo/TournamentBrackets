@@ -10,13 +10,13 @@
 /// Game model of single and double elimination schedules. An object model is necessary to 
 /// represent pointers of the previous games which makes up the tournament tree.
 ///
-class Game<T> {
+class GameClass<T> {
     var index = 0
     var round = 0
     var home : T?
     var away : T?
-    var prevHomeGame : Game?
-    var prevAwayGame : Game?
+    var prevHomeGame : GameClass?
+    var prevAwayGame : GameClass?
     var isLoserBracket = false
     var firstLoserIndex = Int.max // only matters if isLoserBracket is true
     var isBye : Bool {
@@ -109,7 +109,7 @@ class Game<T> {
         }
     }
     
-    convenience init(inout index : Int, round : Int, home : T?, away : T?, prevHomeGame : Game?, prevAwayGame : Game?, isLoserBracket : Bool) {
+    convenience init(inout index : Int, round : Int, home : T?, away : T?, prevHomeGame : GameClass?, prevAwayGame : GameClass?, isLoserBracket : Bool) {
         self.init()
         index = index + 1
         self.index = index

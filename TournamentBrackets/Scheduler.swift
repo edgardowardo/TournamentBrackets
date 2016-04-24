@@ -130,11 +130,11 @@ class Scheduler {
     ///
     /// - Returns: a list of game matches in single elimination format.
     ///
-    static func singleElimination<U>(round : Int, row : [U?]) -> [Game<U>] {
+    static func singleElimination<U>(round : Int, row : [U?]) -> [GameClass<U>] {
         
         var index = 0
         var elements = row
-        var schedules = [Game<U>]()
+        var schedules = [GameClass<U>]()
         
         guard elements.count <= 64 && round < elements.count  else { return schedules }
         
@@ -161,7 +161,7 @@ class Scheduler {
         for i in (0 ..< elements.count / 2).reverse() {
             let home = elements[i]
             let away = elements[endIndex - i]
-            let game = Game(index: &index, round: round, home: home, away: away, prevHomeGame: nil, prevAwayGame: nil, isLoserBracket: false)
+            let game = GameClass(index: &index, round: round, home: home, away: away, prevHomeGame: nil, prevAwayGame: nil, isLoserBracket: false)
             schedules.append(game)
         }
         
@@ -176,9 +176,9 @@ class Scheduler {
     ///
     /// - Returns: a list of game matches in single elimination format.
     ///
-    private static func singleElimination<U>(inout index : Int, round : Int, row : [Game<U>]) -> [Game<U>] {
+    private static func singleElimination<U>(inout index : Int, round : Int, row : [GameClass<U>]) -> [GameClass<U>] {
         
-        var schedules = [Game<U>]()
+        var schedules = [GameClass<U>]()
         
         guard row.count > 1 else { return schedules}
         
@@ -189,7 +189,7 @@ class Scheduler {
         for i in (0 ..< row.count / 2).reverse() {
             let prevhome = row[i]
             let prevaway = row[endIndex - i]
-            let game = Game(index: &index, round: round, home: nil, away: nil, prevHomeGame: prevhome, prevAwayGame: prevaway, isLoserBracket: false)
+            let game = GameClass(index: &index, round: round, home: nil, away: nil, prevHomeGame: prevhome, prevAwayGame: prevaway, isLoserBracket: false)
             schedules.append(game)
         }
         
@@ -205,10 +205,10 @@ class Scheduler {
     ///
     /// - Returns: a list of game matches in double elimination format.
     ///
-    static func doubleElimination<U>(round : Int, row : [U?]) -> [Game<U>] {
+    static func doubleElimination<U>(round : Int, row : [U?]) -> [GameClass<U>] {
         
         var elements = row
-        var schedules = [Game<U>]()
+        var schedules = [GameClass<U>]()
         
         //
         // If two teams, make it 4 beacause it needs 4 to make the losers bracket
@@ -240,7 +240,7 @@ class Scheduler {
         let lastLosersGame = schedules.last
         if let home = lastWinnersGame, away = lastLosersGame where !home.isLoserBracket && away.isLoserBracket {
             var index = schedules.count
-            let game = Game(index: &index, round: home.round + 1, home: nil, away: nil, prevHomeGame: home, prevAwayGame: away, isLoserBracket: false)
+            let game = GameClass(index: &index, round: home.round + 1, home: nil, away: nil, prevHomeGame: home, prevAwayGame: away, isLoserBracket: false)
             schedules.append(game)
         }
         
@@ -252,11 +252,11 @@ class Scheduler {
     ///
     /// - Returns: a list of game matches of the losers bracket.
     ///
-    private static func createLosersBracket<U>(fromBracket bracket: [Game<U>], whereBracketIsLoser isLoserBracket : Bool, withWinnersRound winnersround : Int, orLosersRound losersround : Int) -> [Game<U>] {
+    private static func createLosersBracket<U>(fromBracket bracket: [GameClass<U>], whereBracketIsLoser isLoserBracket : Bool, withWinnersRound winnersround : Int, orLosersRound losersround : Int) -> [GameClass<U>] {
         
         var winnersround = winnersround
         var losersround = losersround
-        var survivors = [Game<U>]()
+        var survivors = [GameClass<U>]()
         let round = (isLoserBracket) ? losersround - 1 : winnersround
         
         //
@@ -283,7 +283,7 @@ class Scheduler {
         while i < games.count - 1 {
             let prevhome = games[i]
             let prevaway = games[i+1]
-            let game = Game(index: &index, round: losersround, home: nil, away: nil, prevHomeGame: prevhome, prevAwayGame: prevaway, isLoserBracket: true)
+            let game = GameClass(index: &index, round: losersround, home: nil, away: nil, prevHomeGame: prevhome, prevAwayGame: prevaway, isLoserBracket: true)
             game.firstLoserIndex = firstLoserIndex
             survivors.append(game)
             i = i + 2
@@ -294,7 +294,7 @@ class Scheduler {
         //
         winnersround = winnersround + 1
         var newlosers = bracket.filter{ g in g.round == winnersround && g.isLoserBracket == false }
-        guard newlosers.count > 0 && newlosers.count == survivors.count else { return [Game<U>]() }
+        guard newlosers.count > 0 && newlosers.count == survivors.count else { return [GameClass<U>]() }
         newlosers.sortInPlace({ (g, h) in g.index < h.index })
         
         //
@@ -304,7 +304,7 @@ class Scheduler {
         for i in 0...survivors.count - 1 {
             let newloser = newlosers[i]
             let survivor = survivors[i]
-            let game = Game(index: &index, round: losersround, home: nil, away: nil, prevHomeGame: newloser, prevAwayGame: survivor, isLoserBracket: true)
+            let game = GameClass(index: &index, round: losersround, home: nil, away: nil, prevHomeGame: newloser, prevAwayGame: survivor, isLoserBracket: true)
             game.firstLoserIndex = firstLoserIndex
             survivors.append(game)
         }
