@@ -1118,6 +1118,12 @@ class Test_01SchedulerSpec : QuickSpec {
             expect("\(matches[21])").to(equal("(11, 22, Optional(5), Optional(10), Optional(4), Optional(11))"))
         }
         
+        it("schedules value type single elimination with 5 individuals ") {
+            let teams : [Int?] = [1,2,3,4,5]
+            let matches = Scheduler.newSingleElimination(1, teams: teams)
+        }
+        
+        
         /*
          
          expect("\(matches[00])").to(equal(""))

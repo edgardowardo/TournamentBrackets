@@ -315,5 +315,76 @@ class Scheduler {
         losersround = losersround + 1
         return survivors + createLosersBracket(fromBracket: survivors + bracket, whereBracketIsLoser: true, withWinnersRound: winnersround, orLosersRound: losersround)
     }
+    
+    
+    static func newSingleElimination<TeamType>(round : Int, teams : [TeamType?]) -> GameTree<TeamType> {
+        
+        var index = 0
+        var elements = teams
+        var schedules = [GameTree<TeamType>]()
+        
+        guard elements.count <= 64 && round < elements.count else {
+            return GameTree.Game(left: nil, right: nil) // TODO: CORRECT????
+        }
+        
+        //
+        // Adjust the number of teams with a bye, necessary to construct the brackets which are 2, 4, 8, 16, 32 and 64
+        //
+        for i in 1...8 {
+            let minimum = 2^^i
+            if elements.count < minimum {
+                let diff = minimum - elements.count
+                for _ in 1...diff {
+                    elements.append(nil)
+                }
+                break
+            } else if elements.count == minimum {
+                break
+            }
+        }
+        
+        //
+        // process half the elements to create the pairs
+        //
+        let endIndex = elements.count - 1
+        for i in (0 ..< elements.count / 2).reverse() {
+            let home = elements[i]
+            let away = elements[endIndex - i]
+            index = index + 1
+            let game = GameTree.Game(left: home, right: away)
+            schedules.append(game)
+        }
+        
+        //
+        // apply rainbow pairing for the new game winners instead of teams
+        //
+        return newSingleElimination(index, round: round + 1, trees: schedules)
+        
+    }
+    
+    static func newSingleElimination<TeamType>(index : Int, round : Int, trees : [GameTree<TeamType>]) -> GameTree<TeamType> {
+        
+        var index = index
+        var schedules = [GameTree<TeamType>]()
+        
+        guard trees.count > 1 else { return trees[0]}
+        
+        //
+        // process all the game winners to create new games for the round
+        //
+        let endIndex = trees.count - 1
+        for i in (0 ..< trees.count / 2).reverse() {
+            let left = trees[i]
+            let right = trees[endIndex - i]
+            index = index + 1
+            let game = GameTree.FutureGame(left: left, right: right)
+            schedules.append(game)
+        }
+        
+        //
+        // apply rainbow pairing for the new game winners until the base case happens
+        //
+        return newSingleElimination(index, round: round + 1, trees: schedules)
+    }
 
 }
