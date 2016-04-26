@@ -18,10 +18,9 @@
 		7770C6151CC0C290008C5A6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7770C6141CC0C290008C5A6B /* Assets.xcassets */; };
 		7770C6181CC0C290008C5A6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7770C6161CC0C290008C5A6B /* LaunchScreen.storyboard */; };
 		7770C62E1CC0C290008C5A6B /* TournamentBracketsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7770C62D1CC0C290008C5A6B /* TournamentBracketsUITests.swift */; };
+		7793022E1CCFAFD000695321 /* Power.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7793022D1CCFAFD000695321 /* Power.swift */; };
 		77D3D65E1CC3BFA6001EF359 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D3D65D1CC3BFA6001EF359 /* Game.swift */; };
-		77D3D6601CC3C0F5001EF359 /* Power.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D3D65F1CC3C0F5001EF359 /* Power.swift */; };
 		77F6ED3F1CCE3F6600EC411A /* GameClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F6ED3E1CCE3F6600EC411A /* GameClass.swift */; };
-		77F6ED411CCE429F00EC411A /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F6ED401CCE429F00EC411A /* Tree.swift */; };
 		A64ED72E027EAD3DAFD8A26E /* Pods_TournamentBrackets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F128AE826C2D1F7DD48C40 /* Pods_TournamentBrackets.framework */; };
 		B40764EB7C2A8DB84402C15A /* Pods_TournamentBracketsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D34A9EFFAFBDC769CDD1F3 /* Pods_TournamentBracketsTests.framework */; };
 /* End PBXBuildFile section */
@@ -64,10 +63,9 @@
 		7770C6291CC0C290008C5A6B /* TournamentBracketsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TournamentBracketsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7770C62D1CC0C290008C5A6B /* TournamentBracketsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentBracketsUITests.swift; sourceTree = "<group>"; };
 		7770C62F1CC0C290008C5A6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7793022D1CCFAFD000695321 /* Power.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Power.swift; sourceTree = "<group>"; };
 		77D3D65D1CC3BFA6001EF359 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		77D3D65F1CC3C0F5001EF359 /* Power.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Power.swift; sourceTree = "<group>"; };
 		77F6ED3E1CCE3F6600EC411A /* GameClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameClass.swift; sourceTree = "<group>"; };
-		77F6ED401CCE429F00EC411A /* Tree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		80D34A9EFFAFBDC769CDD1F3 /* Pods_TournamentBracketsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TournamentBracketsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF922B5D4B34B3FB9ABB81BC /* Pods-TournamentBracketsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TournamentBracketsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TournamentBracketsTests/Pods-TournamentBracketsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D7AE8E80DB60ED1D38CF64F5 /* Pods_TournamentBracketsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TournamentBracketsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +134,7 @@
 		7770C60C1CC0C290008C5A6B /* TournamentBrackets */ = {
 			isa = PBXGroup;
 			children = (
+				7793022C1CCFAF7400695321 /* Helpers */,
 				774A48D51CC91698006DCD4F /* Services */,
 				77D3D65C1CC3BF30001EF359 /* Models */,
 				771E19621CC27DEF00125F9E /* Scheduler.swift */,
@@ -168,13 +167,19 @@
 			path = TournamentBracketsUITests;
 			sourceTree = "<group>";
 		};
+		7793022C1CCFAF7400695321 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7793022D1CCFAFD000695321 /* Power.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		77D3D65C1CC3BF30001EF359 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				77F6ED3E1CCE3F6600EC411A /* GameClass.swift */,
-				77F6ED401CCE429F00EC411A /* Tree.swift */,
 				77D3D65D1CC3BFA6001EF359 /* Game.swift */,
-				77D3D65F1CC3C0F5001EF359 /* Power.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -467,11 +472,10 @@
 				771E19631CC27DEF00125F9E /* Scheduler.swift in Sources */,
 				774A48D71CC916AC006DCD4F /* Wireframe.swift in Sources */,
 				77F6ED3F1CCE3F6600EC411A /* GameClass.swift in Sources */,
-				77F6ED411CCE429F00EC411A /* Tree.swift in Sources */,
 				7770C6101CC0C290008C5A6B /* ViewController.swift in Sources */,
 				774A48D41CC90992006DCD4F /* RootViewController.swift in Sources */,
-				77D3D6601CC3C0F5001EF359 /* Power.swift in Sources */,
 				7770C60E1CC0C290008C5A6B /* AppDelegate.swift in Sources */,
+				7793022E1CCFAFD000695321 /* Power.swift in Sources */,
 				77D3D65E1CC3BFA6001EF359 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

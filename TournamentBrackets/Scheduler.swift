@@ -316,15 +316,19 @@ class Scheduler {
         return survivors + createLosersBracket(fromBracket: survivors + bracket, whereBracketIsLoser: true, withWinnersRound: winnersround, orLosersRound: losersround)
     }
     
-    
-    static func newSingleElimination<TeamType>(round : Int, teams : [TeamType?]) -> GameTree<TeamType> {
+    ///
+    /// Builds single elimination match schedule from a given set
+    ///
+    /// - Returns: a game tree in single elimination format.
+    ///
+    static func valuedSingleElimination<TeamType>(round : Int, teams : [TeamType?]) -> GameTree<TeamType> {
         
         var index = 0
         var elements = teams
         var schedules = [GameTree<TeamType>]()
         
         guard elements.count <= 64 && round < elements.count else {
-            return GameTree.Game(left: nil, right: nil) // TODO: CORRECT????
+            return GameTree.Empty
         }
         
         //
@@ -351,23 +355,45 @@ class Scheduler {
             let home = elements[i]
             let away = elements[endIndex - i]
             index = index + 1
-            let game = GameTree.Game(left: home, right: away)
+            
+            //
+            // Game is a bye, therefore identify the winner
+            //
+            var winner : TeamType? = nil
+            if let h = home where away == nil {
+                winner = h
+            } else if let a = away where home == nil {
+                winner = a
+            }
+            
+            //
+            // Create the game
+            //
+            let info = GameInfo(index: index, round: round, isBye: (winner != nil), winner: winner)
+            let game = GameTree.Game(info: info, left: home, right: away)
             schedules.append(game)
         }
         
         //
         // apply rainbow pairing for the new game winners instead of teams
         //
-        return newSingleElimination(index, round: round + 1, trees: schedules)
+        return valuedSingleElimination(index, round: round + 1, trees: schedules)
         
     }
     
-    static func newSingleElimination<TeamType>(index : Int, round : Int, trees : [GameTree<TeamType>]) -> GameTree<TeamType> {
+    ///
+    /// Builds single elimination match schedule from a given set
+    ///
+    /// - Returns: a game tree in single elimination format.
+    ///
+    static func valuedSingleElimination<TeamType>(index : Int, round : Int, trees : [GameTree<TeamType>]) -> GameTree<TeamType> {
         
         var index = index
         var schedules = [GameTree<TeamType>]()
         
-        guard trees.count > 1 else { return trees[0]}
+        guard trees.count > 1 else {
+            return trees[0]
+        }
         
         //
         // process all the game winners to create new games for the round
@@ -377,14 +403,15 @@ class Scheduler {
             let left = trees[i]
             let right = trees[endIndex - i]
             index = index + 1
-            let game = GameTree.FutureGame(left: left, right: right)
+            let nilTeam : TeamType? = nil
+            let info = GameInfo(index: index, round: round, isBye: false, winner: nilTeam)
+            let game = GameTree.FutureGame(info: info, left: left, right: right)
             schedules.append(game)
         }
         
         //
         // apply rainbow pairing for the new game winners until the base case happens
         //
-        return newSingleElimination(index, round: round + 1, trees: schedules)
+        return valuedSingleElimination(index, round: round + 1, trees: schedules)
     }
-
 }
