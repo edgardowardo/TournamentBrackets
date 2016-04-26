@@ -328,7 +328,9 @@ class Scheduler {
         var schedules = [GameTree<TeamType>]()
         
         guard elements.count <= 64 && round < elements.count else {
-            return GameTree.Empty
+            let winner : TeamType? = nil
+            let info = GameInfo(index: 0, round: 0, isBye: false, winner: winner)
+            return GameTree.Game(info: info, left: nil, right: nil)
         }
         
         //

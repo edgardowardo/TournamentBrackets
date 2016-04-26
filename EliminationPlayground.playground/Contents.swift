@@ -13,10 +13,6 @@ func ^^ (radix: Int, power: Int) -> Int {
 /// A binary tree representing two teams playing in a single or double elimination schedule.
 ///
 indirect enum GameTree<SomeTeam> {
-    ///
-    /// An empty tree should never exist
-    ///
-    case Empty
     
     ///
     /// A game scheduled on the first round of the tree
@@ -34,8 +30,6 @@ indirect enum GameTree<SomeTeam> {
     func flatten() -> [GameTree<SomeTeam>] {
         var flatNodes = [GameTree<SomeTeam>]()
         switch self {
-        case .Empty :
-            break
         case .Game(_,_,_) :
             flatNodes = flatNodes + [self]
         case let .FutureGame(_, left, right) :
@@ -66,8 +60,6 @@ extension GameTree {
                 return info.index
             case .FutureGame(let info, _, _) :
                 return info.index
-            case .Empty :
-                return 0
             }
         }
     }
@@ -78,8 +70,6 @@ extension GameTree {
                 return info.round
             case .FutureGame(let info, _, _) :
                 return info.round
-            case .Empty :
-                return 0
             }
         }
     }
@@ -90,8 +80,6 @@ extension GameTree {
                 return info.isBye
             case .FutureGame(let info, _, _) :
                 return info.isBye
-            case .Empty :
-                return false
             }
         }
     }
@@ -102,8 +90,6 @@ extension GameTree {
                 return info.winner
             case .FutureGame(let info, _, _) :
                 return info.winner
-            case .Empty :
-                return nil
             }
         }
     }
@@ -125,8 +111,6 @@ extension GameTree {
             return ""
         case .FutureGame(_, _, _) :
             return ""
-        case .Empty :
-            return ""
         }
     }
     
@@ -140,8 +124,6 @@ extension GameTree {
             }
             return ""
         case .FutureGame(_, _, _) :
-            return ""
-        case .Empty :
             return ""
         }
     }
@@ -170,8 +152,6 @@ extension GameTree {
                 r = "W\(right.index)"
             }
             return "\(l)v\(r)"
-        case .Empty :
-            return ""
         }
     }
 }
@@ -188,7 +168,9 @@ func valuedSingleElimination<TeamType>(round : Int, teams : [TeamType?]) -> Game
     var schedules = [GameTree<TeamType>]()
     
     guard elements.count <= 64 && round < elements.count else {
-        return GameTree.Empty
+        let winner : TeamType? = nil
+        let info = GameInfo(index: 0, round: 0, isBye: false, winner: winner)
+        return GameTree.Game(info: info, left: nil, right: nil)
     }
     
     //

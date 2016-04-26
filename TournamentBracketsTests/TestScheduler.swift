@@ -35,13 +35,21 @@ class Test_01SchedulerSpec : QuickSpec {
         it("schedules value type single elimination with 00 team") {
             let teams : [Int?] = []
             let matches = valuedSingleElimination(teams)
-            expect(matches.count).to(equal(0))
+            expect(matches.count).to(equal(1))
+            let first = matches.first
+            if let f = first {
+                expect(f).to(equal("R0.0.v"))
+            }
         }
         
         it("schedules value type single elimination with 01 team") {
             let teams : [Int?] = [1]
             let matches = valuedSingleElimination(teams)
-            expect(matches.count).to(equal(0))
+            expect(matches.count).to(equal(1))
+            let first = matches.first
+            if let f = first {
+                expect(f).to(equal("R0.0.v"))
+            }
         }
         
         it("schedules value type single elimination with 02 teams") {

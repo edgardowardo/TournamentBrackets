@@ -24,11 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TournamentBracketsTests/TestScheduler.swift"
-            timestampString = "483376113.565702"
+            timestampString = "483378648.176252"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1410"
-            endingLineNumber = "1410"
+            startingLineNumber = "1418"
+            endingLineNumber = "1418"
             landmarkName = "spec()"
             landmarkType = "5">
             <Locations>
