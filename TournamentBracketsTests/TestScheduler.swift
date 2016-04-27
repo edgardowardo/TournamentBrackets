@@ -38,7 +38,7 @@ class Test_01SchedulerSpec : QuickSpec {
             expect(matches.count).to(equal(1))
             let first = matches.first
             if let f = first {
-                expect(f).to(equal("R0.0.v"))
+                expect(f).to(equal("R1.1.v"))
             }
         }
         
@@ -48,7 +48,7 @@ class Test_01SchedulerSpec : QuickSpec {
             expect(matches.count).to(equal(1))
             let first = matches.first
             if let f = first {
-                expect(f).to(equal("R0.0.v"))
+                expect(f).to(equal("R1.1.1vB"))
             }
         }
         

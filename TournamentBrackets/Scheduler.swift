@@ -327,12 +327,6 @@ class Scheduler {
         var elements = teams
         var schedules = [GameTree<TeamType>]()
         
-        guard elements.count <= 64 && round < elements.count else {
-            let winner : TeamType? = nil
-            let info = GameInfo(index: 0, round: 0, isBye: false, winner: winner)
-            return GameTree.Game(info: info, left: nil, right: nil)
-        }
-        
         //
         // Adjust the number of teams with a bye, necessary to construct the brackets which are 2, 4, 8, 16, 32 and 64
         //
