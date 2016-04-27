@@ -373,7 +373,7 @@ class Scheduler {
         //
         // apply rainbow pairing for the new game winners instead of teams
         //
-        return valuedSingleElimination(index, round: round + 1, trees: schedules)
+        return valuedFutureSingleElimination(index, round: round + 1, trees: schedules)
         
     }
     
@@ -382,7 +382,7 @@ class Scheduler {
     ///
     /// - Returns: a game tree in single elimination format.
     ///
-    static func valuedSingleElimination<TeamType>(index : Int, round : Int, trees : [GameTree<TeamType>]) -> GameTree<TeamType> {
+    static func valuedFutureSingleElimination<TeamType>(index : Int, round : Int, trees : [GameTree<TeamType>]) -> GameTree<TeamType> {
         
         var index = index
         var schedules = [GameTree<TeamType>]()
@@ -408,6 +408,124 @@ class Scheduler {
         //
         // apply rainbow pairing for the new game winners until the base case happens
         //
-        return valuedSingleElimination(index, round: round + 1, trees: schedules)
+        return valuedFutureSingleElimination(index, round: round + 1, trees: schedules)
+    }
+    
+    ///
+    /// Builds double elimination match schedule from a given set
+    ///
+    /// - Returns: a list of game matches in double elimination format.
+    ///
+    static func valuedDoubleElimination<SomeTeam>(round : Int, teams : [SomeTeam?]) -> GameTree<SomeTeam> {
+        var elements = teams
+        
+        //
+        // If two teams, make it 4 beacause it needs 4 to make the losers bracket
+        //
+        if elements.count == 2 {
+            for _ in 3...4 {
+                elements.append(nil)
+            }
+        }
+        
+        //
+        // Build single elimination tree aka winners bracket
+        //
+        let lastWinnersGame = valuedSingleElimination(1, teams: elements)
+        
+        //
+        // Build losers bracket
+        //
+        let lastLosersGame = valuedLosersBracket(fromWinnersBracket: lastWinnersGame, withWinnersRound: round, andLosersList: [], withLosersRound: round + 1, andIndex: lastWinnersGame.index)
+        
+        //
+        // The final game is between the last winners game and the last losers game
+        //
+        let winner : SomeTeam? = nil
+        let info = GameInfo(index: lastLosersGame.index + 1, round: lastWinnersGame.round + 1, isBye: false, winner: winner)
+        let finals = GameTree.FutureGame(info: info, left: lastWinnersGame, right: lastLosersGame)
+        return finals
+    }
+    
+    
+    ///
+    /// Builds the loser bracket of double elimination match schedule
+    ///
+    /// - Returns: a list of game matches of the losers bracket.
+    ///
+    static func valuedLosersBracket<SomeTeam>(fromWinnersBracket winners: GameTree<SomeTeam>, withWinnersRound winnersRound : Int, andLosersList losersList: [GameTree<SomeTeam>], withLosersRound losersRound : Int, andIndex index: Int) -> GameTree<SomeTeam> {
+        
+        var index = index
+        let isLosersBracket = (losersList.count > 0)
+        var winnersround = winnersRound
+        var losersround = losersRound
+        var survivors = [GameTree<SomeTeam>]()
+        let roundFilter = (isLosersBracket) ? losersround - 1 : winnersround
+        let flatWinners = winners.flatten()
+        
+        //
+        // The first loser index determines progress of a game on the losers bracket. When the index of a previous game is lower than this number, it comes from the winners bracket and hence interested in the losing team. Otherwise higher or equal to this index of a previous game, we are insterested to the winner of this loser game.
+        //
+        let firstLoserIndex = winners.index + 1
+        
+        //
+        // Look for games on the previous round. This could either be at the losers or winners bracket.
+        //
+        var games : [GameTree<SomeTeam>]
+        if isLosersBracket {
+            games = losersList
+        } else {
+            games = flatWinners
+        }
+        games = games.filter{ g in g.round == roundFilter}
+        games.sortInPlace({ (g, h) in g.index < h.index })
+        
+        //
+        // Look for losers for previous round and create games sequentially (no rainbows)
+        //
+        var i = 0
+        while i < games.count - 1 {
+            let left = games[i]
+            let right = games[i+1]
+            index = index + 1
+            let winner : SomeTeam? = nil
+            let info = GameInfo(index: index, round: losersround, isBye: false, winner: winner, isLoserBracket: true, firstLoserIndex: firstLoserIndex)
+            let game = GameTree.FutureGame(info: info, left: left, right: right)
+            survivors.append(game)
+            i = i + 2
+        }
+        
+        //
+        // Look for losers for the next round of winners bracket and match them with winners in this current round of games
+        //
+        winnersround = winnersround + 1
+        var newlosers = flatWinners.filter{ g in g.round == winnersround }
+        guard newlosers.count > 0 && newlosers.count == survivors.count else {
+            //
+            // Base case where we have reached the top of the tree in the losers bracket
+            //
+            return games.first!
+        }
+        newlosers.sortInPlace({ (g, h) in g.index < h.index })
+        
+        //
+        // Create padded rounds as result of matching the new losers of winners round and survivors
+        //
+        losersround = losersround + 1
+        for i in 0...survivors.count - 1 {
+            let newloser = newlosers[i]
+            let survivor = survivors[i]
+            index = index + 1
+            let winner : SomeTeam? = nil
+            let info = GameInfo(index: index, round: losersround, isBye: false, winner: winner, isLoserBracket: true, firstLoserIndex: firstLoserIndex)
+            let game = GameTree.FutureGame(info: info, left: newloser, right: survivor)
+            survivors.append(game)
+        }
+        
+        //
+        // Increment losers round again to create the next branch of the brackets
+        //
+        losersround = losersround + 1
+        return valuedLosersBracket(fromWinnersBracket: winners, withWinnersRound: winnersround, andLosersList: survivors, withLosersRound: losersround, andIndex: index)
     }
 }

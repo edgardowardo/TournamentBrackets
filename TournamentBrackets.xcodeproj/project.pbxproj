@@ -12,6 +12,11 @@
 		771E19631CC27DEF00125F9E /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771E19621CC27DEF00125F9E /* Scheduler.swift */; };
 		774A48D41CC90992006DCD4F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A48D31CC90992006DCD4F /* RootViewController.swift */; };
 		774A48D71CC916AC006DCD4F /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A48D61CC916AC006DCD4F /* Wireframe.swift */; };
+		7766D8401CD102C800DA3FA1 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7766D83F1CD102C800DA3FA1 /* Array.swift */; };
+		7766D8421CD1216900DA3FA1 /* Test_01SchedulerSpec_RoundRobin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7766D8411CD1216900DA3FA1 /* Test_01SchedulerSpec_RoundRobin.swift */; };
+		7766D8441CD1227B00DA3FA1 /* Test_02SchedulerSpec_RoundRobinDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7766D8431CD1227B00DA3FA1 /* Test_02SchedulerSpec_RoundRobinDoubles.swift */; };
+		7766D8461CD122B000DA3FA1 /* Test_03SchedulerSpec_SingleElimination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7766D8451CD122B000DA3FA1 /* Test_03SchedulerSpec_SingleElimination.swift */; };
+		7766D8481CD122DD00DA3FA1 /* Test_04SchedulerSpec_DoubleElimination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7766D8471CD122DD00DA3FA1 /* Test_04SchedulerSpec_DoubleElimination.swift */; };
 		7770C60E1CC0C290008C5A6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7770C60D1CC0C290008C5A6B /* AppDelegate.swift */; };
 		7770C6101CC0C290008C5A6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7770C60F1CC0C290008C5A6B /* ViewController.swift */; };
 		7770C6131CC0C290008C5A6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7770C6111CC0C290008C5A6B /* Main.storyboard */; };
@@ -51,6 +56,11 @@
 		771E19621CC27DEF00125F9E /* Scheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
 		774A48D31CC90992006DCD4F /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		774A48D61CC916AC006DCD4F /* Wireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wireframe.swift; sourceTree = "<group>"; };
+		7766D83F1CD102C800DA3FA1 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		7766D8411CD1216900DA3FA1 /* Test_01SchedulerSpec_RoundRobin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test_01SchedulerSpec_RoundRobin.swift; sourceTree = "<group>"; };
+		7766D8431CD1227B00DA3FA1 /* Test_02SchedulerSpec_RoundRobinDoubles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test_02SchedulerSpec_RoundRobinDoubles.swift; sourceTree = "<group>"; };
+		7766D8451CD122B000DA3FA1 /* Test_03SchedulerSpec_SingleElimination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test_03SchedulerSpec_SingleElimination.swift; sourceTree = "<group>"; };
+		7766D8471CD122DD00DA3FA1 /* Test_04SchedulerSpec_DoubleElimination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test_04SchedulerSpec_DoubleElimination.swift; sourceTree = "<group>"; };
 		7770C60A1CC0C290008C5A6B /* TournamentBrackets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TournamentBrackets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7770C60D1CC0C290008C5A6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7770C60F1CC0C290008C5A6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +119,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		7766D83E1CD102BA00DA3FA1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7766D83F1CD102C800DA3FA1 /* Array.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		7770C6011CC0C28F008C5A6B = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +152,7 @@
 		7770C60C1CC0C290008C5A6B /* TournamentBrackets */ = {
 			isa = PBXGroup;
 			children = (
+				7766D83E1CD102BA00DA3FA1 /* Extensions */,
 				7793022C1CCFAF7400695321 /* Helpers */,
 				774A48D51CC91698006DCD4F /* Services */,
 				77D3D65C1CC3BF30001EF359 /* Models */,
@@ -154,6 +173,10 @@
 			children = (
 				770080AF1CC4052600EE04E2 /* TestScheduler.swift */,
 				7770C6241CC0C290008C5A6B /* Info.plist */,
+				7766D8411CD1216900DA3FA1 /* Test_01SchedulerSpec_RoundRobin.swift */,
+				7766D8431CD1227B00DA3FA1 /* Test_02SchedulerSpec_RoundRobinDoubles.swift */,
+				7766D8451CD122B000DA3FA1 /* Test_03SchedulerSpec_SingleElimination.swift */,
+				7766D8471CD122DD00DA3FA1 /* Test_04SchedulerSpec_DoubleElimination.swift */,
 			);
 			path = TournamentBracketsTests;
 			sourceTree = "<group>";
@@ -469,6 +492,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7766D8401CD102C800DA3FA1 /* Array.swift in Sources */,
 				771E19631CC27DEF00125F9E /* Scheduler.swift in Sources */,
 				774A48D71CC916AC006DCD4F /* Wireframe.swift in Sources */,
 				77F6ED3F1CCE3F6600EC411A /* GameClass.swift in Sources */,
@@ -484,7 +508,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7766D8441CD1227B00DA3FA1 /* Test_02SchedulerSpec_RoundRobinDoubles.swift in Sources */,
+				7766D8461CD122B000DA3FA1 /* Test_03SchedulerSpec_SingleElimination.swift in Sources */,
 				770080B01CC4052600EE04E2 /* TestScheduler.swift in Sources */,
+				7766D8421CD1216900DA3FA1 /* Test_01SchedulerSpec_RoundRobin.swift in Sources */,
+				7766D8481CD122DD00DA3FA1 /* Test_04SchedulerSpec_DoubleElimination.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
