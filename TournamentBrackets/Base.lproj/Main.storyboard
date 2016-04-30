@@ -24,7 +24,7 @@
         <!--Tournaments-->
         <scene sceneID="ExX-UD-rjZ">
             <objects>
-                <viewController id="Hiw-Bb-c0z" customClass="RootViewController" customModule="TournamentBrackets" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Hiw-Bb-c0z" customClass="TournamentListViewController" customModule="TournamentBrackets" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dH5-YU-4lA"/>
                         <viewControllerLayoutGuide type="bottom" id="xrL-xO-KNG"/>
