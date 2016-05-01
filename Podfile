@@ -5,6 +5,7 @@ def shared_pods
 end
 
 target 'TournamentBrackets' do
+    pod "RxRealm"
     pod 'RxSwift',    '~> 2.0'
     pod 'RxCocoa',    '~> 2.0'
     pod 'RxBlocking', '~> 2.0'

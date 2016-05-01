@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 class Tournament : Object {
-    dynamic var name = ""
+    dynamic var time: NSTimeInterval = NSDate().timeIntervalSinceReferenceDate
+    dynamic var name = "Tournament"
     let groups = List<Group>()
 }
