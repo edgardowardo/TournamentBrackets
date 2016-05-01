@@ -8,43 +8,94 @@
 
 import UIKit
 
+import UIColor_FlatColors
+
 import RxSwift
 import RxCocoa
 
 import RealmSwift
 import RxRealm
 
-class TournamentListViewController: ViewController {
-    
+class TournamentListViewController: ViewController, UITextFieldDelegate {
+
+    let realm = try! Realm()
     let bag = DisposeBag()
-    
     @IBOutlet weak var tableView: UITableView!
+    lazy var textField : UITextField = {
+        let textfield = UITextField(frame: CGRectMake(0, 0, 10, 44))
+        textfield.clearButtonMode = .Always
+        textfield.borderStyle = .RoundedRect
+        textfield.returnKeyType = .Done
+        textfield.backgroundColor = UIColor.flatCloudsColor()
+        textfield.delegate = self
+        textfield.hidden = true
+        return textfield
+    }()
+    
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    override var inputAccessoryView: UIView? {
+        get {
+            return self.textField
+        }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if let text = textField.text where text.characters.count > 0 {
+            let tourney = Tournament()
+            tourney.name = text
+            try! realm.write {
+                realm.add(tourney)
+            }
+        }
+        textField.resignFirstResponder()
+        textField.hidden = true
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.reloadInputViews()
         
-        let edit = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addTapped))
-        let play = UIBarButtonItem(title: "Edit", style: .Plain, target: self, action: #selector(addTapped))
+        let add = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addTapped))
         
-        navigationItem.rightBarButtonItems = [edit, play]
+        navigationItem.rightBarButtonItems = [add]
         
-        let realm = try! Realm()
+        //
+        // Observe for the title with count
+        //
         let tourneyCount = realm.objects(Tournament).asObservable().map {tourneys in "Tournaments (\(tourneys.count))"}
-        tourneyCount.subscribeNext {[unowned self]text in
+        tourneyCount.subscribeNext { [unowned self] text in
             self.title = text
             }.addDisposableTo(bag)
-        
+
+        //
+        // Observe the list
+        //
         let tourneys = realm.objects(Tournament).sorted("time", ascending: false).asObservableArray()
         tourneys.bindTo(tableView.rx_itemsWithCellIdentifier("Cell", cellType: UITableViewCell.self)) {row, element, cell in
-            cell.textLabel!.text = formatter.stringFromDate(NSDate(timeIntervalSinceReferenceDate: element.time))
+            cell.textLabel!.text = element.name
             }.addDisposableTo(bag)
+
+        //
+        // Observe the delete swipe
+        //
+        tableView.rx_itemDeleted
+            .subscribeNext { [unowned self] indexPath in
+                let t = self.realm.objects(Tournament).sorted("time", ascending: false)
+                try! self.realm.write {
+                    self.realm.delete(t[indexPath.row])
+                }
+            }
+            .addDisposableTo(disposeBag)
     }
     
-    func addTapped() {
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(Tournament())
-        }
+    func addTapped(sender: UIBarButtonItem) {
+        self.textField.text = ""
+        self.textField.hidden = false
+        self.textField.becomeFirstResponder()
     }
     
 }

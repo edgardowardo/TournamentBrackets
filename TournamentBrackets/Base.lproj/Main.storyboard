@@ -43,7 +43,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZgT-q1-xHh" id="d93-Rh-B4q">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" red="0.99607843139999996" green="0.94117647059999998" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <accessibility key="accessibilityConfiguration">
                                             <bool key="isElement" value="YES"/>
