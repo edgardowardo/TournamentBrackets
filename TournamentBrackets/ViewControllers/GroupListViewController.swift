@@ -41,6 +41,7 @@ class GroupListViewController: ViewController, UITextFieldDelegate {
         textfield.backgroundColor = UIColor.flatCloudsColor()
         textfield.delegate = self
         textfield.hidden = true
+        textfield.autocapitalizationType = .Words
         return textfield
     }()
     
@@ -113,6 +114,9 @@ class GroupListViewController: ViewController, UITextFieldDelegate {
                 self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
             }
             .addDisposableTo(disposeBag)
+    }
+    
+    @IBAction func unwindToGroupList(segue: UIStoryboardSegue) {
     }
     
     @IBAction func addTapped(sender: AnyObject) {

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
@@ -37,6 +38,14 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="L5s-4Y-jVL">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AVr-ys-dzD">
+                                    <rect key="frame" x="0.0" y="130" width="600" height="90"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <string key="text">You can add tournaments from the ‘+’ button above. Each tournament can be renamed or deleted and may contain several groups of schedules.</string>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="ZgT-q1-xHh">
                                         <rect key="frame" x="0.0" y="86" width="600" height="44"/>
@@ -63,7 +72,13 @@
                             <constraint firstItem="L5s-4Y-jVL" firstAttribute="bottom" secondItem="xrL-xO-KNG" secondAttribute="top" id="Fue-vk-e2Y"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Tournaments" id="rAJ-Xh-8ak"/>
+                    <navigationItem key="navigationItem" title="Tournaments" id="rAJ-Xh-8ak">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="9sL-Sm-eH9">
+                            <connections>
+                                <action selector="addTap:" destination="Hiw-Bb-c0z" id="Dak-bw-z33"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="L5s-4Y-jVL" id="oPF-xe-qyT"/>
                     </connections>
@@ -84,9 +99,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6P8-1M-hZ2">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6P8-1M-hZ2">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qA8-fb-HEV">
+                                    <rect key="frame" x="0.0" y="130" width="600" height="90"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <string key="text">You can add groups from the ‘+’ button above. A group can be scheduled with round robin, round doubles, single elimination and double elimination forms. </string>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GroupCell" id="tmt-5d-419">
                                         <rect key="frame" x="0.0" y="86" width="600" height="44"/>
@@ -103,12 +126,19 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="6P8-1M-hZ2" secondAttribute="trailing" constant="-20" id="5bC-P1-oLw"/>
+                            <constraint firstItem="fuK-CO-kPW" firstAttribute="top" secondItem="6P8-1M-hZ2" secondAttribute="bottom" id="8dm-ru-Op2"/>
+                            <constraint firstItem="6P8-1M-hZ2" firstAttribute="leading" secondItem="Zwe-cr-vtX" secondAttribute="leadingMargin" constant="-20" id="Dj1-nJ-16N"/>
+                            <constraint firstItem="6P8-1M-hZ2" firstAttribute="top" secondItem="Zwe-cr-vtX" secondAttribute="topMargin" id="Jhk-j5-2gr"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title=" Groups" id="fpY-Cc-1t4">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="EoX-wp-cSD">
                                 <connections>
                                     <action selector="addTapped:" destination="gxd-jH-O9G" id="2Q7-Yn-JkQ"/>
+                                    <segue destination="yBt-5g-mFy" kind="presentation" id="FKr-Tq-cdj"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem style="plain" systemItem="edit" id="KUg-g4-UAU">
@@ -125,6 +155,95 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9CG-aq-TNP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2735" y="-212"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fw5-rN-U80">
+            <objects>
+                <navigationController id="yBt-5g-mFy" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Sqf-ti-Ezo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Qvt-0n-WiX" kind="relationship" relationship="rootViewController" id="rLf-PC-QHU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4eF-du-GZF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3564" y="-567"/>
+        </scene>
+        <!--Add Group-->
+        <scene sceneID="hjz-Ym-cdi">
+            <objects>
+                <viewController id="Qvt-0n-WiX" customClass="GroupSettingViewController" customModule="TournamentBrackets" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HXg-Vb-2KH"/>
+                        <viewControllerLayoutGuide type="bottom" id="qQd-js-cnX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IyV-Ut-Lim">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Group Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h9g-M3-bfZ">
+                                <rect key="frame" x="20" y="85" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NUMBER OF TEAMS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PR7-oD-ggA">
+                                <rect key="frame" x="20" y="123" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zcm-Dl-oES" customClass="AKPickerView">
+                                <rect key="frame" x="20" y="152" width="560" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SEEDS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Juv-WQ-8sv">
+                                <rect key="frame" x="20" y="296" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b8K-nR-TMV">
+                                <rect key="frame" x="20" y="257" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Calculate handicaps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2c-AD-0Ck">
+                                <rect key="frame" x="77" y="262" width="155" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SCHEDULE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHI-FP-EM8">
+                                <rect key="frame" x="20" y="190" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4NG-HF-hdW" customClass="AKPickerView">
+                                <rect key="frame" x="20" y="219" width="560" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CEu-o3-TgL">
+                                <rect key="frame" x="20" y="325" width="560" height="255"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Group" id="Kt7-M9-tlT">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="1Sy-Dx-uJL">
+                            <connections>
+                                <segue destination="qpw-ei-RmD" kind="unwind" unwindAction="unwindToGroupList:" id="Tdr-Ft-s7n"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="QCn-Ng-gsd"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rqv-W2-2fe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="qpw-ei-RmD" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="4318" y="-567"/>
         </scene>
     </scenes>
 </document>

@@ -32,6 +32,7 @@ class TournamentListViewController: ViewController, UITextFieldDelegate {
         textfield.backgroundColor = UIColor.flatCloudsColor()
         textfield.delegate = self
         textfield.hidden = true
+        textfield.autocapitalizationType = .Words
         return textfield
     }()
     
@@ -63,10 +64,6 @@ class TournamentListViewController: ViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.reloadInputViews()
-        
-        let add = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addTapped))
-        
-        navigationItem.rightBarButtonItems = [add]
         
         //
         // Observe the list
@@ -106,10 +103,9 @@ class TournamentListViewController: ViewController, UITextFieldDelegate {
         }
     }
     
-    func addTapped(sender: UIBarButtonItem) {
+    @IBAction func addTap(sender: AnyObject) {
         self.textField.text = ""
         self.textField.hidden = false
         self.textField.becomeFirstResponder()
     }
-    
 }
