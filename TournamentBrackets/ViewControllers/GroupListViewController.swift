@@ -20,10 +20,16 @@ import RxRealm
 
 class GroupListViewController: ViewController, UITextFieldDelegate {
     
-    var tournament : Tournament? = nil
     let realm = try! Realm()
     let bag = DisposeBag()
     @IBOutlet weak var tableView: UITableView!
+    var tournament : Tournament? = nil {
+        didSet {
+            if let t = tournament {
+                self.title = t.name
+            }
+        }
+    }
     
     // MARK: - Text field delegate -
     
@@ -64,18 +70,49 @@ class GroupListViewController: ViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //
-        // Observe changes for the title
-        //
-        if let id = tournament?.id {
+        
+        if let tournament = tournament {
+            //
+            // Observe changes for the title
+            //
+            let id = tournament.id
             let tourneyName = realm.objects(Tournament).filter("id == '\(id)'").asObservable()
             tourneyName.subscribeNext {[unowned self] elements in
                 if let t = elements.filter("id == '\(id)'").first {
                     self.title = t.name
                 }
                 }.addDisposableTo(bag)
+
+            //
+            // Observe the list
+            //
+            let groups = tournament.groups.asObservableArray()
+            groups.bindTo(tableView.rx_itemsWithCellIdentifier("GroupCell", cellType: UITableViewCell.self))  {row, element, cell in
+                cell.textLabel!.text = element.name
+            }.addDisposableTo(bag)
+            
+            
+            //
+            // Observe the delete swipe
+            //
+            tableView.rx_itemDeleted
+                .subscribeNext { [unowned self] indexPath in
+                    try! self.realm.write {
+                        self.realm.delete(tournament.groups[indexPath.row])
+                    }
+                }
+                .addDisposableTo(disposeBag)
         }
+        
+        
+        //
+        // Observe the item selected
+        //
+        tableView.rx_itemSelected
+            .subscribeNext { [unowned self] indexPath in
+                self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            }
+            .addDisposableTo(disposeBag)
     }
     
     @IBAction func addTapped(sender: AnyObject) {

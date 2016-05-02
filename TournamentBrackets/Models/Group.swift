@@ -17,10 +17,15 @@ enum ScheduleType : Int {
 }
 
 class Group : Object {
+    dynamic var id = NSUUID().UUIDString    
     dynamic var name = ""
     dynamic var isHandicap = false
     dynamic var scheduleType = 0
     dynamic var teamCount = 0
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
     
     var schedule : ScheduleType {
         get {
