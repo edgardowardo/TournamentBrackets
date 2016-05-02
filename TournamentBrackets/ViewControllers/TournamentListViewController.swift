@@ -21,6 +21,9 @@ class TournamentListViewController: ViewController, UITextFieldDelegate {
     let realm = try! Realm()
     let bag = DisposeBag()
     @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: - Text field delegate -
+    
     lazy var textField : UITextField = {
         let textfield = UITextField(frame: CGRectMake(0, 0, 10, 44))
         textfield.clearButtonMode = .Always
@@ -55,6 +58,8 @@ class TournamentListViewController: ViewController, UITextFieldDelegate {
         return true
     }
     
+    // MARK: - View lifecycle -
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.reloadInputViews()
@@ -63,14 +68,6 @@ class TournamentListViewController: ViewController, UITextFieldDelegate {
         
         navigationItem.rightBarButtonItems = [add]
         
-        //
-        // Observe for the title with count
-        //
-        let tourneyCount = realm.objects(Tournament).asObservable().map {tourneys in "Tournaments (\(tourneys.count))"}
-        tourneyCount.subscribeNext { [unowned self] text in
-            self.title = text
-            }.addDisposableTo(bag)
-
         //
         // Observe the list
         //
@@ -90,6 +87,23 @@ class TournamentListViewController: ViewController, UITextFieldDelegate {
                 }
             }
             .addDisposableTo(disposeBag)
+        
+        //
+        // Observe the item selected
+        //
+        tableView.rx_itemSelected
+            .subscribeNext { [unowned self] indexPath in
+                self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            }
+            .addDisposableTo(disposeBag)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let d = segue.destinationViewController as? GroupListViewController, cell = sender as? UITableViewCell, indexPath = tableView.indexPathForCell(cell) where segue.identifier == "showTournament" {
+            let tourneys = realm.objects(Tournament).sorted("time", ascending: false)
+            //d.currentTournament.value = tourneys[indexPath.row]
+            d.tournament = tourneys[indexPath.row]
+        }
     }
     
     func addTapped(sender: UIBarButtonItem) {

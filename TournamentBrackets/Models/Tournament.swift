@@ -10,7 +10,11 @@ import Foundation
 import RealmSwift
 
 class Tournament : Object {
+    dynamic var id = NSUUID().UUIDString
     dynamic var time: NSTimeInterval = NSDate().timeIntervalSinceReferenceDate
     dynamic var name = "Tournament"
     let groups = List<Group>()
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }

@@ -52,6 +52,7 @@
 		7770C6181CC0C290008C5A6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7770C6161CC0C290008C5A6B /* LaunchScreen.storyboard */; };
 		7770C62E1CC0C290008C5A6B /* TournamentBracketsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7770C62D1CC0C290008C5A6B /* TournamentBracketsUITests.swift */; };
 		7793022E1CCFAFD000695321 /* Power.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7793022D1CCFAFD000695321 /* Power.swift */; };
+		779FFCA01CD6A8DD00D48800 /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779FFC9F1CD6A8DC00D48800 /* GroupListViewController.swift */; };
 		77D3D65E1CC3BFA6001EF359 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D3D65D1CC3BFA6001EF359 /* Game.swift */; };
 		77F6ED3F1CCE3F6600EC411A /* GameClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F6ED3E1CCE3F6600EC411A /* GameClass.swift */; };
 		77FCDD3B1CD552EC00ED5ADB /* GameExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FCDD3A1CD552EC00ED5ADB /* GameExtensions.swift */; };
@@ -131,6 +132,7 @@
 		7770C62D1CC0C290008C5A6B /* TournamentBracketsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentBracketsUITests.swift; sourceTree = "<group>"; };
 		7770C62F1CC0C290008C5A6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7793022D1CCFAFD000695321 /* Power.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Power.swift; sourceTree = "<group>"; };
+		779FFC9F1CD6A8DC00D48800 /* GroupListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupListViewController.swift; sourceTree = "<group>"; };
 		77D3D65D1CC3BFA6001EF359 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		77F6ED3E1CCE3F6600EC411A /* GameClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameClass.swift; sourceTree = "<group>"; };
 		77FCDD3A1CD552EC00ED5ADB /* GameExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameExtensions.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				7766D8531CD41AEF00DA3FA1 /* TournamentListViewController.swift */,
+				779FFC9F1CD6A8DC00D48800 /* GroupListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				779FFCA01CD6A8DD00D48800 /* GroupListViewController.swift in Sources */,
 				7766D8761CD4BA4100DA3FA1 /* AnimatableSectionModelType.swift in Sources */,
 				7766D87B1CD4BA4100DA3FA1 /* Differentiator.swift in Sources */,
 				7766D8751CD4BA4100DA3FA1 /* AnimatableSectionModelType+ItemPath.swift in Sources */,

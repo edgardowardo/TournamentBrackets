@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -19,7 +20,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VSl-CD-aIc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1226" y="-194"/>
+            <point key="canvasLocation" x="1250" y="-212"/>
         </scene>
         <!--Tournaments-->
         <scene sceneID="ExX-UD-rjZ">
@@ -37,16 +38,19 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="ZgT-q1-xHh">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="ZgT-q1-xHh">
                                         <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZgT-q1-xHh" id="d93-Rh-B4q">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <accessibility key="accessibilityConfiguration">
                                             <bool key="isElement" value="YES"/>
                                         </accessibility>
+                                        <connections>
+                                            <segue destination="gxd-jH-O9G" kind="show" identifier="showTournament" id="7dP-Zc-5UO"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -67,6 +71,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RVR-sm-Xl8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1981" y="-212"/>
+        </scene>
+        <!--Groups-->
+        <scene sceneID="Qze-8y-EaV">
+            <objects>
+                <viewController title="Groups" id="gxd-jH-O9G" customClass="GroupListViewController" customModule="TournamentBrackets" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TwM-Yw-Hew"/>
+                        <viewControllerLayoutGuide type="bottom" id="fuK-CO-kPW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Zwe-cr-vtX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Groups" id="fpY-Cc-1t4">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="EoX-wp-cSD">
+                                <connections>
+                                    <action selector="addTapped:" destination="gxd-jH-O9G" id="2Q7-Yn-JkQ"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem style="plain" systemItem="edit" id="KUg-g4-UAU">
+                                <connections>
+                                    <action selector="editTapped:" destination="gxd-jH-O9G" id="Cca-Yr-aHl"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9CG-aq-TNP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2735" y="-212"/>
         </scene>
     </scenes>
 </document>
