@@ -11,6 +11,7 @@ import Foundation
 import UIKit
 
 import UIColor_FlatColors
+import AKPickerView
 
 import RxSwift
 import RxCocoa
@@ -18,7 +19,19 @@ import RxCocoa
 import RealmSwift
 import RxRealm
 
+
+class TeamCell : UITableViewCell {
+    @IBOutlet weak var textName: UITextField!
+    @IBOutlet weak var textHandicapPoints: UITextField!    
+}
+
 class GroupSettingViewController: ViewController {
 
+    @IBOutlet weak var textGroupName: UITextField!
+    @IBOutlet weak var pickerSchedule: AKPickerView!
+    @IBOutlet weak var pickerTeamCount: AKPickerView!
+    @IBOutlet weak var switchIsHandicapped: UISwitch!
+    @IBOutlet weak var tableView: UITableView!
+    
 
 }
