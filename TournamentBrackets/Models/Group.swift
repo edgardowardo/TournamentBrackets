@@ -12,9 +12,9 @@ import RealmSwift
 class Group : Object {
     dynamic var id = NSUUID().UUIDString    
     dynamic var name = ""
-    dynamic var isHandicap = false
     dynamic var scheduleType = 0
     dynamic var teamCount = 0
+    dynamic var isHandicap = false
     
     override static func primaryKey() -> String? {
         return "id"
