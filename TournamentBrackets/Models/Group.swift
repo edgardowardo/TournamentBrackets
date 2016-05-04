@@ -9,13 +9,6 @@
 import Foundation
 import RealmSwift
 
-enum ScheduleType : Int {
-    case RoundRobin = 0
-    case RoundRobinDoubles
-    case SingleElimination
-    case DoubleElimination
-}
-
 class Group : Object {
     dynamic var id = NSUUID().UUIDString    
     dynamic var name = ""
