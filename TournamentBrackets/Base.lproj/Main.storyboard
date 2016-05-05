@@ -141,7 +141,7 @@
                                     <segue destination="yBt-5g-mFy" kind="presentation" id="FKr-Tq-cdj"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem style="plain" systemItem="edit" id="KUg-g4-UAU">
+                            <barButtonItem systemItem="edit" id="KUg-g4-UAU">
                                 <connections>
                                     <action selector="editTapped:" destination="gxd-jH-O9G" id="Cca-Yr-aHl"/>
                                 </connections>
@@ -204,19 +204,14 @@
                                                         </textField>
                                                     </subviews>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="NQj-AX-K0P">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NQj-AX-K0P">
                                                     <rect key="frame" x="0.0" y="74" width="584" height="63"/>
                                                     <subviews>
                                                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="10J-Xa-P0H">
-                                                            <rect key="frame" x="0.0" y="0.0" width="584" height="32"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="584" height="64"/>
                                                             <segments>
                                                                 <segment title="Round Robin"/>
                                                                 <segment title="Rounded Doubles"/>
-                                                            </segments>
-                                                        </segmentedControl>
-                                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="D14-X0-dbe">
-                                                            <rect key="frame" x="0.0" y="31" width="584" height="33"/>
-                                                            <segments>
                                                                 <segment title="Single Elimination"/>
                                                                 <segment title="Double Elimination"/>
                                                             </segments>
@@ -254,12 +249,17 @@
                                                                 </switch>
                                                             </subviews>
                                                         </stackView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEAMS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ccb-Ta-6EI">
-                                                            <rect key="frame" x="264" y="42" width="57" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cME-j2-ET1">
+                                                            <rect key="frame" x="266" y="42" width="53" height="21"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEEDS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ccb-Ta-6EI">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="53" height="21"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -281,32 +281,49 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VVC-mO-OsX">
-                                                    <rect key="frame" x="8" y="8" width="584" height="28"/>
-                                                    <subviews>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Team name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hB3-KV-VUl">
-                                                            <rect key="frame" x="0.0" y="0.0" width="357" height="28"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                                        </textField>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="+0.0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5mf-mk-grC">
-                                                            <rect key="frame" x="367" y="0.0" width="217" height="28"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                        </textField>
-                                                    </subviews>
-                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCi-f4-zrK">
+                                                    <rect key="frame" x="21" y="12" width="29" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="GyO-mm-5hm"/>
+                                                        <constraint firstAttribute="width" constant="29" id="ltz-Sf-Yh1"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Team name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hB3-KV-VUl">
+                                                    <rect key="frame" x="50" y="7" width="470" height="31"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="31" id="5HN-13-GlG"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                </textField>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5mf-mk-grC">
+                                                    <rect key="frame" x="528" y="7" width="51" height="31"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="31" id="D7P-sv-282"/>
+                                                        <constraint firstAttribute="width" constant="51" id="iof-y9-2IG"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="VVC-mO-OsX" firstAttribute="trailing" secondItem="qcD-9y-C8D" secondAttribute="trailingMargin" id="SdT-5h-ca3"/>
-                                                <constraint firstItem="VVC-mO-OsX" firstAttribute="top" secondItem="qcD-9y-C8D" secondAttribute="topMargin" id="U8b-F0-MlD"/>
-                                                <constraint firstItem="VVC-mO-OsX" firstAttribute="bottom" secondItem="qcD-9y-C8D" secondAttribute="bottomMargin" id="ff1-bZ-zqW"/>
-                                                <constraint firstItem="VVC-mO-OsX" firstAttribute="leading" secondItem="qcD-9y-C8D" secondAttribute="leadingMargin" id="h5b-fF-rbA"/>
+                                                <constraint firstItem="aCi-f4-zrK" firstAttribute="top" secondItem="qcD-9y-C8D" secondAttribute="topMargin" constant="4" id="293-5S-Dlc"/>
+                                                <constraint firstItem="aCi-f4-zrK" firstAttribute="leading" secondItem="qcD-9y-C8D" secondAttribute="leadingMargin" constant="13" id="LB2-5J-rmr"/>
+                                                <constraint firstItem="5mf-mk-grC" firstAttribute="leading" secondItem="hB3-KV-VUl" secondAttribute="trailing" constant="8" id="NSa-Hm-CBY"/>
+                                                <constraint firstItem="hB3-KV-VUl" firstAttribute="leading" secondItem="aCi-f4-zrK" secondAttribute="trailing" id="Qeq-yG-z9E"/>
+                                                <constraint firstItem="hB3-KV-VUl" firstAttribute="top" secondItem="qcD-9y-C8D" secondAttribute="topMargin" constant="-1" id="dQ6-Qq-oOK"/>
+                                                <constraint firstItem="5mf-mk-grC" firstAttribute="top" secondItem="qcD-9y-C8D" secondAttribute="topMargin" constant="-1" id="oHj-4y-2VL"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="5mf-mk-grC" secondAttribute="trailing" constant="13" id="qGz-H8-bBw"/>
+                                                <constraint firstItem="hB3-KV-VUl" firstAttribute="leading" secondItem="aCi-f4-zrK" secondAttribute="trailing" id="uUf-aW-iZR"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="textHandicapPoints" destination="5mf-mk-grC" id="a6f-Dd-RqD"/>
                                             <outlet property="textName" destination="hB3-KV-VUl" id="DA1-H7-WA3"/>
+                                            <outlet property="textSeed" destination="aCi-f4-zrK" id="UrW-Mz-rUW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -330,8 +347,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="pickerTeamCount" destination="QYb-82-F6F" id="uEV-l2-E77"/>
-                        <outlet property="segmentedRRorRD" destination="10J-Xa-P0H" id="zNd-P4-jcj"/>
-                        <outlet property="segmentedSEorDE" destination="D14-X0-dbe" id="doK-rh-L78"/>
+                        <outlet property="segmentedSchedule" destination="10J-Xa-P0H" id="x3V-s6-eZt"/>
                         <outlet property="switchIsHandicapped" destination="sgS-nb-T2u" id="Yh2-0y-Qa1"/>
                         <outlet property="tableView" destination="2qs-05-oCZ" id="VW2-7r-CST"/>
                         <outlet property="textGroupName" destination="zSP-mC-9BU" id="gHA-F4-aD4"/>

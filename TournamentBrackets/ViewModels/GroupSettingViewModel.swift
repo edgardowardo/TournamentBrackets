@@ -12,32 +12,20 @@ import RxSwift
 struct GroupSettingViewModel {
 
     var name : String
-    var scheduleType: Variable<ScheduleType>   = Variable(.RoundRobin)
-    
-//    var scheduleType1: Variable<Int>   = Variable(0)
-//    var scheduleType2: Variable<Int>   = Variable(-1)
-    var teamCount = 2
-    var isHandicap = false
-
-    init(group : Group) {
-        self.name = group.name
-        
-//        switch group.schedule {
-//        case .RoundRobin:
-//            fallthrough
-//        case .RoundDoubles:
-//            scheduleType1.value = group.schedule.rawValue
-//            scheduleType2.value = -1
-//        case .SingleElimination :
-//            fallthrough
-//        case .DoubleElimination :
-//            scheduleType1.value = -1
-//            scheduleType2.value = group.schedule.rawValue
-//        }
-        
-        self.scheduleType.value = group.schedule
-        self.teamCount = group.schedule.allowedTeamCounts.first!
-        self.isHandicap = group.isHandicap
+    var scheduleType : Variable<ScheduleType>   = Variable(.RoundRobin)
+    var isHandicap : Variable<Bool> = Variable(false)
+    var teams: Variable<[Team]> = Variable([])
+    var teamCount = 2 {
+        didSet {
+            let newTeams = (0 ..< teamCount).map{ (value) in Team(name: "Team \(value + 1)", seed: value + 1)  }
+            self.teams.value = newTeams
+        }
     }
     
+    init(group : Group) {
+        self.name = group.name
+        self.scheduleType.value = group.schedule
+        self.teamCount = group.schedule.allowedTeamCounts.first!
+        self.isHandicap.value = group.isHandicap
+    }
 }

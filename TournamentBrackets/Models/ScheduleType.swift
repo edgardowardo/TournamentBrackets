@@ -17,9 +17,9 @@ enum ScheduleType : Int {
     var allowedTeamCounts : [Int] {
         get {
             switch self {
-            case .RoundRobin : return (2..<33).map { $0 }
             case .RoundDoubles : return (4..<33).filter{ ($0 % 4) != 2 }.map { $0 }
-            case .SingleElimination : return (2..<33).map { $0 }
+            case .RoundRobin : fallthrough
+            case .SingleElimination : fallthrough
             case .DoubleElimination : return (2..<33).map { $0 }
             }
         }
