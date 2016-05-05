@@ -17,8 +17,27 @@ struct GroupSettingViewModel {
     var teams: Variable<[Team]> = Variable([])
     var teamCount = 2 {
         didSet {
-            let newTeams = (0 ..< teamCount).map{ (value) in Team(name: "Team \(value + 1)", seed: value + 1)  }
-            self.teams.value = newTeams
+            
+            //
+            // Don't just delete the old teams. It may contain text inputs. Combine with the new ones if adding.
+            //
+            var oldTeams = self.teams.value
+            
+            //
+            // add to list
+            //
+            if oldTeams.count < teamCount {
+                let newTeams = (oldTeams.count ..< teamCount).map{ (value) in Team(name: "Team \(value + 1 )", seed: value + 1) }
+                oldTeams = oldTeams + newTeams
+            }
+            
+            //
+            // truncate list
+            //
+            if oldTeams.count > teamCount {
+                oldTeams = Array(oldTeams[0..<teamCount])
+            }
+            self.teams.value = oldTeams
         }
     }
     

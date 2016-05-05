@@ -12,7 +12,7 @@ import RealmSwift
 class Team : Object {
     dynamic var id = NSUUID().UUIDString
     dynamic var name = ""
-    dynamic var handicap : Int = 0
+    dynamic var handicap = 0.0
     dynamic var seed = 0
     
     convenience init(name : String, seed : Int) {

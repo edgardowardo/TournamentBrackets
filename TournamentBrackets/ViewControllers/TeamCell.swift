@@ -26,4 +26,28 @@ class TeamCell : UITableViewCell {
             self.textHandicapPoints.text = "\(t.handicap)"
         }
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.textName.delegate = self
+    }
+}
+
+extension TeamCell : UITextFieldDelegate {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        switch textField {
+        case self.textName:
+            if let text = textField.text, team = self.team where text.characters.count > 0 {
+                team.name = text
+            }
+        case self.textSeed:
+            if let text = textField.text, seed = Int(text), team = self.team where text.characters.count > 0 {
+                team.seed = seed
+            }
+        default:
+            return false
+        }
+        textField.resignFirstResponder()
+        return true
+    }
 }
