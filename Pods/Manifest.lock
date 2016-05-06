@@ -12,6 +12,9 @@ PODS:
     - RxSwift (~> 2.4)
   - RxCocoa (2.4):
     - RxSwift (~> 2.4)
+  - RxDataSources (0.8):
+    - RxCocoa (~> 2.2)
+    - RxSwift (~> 2.2)
   - RxRealm (0.1.3):
     - RealmSwift (~> 0.99)
     - RxSwift
@@ -25,10 +28,11 @@ DEPENDENCIES:
   - Nimble
   - Quick
   - RealmSwift
-  - RxBlocking (~> 2.0)
-  - RxCocoa (~> 2.0)
+  - RxBlocking
+  - RxCocoa
+  - RxDataSources
   - RxRealm
-  - RxSwift (~> 2.0)
+  - RxSwift
   - UIColor+FlatColors
   - VTAcknowledgementsViewController
 
@@ -41,6 +45,7 @@ SPEC CHECKSUMS:
   RealmSwift: 1bb0ba2ceaa06b65d740b4f91bfa06e3fd1b805c
   RxBlocking: 1226c1fa0ca1e0ca5f964d4330ca3649f2128680
   RxCocoa: 7d6cd877de99f5640306b3d6cf87f580c1d91b61
+  RxDataSources: 8755a221c065930a75cf24020f6f2c63713c486e
   RxRealm: 6327a9d3cd0e0f89961c39c3813a2e9511e85f27
   RxSwift: 67b9ef4e8b34fb394e200e754c6a09cc16559f94
   UIColor+FlatColors: 6c699df7a575281794c688c64cee6c44fd1f93b4
