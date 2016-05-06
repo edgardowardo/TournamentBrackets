@@ -31,6 +31,11 @@ class GroupSettingViewController: ViewController {
     @IBOutlet weak var switchIsHandicapped: UISwitch!
     @IBOutlet weak var tableView: UITableView!
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.setEditing(true, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,6 +47,7 @@ class GroupSettingViewController: ViewController {
         self.segmentedSchedule.setImageAsMultilineTitle("Single \nElimination", atIndex: 2)
         self.segmentedSchedule.setImageAsMultilineTitle("Double \nElimination", atIndex: 3)
         
+        self.tableView.delegate = self
         self.viewModel = GroupSettingViewModel(group: Group())
         self.pickerTeamCount.delegate = self
         self.pickerTeamCount.dataSource = self
@@ -69,18 +75,6 @@ class GroupSettingViewController: ViewController {
             .bindTo(tableView.rx_itemsWithDataSource(dataSource))
             .addDisposableTo(disposeBag)
         
-//        //
-//        // Observation of team list
-//        //
-//        self.viewModel.teams
-//            .asObservable()
-//            .bindTo(tableView.rx_itemsWithCellIdentifier("TeamCell")) { (row, element, cell) in
-//                if let c = cell as? TeamCell {
-//                    c.team = element
-//                    c.textHandicapPoints.hidden = !self.viewModel.isHandicap.value
-//                }
-//            }
-//            .addDisposableTo(disposeBag)
         
         //
         // Observation of is handicap
@@ -115,6 +109,15 @@ class GroupSettingViewController: ViewController {
                 self.viewModel.isHandicap.value = value
             }
             .addDisposableTo(disposeBag)
+        
+        //
+        // Observe move row
+        //
+        self.tableView.rx_itemMoved
+            .subscribeNext{  (fromIndexPath, toIndexPath) in
+                self.viewModel.moveElement(fromIndexPath, toIndexPath: toIndexPath)
+            }
+            .addDisposableTo(disposeBag)
     }
     
     
@@ -123,23 +126,27 @@ class GroupSettingViewController: ViewController {
         
         dataSource.configureCell = { (_, tv, ip, team: Team) in
             let cell = tv.dequeueReusableCellWithIdentifier("TeamCell") as! TeamCell
-            cell.textSeed.text = "\(team.seed)"
-            cell.textName.text = team.name
-            cell.textHandicapPoints.text = "\(team.handicap)"
+            cell.team = team
+            
 //            cell.textHandicapPoints.hidden = !self.viewModel.isHandicap.value
             
             return cell
         }
         
-        dataSource.canEditRowAtIndexPath = { (_, _) in
-            return false
+        dataSource.canEditRowAtIndexPath = { _ in
+            return true
         }
-  
-        dataSource.canMoveRowAtIndexPath = { (_, _) in
+        dataSource.canMoveRowAtIndexPath = { _ in
             return true
         }
         
         return dataSource
+    }
+}
+
+extension GroupSettingViewController : UITableViewDelegate {
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        return .None
     }
 }
 

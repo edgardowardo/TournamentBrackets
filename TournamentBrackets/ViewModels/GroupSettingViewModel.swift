@@ -41,6 +41,16 @@ struct GroupSettingViewModel {
         }
     }
     
+    func moveElement(fromIndexPath : NSIndexPath, toIndexPath : NSIndexPath) {
+        let f = fromIndexPath.row, t = toIndexPath.row
+        let element = teams.value[f]
+        teams.value.removeAtIndex(f)
+        teams.value.insert(element, atIndex: t)
+        for (index, element) in teams.value.enumerate() {
+            element.seed = index + 1
+        }
+    }
+    
     init(group : Group) {
         self.name = group.name
         self.scheduleType.value = group.schedule
