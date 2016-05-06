@@ -21,6 +21,7 @@ import RxRealm
 
 class GroupSettingViewController: ViewController {
 
+    let dataSource = GroupSettingViewController.configureDataSource()
     var viewModel : GroupSettingViewModel! = nil
     let schedules = ScheduleType.schedules()
     @IBOutlet weak var textGroupName: UITextField!
@@ -61,13 +62,24 @@ class GroupSettingViewController: ViewController {
         //
         self.viewModel.teams
             .asObservable()
-            .bindTo(tableView.rx_itemsWithCellIdentifier("TeamCell")) { (row, element, cell) in
-                if let c = cell as? TeamCell {
-                    c.team = element
-                    c.textHandicapPoints.hidden = !self.viewModel.isHandicap.value
-                }
+            .map{ teams in
+                [SectionModel(model: "", items: teams)]
             }
+            .bindTo(tableView.rx_itemsWithDataSource(dataSource))
             .addDisposableTo(disposeBag)
+        
+//        //
+//        // Observation of team list
+//        //
+//        self.viewModel.teams
+//            .asObservable()
+//            .bindTo(tableView.rx_itemsWithCellIdentifier("TeamCell")) { (row, element, cell) in
+//                if let c = cell as? TeamCell {
+//                    c.team = element
+//                    c.textHandicapPoints.hidden = !self.viewModel.isHandicap.value
+//                }
+//            }
+//            .addDisposableTo(disposeBag)
         
         //
         // Observation of is handicap
@@ -102,6 +114,31 @@ class GroupSettingViewController: ViewController {
                 self.viewModel.isHandicap.value = value
             }
             .addDisposableTo(disposeBag)
+    }
+    
+    
+    static func configureDataSource() -> RxTableViewSectionedReloadDataSource<SectionModel<String, Team>> {
+        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, Team>>()
+        
+        dataSource.configureCell = { (_, tv, ip, team: Team) in
+            let cell = tv.dequeueReusableCellWithIdentifier("TeamCell") as! TeamCell
+            cell.textSeed.text = "\(team.seed)"
+            cell.textName.text = team.name
+            cell.textHandicapPoints.text = "\(team.handicap)"
+//            cell.textHandicapPoints.hidden = !self.viewModel.isHandicap.value
+            
+            return cell
+        }
+        
+        dataSource.canEditRowAtIndexPath = { (_, _) in
+            return false
+        }
+  
+        dataSource.canMoveRowAtIndexPath = { (_, _) in
+            return true
+        }
+        
+        return dataSource
     }
 }
 
