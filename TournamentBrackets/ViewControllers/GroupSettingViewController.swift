@@ -104,10 +104,26 @@ class GroupSettingViewController: ViewController {
             })
             .addDisposableTo(disposeBag)
 
+        self.buttonShuffle
+            .rx_tap
+            .asObservable()
+            .subscribeNext { _ in
+                self.viewModel.shuffle()
+            }
+            .addDisposableTo(disposeBag)
+        
+        self.buttonReset
+            .rx_tap
+            .asObservable()
+            .subscribeNext { _ in
+                self.viewModel.reset()
+            }
+            .addDisposableTo(disposeBag)
+        
         self.buttonHandicap
             .rx_tap
             .asObservable()
-            .subscribeNext { (value) in
+            .subscribeNext { _ in
                 self.viewModel.isHandicap.value = !self.viewModel.isHandicap.value
             }
             .addDisposableTo(disposeBag)
@@ -115,7 +131,7 @@ class GroupSettingViewController: ViewController {
         self.buttonSort
             .rx_tap
             .asObservable()
-            .subscribeNext { (value) in
+            .subscribeNext { _ in
                 self.viewModel.isSorting.value = !self.viewModel.isSorting.value
             }
             .addDisposableTo(disposeBag)

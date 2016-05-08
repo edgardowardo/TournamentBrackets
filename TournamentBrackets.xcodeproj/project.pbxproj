@@ -12,7 +12,7 @@
 		771E19631CC27DEF00125F9E /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771E19621CC27DEF00125F9E /* Scheduler.swift */; };
 		774A48D41CC90992006DCD4F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A48D31CC90992006DCD4F /* RootViewController.swift */; };
 		774A48D71CC916AC006DCD4F /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A48D61CC916AC006DCD4F /* Wireframe.swift */; };
-		7766D8401CD102C800DA3FA1 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7766D83F1CD102C800DA3FA1 /* Array.swift */; };
+		7766D8401CD102C800DA3FA1 /* Array+Unique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7766D83F1CD102C800DA3FA1 /* Array+Unique.swift */; };
 		7766D8421CD1216900DA3FA1 /* Test_01SchedulerSpec_RoundRobin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7766D8411CD1216900DA3FA1 /* Test_01SchedulerSpec_RoundRobin.swift */; };
 		7766D8441CD1227B00DA3FA1 /* Test_02SchedulerSpec_RoundRobinDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7766D8431CD1227B00DA3FA1 /* Test_02SchedulerSpec_RoundRobinDoubles.swift */; };
 		7766D8461CD122B000DA3FA1 /* Test_03SchedulerSpec_SingleElimination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7766D8451CD122B000DA3FA1 /* Test_03SchedulerSpec_SingleElimination.swift */; };
@@ -69,7 +69,7 @@
 		771E19621CC27DEF00125F9E /* Scheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
 		774A48D31CC90992006DCD4F /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		774A48D61CC916AC006DCD4F /* Wireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wireframe.swift; sourceTree = "<group>"; };
-		7766D83F1CD102C800DA3FA1 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		7766D83F1CD102C800DA3FA1 /* Array+Unique.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Unique.swift"; sourceTree = "<group>"; };
 		7766D8411CD1216900DA3FA1 /* Test_01SchedulerSpec_RoundRobin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test_01SchedulerSpec_RoundRobin.swift; sourceTree = "<group>"; };
 		7766D8431CD1227B00DA3FA1 /* Test_02SchedulerSpec_RoundRobinDoubles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test_02SchedulerSpec_RoundRobinDoubles.swift; sourceTree = "<group>"; };
 		7766D8451CD122B000DA3FA1 /* Test_03SchedulerSpec_SingleElimination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test_03SchedulerSpec_SingleElimination.swift; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 		7766D83E1CD102BA00DA3FA1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				7766D83F1CD102C800DA3FA1 /* Array.swift */,
+				7766D83F1CD102C800DA3FA1 /* Array+Unique.swift */,
 				779FFCA81CDA4AEB00D48800 /* UISegmentedControl+Multiline.swift */,
 			);
 			path = Extensions;
@@ -556,7 +556,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				779FFCA01CD6A8DD00D48800 /* GroupListViewController.swift in Sources */,
-				7766D8401CD102C800DA3FA1 /* Array.swift in Sources */,
+				7766D8401CD102C800DA3FA1 /* Array+Unique.swift in Sources */,
 				771E19631CC27DEF00125F9E /* Scheduler.swift in Sources */,
 				779FFCAD1CDAB08100D48800 /* Team.swift in Sources */,
 				774A48D71CC916AC006DCD4F /* Wireframe.swift in Sources */,

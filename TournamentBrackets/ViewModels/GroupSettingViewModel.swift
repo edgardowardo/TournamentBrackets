@@ -42,6 +42,18 @@ struct GroupSettingViewModel {
         }
     }
     
+    func shuffle() {
+        self.teams.value.shuffleInPlace()
+        for (index, element) in teams.value.enumerate() {
+            element.seed = index + 1
+        }
+    }
+    
+    func reset() {
+        let newTeams = (0 ..< teamCount).map{ (value) in Team(name: "Team \(value + 1 )", seed: value + 1) }
+        self.teams.value = newTeams
+    }
+    
     func moveElement(fromIndexPath : NSIndexPath, toIndexPath : NSIndexPath) {
         let f = fromIndexPath.row, t = toIndexPath.row
         let element = teams.value[f]
