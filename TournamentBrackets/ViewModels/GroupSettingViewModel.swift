@@ -13,6 +13,7 @@ struct GroupSettingViewModel {
 
     var name : String
     var scheduleType : Variable<ScheduleType>   = Variable(.RoundRobin)
+    var isSorting : Variable<Bool> = Variable(false)
     var isHandicap : Variable<Bool> = Variable(false)
     var teams: Variable<[Team]> = Variable([])
     var teamCount = 2 {

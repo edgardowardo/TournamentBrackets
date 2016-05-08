@@ -28,13 +28,12 @@ class GroupSettingViewController: ViewController {
     @IBOutlet weak var textGroupName: UITextField!
     @IBOutlet weak var segmentedSchedule: UISegmentedControl!
     @IBOutlet weak var pickerTeamCount: AKPickerView!
-    @IBOutlet weak var switchIsHandicapped: UISwitch!
     @IBOutlet weak var tableView: UITableView!
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        tableView.setEditing(true, animated: true)
-    }
+    @IBOutlet weak var buttonShuffle: UIButton!
+    @IBOutlet weak var buttonSort: UIButton!
+    @IBOutlet weak var buttonReset: UIButton!
+    @IBOutlet weak var buttonImport: UIButton!
+    @IBOutlet weak var buttonHandicap: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +52,7 @@ class GroupSettingViewController: ViewController {
         self.pickerTeamCount.dataSource = self
         
         //
-        // Observation of schedule type
+        // View Model Observations
         //
         self.viewModel.scheduleType
             .asObservable()
@@ -64,9 +63,6 @@ class GroupSettingViewController: ViewController {
             }
             .addDisposableTo(disposeBag)
 
-        //
-        // Observation of team list
-        //
         self.viewModel.teams
             .asObservable()
             .map{ teams in
@@ -76,19 +72,28 @@ class GroupSettingViewController: ViewController {
             .addDisposableTo(disposeBag)
         
         
-        //
-        // Observation of is handicap
-        //
         self.viewModel.isHandicap
             .asObservable()
             .subscribeNext { (value) in
-                self.switchIsHandicapped.on = value
+                let tintColor = (value) ? UIColor.flatPeterRiverColor() : UIColor.darkGrayColor()
+                self.buttonHandicap.tintColor = tintColor
+                self.buttonHandicap.setTitleColor(tintColor, forState: .Normal)
                 self.tableView.reloadData()
+            }
+            .addDisposableTo(disposeBag)
+
+        self.viewModel.isSorting
+            .asObservable()
+            .subscribeNext { (value) in
+                let tintColor = (value) ? UIColor.flatPeterRiverColor() : UIColor.darkGrayColor()
+                self.buttonSort.tintColor = tintColor
+                self.buttonSort.setTitleColor(tintColor, forState: .Normal)
+                self.tableView.setEditing(value, animated: true)
             }
             .addDisposableTo(disposeBag)
         
         //
-        // Reactive binding
+        // Control bindings
         //
         self.segmentedSchedule
             .rx_value
@@ -99,20 +104,22 @@ class GroupSettingViewController: ViewController {
             })
             .addDisposableTo(disposeBag)
 
-        //
-        // Reactive binding
-        //
-        self.switchIsHandicapped
-            .rx_value
+        self.buttonHandicap
+            .rx_tap
             .asObservable()
             .subscribeNext { (value) in
-                self.viewModel.isHandicap.value = value
+                self.viewModel.isHandicap.value = !self.viewModel.isHandicap.value
             }
             .addDisposableTo(disposeBag)
         
-        //
-        // Observe move row
-        //
+        self.buttonSort
+            .rx_tap
+            .asObservable()
+            .subscribeNext { (value) in
+                self.viewModel.isSorting.value = !self.viewModel.isSorting.value
+            }
+            .addDisposableTo(disposeBag)
+        
         self.tableView.rx_itemMoved
             .subscribeNext{  (fromIndexPath, toIndexPath) in
                 self.viewModel.moveElement(fromIndexPath, toIndexPath: toIndexPath)
