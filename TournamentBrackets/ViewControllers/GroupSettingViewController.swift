@@ -47,6 +47,13 @@ class GroupSettingViewController: ViewController {
         self.segmentedSchedule.setImageAsMultilineTitle("Double \nElimination", atIndex: 3)
         
         self.tableView.delegate = self
+        self.tableView.scrollsToTop = true
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GroupSettingViewController.methodOfReceivedNotification_CellStartEditing(_:)), name: TeamCell.Notification.Identifier.CellStartEditing, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GroupSettingViewController.methodOfReceivedNotification_PreviousCellTextField(_:)), name: TeamCell.Notification.Identifier.PreviousCellTextField, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GroupSettingViewController.methodOfReceivedNotification_NextCellTextField(_:)), name: TeamCell.Notification.Identifier.NextCellTextField, object: nil)
+        
+        
         self.viewModel = GroupSettingViewModel(group: Group())
         self.pickerTeamCount.delegate = self
         self.pickerTeamCount.dataSource = self
@@ -162,6 +169,39 @@ class GroupSettingViewController: ViewController {
         }
         
         return dataSource
+    }
+    
+    //
+    // Notification handlers. I know bad smell. Will revisit when understand more Rx implementationof this!
+    //
+    //
+
+    @objc private func methodOfReceivedNotification_PreviousCellTextField(notification : NSNotification) {
+        if let currentcell = notification.object as? TeamCell, indexPath = tableView.indexPathForCell(currentcell) {
+            let nextindexpath = NSIndexPath(forRow: indexPath.row - 1, inSection: indexPath.section)
+            if let nextCell = tableView.cellForRowAtIndexPath(nextindexpath) as? TeamCell {
+                if self.viewModel.isHandicap.value {
+                    nextCell.textHandicapPoints.becomeFirstResponder()
+                } else {
+                    nextCell.textName.becomeFirstResponder()
+                }
+            }
+        }
+    }
+    
+    @objc private func methodOfReceivedNotification_NextCellTextField(notification : NSNotification) {
+        if let currentcell = notification.object as? TeamCell, indexPath = tableView.indexPathForCell(currentcell) {
+            let nextindexpath = NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)
+            if let nextCell = tableView.cellForRowAtIndexPath(nextindexpath) as? TeamCell {
+                nextCell.textName.becomeFirstResponder()
+            }
+        }
+    }
+
+    @objc private func methodOfReceivedNotification_CellStartEditing(notification : NSNotification) {
+        if let cell = notification.object as? TeamCell, indexPath = tableView.indexPathForCell(cell) {
+            tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
+        }
     }
 }
 

@@ -36,6 +36,7 @@
 		779FFCA91CDA4AEB00D48800 /* UISegmentedControl+Multiline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779FFCA81CDA4AEB00D48800 /* UISegmentedControl+Multiline.swift */; };
 		779FFCAD1CDAB08100D48800 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779FFCAC1CDAB08100D48800 /* Team.swift */; };
 		779FFCAF1CDAC48F00D48800 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779FFCAE1CDAC48E00D48800 /* TeamCell.swift */; };
+		77D2072F1CE119F5009139DB /* UITextField+DoneToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D2072E1CE119F5009139DB /* UITextField+DoneToolbar.swift */; };
 		77D3D65E1CC3BFA6001EF359 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D3D65D1CC3BFA6001EF359 /* Game.swift */; };
 		77F6ED3F1CCE3F6600EC411A /* GameClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F6ED3E1CCE3F6600EC411A /* GameClass.swift */; };
 		77FCDD3B1CD552EC00ED5ADB /* GameExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FCDD3A1CD552EC00ED5ADB /* GameExtensions.swift */; };
@@ -99,6 +100,7 @@
 		779FFCA81CDA4AEB00D48800 /* UISegmentedControl+Multiline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Multiline.swift"; sourceTree = "<group>"; };
 		779FFCAC1CDAB08100D48800 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		779FFCAE1CDAC48E00D48800 /* TeamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
+		77D2072E1CE119F5009139DB /* UITextField+DoneToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+DoneToolbar.swift"; sourceTree = "<group>"; };
 		77D3D65D1CC3BFA6001EF359 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		77F6ED3E1CCE3F6600EC411A /* GameClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameClass.swift; sourceTree = "<group>"; };
 		77FCDD3A1CD552EC00ED5ADB /* GameExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameExtensions.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			children = (
 				7766D83F1CD102C800DA3FA1 /* Array+Unique.swift */,
 				779FFCA81CDA4AEB00D48800 /* UISegmentedControl+Multiline.swift */,
+				77D2072E1CE119F5009139DB /* UITextField+DoneToolbar.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -558,6 +561,7 @@
 				779FFCA01CD6A8DD00D48800 /* GroupListViewController.swift in Sources */,
 				7766D8401CD102C800DA3FA1 /* Array+Unique.swift in Sources */,
 				771E19631CC27DEF00125F9E /* Scheduler.swift in Sources */,
+				77D2072F1CE119F5009139DB /* UITextField+DoneToolbar.swift in Sources */,
 				779FFCAD1CDAB08100D48800 /* Team.swift in Sources */,
 				774A48D71CC916AC006DCD4F /* Wireframe.swift in Sources */,
 				779FFCA41CD9480900D48800 /* ScheduleType.swift in Sources */,
