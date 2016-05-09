@@ -24,13 +24,20 @@ class TeamCell : UITableViewCell {
             self.textSeed.text = "\(t.seed)."
             self.textName.text = t.name
             self.textHandicapPoints.text = "\(t.handicap)"
+            
+            UIView.animateWithDuration(0.25, animations: {
+                self.textHandicapPoints.alpha = (!t.isHandicapped) ? 0.0 : 1.0
+                }, completion: { _ in
+                    self.textHandicapPoints.hidden = !t.isHandicapped
+            })
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.textName.delegate = self
-    }
+        self.textSeed.hidden = true
+    }    
 }
 
 extension TeamCell : UITextFieldDelegate {

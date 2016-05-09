@@ -343,49 +343,55 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCi-f4-zrK">
-                                                    <rect key="frame" x="21" y="12" width="29" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="GyO-mm-5hm"/>
-                                                        <constraint firstAttribute="width" constant="29" id="ltz-Sf-Yh1"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Team name" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="hB3-KV-VUl">
-                                                    <rect key="frame" x="50" y="7" width="470" height="31"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="31" id="5HN-13-GlG"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
-                                                </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5mf-mk-grC">
-                                                    <rect key="frame" x="528" y="7" width="51" height="31"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="31" id="D7P-sv-282"/>
-                                                        <constraint firstAttribute="width" constant="51" id="iof-y9-2IG"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
-                                                </textField>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="K3j-Wa-gX7">
+                                                    <rect key="frame" x="20" y="0.0" width="560" height="44"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="z8T-Mt-Adx">
+                                                            <rect key="frame" x="0.0" y="0.0" width="560" height="44"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ppn-BM-XGE">
+                                                                    <rect key="frame" x="0.0" y="12" width="29" height="21"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="29" id="o8S-sb-F3K"/>
+                                                                        <constraint firstAttribute="height" constant="21" id="p5q-Vc-Bkj"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Team name" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="W4h-tm-Qb4">
+                                                                    <rect key="frame" x="39" y="7" width="460" height="31"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="31" id="RCG-cF-AKV"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                                                </textField>
+                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nrN-v2-9cm">
+                                                                    <rect key="frame" x="509" y="7" width="51" height="31"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="31" id="AZG-Rb-Tbw"/>
+                                                                        <constraint firstAttribute="width" constant="51" id="f5A-0A-pKg"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                                </textField>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="aCi-f4-zrK" firstAttribute="top" secondItem="qcD-9y-C8D" secondAttribute="topMargin" constant="4" id="293-5S-Dlc"/>
-                                                <constraint firstItem="aCi-f4-zrK" firstAttribute="leading" secondItem="qcD-9y-C8D" secondAttribute="leadingMargin" constant="13" id="LB2-5J-rmr"/>
-                                                <constraint firstItem="5mf-mk-grC" firstAttribute="leading" secondItem="hB3-KV-VUl" secondAttribute="trailing" constant="8" id="NSa-Hm-CBY"/>
-                                                <constraint firstItem="hB3-KV-VUl" firstAttribute="leading" secondItem="aCi-f4-zrK" secondAttribute="trailing" id="Qeq-yG-z9E"/>
-                                                <constraint firstItem="hB3-KV-VUl" firstAttribute="top" secondItem="qcD-9y-C8D" secondAttribute="topMargin" constant="-1" id="dQ6-Qq-oOK"/>
-                                                <constraint firstItem="5mf-mk-grC" firstAttribute="top" secondItem="qcD-9y-C8D" secondAttribute="topMargin" constant="-1" id="oHj-4y-2VL"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="5mf-mk-grC" secondAttribute="trailing" constant="13" id="qGz-H8-bBw"/>
-                                                <constraint firstItem="hB3-KV-VUl" firstAttribute="leading" secondItem="aCi-f4-zrK" secondAttribute="trailing" id="uUf-aW-iZR"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="K3j-Wa-gX7" secondAttribute="bottom" constant="-8" id="6QR-Xi-zer"/>
+                                                <constraint firstItem="K3j-Wa-gX7" firstAttribute="top" secondItem="qcD-9y-C8D" secondAttribute="topMargin" constant="-8" id="aUe-6n-n3D"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="K3j-Wa-gX7" secondAttribute="trailing" constant="12" id="lYt-eB-oBN"/>
+                                                <constraint firstItem="K3j-Wa-gX7" firstAttribute="leading" secondItem="qcD-9y-C8D" secondAttribute="leadingMargin" constant="12" id="qkS-DX-Oor"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="textHandicapPoints" destination="5mf-mk-grC" id="a6f-Dd-RqD"/>
-                                            <outlet property="textName" destination="hB3-KV-VUl" id="DA1-H7-WA3"/>
-                                            <outlet property="textSeed" destination="aCi-f4-zrK" id="UrW-Mz-rUW"/>
+                                            <outlet property="textHandicapPoints" destination="nrN-v2-9cm" id="aqL-SY-FVd"/>
+                                            <outlet property="textName" destination="W4h-tm-Qb4" id="giX-jV-K6S"/>
+                                            <outlet property="textSeed" destination="Ppn-BM-XGE" id="sca-wM-H7f"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

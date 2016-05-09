@@ -14,7 +14,7 @@ struct GroupSettingViewModel {
     var name : String
     var scheduleType : Variable<ScheduleType>   = Variable(.RoundRobin)
     var isSorting : Variable<Bool> = Variable(false)
-    var isHandicap : Variable<Bool> = Variable(false)
+    var isHandicap : Variable<Bool> = Variable(true)
     var teams: Variable<[Team]> = Variable([])
     var teamCount = 2 {
         didSet {
@@ -28,7 +28,7 @@ struct GroupSettingViewModel {
             // add to list
             //
             if oldTeams.count < teamCount {
-                let newTeams = (oldTeams.count ..< teamCount).map{ (value) in Team(name: "Team \(value + 1 )", seed: value + 1) }
+                let newTeams = (oldTeams.count ..< teamCount).map{ (value) in Team(name: "Team \(value + 1 )", seed: value + 1, isHandicap : self.isHandicap.value) }
                 oldTeams = oldTeams + newTeams
             }
             
@@ -42,6 +42,12 @@ struct GroupSettingViewModel {
         }
     }
     
+    func setTeamsHandicap(isHandicap : Bool) {
+        for t in teams.value {
+            t.isHandicapped = isHandicap
+        }
+    }
+    
     func shuffle() {
         self.teams.value.shuffleInPlace()
         for (index, element) in teams.value.enumerate() {
@@ -50,7 +56,7 @@ struct GroupSettingViewModel {
     }
     
     func reset() {
-        let newTeams = (0 ..< teamCount).map{ (value) in Team(name: "Team \(value + 1 )", seed: value + 1) }
+        let newTeams = (0 ..< teamCount).map{ (value) in Team(name: "Team \(value + 1 )", seed: value + 1, isHandicap : self.isHandicap.value) }
         self.teams.value = newTeams
     }
     

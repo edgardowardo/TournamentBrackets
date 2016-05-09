@@ -12,13 +12,15 @@ import RealmSwift
 class Team : Object {
     dynamic var id = NSUUID().UUIDString
     dynamic var name = ""
+    dynamic var isHandicapped = false
     dynamic var handicap = 0.0
     dynamic var seed = 0
     
-    convenience init(name : String, seed : Int) {
+    convenience init(name : String, seed : Int, isHandicap : Bool) {
         self.init()
         self.name = name
         self.seed = seed
+        self.isHandicapped = isHandicap
     }
     
     override static func primaryKey() -> String? {

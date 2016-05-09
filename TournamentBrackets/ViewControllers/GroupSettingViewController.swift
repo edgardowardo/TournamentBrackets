@@ -78,6 +78,7 @@ class GroupSettingViewController: ViewController {
                 let tintColor = (value) ? UIColor.flatPeterRiverColor() : UIColor.darkGrayColor()
                 self.buttonHandicap.tintColor = tintColor
                 self.buttonHandicap.setTitleColor(tintColor, forState: .Normal)
+                self.viewModel.setTeamsHandicap(value)
                 self.tableView.reloadData()
             }
             .addDisposableTo(disposeBag)
@@ -150,9 +151,6 @@ class GroupSettingViewController: ViewController {
         dataSource.configureCell = { (_, tv, ip, team: Team) in
             let cell = tv.dequeueReusableCellWithIdentifier("TeamCell") as! TeamCell
             cell.team = team
-            
-//            cell.textHandicapPoints.hidden = !self.viewModel.isHandicap.value
-            
             return cell
         }
         
