@@ -198,7 +198,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="h0S-9u-0HT">
                                                     <rect key="frame" x="0.0" y="0.0" width="584" height="63"/>
                                                     <subviews>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Group Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zSP-mC-9BU">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Group Name" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="zSP-mC-9BU">
                                                             <rect key="frame" x="0.0" y="16" width="584" height="30"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
@@ -424,6 +424,7 @@
                         <outlet property="buttonHandicap" destination="Hm5-d0-Dbh" id="eZZ-vp-5oV"/>
                         <outlet property="buttonImport" destination="Dh8-6r-yaI" id="qOV-gi-xFo"/>
                         <outlet property="buttonReset" destination="ngd-zI-deC" id="l4k-yK-vkH"/>
+                        <outlet property="buttonSave" destination="QCn-Ng-gsd" id="Zr3-yc-OB9"/>
                         <outlet property="buttonShuffle" destination="vC7-zD-8VU" id="0hG-hP-awm"/>
                         <outlet property="buttonSort" destination="9Fw-gU-2Gy" id="Pgb-TN-CdQ"/>
                         <outlet property="pickerTeamCount" destination="QYb-82-F6F" id="uEV-l2-E77"/>

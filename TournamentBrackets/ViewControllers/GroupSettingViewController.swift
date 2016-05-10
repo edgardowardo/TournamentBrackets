@@ -34,6 +34,7 @@ class GroupSettingViewController: ViewController {
     @IBOutlet weak var buttonReset: UIButton!
     @IBOutlet weak var buttonImport: UIButton!
     @IBOutlet weak var buttonHandicap: UIButton!
+    @IBOutlet weak var buttonSave: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,6 +104,13 @@ class GroupSettingViewController: ViewController {
         //
         // Control bindings
         //
+        self.textGroupName
+            .rx_text
+            .asObservable()
+            .map{ (something) in something.characters.count > 0 }
+            .bindTo(self.buttonSave.rx_enabled)
+            .addDisposableTo(disposeBag)
+        
         self.segmentedSchedule
             .rx_value
             .asObservable()
