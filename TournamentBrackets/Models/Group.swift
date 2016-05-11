@@ -10,11 +10,17 @@ import Foundation
 import RealmSwift
 
 class Group : Object {
-    dynamic var id = NSUUID().UUIDString    
+    dynamic var id = NSUUID().UUIDString
+    dynamic var time: NSTimeInterval = NSDate().timeIntervalSinceReferenceDate
     dynamic var name = ""
     dynamic var scheduleType = 0
     dynamic var teamCount = 0
     dynamic var isHandicap = false
+    var teams = List<Team>()
+
+    override static func ignoredProperties() -> [String] {
+        return ["schedule"]
+    }
     
     override static func primaryKey() -> String? {
         return "id"
@@ -23,6 +29,9 @@ class Group : Object {
     var schedule : ScheduleType {
         get {
             return ScheduleType(rawValue:  scheduleType)!
+        }
+        set {
+            self.scheduleType = newValue.rawValue
         }
     }
 }

@@ -109,6 +109,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
+                                    <string key="userLabel">You can add groups from the ‘+’ button above. A group can be scheduled with round robin, round doubles, single elimination and double elimination forms.</string>
                                 </label>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GroupCell" id="tmt-5d-419">
@@ -121,6 +122,9 @@
                                         <accessibility key="accessibilityConfiguration">
                                             <bool key="isElement" value="YES"/>
                                         </accessibility>
+                                        <connections>
+                                            <segue destination="Puh-er-b45" kind="show" identifier="showGroup" id="cge-2N-PzE"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -138,7 +142,7 @@
                             <barButtonItem systemItem="add" id="EoX-wp-cSD">
                                 <connections>
                                     <action selector="addTapped:" destination="gxd-jH-O9G" id="2Q7-Yn-JkQ"/>
-                                    <segue destination="yBt-5g-mFy" kind="presentation" id="FKr-Tq-cdj"/>
+                                    <segue destination="yBt-5g-mFy" kind="presentation" identifier="addGroup" id="FKr-Tq-cdj"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="edit" id="KUg-g4-UAU">
@@ -154,7 +158,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9CG-aq-TNP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2735" y="-212"/>
+            <point key="canvasLocation" x="2787" y="-212"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fw5-rN-U80">
@@ -171,6 +175,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4eF-du-GZF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3564" y="-567"/>
+        </scene>
+        <!--Games-->
+        <scene sceneID="AdQ-aA-Kr5">
+            <objects>
+                <viewController id="Puh-er-b45" userLabel="Games" customClass="GameListViewController" customModule="TournamentBrackets" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ey6-o7-2gZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="oNy-UI-7mu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CCz-By-45Z">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0UP-1T-aMW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3564" y="210"/>
         </scene>
         <!--Add Group-->
         <scene sceneID="hjz-Ym-cdi">
@@ -201,7 +223,7 @@
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Group Name" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="zSP-mC-9BU">
                                                             <rect key="frame" x="0.0" y="16" width="584" height="30"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
                                                         </textField>
                                                     </subviews>
                                                 </stackView>
@@ -418,6 +440,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="QCn-Ng-gsd">
                             <color key="tintColor" red="0.043137254901960784" green="0.33725490196078434" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="Puh-er-b45" kind="show" identifier="saveAndShowGroup" action="showDetailViewController:sender:" id="ITO-jt-Sg3"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -446,4 +471,7 @@
         <image name="icon-sort" width="25" height="25"/>
         <image name="icon-wheelchair" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="cge-2N-PzE"/>
+    </inferredMetricsTieBreakers>
 </document>

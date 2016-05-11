@@ -87,7 +87,7 @@ class GroupListViewController: ViewController, UITextFieldDelegate {
             //
             // Observe the list
             //
-            let groups = tournament.groups.asObservableArray()
+            let groups = tournament.groups.sorted("time", ascending: false).asObservableArray()
             groups.bindTo(tableView.rx_itemsWithCellIdentifier("GroupCell", cellType: UITableViewCell.self))  {row, element, cell in
                 cell.textLabel!.text = element.name
             }.addDisposableTo(bag)
@@ -99,7 +99,7 @@ class GroupListViewController: ViewController, UITextFieldDelegate {
             tableView.rx_itemDeleted
                 .subscribeNext { [unowned self] indexPath in
                     try! self.realm.write {
-                        self.realm.delete(tournament.groups[indexPath.row])
+                        self.realm.delete(tournament.groups.sorted("time", ascending: false)[indexPath.row])
                     }
                 }
                 .addDisposableTo(disposeBag)
@@ -116,11 +116,17 @@ class GroupListViewController: ViewController, UITextFieldDelegate {
             .addDisposableTo(disposeBag)
     }
     
-    @IBAction func unwindToGroupList(segue: UIStoryboardSegue) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let nav = segue.destinationViewController as? UINavigationController, d = nav.topViewController as? GroupSettingViewController where segue.identifier == "addGroup" {
+
+            d.tournament = self.tournament
+        } else if let d = segue.destinationViewController as? GameListViewController, cell = sender as? UITableViewCell, indexPath = tableView.indexPathForCell(cell), tournament = self.tournament where segue.identifier == "showGroup" {
+            
+            d.group = tournament.groups.sorted("time", ascending: false)[indexPath.row]
+        }
     }
     
-    @IBAction func addTapped(sender: AnyObject) {
-    
+    @IBAction func unwindToGroupList(segue: UIStoryboardSegue) {
     }
     
     @IBAction func editTapped(sender: AnyObject) {

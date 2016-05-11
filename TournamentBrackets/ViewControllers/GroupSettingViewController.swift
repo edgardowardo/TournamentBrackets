@@ -17,11 +17,9 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-import RealmSwift
-import RxRealm
-
 class GroupSettingViewController: ViewController {
 
+    var tournament : Tournament? = nil
     let dataSource = GroupSettingViewController.configureDataSource()
     var viewModel : GroupSettingViewModel! = nil
     let schedules = ScheduleType.schedules()
@@ -35,6 +33,14 @@ class GroupSettingViewController: ViewController {
     @IBOutlet weak var buttonImport: UIButton!
     @IBOutlet weak var buttonHandicap: UIButton!
     @IBOutlet weak var buttonSave: UIBarButtonItem!
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        DefaultWireframe.delay(0.25) { 
+            self.textGroupName.becomeFirstResponder()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,6 +117,14 @@ class GroupSettingViewController: ViewController {
             .bindTo(self.buttonSave.rx_enabled)
             .addDisposableTo(disposeBag)
         
+        self.textGroupName
+            .rx_text
+            .asObservable()
+            .subscribeNext{ (name) in
+                self.viewModel.name = name
+            }
+            .addDisposableTo(disposeBag)
+        
         self.segmentedSchedule
             .rx_value
             .asObservable()
@@ -178,12 +192,18 @@ class GroupSettingViewController: ViewController {
         
         return dataSource
     }
+        
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let d = segue.destinationViewController as? GameListViewController, tournament = self.tournament where segue.identifier == "saveAndShowGroup" {
+            let group = self.viewModel.saveWithTournament(tournament)
+            d.group = group
+        }
+    }
     
     //
     // Notification handlers. I know bad smell. Will revisit when understand more Rx implementationof this!
     //
     //
-
     @objc private func methodOfReceivedNotification_PreviousCellTextField(notification : NSNotification) {
         if let currentcell = notification.object as? TeamCell, indexPath = tableView.indexPathForCell(currentcell) {
             let nextindexpath = NSIndexPath(forRow: indexPath.row - 1, inSection: indexPath.section)

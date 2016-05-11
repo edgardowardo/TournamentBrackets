@@ -98,7 +98,6 @@ class TournamentListViewController: ViewController, UITextFieldDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let d = segue.destinationViewController as? GroupListViewController, cell = sender as? UITableViewCell, indexPath = tableView.indexPathForCell(cell) where segue.identifier == "showTournament" {
             let tourneys = realm.objects(Tournament).sorted("time", ascending: false)
-            //d.currentTournament.value = tourneys[indexPath.row]
             d.tournament = tourneys[indexPath.row]
         }
     }

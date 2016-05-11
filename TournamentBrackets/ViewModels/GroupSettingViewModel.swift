@@ -9,8 +9,11 @@
 import Foundation
 import RxSwift
 
+import RealmSwift
+
 struct GroupSettingViewModel {
 
+    var realm = try! Realm()
     var name : String
     var scheduleType : Variable<ScheduleType>   = Variable(.RoundRobin)
     var isSorting : Variable<Bool> = Variable(false)
@@ -40,6 +43,19 @@ struct GroupSettingViewModel {
             }
             self.teams.value = oldTeams
         }
+    }
+    
+    func saveWithTournament(tournament : Tournament) -> Group {
+        let group = Group()
+        group.name = self.name
+        group.schedule = self.scheduleType.value
+        group.teamCount = self.teamCount
+        group.teams = List(self.teams.value)
+        try! self.realm.write {
+            tournament.groups.append(group)
+            self.realm.add(tournament, update: true)
+        }
+        return group
     }
     
     func setTeamsHandicap(isHandicap : Bool) {
