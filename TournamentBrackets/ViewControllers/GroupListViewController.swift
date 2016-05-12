@@ -117,8 +117,7 @@ class GroupListViewController: ViewController, UITextFieldDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let nav = segue.destinationViewController as? UINavigationController, d = nav.topViewController as? GroupSettingViewController where segue.identifier == "addGroup" {
-
+        if let d = segue.destinationViewController as? GroupSettingViewController where segue.identifier == "addGroup" {
             d.tournament = self.tournament
         } else if let d = segue.destinationViewController as? GameListViewController, cell = sender as? UITableViewCell, indexPath = tableView.indexPathForCell(cell), tournament = self.tournament where segue.identifier == "showGroup" {
             

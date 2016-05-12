@@ -6,133 +6,60 @@
 //  Copyright © 2016 EDGARDO AGNO. All rights reserved.
 //
 
-///
-/// A binary tree representing two teams playing in a single or double elimination schedule.
-///
-indirect enum GameTree<SomeTeam> {
-    
-    ///
-    /// A game scheduled on the first round of the tree
-    ///
-    case Game(info: GameInfo<SomeTeam>, left: SomeTeam?, right: SomeTeam?)
-    
-    ///
-    /// A future game scheduled on the suceeding rounds of the tree
-    ///
-    case FutureGame(info: GameInfo<SomeTeam>, left: GameTree<SomeTeam>, right: GameTree<SomeTeam>)
-    
-    ///
-    /// Flattens a tree into a list
-    ///
-    func flatten() -> [GameTree<SomeTeam>] {
-        var flatNodes = [GameTree<SomeTeam>]()
-        switch self {
-        case .Game(_,_,_) :
-            flatNodes = flatNodes + [self]
-        case let .FutureGame(_, left, right) :
-            flatNodes = flatNodes + left.flatten() + right.flatten() + [self]
-        }
-        return flatNodes
-    }
-}
+import RealmSwift
 
-///
-/// Stored information about the game
-///
-struct GameInfo<SomeTeam> {
-    var index: Int
-    var round: Int
-    var isBye: Bool
-    var winner: SomeTeam?
-    var isLoserBracket = false
-    var firstLoserIndex = Int.max
-    init(index: Int, round: Int, isBye: Bool, winner: SomeTeam?) {
-        self.index = index
+class Game : Object {
+    dynamic var id = NSUUID().UUIDString
+
+    dynamic var round: Int = 0
+    dynamic var index: Int = 0
+    dynamic var winner: Team? = nil
+    dynamic var leftTeam: Team? = nil
+    dynamic var rightTeam: Team? = nil
+
+    dynamic var doubles : Doubles? = nil
+    dynamic var elimination : Elimination? = nil
+
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
+    convenience init(round: Int, index: Int, winner: Team?, leftTeam: Team?, rightTeam: Team?, doubles: Doubles?, elimination: Elimination?) {
+        self.init()
         self.round = round
-        self.isBye = isBye
+        self.index = index
         self.winner = winner
+        self.leftTeam = leftTeam
+        self.rightTeam = rightTeam
+
+        self.doubles = doubles
+        self.elimination = elimination
     }
-    init(index: Int, round: Int, isBye: Bool, winner: SomeTeam?, isLoserBracket: Bool, firstLoserIndex: Int) {
-        self.init(index: index, round: round, isBye: isBye, winner: winner)
+}
+
+class Doubles : Object {
+    dynamic var id = NSUUID().UUIDString
+    dynamic var leftTeam2: Team? = nil
+    dynamic var rightTeam2: Team? = nil
+    
+    convenience init(leftTeam2: Team?, rightTeam2: Team?) {
+        self.init()
+        self.leftTeam2 = leftTeam2
+        self.rightTeam2 = rightTeam2
+    }
+}
+
+class Elimination : Object {
+    dynamic var id = NSUUID().UUIDString
+    dynamic var isLoserBracket = false
+    dynamic var leftGameIndex: Int = 0
+    dynamic var rightGameIndex: Int = 0
+    dynamic var firstLoserIndex = Int.max
+    
+    convenience init(isLoserBracket : Bool, leftGameIndex: Int, rightGameIndex: Int) {
+        self.init()
         self.isLoserBracket = isLoserBracket
-        self.firstLoserIndex = firstLoserIndex
-    }
-}
-
-///
-/// Global equatable function to allow Array.unique
-///
-func ==<SomeTeam>(lhs: GameTree<SomeTeam>, rhs: GameTree<SomeTeam>) -> Bool {
-    return lhs.index == rhs.index
-}
-
-///
-/// Convenience properties of the game information in the tree
-///
-extension GameTree : Hashable, Equatable {
-    var hashValue: Int {
-        get {
-            return index
-        }
-    }
-    var index : Int {
-        get {
-            switch self {
-            case .Game(let info, _, _) :
-                return info.index
-            case .FutureGame(let info, _, _) :
-                return info.index
-            }
-        }
-    }
-    var round : Int {
-        get {
-            switch self {
-            case .Game(let info, _, _) :
-                return info.round
-            case .FutureGame(let info, _, _) :
-                return info.round
-            }
-        }
-    }
-    var isBye : Bool {
-        get {
-            switch self {
-            case .Game(let info, _, _) :
-                return info.isBye
-            case .FutureGame(let info, _, _) :
-                return info.isBye
-            }
-        }
-    }
-    var winner : SomeTeam? {
-        get {
-            switch self {
-            case .Game(let info, _, _) :
-                return info.winner
-            case .FutureGame(let info, _, _) :
-                return info.winner
-            }
-        }
-    }
-    var isLoserBracket : Bool {
-        get {
-            switch self {
-            case .Game(let info, _, _) :
-                return info.isLoserBracket
-            case .FutureGame(let info, _, _) :
-                return info.isLoserBracket
-            }
-        }
-    }
-    var firstLoserIndex : Int {
-        get {
-            switch self {
-            case .Game(let info, _, _) :
-                return info.firstLoserIndex
-            case .FutureGame(let info, _, _) :
-                return info.firstLoserIndex
-            }
-        }
+        self.leftGameIndex = leftGameIndex
+        self.rightGameIndex = rightGameIndex
     }
 }

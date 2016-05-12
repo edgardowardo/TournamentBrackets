@@ -29,7 +29,4 @@ class GameListViewController: ViewController {
         }
     }
     
-    @IBAction func unwindToGameList(segue: UIStoryboardSegue) {
-    }
-    
 }

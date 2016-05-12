@@ -69,60 +69,44 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TournamentBrackets/ViewControllers/GroupListViewController.swift"
-            timestampString = "484638782.923248"
+            filePath = "TournamentBrackets/ViewControllers/GroupSettingViewController.swift"
+            timestampString = "484731101.10952"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "prepareForSegue(_:sender:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TournamentBrackets/ViewControllers/GroupListViewController.swift"
-            timestampString = "484638782.923248"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "prepareForSegue(_:sender:)"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "configureDataSource()"
             landmarkType = "5">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "TournamentBrackets.GroupListViewController.prepareForSegue (__ObjC.UIStoryboardSegue, sender : Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; ()"
+                  symbolName = "static TournamentBrackets.GroupSettingViewController.configureDataSource () -&gt; RxDataSources.RxTableViewSectionedReloadDataSource&lt;RxDataSources.SectionModel&lt;Swift.String, TournamentBrackets.Team&gt;&gt;"
                   moduleName = "TournamentBrackets"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/edgardoagno/Documents/TournamentBrackets/TournamentBrackets/ViewControllers/GroupListViewController.swift"
-                  timestampString = "484587006.495403"
+                  urlString = "file:///Users/edgardoagno/Documents/TournamentBrackets/TournamentBrackets/ViewControllers/GroupSettingViewController.swift"
+                  timestampString = "484731101.228313"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "120"
-                  endingLineNumber = "120"
-                  offsetFromSymbolStart = "23">
+                  startingLineNumber = "180"
+                  endingLineNumber = "180"
+                  offsetFromSymbolStart = "29">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "TournamentBrackets.GroupListViewController.prepareForSegue (__ObjC.UIStoryboardSegue, sender : Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; ()"
+                  symbolName = "static TournamentBrackets.GroupSettingViewController.(configureDataSource () -&gt; RxDataSources.RxTableViewSectionedReloadDataSource&lt;RxDataSources.SectionModel&lt;Swift.String, TournamentBrackets.Team&gt;&gt;).(closure #1)"
                   moduleName = "TournamentBrackets"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/edgardoagno/Documents/TournamentBrackets/TournamentBrackets/ViewControllers/GroupListViewController.swift"
-                  timestampString = "484587006.495847"
+                  urlString = "file:///Users/edgardoagno/Documents/TournamentBrackets/TournamentBrackets/ViewControllers/GroupSettingViewController.swift"
+                  timestampString = "484731101.228596"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "120"
-                  endingLineNumber = "120"
-                  offsetFromSymbolStart = "205">
+                  startingLineNumber = "181"
+                  endingLineNumber = "181"
+                  offsetFromSymbolStart = "49">
                </Location>
             </Locations>
          </BreakpointContent>

@@ -123,7 +123,7 @@
                                             <bool key="isElement" value="YES"/>
                                         </accessibility>
                                         <connections>
-                                            <segue destination="Puh-er-b45" kind="show" identifier="showGroup" id="cge-2N-PzE"/>
+                                            <segue destination="lJ9-5P-gyL" kind="show" identifier="showGroup" id="P48-BV-bCI"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -142,7 +142,7 @@
                             <barButtonItem systemItem="add" id="EoX-wp-cSD">
                                 <connections>
                                     <action selector="addTapped:" destination="gxd-jH-O9G" id="2Q7-Yn-JkQ"/>
-                                    <segue destination="yBt-5g-mFy" kind="presentation" identifier="addGroup" id="FKr-Tq-cdj"/>
+                                    <segue destination="Qvt-0n-WiX" kind="show" identifier="addGroup" id="8cy-PL-AyI"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="edit" id="KUg-g4-UAU">
@@ -159,40 +159,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9CG-aq-TNP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2787" y="-212"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="fw5-rN-U80">
-            <objects>
-                <navigationController id="yBt-5g-mFy" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Sqf-ti-Ezo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Qvt-0n-WiX" kind="relationship" relationship="rootViewController" id="rLf-PC-QHU"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4eF-du-GZF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3564" y="-567"/>
-        </scene>
-        <!--Games-->
-        <scene sceneID="AdQ-aA-Kr5">
-            <objects>
-                <viewController id="Puh-er-b45" userLabel="Games" customClass="GameListViewController" customModule="TournamentBrackets" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ey6-o7-2gZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="oNy-UI-7mu"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="CCz-By-45Z">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0UP-1T-aMW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3564" y="210"/>
         </scene>
         <!--Add Group-->
         <scene sceneID="hjz-Ym-cdi">
@@ -433,15 +399,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Group" id="Kt7-M9-tlT">
-                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="1Sy-Dx-uJL">
-                            <connections>
-                                <segue destination="qpw-ei-RmD" kind="unwind" unwindAction="unwindToGroupList:" id="Tdr-Ft-s7n"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="QCn-Ng-gsd">
                             <color key="tintColor" red="0.043137254901960784" green="0.33725490196078434" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="Puh-er-b45" kind="show" identifier="saveAndShowGroup" action="showDetailViewController:sender:" id="ITO-jt-Sg3"/>
+                                <segue destination="qpw-ei-RmD" kind="unwind" unwindAction="unwindToGroupList:" id="nMn-Wy-mac"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -461,7 +422,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rqv-W2-2fe" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="qpw-ei-RmD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4318" y="-567"/>
+            <point key="canvasLocation" x="3642" y="-537"/>
+        </scene>
+        <!--Game List View Controller-->
+        <scene sceneID="ZaR-xG-ouT">
+            <objects>
+                <viewController id="lJ9-5P-gyL" customClass="GameListViewController" customModule="TournamentBrackets" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="c1X-bf-Pn2"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZbG-v4-7yA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SPS-Yq-gHH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g7N-a5-gKJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3642" y="204"/>
         </scene>
     </scenes>
     <resources>
@@ -471,7 +450,4 @@
         <image name="icon-sort" width="25" height="25"/>
         <image name="icon-wheelchair" width="25" height="25"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="cge-2N-PzE"/>
-    </inferredMetricsTieBreakers>
 </document>

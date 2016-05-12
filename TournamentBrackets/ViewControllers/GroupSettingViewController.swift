@@ -194,9 +194,10 @@ class GroupSettingViewController: ViewController {
     }
         
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let d = segue.destinationViewController as? GameListViewController, tournament = self.tournament where segue.identifier == "saveAndShowGroup" {
-            let group = self.viewModel.saveWithTournament(tournament)
-            d.group = group
+        if let _ = segue.destinationViewController as? GroupListViewController, tournament = self.tournament {
+            let _ = self.viewModel.saveWithTournament(tournament)
+            // TODO: this group may be automatically shown after unwind
+            //            d.group = group
         }
     }
     

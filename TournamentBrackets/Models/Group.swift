@@ -17,6 +17,7 @@ class Group : Object {
     dynamic var teamCount = 0
     dynamic var isHandicap = false
     var teams = List<Team>()
+    var games = List<Game>()
 
     override static func ignoredProperties() -> [String] {
         return ["schedule"]

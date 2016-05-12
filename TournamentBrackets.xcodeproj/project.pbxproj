@@ -28,6 +28,7 @@
 		7770C6151CC0C290008C5A6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7770C6141CC0C290008C5A6B /* Assets.xcassets */; };
 		7770C6181CC0C290008C5A6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7770C6161CC0C290008C5A6B /* LaunchScreen.storyboard */; };
 		7770C62E1CC0C290008C5A6B /* TournamentBracketsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7770C62D1CC0C290008C5A6B /* TournamentBracketsUITests.swift */; };
+		7780D6251CE48DF10014F393 /* GameTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7780D6241CE48DF10014F393 /* GameTree.swift */; };
 		7793022E1CCFAFD000695321 /* Power.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7793022D1CCFAFD000695321 /* Power.swift */; };
 		779FFCA01CD6A8DD00D48800 /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779FFC9F1CD6A8DC00D48800 /* GroupListViewController.swift */; };
 		779FFCA21CD7D3C600D48800 /* GroupSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779FFCA11CD7D3C600D48800 /* GroupSettingViewController.swift */; };
@@ -93,6 +94,7 @@
 		7770C6291CC0C290008C5A6B /* TournamentBracketsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TournamentBracketsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7770C62D1CC0C290008C5A6B /* TournamentBracketsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentBracketsUITests.swift; sourceTree = "<group>"; };
 		7770C62F1CC0C290008C5A6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7780D6241CE48DF10014F393 /* GameTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTree.swift; sourceTree = "<group>"; };
 		7793022D1CCFAFD000695321 /* Power.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Power.swift; sourceTree = "<group>"; };
 		779FFC9F1CD6A8DC00D48800 /* GroupListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupListViewController.swift; sourceTree = "<group>"; };
 		779FFCA11CD7D3C600D48800 /* GroupSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupSettingViewController.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				7766D84A1CD2435F00DA3FA1 /* Tournament.swift */,
 				7766D8511CD3A44400DA3FA1 /* Group.swift */,
 				77D3D65D1CC3BFA6001EF359 /* Game.swift */,
+				7780D6241CE48DF10014F393 /* GameTree.swift */,
 				779FFCA31CD9480900D48800 /* ScheduleType.swift */,
 				779FFCAC1CDAB08100D48800 /* Team.swift */,
 			);
@@ -572,6 +575,7 @@
 				77AE56E71CE1DF32006CBF55 /* GameListViewController.swift in Sources */,
 				77FCDD3B1CD552EC00ED5ADB /* GameExtensions.swift in Sources */,
 				7766D8541CD41AEF00DA3FA1 /* TournamentListViewController.swift in Sources */,
+				7780D6251CE48DF10014F393 /* GameTree.swift in Sources */,
 				779FFCAF1CDAC48F00D48800 /* TeamCell.swift in Sources */,
 				7766D8521CD3A44400DA3FA1 /* Group.swift in Sources */,
 				77F6ED3F1CCE3F6600EC411A /* GameClass.swift in Sources */,

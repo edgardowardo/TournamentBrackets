@@ -11,6 +11,12 @@ import RxSwift
 
 import RealmSwift
 
+struct TeamStruct {
+    var name = ""
+    var handicap = 0.0
+    var seed = 0
+}
+
 struct GroupSettingViewModel {
 
     var realm = try! Realm()
@@ -51,6 +57,7 @@ struct GroupSettingViewModel {
         group.schedule = self.scheduleType.value
         group.teamCount = self.teamCount
         group.teams = List(self.teams.value)
+        group.games = List(schedule(group.schedule, withTeams: self.teams.value))
         try! self.realm.write {
             tournament.groups.append(group)
             self.realm.add(tournament, update: true)
@@ -92,4 +99,122 @@ struct GroupSettingViewModel {
         self.teamCount = group.schedule.allowedTeamCounts.first!
         self.isHandicap.value = group.isHandicap
     }
+    
+    private func transfrormTeam(team : Team) -> TeamStruct {
+        return TeamStruct(name: team.name, handicap: team.handicap, seed: team.seed)
+    }
+    
+    private func getTeam(team : TeamStruct?) -> Team? {
+        if let t = team {
+            return self.teams.value.filter{ (tee) in tee.name == t.name && tee.seed == t.seed && tee.handicap == t.handicap }.first
+        } else {
+            return nil
+        }
+    }
+    
+    private func schedule(schedule : ScheduleType, withTeams teams: [Team]) -> [Game] {
+        let row : [TeamStruct?] = teams.map{ transfrormTeam($0) }
+        switch schedule {
+        case .RoundRobin:
+            let schedules = Scheduler.roundRobin(1, row: row )
+            let games : [Game] = schedules.map{ (game) in
+                var winner : TeamStruct? = nil
+                if let left = game.2 where game.3 == nil {
+                    winner = left
+                } else if let right = game.3 where game.2 == nil {
+                    winner = right
+                }
+                return Game(round: game.0, index: game.1, winner: getTeam(winner), leftTeam: getTeam(game.2), rightTeam: getTeam(game.3), doubles: nil, elimination: nil)
+            }
+            return games
+        case .RoundDoubles:
+            let schedules = Scheduler.roundRobinDoubles(1, row: row)
+            let games : [Game] = schedules.map{ (game) in
+                let doubles = Doubles(leftTeam2: getTeam(game.3), rightTeam2: getTeam(game.5))
+                return Game(round: game.0, index: game.1, winner: nil, leftTeam: getTeam(game.2), rightTeam: getTeam(game.4), doubles: doubles, elimination: nil)
+            }
+            return games
+        case .SingleElimination:
+            let schedules = Scheduler.valuedSingleElimination(1, teams: row)
+            var valuedgames = schedules.flatten()
+            valuedgames.sortInPlace{ (g1, g2) -> Bool in return g1.index < g2.index }
+            let games : [Game] = valuedgames.map{ (game) in
+                let e = Elimination(isLoserBracket: game.isLoserBracket, leftGameIndex: game.leftGameIndex, rightGameIndex: game.rightGameIndex)
+                return Game(round: game.round, index: game.index, winner: getTeam(game.winner), leftTeam: getTeam(game.left), rightTeam: getTeam(game.right), doubles: nil, elimination: e)
+            }
+            return games
+        case .DoubleElimination:
+            let schedules = Scheduler.valuedDoubleElimination(1, teams: row)
+            var valuedgames = schedules.flatten().unique
+            valuedgames.sortInPlace{ (g1, g2) -> Bool in return g1.index < g2.index }
+            let games : [Game] = valuedgames.map{ (game) in
+                let e = Elimination(isLoserBracket: game.isLoserBracket, leftGameIndex: game.leftGameIndex, rightGameIndex: game.rightGameIndex)
+                return Game(round: game.round, index: game.index, winner: getTeam(game.winner), leftTeam: getTeam(game.left), rightTeam: getTeam(game.right), doubles: nil, elimination: e)
+            }
+            return games
+        }
+    }
+    
 }
+
+///
+/// Game tree extensions for saving into data store
+///
+extension GameTree {
+    
+    var leftGameIndex : Int {
+        get {
+            switch self {
+            case .Game(_, _, _) :
+                return 0
+            case .FutureGame(_, let left, _) :
+                return left.index
+            }
+        }
+    }
+    
+    var left : SomeTeam? {
+        get {
+            switch self {
+            case .Game(_, let left, _) :
+                if let l = left {
+                    return l
+                } else {
+                    return nil
+                }
+            case .FutureGame(_, _, _) :
+                return nil
+            }
+        }
+    }
+    
+    var right : SomeTeam? {
+        get {
+            switch self {
+            case .Game(_, _, let right) :
+                if let r = right {
+                    return r
+                } else {
+                    return nil
+                }
+            case .FutureGame(_, _, _) :
+                return nil
+            }
+        }
+    }
+    
+    var rightGameIndex : Int {
+        get {
+            switch self {
+            case .Game(_, _, _) :
+                return 0
+            case .FutureGame(_, _, let right) :
+                return right.index
+            }
+        }
+    }
+    
+}
+
+
+
