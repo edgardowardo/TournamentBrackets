@@ -90,8 +90,9 @@ class GroupListViewController: ViewController, UITextFieldDelegate {
             let groups = tournament.groups.sorted("time", ascending: false).asObservableArray()
             groups.bindTo(tableView.rx_itemsWithCellIdentifier("GroupCell", cellType: UITableViewCell.self))  {row, element, cell in
                 cell.textLabel!.text = element.name
+                let handicapText : String = (element.isHandicap) ? ", handicapped" : ""
+                cell.detailTextLabel?.text = "\(element.schedule.description) \(element.teamCount) teams\(handicapText)"
             }.addDisposableTo(bag)
-            
             
             //
             // Observe the delete swipe
@@ -104,7 +105,6 @@ class GroupListViewController: ViewController, UITextFieldDelegate {
                 }
                 .addDisposableTo(disposeBag)
         }
-        
         
         //
         // Observe the item selected

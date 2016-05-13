@@ -70,7 +70,8 @@ class TournamentListViewController: ViewController, UITextFieldDelegate {
         //
         let tourneys = realm.objects(Tournament).sorted("time", ascending: false).asObservableArray()
         tourneys.bindTo(tableView.rx_itemsWithCellIdentifier("Cell", cellType: UITableViewCell.self)) {row, element, cell in
-            cell.textLabel!.text = element.name
+            cell.textLabel?.text = element.name
+            cell.detailTextLabel?.text = "\(element.groups.count) groups"
             }.addDisposableTo(bag)
 
         //

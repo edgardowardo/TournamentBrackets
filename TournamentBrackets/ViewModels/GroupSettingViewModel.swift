@@ -56,6 +56,7 @@ struct GroupSettingViewModel {
         group.name = self.name
         group.schedule = self.scheduleType.value
         group.teamCount = self.teamCount
+        group.isHandicap = self.isHandicap.value
         group.teams = List(self.teams.value)
         group.games = List(schedule(group.schedule, withTeams: self.teams.value))
         try! self.realm.write {
