@@ -125,196 +125,6 @@ class Scheduler {
         
         return schedules + roundRobinDoubles(round + 1, startindex : index, row: nextrow)
     }
-    ///
-    /// Builds single elimination match schedule from a given set
-    ///
-    /// - Returns: a list of game matches in single elimination format.
-    ///
-    static func singleElimination<U>(round : Int, row : [U?]) -> [GameClass<U>] {
-        
-        var index = 0
-        var elements = row
-        var schedules = [GameClass<U>]()
-        
-        guard elements.count <= 64 && round < elements.count  else { return schedules }
-        
-        //
-        // Adjust the number of teams necessary to construct the brackets which are 2, 4, 8, 16, 32 and 64
-        //
-        for i in 1...8 {
-            let minimum = 2^^i
-            if elements.count < minimum {
-                let diff = minimum - elements.count
-                for _ in 1...diff {
-                    elements.append(nil) // bye
-                }
-                break
-            } else if elements.count == minimum {
-                break
-            }
-        }
-        
-        //
-        // process half the elements to create the pairs
-        //
-        let endIndex = elements.count - 1
-        for i in (0 ..< elements.count / 2).reverse() {
-            let home = elements[i]
-            let away = elements[endIndex - i]
-            let game = GameClass(index: &index, round: round, home: home, away: away, prevHomeGame: nil, prevAwayGame: nil, isLoserBracket: false)
-            schedules.append(game)
-        }
-        
-        //
-        // apply rainbow pairing for the new game winners instead of teams
-        //
-        return schedules + singleElimination(&index, round: round + 1, row: schedules)
-    }
-    
-    ///
-    /// Builds single elimination match schedule from a set of match schedules from round 2 and up
-    ///
-    /// - Returns: a list of game matches in single elimination format.
-    ///
-    private static func singleElimination<U>(inout index : Int, round : Int, row : [GameClass<U>]) -> [GameClass<U>] {
-        
-        var schedules = [GameClass<U>]()
-        
-        guard row.count > 1 else { return schedules}
-        
-        //
-        // process all the game winners to create new games for the round
-        //
-        let endIndex = row.count - 1
-        for i in (0 ..< row.count / 2).reverse() {
-            let prevhome = row[i]
-            let prevaway = row[endIndex - i]
-            let game = GameClass(index: &index, round: round, home: nil, away: nil, prevHomeGame: prevhome, prevAwayGame: prevaway, isLoserBracket: false)
-            schedules.append(game)
-        }
-        
-        //
-        // apply rainbow pairing for the new game winners until the base case happens
-        //
-        return schedules + singleElimination(&index, round: round + 1, row: schedules)
-    }
-
-    
-    ///
-    /// Builds double elimination match schedule from a given set
-    ///
-    /// - Returns: a list of game matches in double elimination format.
-    ///
-    static func doubleElimination<U>(round : Int, row : [U?]) -> [GameClass<U>] {
-        
-        var elements = row
-        var schedules = [GameClass<U>]()
-        
-        //
-        // If two teams, make it 4 beacause it needs 4 to make the losers bracket
-        //
-        if elements.count == 2 {
-            for _ in 3...4 {
-                elements.append(nil)
-            }
-        }
-        
-        //
-        // Build single elimination tree aka winners bracket
-        //
-        schedules = singleElimination(1, row: elements)
-        
-        //
-        // Remember the last loser from the last game of the winners bracket
-        //
-        let lastWinnersGame = schedules.last
-        
-        //
-        // Build losers bracket and accumulate in schedules
-        //
-        schedules = schedules + createLosersBracket(fromBracket : schedules, whereBracketIsLoser: false, withWinnersRound: round, orLosersRound: round + 1)
-        
-        //
-        // Find the last winner of the losers bracket and add the final game
-        //
-        let lastLosersGame = schedules.last
-        if let home = lastWinnersGame, away = lastLosersGame where !home.isLoserBracket && away.isLoserBracket {
-            var index = schedules.count
-            let game = GameClass(index: &index, round: home.round + 1, home: nil, away: nil, prevHomeGame: home, prevAwayGame: away, isLoserBracket: false)
-            schedules.append(game)
-        }
-        
-        return schedules
-    }
-    
-    ///
-    /// Builds the loser bracket of double elimination match schedule
-    ///
-    /// - Returns: a list of game matches of the losers bracket.
-    ///
-    private static func createLosersBracket<U>(fromBracket bracket: [GameClass<U>], whereBracketIsLoser isLoserBracket : Bool, withWinnersRound winnersround : Int, orLosersRound losersround : Int) -> [GameClass<U>] {
-        
-        var winnersround = winnersround
-        var losersround = losersround
-        var survivors = [GameClass<U>]()
-        let round = (isLoserBracket) ? losersround - 1 : winnersround
-        
-        //
-        // The first loser index determines progress of a game on the losers bracket. When the index of a previous game is lower than this number, it comes from the winners bracket and hence interested in the losing team. Otherwise higher or equal to this index of a previous game, we are insterested to the winner of this loser game.
-        //
-        var firstLoserIndex = Int.max
-        let winnerGames = bracket.filter{ g in !g.isLoserBracket }
-        if let lastWinnerGame = winnerGames.last {
-            firstLoserIndex = lastWinnerGame.index + 1
-        }
-        
-        //
-        // Look for games on the previous round
-        //
-        var games = bracket.filter{ g in g.round == round && g.isLoserBracket == isLoserBracket }
-        guard games.count > 1 else { return survivors }
-        games.sortInPlace({ (g,h) in g.index < h.index })
-        var index = bracket.count
-        
-        //
-        // Look for losers for previous round and create games sequentially (no rainbows)
-        //
-        var i = 0
-        while i < games.count - 1 {
-            let prevhome = games[i]
-            let prevaway = games[i+1]
-            let game = GameClass(index: &index, round: losersround, home: nil, away: nil, prevHomeGame: prevhome, prevAwayGame: prevaway, isLoserBracket: true)
-            game.firstLoserIndex = firstLoserIndex
-            survivors.append(game)
-            i = i + 2
-        }
-        
-        //
-        // Look for losers for the next round of winners bracket and match them with winners in this current round of games
-        //
-        winnersround = winnersround + 1
-        var newlosers = bracket.filter{ g in g.round == winnersround && g.isLoserBracket == false }
-        guard newlosers.count > 0 && newlosers.count == survivors.count else { return [GameClass<U>]() }
-        newlosers.sortInPlace({ (g, h) in g.index < h.index })
-        
-        //
-        // Create padded rounds as result of matching the new losers of winners round and survivors
-        //
-        losersround = losersround + 1
-        for i in 0...survivors.count - 1 {
-            let newloser = newlosers[i]
-            let survivor = survivors[i]
-            let game = GameClass(index: &index, round: losersround, home: nil, away: nil, prevHomeGame: newloser, prevAwayGame: survivor, isLoserBracket: true)
-            game.firstLoserIndex = firstLoserIndex
-            survivors.append(game)
-        }
-        
-        //
-        // Increment losers round again to create the next branch of the brackets
-        //
-        losersround = losersround + 1
-        return survivors + createLosersBracket(fromBracket: survivors + bracket, whereBracketIsLoser: true, withWinnersRound: winnersround, orLosersRound: losersround)
-    }
     
     ///
     /// Builds single elimination match schedule from a given set
@@ -382,7 +192,7 @@ class Scheduler {
     ///
     /// - Returns: a game tree in single elimination format.
     ///
-    static func valuedFutureSingleElimination<TeamType>(index : Int, round : Int, trees : [GameTree<TeamType>]) -> GameTree<TeamType> {
+    private static func valuedFutureSingleElimination<TeamType>(index : Int, round : Int, trees : [GameTree<TeamType>]) -> GameTree<TeamType> {
         
         var index = index
         var schedules = [GameTree<TeamType>]()
@@ -453,7 +263,7 @@ class Scheduler {
     ///
     /// - Returns: a list of game matches of the losers bracket.
     ///
-    static func valuedLosersBracket<SomeTeam>(fromWinnersBracket winners: GameTree<SomeTeam>, withWinnersRound winnersRound : Int, andLosersList losersList: [GameTree<SomeTeam>], withLosersRound losersRound : Int, andIndex index: Int) -> GameTree<SomeTeam> {
+    private static func valuedLosersBracket<SomeTeam>(fromWinnersBracket winners: GameTree<SomeTeam>, withWinnersRound winnersRound : Int, andLosersList losersList: [GameTree<SomeTeam>], withLosersRound losersRound : Int, andIndex index: Int) -> GameTree<SomeTeam> {
         
         var index = index
         let isLosersBracket = (losersList.count > 0)
