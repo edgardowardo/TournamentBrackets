@@ -22,8 +22,6 @@ class GameCell : UITableViewCell {
     var viewModel : GameViewModel! {
         didSet {
             let disposeBag = DisposeBag()
-
-            // TODO: Rx stuff here
             
             self.indexLabel.text = "\(viewModel.index)"
             self.leftTeamButton.setTitle(viewModel.leftPrompt, forState: .Normal)
@@ -31,6 +29,40 @@ class GameCell : UITableViewCell {
             
             self.leftTeamButton.enabled = viewModel.leftPrompt != "BYE"
             self.rightTeamButton.enabled = viewModel.rightPrompt != "BYE"
+            
+            self.viewModel.winner
+                .asObservable()
+                .subscribeNext { [unowned self] winner in
+                    if let winningTeam = winner {
+                        if let left = self.viewModel.leftTeam.value where left.id == winningTeam.id {
+                            self.leftTeamButton.backgroundColor = UIColor.flatEmeraldColor().colorWithAlphaComponent(0.5)
+                            self.rightTeamButton.backgroundColor = UIColor.flatCloudsColor()
+                        } else if let right = self.viewModel.rightTeam.value where right.id == winningTeam.id {
+                            self.leftTeamButton.backgroundColor = UIColor.flatCloudsColor()
+                            self.rightTeamButton.backgroundColor = UIColor.flatEmeraldColor().colorWithAlphaComponent(0.5)
+                        }
+                    } else {
+                        self.leftTeamButton.backgroundColor = UIColor.flatCloudsColor()
+                        self.rightTeamButton.backgroundColor = UIColor.flatCloudsColor()
+                    }
+                }
+                .addDisposableTo(disposeBag)
+            
+            self.leftTeamButton
+                .rx_tap
+                .asObservable()
+                .subscribeNext{ [unowned self] something in
+                    self.viewModel.setLeftTeamAsWinner()
+                }
+                .addDisposableTo(disposeBag)
+            
+            self.rightTeamButton
+                .rx_tap
+                .asObservable()
+                .subscribeNext{ [unowned self] something in
+                    self.viewModel.setRightTeamAsWinner()
+                }
+                .addDisposableTo(disposeBag)
             
             self.disposeBag = disposeBag
         }

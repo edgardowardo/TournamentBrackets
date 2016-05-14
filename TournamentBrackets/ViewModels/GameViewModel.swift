@@ -8,10 +8,15 @@
 
 import Foundation
 import RxSwift
+import RealmSwift
 
 struct GameViewModel {
     
+    var realm = try! Realm()
     var winner : Variable<Team?> = Variable(nil)
+    var leftTeam : Variable<Team?> = Variable(nil)
+    var rightTeam : Variable<Team?> = Variable(nil)
+    
     var leftPrompt : String {
         get {
             return game.leftPrompt
@@ -32,16 +37,27 @@ struct GameViewModel {
 
     init(game : Game) {
         self.game = game
-    }
-
-    //
-    // Cascade the team setting to the prompts
-    //
-    func setLeftTeam(team : Team) {
+        self.winner.value = game.winner
+        self.leftTeam.value = game.leftTeam
+        self.rightTeam.value = game.rightTeam
     }
     
-    func setRightTeam(team : Team) {
+    func setLeftTeamAsWinner() {
+        guard self.rightPrompt != "BYE" && self.rightPrompt.characters.count > 0 else { return }
         
+        self.winner.value = leftTeam.value
+        try! self.realm.write {
+            self.game.winner = self.winner.value
+        }
+    }
+    
+    func setRightTeamAsWinner() {
+        guard self.leftPrompt != "BYE" && self.leftPrompt.characters.count > 0 else { return }
+        
+        self.winner.value = rightTeam.value
+        try! self.realm.write {
+            self.game.winner = self.winner.value
+        }
     }
 }
 

@@ -8,7 +8,6 @@
 
 import Foundation
 import RxSwift
-
 import RealmSwift
 
 struct TeamStruct {
@@ -157,12 +156,23 @@ struct GroupSettingViewModel {
             return games
         }
     }
-    
+
+    ///
+    /// Previous games help build the tree structure and identify the left and right prompts. 
+    /// The routine identifies the left and right previous game and advances the previous winners 
+    /// in elimination schedules.
+    ///
     private func setPreviousGames(games : [Game]) {
         for g in games {
             if let e = g.elimination {
                 e.prevLeftGame = games.filter{ (game) in game.index == e.leftGameIndex }.first
+                if let leftPrevGame = e.prevLeftGame, leftWinner = leftPrevGame.winner {
+                    g.leftTeam = leftWinner
+                }
                 e.prevRightGame = games.filter{ (game) in game.index == e.rightGameIndex }.first
+                if let rightPrevGame = e.prevRightGame, rightWinner = rightPrevGame.winner {
+                    g.rightTeam = rightWinner
+                }
             }
         }
     }
