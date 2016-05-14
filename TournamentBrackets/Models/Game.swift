@@ -16,6 +16,7 @@ class Game : Object {
     dynamic var winner: Team? = nil
     dynamic var leftTeam: Team? = nil
     dynamic var rightTeam: Team? = nil
+    dynamic var isBye: Bool = false
 
     dynamic var doubles : Doubles? = nil
     dynamic var elimination : Elimination? = nil
@@ -24,13 +25,14 @@ class Game : Object {
         return "id"
     }
     
-    convenience init(round: Int, index: Int, winner: Team?, leftTeam: Team?, rightTeam: Team?, doubles: Doubles?, elimination: Elimination?) {
+    convenience init(round: Int, index: Int, winner: Team?, leftTeam: Team?, rightTeam: Team?, isBye: Bool, doubles: Doubles?, elimination: Elimination?) {
         self.init()
         self.round = round
         self.index = index
         self.winner = winner
         self.leftTeam = leftTeam
         self.rightTeam = rightTeam
+        self.isBye = isBye
 
         self.doubles = doubles
         self.elimination = elimination
@@ -53,7 +55,9 @@ class Elimination : Object {
     dynamic var id = NSUUID().UUIDString
     dynamic var isLoserBracket = false
     dynamic var leftGameIndex: Int = 0
+    dynamic var prevLeftGame : Game? = nil
     dynamic var rightGameIndex: Int = 0
+    dynamic var prevRightGame : Game? = nil
     dynamic var firstLoserIndex = Int.max
     
     convenience init(isLoserBracket : Bool, leftGameIndex: Int, rightGameIndex: Int) {

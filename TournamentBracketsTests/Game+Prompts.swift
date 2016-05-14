@@ -1,12 +1,13 @@
 //
-//  GameExtensions.swift
+//  Game+Prompts.swift
 //  TournamentBrackets
 //
-//  Created by EDGARDO AGNO on 28/04/2016.
+//  Created by EDGARDO AGNO on 14/05/2016.
 //  Copyright © 2016 EDGARDO AGNO. All rights reserved.
 //
 
 import Foundation
+@testable import TournamentBrackets
 
 //
 // View model routines such as displaying left and right prompts

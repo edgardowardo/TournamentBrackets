@@ -40,7 +40,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kM-eE-3AD">
                         <rect key="frame" x="0.0" y="12" width="29" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="29" id="CwF-6P-6Lp"/>
+                            <constraint firstAttribute="width" constant="35" id="CwF-6P-6Lp"/>
                             <constraint firstAttribute="height" constant="21" id="OuE-9O-Js7"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>

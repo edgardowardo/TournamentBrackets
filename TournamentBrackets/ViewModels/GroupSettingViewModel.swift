@@ -125,14 +125,14 @@ struct GroupSettingViewModel {
                 } else if let right = game.3 where game.2 == nil {
                     winner = right
                 }
-                return Game(round: game.0, index: game.1, winner: getTeam(winner), leftTeam: getTeam(game.2), rightTeam: getTeam(game.3), doubles: nil, elimination: nil)
+                return Game(round: game.0, index: game.1, winner: getTeam(winner), leftTeam: getTeam(game.2), rightTeam: getTeam(game.3), isBye: (winner != nil), doubles: nil, elimination: nil)
             }
             return games
         case .RoundDoubles:
             let schedules = Scheduler.roundRobinDoubles(1, row: row)
             let games : [Game] = schedules.map{ (game) in
                 let doubles = Doubles(leftTeam2: getTeam(game.3), rightTeam2: getTeam(game.5))
-                return Game(round: game.0, index: game.1, winner: nil, leftTeam: getTeam(game.2), rightTeam: getTeam(game.4), doubles: doubles, elimination: nil)
+                return Game(round: game.0, index: game.1, winner: nil, leftTeam: getTeam(game.2), rightTeam: getTeam(game.4), isBye: false, doubles: doubles, elimination: nil)
             }
             return games
         case .SingleElimination:
@@ -141,8 +141,9 @@ struct GroupSettingViewModel {
             valuedgames.sortInPlace{ (g1, g2) -> Bool in return g1.index < g2.index }
             let games : [Game] = valuedgames.map{ (game) in
                 let e = Elimination(isLoserBracket: game.isLoserBracket, leftGameIndex: game.leftGameIndex, rightGameIndex: game.rightGameIndex)
-                return Game(round: game.round, index: game.index, winner: getTeam(game.winner), leftTeam: getTeam(game.left), rightTeam: getTeam(game.right), doubles: nil, elimination: e)
+                return Game(round: game.round, index: game.index, winner: getTeam(game.winner), leftTeam: getTeam(game.left), rightTeam: getTeam(game.right), isBye: game.isBye, doubles: nil, elimination: e)
             }
+            setPreviousGames(games)
             return games
         case .DoubleElimination:
             let schedules = Scheduler.valuedDoubleElimination(1, teams: row)
@@ -150,9 +151,19 @@ struct GroupSettingViewModel {
             valuedgames.sortInPlace{ (g1, g2) -> Bool in return g1.index < g2.index }
             let games : [Game] = valuedgames.map{ (game) in
                 let e = Elimination(isLoserBracket: game.isLoserBracket, leftGameIndex: game.leftGameIndex, rightGameIndex: game.rightGameIndex)
-                return Game(round: game.round, index: game.index, winner: getTeam(game.winner), leftTeam: getTeam(game.left), rightTeam: getTeam(game.right), doubles: nil, elimination: e)
+                return Game(round: game.round, index: game.index, winner: getTeam(game.winner), leftTeam: getTeam(game.left), rightTeam: getTeam(game.right), isBye: game.isBye, doubles: nil, elimination: e)
             }
+            setPreviousGames(games)
             return games
+        }
+    }
+    
+    private func setPreviousGames(games : [Game]) {
+        for g in games {
+            if let e = g.elimination {
+                e.prevLeftGame = games.filter{ (game) in game.index == e.leftGameIndex }.first
+                e.prevRightGame = games.filter{ (game) in game.index == e.rightGameIndex }.first
+            }
         }
     }
     
