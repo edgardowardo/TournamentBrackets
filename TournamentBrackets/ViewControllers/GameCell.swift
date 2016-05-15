@@ -30,6 +30,20 @@ class GameCell : UITableViewCell {
             self.leftTeamButton.enabled = viewModel.leftPrompt != "BYE"
             self.rightTeamButton.enabled = viewModel.rightPrompt != "BYE"
             
+            self.viewModel.leftTeam
+                .asObservable()
+                .subscribeNext { _ in
+                    self.leftTeamButton.setTitle(self.viewModel.leftPrompt, forState: .Normal)
+                }
+                .addDisposableTo(disposeBag)
+            
+            self.viewModel.rightTeam
+                .asObservable()
+                .subscribeNext { _ in
+                    self.rightTeamButton.setTitle(self.viewModel.rightPrompt, forState: .Normal)
+                }
+                .addDisposableTo(disposeBag)
+            
             self.viewModel.winner
                 .asObservable()
                 .subscribeNext { [unowned self] winner in

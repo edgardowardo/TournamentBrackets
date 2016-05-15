@@ -50,8 +50,17 @@ class GameListViewController: ViewController {
         
         if let g = group {
             let games = g.games.sorted("index", ascending: true).asObservableArray()
+            let models = g.games.sorted("index", ascending: true).map{ (game) in GameViewModel(game: game) }
+            
+            for m in models {
+                if let mElimination = m.game.elimination {
+                    m.prevLeftGameViewModel = models.filter{ (model) in model.index == mElimination.leftGameIndex }.first
+                    m.prevRightGameViewModel = models.filter{ (model) in model.index == mElimination.rightGameIndex }.first
+                }
+            }
+            
             games.bindTo(tableView.rx_itemsWithCellIdentifier("GameCell", cellType: GameCell.self)) {row, element, cell in
-                cell.viewModel = GameViewModel(game: element)
+                cell.viewModel = models.filter{ (model) in model.index == element.index }.first
                 }
                 .addDisposableTo(bag)
         }

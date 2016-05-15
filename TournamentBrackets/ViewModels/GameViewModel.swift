@@ -10,12 +10,64 @@ import Foundation
 import RxSwift
 import RealmSwift
 
-struct GameViewModel {
+class GameViewModel {
     
     var realm = try! Realm()
     var winner : Variable<Team?> = Variable(nil)
     var leftTeam : Variable<Team?> = Variable(nil)
     var rightTeam : Variable<Team?> = Variable(nil)
+    lazy var disposeBag: DisposeBag? = { return DisposeBag() }()
+    
+    var prevLeftGameViewModel : GameViewModel? = nil {
+        didSet {
+            if let prevModel = prevLeftGameViewModel {
+                prevModel.winner
+                    .asObservable()
+                    .subscribeNext { [unowned self] newWinner in
+                        guard let elimination = self.game.elimination, prevLeftGame = elimination.prevLeftGame else { return }
+                        let newLoser : Team? = (newWinner == nil) ? nil : prevLeftGame.opposite(newWinner)
+                        guard  (!elimination.isLoserBracket && newWinner != self.game.leftTeam)
+                            || (elimination.isLoserBracket && newLoser != self.game.leftTeam)  else { return }
+                        let team : Team? = ( elimination.isLoserBracket ) ? newLoser : newWinner
+                        self.winner.value = nil
+                        self.leftTeam.value = team
+                        try! self.realm.write {
+                            self.game.winner = nil
+                            self.game.leftTeam = team
+                        }
+                    }
+                    .addDisposableTo(disposeBag!)
+            }
+        }
+    }
+    
+    var prevRightGameViewModel : GameViewModel? = nil {
+        didSet {
+            if let prevModel = prevRightGameViewModel {
+                prevModel.winner
+                    .asObservable()
+                    .subscribeNext { [unowned self] newWinner in
+                        guard let elimination = self.game.elimination, prevRightGame = elimination.prevRightGame else { return }
+                        let newLoser : Team? = (newWinner == nil) ? nil : prevRightGame.opposite(newWinner)
+                        
+//                        if prevRightGame.isAnyBye {
+//                            newLoser = newWinner
+//                        }
+                        
+                        guard  (!elimination.isLoserBracket && newWinner != self.game.rightTeam)
+                            || (elimination.isLoserBracket && newLoser != self.game.rightTeam)  else { return }
+                        let team : Team? = ( elimination.isLoserBracket ) ? newLoser : newWinner
+                        self.winner.value = nil
+                        self.rightTeam.value = team
+                        try! self.realm.write {
+                            self.game.winner = nil
+                            self.game.rightTeam = team
+                        }
+                    }
+                    .addDisposableTo(disposeBag!)
+            }
+        }
+    }
     
     var leftPrompt : String {
         get {
@@ -40,6 +92,30 @@ struct GameViewModel {
         self.winner.value = game.winner
         self.leftTeam.value = game.leftTeam
         self.rightTeam.value = game.rightTeam
+        
+        self.leftTeam
+            .asObservable()
+            .subscribeNext { [unowned self] someTeam in
+                if let team = someTeam where self.game.rightPrompt == "BYE" {
+                    self.winner.value = team
+                    try! self.realm.write {
+                        self.game.winner = team
+                    }
+                }
+            }
+            .addDisposableTo(self.disposeBag!)
+        
+        self.rightTeam
+            .asObservable()
+            .subscribeNext { [unowned self] someTeam in
+                if let team = someTeam where self.game.leftPrompt == "BYE" {
+                    self.winner.value = team
+                    try! self.realm.write {
+                        self.game.winner = team
+                    }
+                }
+            }
+            .addDisposableTo(self.disposeBag!)
     }
     
     func setLeftTeamAsWinner() {
@@ -63,6 +139,22 @@ struct GameViewModel {
 
 
 extension Game {
+    
+    func opposite(team: Team?) -> Team? {
+        if team == self.leftTeam {
+            return self.rightTeam
+        } else if team == self.rightTeam {
+            return self.leftTeam
+        } else {
+            return nil
+        }
+    }
+    
+    var isAnyBye : Bool {
+        get {
+            return leftPrompt == "BYE" || rightPrompt == "BYE"
+        }
+    }
     
     var isBothBye : Bool {
         get {
