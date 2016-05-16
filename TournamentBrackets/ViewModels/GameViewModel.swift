@@ -24,11 +24,23 @@ class GameViewModel {
                 prevModel.winner
                     .asObservable()
                     .subscribeNext { [unowned self] newWinner in
+                        
+                        // We are only concerned about elimination schedule types. Speifically double elimination and future games with
+                        // right previous game.
                         guard let elimination = self.game.elimination, prevLeftGame = elimination.prevLeftGame else { return }
-                        let newLoser : Team? = (newWinner == nil) ? nil : prevLeftGame.opposite(newWinner)
+                        var newLoser : Team? = (newWinner == nil) ? nil : prevLeftGame.opposite(newWinner)
+                        
+                        // Which team are we observing, the winner or the loser? This depends on the game index
+                        if prevModel.index >= elimination.firstLoserIndex {
+                            newLoser = newWinner
+                        }
+                        
+                        // Will the placeholder value change?
                         guard  (!elimination.isLoserBracket && newWinner != self.game.leftTeam)
                             || (elimination.isLoserBracket && newLoser != self.game.leftTeam)  else { return }
                         let team : Team? = ( elimination.isLoserBracket ) ? newLoser : newWinner
+                        
+                        // Change it!
                         self.winner.value = nil
                         self.leftTeam.value = team
                         try! self.realm.write {
@@ -47,12 +59,13 @@ class GameViewModel {
                 prevModel.winner
                     .asObservable()
                     .subscribeNext { [unowned self] newWinner in
-                        guard let elimination = self.game.elimination, prevRightGame = elimination.prevRightGame else { return }
-                        let newLoser : Team? = (newWinner == nil) ? nil : prevRightGame.opposite(newWinner)
                         
-//                        if prevRightGame.isAnyBye {
-//                            newLoser = newWinner
-//                        }
+                        guard let elimination = self.game.elimination, prevRightGame = elimination.prevRightGame else { return }
+                        var newLoser : Team? = (newWinner == nil) ? nil : prevRightGame.opposite(newWinner)
+                        
+                        if prevModel.index >= elimination.firstLoserIndex {
+                            newLoser = newWinner
+                        }
                         
                         guard  (!elimination.isLoserBracket && newWinner != self.game.rightTeam)
                             || (elimination.isLoserBracket && newLoser != self.game.rightTeam)  else { return }
@@ -147,12 +160,6 @@ extension Game {
             return self.leftTeam
         } else {
             return nil
-        }
-    }
-    
-    var isAnyBye : Bool {
-        get {
-            return leftPrompt == "BYE" || rightPrompt == "BYE"
         }
     }
     

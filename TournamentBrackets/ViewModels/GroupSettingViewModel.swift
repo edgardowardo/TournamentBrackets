@@ -150,6 +150,7 @@ struct GroupSettingViewModel {
             valuedgames.sortInPlace{ (g1, g2) -> Bool in return g1.index < g2.index }
             let games : [Game] = valuedgames.map{ (game) in
                 let e = Elimination(isLoserBracket: game.isLoserBracket, leftGameIndex: game.leftGameIndex, rightGameIndex: game.rightGameIndex)
+                e.firstLoserIndex = game.firstLoserIndex
                 return Game(round: game.round, index: game.index, winner: getTeam(game.winner), leftTeam: getTeam(game.left), rightTeam: getTeam(game.right), isBye: game.isBye, doubles: nil, elimination: e)
             }
             setPreviousGames(games)
