@@ -20,8 +20,6 @@
 		7766D84B1CD2435F00DA3FA1 /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7766D84A1CD2435F00DA3FA1 /* Tournament.swift */; };
 		7766D8521CD3A44400DA3FA1 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7766D8511CD3A44400DA3FA1 /* Group.swift */; };
 		7766D8541CD41AEF00DA3FA1 /* TournamentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7766D8531CD41AEF00DA3FA1 /* TournamentListViewController.swift */; };
-		7766D8561CD41B1E00DA3FA1 /* TournamentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7766D8551CD41B1E00DA3FA1 /* TournamentListViewModel.swift */; };
-		7766D8591CD42BBE00DA3FA1 /* TournamentListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7766D8581CD42BBE00DA3FA1 /* TournamentListAPI.swift */; };
 		7770C60E1CC0C290008C5A6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7770C60D1CC0C290008C5A6B /* AppDelegate.swift */; };
 		7770C6101CC0C290008C5A6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7770C60F1CC0C290008C5A6B /* ViewController.swift */; };
 		7770C6131CC0C290008C5A6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7770C6111CC0C290008C5A6B /* Main.storyboard */; };
@@ -82,8 +80,6 @@
 		7766D84A1CD2435F00DA3FA1 /* Tournament.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
 		7766D8511CD3A44400DA3FA1 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		7766D8531CD41AEF00DA3FA1 /* TournamentListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentListViewController.swift; sourceTree = "<group>"; };
-		7766D8551CD41B1E00DA3FA1 /* TournamentListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentListViewModel.swift; sourceTree = "<group>"; };
-		7766D8581CD42BBE00DA3FA1 /* TournamentListAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentListAPI.swift; sourceTree = "<group>"; };
 		7770C60A1CC0C290008C5A6B /* TournamentBrackets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TournamentBrackets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7770C60D1CC0C290008C5A6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7770C60F1CC0C290008C5A6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -168,7 +164,6 @@
 		7766D84D1CD275ED00DA3FA1 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				7766D8551CD41B1E00DA3FA1 /* TournamentListViewModel.swift */,
 				779FFCA51CDA1F6700D48800 /* GroupSettingViewModel.swift */,
 				7780D62B1CE62A9B0014F393 /* GameViewModel.swift */,
 			);
@@ -187,14 +182,6 @@
 				7780D6291CE5B6890014F393 /* GameCell.swift */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		7766D8571CD42B8200DA3FA1 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				7766D8581CD42BBE00DA3FA1 /* TournamentListAPI.swift */,
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 		7770C6011CC0C28F008C5A6B = {
@@ -225,7 +212,6 @@
 				7766D83E1CD102BA00DA3FA1 /* Extensions */,
 				7793022C1CCFAF7400695321 /* Helpers */,
 				774A48D51CC91698006DCD4F /* Services */,
-				7766D8571CD42B8200DA3FA1 /* Data */,
 				77D3D65C1CC3BF30001EF359 /* Models */,
 				7766D84D1CD275ED00DA3FA1 /* ViewModels */,
 				7766D8501CD39E2000DA3FA1 /* ViewControllers */,
@@ -579,7 +565,6 @@
 				774A48D71CC916AC006DCD4F /* Wireframe.swift in Sources */,
 				7780D62C1CE62A9B0014F393 /* GameViewModel.swift in Sources */,
 				779FFCA41CD9480900D48800 /* ScheduleType.swift in Sources */,
-				7766D8561CD41B1E00DA3FA1 /* TournamentListViewModel.swift in Sources */,
 				77AE56E71CE1DF32006CBF55 /* GameListViewController.swift in Sources */,
 				7766D8541CD41AEF00DA3FA1 /* TournamentListViewController.swift in Sources */,
 				7780D6251CE48DF10014F393 /* GameTree.swift in Sources */,
@@ -592,7 +577,6 @@
 				7770C6101CC0C290008C5A6B /* ViewController.swift in Sources */,
 				779FFCA91CDA4AEB00D48800 /* UISegmentedControl+Multiline.swift in Sources */,
 				774A48D41CC90992006DCD4F /* RootViewController.swift in Sources */,
-				7766D8591CD42BBE00DA3FA1 /* TournamentListAPI.swift in Sources */,
 				7770C60E1CC0C290008C5A6B /* AppDelegate.swift in Sources */,
 				7793022E1CCFAFD000695321 /* Power.swift in Sources */,
 				77D3D65E1CC3BFA6001EF359 /* Game.swift in Sources */,
