@@ -49,8 +49,9 @@ class GameListViewController: ViewController {
         tableView.registerNib(UINib(nibName: "GameCell", bundle: nil), forCellReuseIdentifier: "GameCell")
         
         if let g = group {
+            
             let games = g.games.sorted("index", ascending: true).asObservableArray()
-            let models = g.games.sorted("index", ascending: true).map{ (game) in GameViewModel(game: game) }
+            let models = g.games.sorted("index", ascending: true).map{ (game) in GameViewModel(game: game, gamesCount: g.games.count) }
             
             for m in models {
                 if let mElimination = m.game.elimination {

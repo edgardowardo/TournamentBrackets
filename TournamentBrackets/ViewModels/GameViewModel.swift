@@ -17,6 +17,8 @@ class GameViewModel {
     var leftTeam : Variable<Team?> = Variable(nil)
     var rightTeam : Variable<Team?> = Variable(nil)
     lazy var disposeBag: DisposeBag? = { return DisposeBag() }()
+    var game : Game!
+    var gamesCount = 0
     
     var prevLeftGameViewModel : GameViewModel? = nil {
         didSet {
@@ -82,17 +84,33 @@ class GameViewModel {
         }
     }
     
+    var isFinalElimination: Bool {
+        get {
+            if let _ = game.elimination {
+                return game.index == self.gamesCount
+            } else {
+                return false
+            }
+        }
+    }
+    
+    var isLoserBracket : Bool {
+        get {
+            return game.elimination?.isLoserBracket ?? false
+        }
+    }
+    
     var leftPrompt : String {
         get {
             return game.leftPrompt
         }
     }
+    
     var rightPrompt : String {
         get {
             return game.rightPrompt
         }
     }
-    var game : Game!
     
     var index : Int {
         get {
@@ -100,8 +118,9 @@ class GameViewModel {
         }
     }
 
-    init(game : Game) {
+    init(game : Game, gamesCount : Int) {
         self.game = game
+        self.gamesCount = gamesCount
         self.winner.value = game.winner
         self.leftTeam.value = game.leftTeam
         self.rightTeam.value = game.rightTeam

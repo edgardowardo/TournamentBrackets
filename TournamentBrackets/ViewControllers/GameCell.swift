@@ -23,10 +23,10 @@ class GameCell : UITableViewCell {
         didSet {
             let disposeBag = DisposeBag()
             
+            self.backgroundColor = viewModel.isLoserBracket ? UIColor.flatAsbestosColor().colorWithAlphaComponent(0.3) : UIColor.clearColor()
             self.indexLabel.text = "\(viewModel.index)"
             self.leftTeamButton.setTitle(viewModel.leftPrompt, forState: .Normal)
             self.rightTeamButton.setTitle(viewModel.rightPrompt, forState: .Normal)
-            
             self.leftTeamButton.enabled = viewModel.leftPrompt != "BYE"
             self.rightTeamButton.enabled = viewModel.rightPrompt != "BYE"
             
@@ -47,18 +47,34 @@ class GameCell : UITableViewCell {
             self.viewModel.winner
                 .asObservable()
                 .subscribeNext { [unowned self] winner in
+                    
+                    let winningColor = self.viewModel.isFinalElimination ? UIColor.flatCarrotColor().colorWithAlphaComponent(4.0) : UIColor.flatEmeraldColor().colorWithAlphaComponent(0.75)
+                    let winningTextColor = UIColor.whiteColor()
+                    let losingColor = UIColor.flatCloudsColor()
+                    let losingTextColor = UIColor.init(colorLiteralRed: 0.0, green: 0.478431, blue: 1.0, alpha: 1.0)
+                    let disabledTextColor = UIColor.init(colorLiteralRed: 176/256, green: 177/256, blue: 179/256, alpha: 1.0)
+                    
                     if let winningTeam = winner {
                         if let left = self.viewModel.leftTeam.value where left.id == winningTeam.id {
-                            self.leftTeamButton.backgroundColor = UIColor.flatEmeraldColor().colorWithAlphaComponent(0.5)
-                            self.rightTeamButton.backgroundColor = UIColor.flatCloudsColor()
+                            self.leftTeamButton.backgroundColor = winningColor
+                            self.leftTeamButton.setTitleColor(winningTextColor, forState: .Normal)
+                            self.rightTeamButton.backgroundColor = losingColor
+                            self.rightTeamButton.setTitleColor(losingTextColor, forState: .Normal)
                         } else if let right = self.viewModel.rightTeam.value where right.id == winningTeam.id {
-                            self.leftTeamButton.backgroundColor = UIColor.flatCloudsColor()
-                            self.rightTeamButton.backgroundColor = UIColor.flatEmeraldColor().colorWithAlphaComponent(0.5)
+                            self.leftTeamButton.backgroundColor = losingColor
+                            self.leftTeamButton.setTitleColor(losingTextColor, forState: .Normal)
+                            self.rightTeamButton.backgroundColor = winningColor
+                            self.rightTeamButton.setTitleColor(winningTextColor, forState: .Normal)
                         }
                     } else {
-                        self.leftTeamButton.backgroundColor = UIColor.flatCloudsColor()
-                        self.rightTeamButton.backgroundColor = UIColor.flatCloudsColor()
+                        self.leftTeamButton.backgroundColor = losingColor
+                        self.leftTeamButton.setTitleColor(losingTextColor, forState: .Normal)
+                        self.rightTeamButton.backgroundColor = losingColor
+                        self.rightTeamButton.setTitleColor(losingTextColor, forState: .Normal)
                     }
+                    
+                    self.leftTeamButton.setTitleColor(disabledTextColor, forState: .Disabled)
+                    self.rightTeamButton.setTitleColor(disabledTextColor, forState: .Disabled)
                 }
                 .addDisposableTo(disposeBag)
             

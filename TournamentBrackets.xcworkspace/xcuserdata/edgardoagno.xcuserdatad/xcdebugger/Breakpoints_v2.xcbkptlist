@@ -118,11 +118,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "TournamentBrackets/ViewModels/GameViewModel.swift"
-            timestampString = "485069364.639618"
+            timestampString = "485096218.453759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "GameViewModel"
             landmarkType = "3">
             <Actions>
@@ -142,11 +142,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "TournamentBrackets/ViewModels/GameViewModel.swift"
-            timestampString = "485069364.639618"
+            timestampString = "485096218.453759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "GameViewModel"
             landmarkType = "3">
             <Actions>
@@ -166,11 +166,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TournamentBrackets/ViewModels/GameViewModel.swift"
-            timestampString = "485069364.639618"
+            timestampString = "485096218.453759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "GameViewModel"
             landmarkType = "3">
          </BreakpointContent>
@@ -183,11 +183,11 @@
             condition = "self.game.index == 10"
             continueAfterRunningActions = "No"
             filePath = "TournamentBrackets/ViewModels/GameViewModel.swift"
-            timestampString = "485069364.639618"
+            timestampString = "485096218.453759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "GameViewModel"
             landmarkType = "3">
             <Actions>
@@ -213,11 +213,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "TournamentBrackets/ViewModels/GameViewModel.swift"
-            timestampString = "485069364.639618"
+            timestampString = "485096218.453759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "GameViewModel"
             landmarkType = "3">
             <Actions>
@@ -270,11 +270,11 @@
             condition = "self.game.index == 10"
             continueAfterRunningActions = "No"
             filePath = "TournamentBrackets/ViewModels/GameViewModel.swift"
-            timestampString = "485069364.639618"
+            timestampString = "485096218.453759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "GameViewModel"
             landmarkType = "3">
             <Actions>
@@ -295,11 +295,11 @@
             condition = "self.game.index == 10"
             continueAfterRunningActions = "No"
             filePath = "TournamentBrackets/ViewModels/GameViewModel.swift"
-            timestampString = "485069364.639618"
+            timestampString = "485096218.453759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "GameViewModel"
             landmarkType = "3">
             <Actions>
