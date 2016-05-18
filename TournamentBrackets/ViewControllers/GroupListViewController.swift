@@ -119,9 +119,10 @@ class GroupListViewController: ViewController, UITextFieldDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let d = segue.destinationViewController as? GroupSettingViewController where segue.identifier == "addGroup" {
             d.tournament = self.tournament
-        } else if let d = segue.destinationViewController as? GameListViewController, cell = sender as? UITableViewCell, indexPath = tableView.indexPathForCell(cell), tournament = self.tournament where segue.identifier == "showGroup" {
+        } else if let d = segue.destinationViewController as? GroupDetailViewController, cell = sender as? UITableViewCell, indexPath = tableView.indexPathForCell(cell), tournament = self.tournament where segue.identifier == "showGroup" {
             
-            d.group = tournament.groups.sorted("time", ascending: false)[indexPath.row]
+            let group = tournament.groups.sorted("time", ascending: false)[indexPath.row]
+            d.viewModel = GroupDetailViewModel(group: group)
         }
     }
     
