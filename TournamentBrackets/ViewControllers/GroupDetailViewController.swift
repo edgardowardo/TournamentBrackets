@@ -12,28 +12,45 @@ import UIKit
 class GroupDetailViewController: ViewController {
 
     var pageViewController : UIPageViewController!
+    var viewControllers : [GameListViewController]!
     var viewModel : GroupDetailViewModel! {
         didSet {
             self.title = self.viewModel.title
         }
     }
+    var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("GamePagesViewController") as! UIPageViewController
         self.pageViewController.dataSource = self
+        self.viewControllers = self.viewModel.rounds.map{ (index) in self.viewControllerAtIndex(index - 1) }
         
-        let startVC = self.viewControllerAtIndex(0)
-        let viewControllers = [startVC]
+        // scroll to first unfinished or last one
+        let unfinished = self.viewControllers.filter{ (vc) in !vc.viewModel.isRoundFinished }.first
+        if let u = unfinished, index = self.viewControllers.indexOf(u) {
+            selectedIndex = index
+        } else {
+            selectedIndex = self.viewControllers.count - 1
+        }
         
-        self.pageViewController.setViewControllers(viewControllers, direction: .Forward, animated: true, completion: nil)
-        self.pageViewController.view.frame = CGRectMake(0, 70, self.view.frame.width, self.view.frame.height - 100)
+        // load all controllers!
+        for i in 0 ..< self.viewModel.rounds.count {
+            self.pageViewController.setViewControllers([viewControllers[i]], direction: .Forward, animated: true, completion: nil)
+            viewControllers[i].tableView.scrollsToTop = false
+        }
+        self.pageViewController.setViewControllers([viewControllers[selectedIndex]], direction: .Forward, animated: true, completion: nil)
+        viewControllers[selectedIndex].tableView.scrollsToTop = true
+        
+        // Adjust size
+        if let height = self.navigationController?.navigationBar.frame.size.height {
+            self.pageViewController.view.frame = CGRectMake(0, height * 1.5, self.view.frame.width, self.view.frame.height - height * 1.5)
+        }
         
         self.addChildViewController(self.pageViewController)
         self.view.addSubview(self.pageViewController.view)
         self.pageViewController.didMoveToParentViewController(self)
-        
     }
     
     func viewControllerAtIndex(index : Int) -> GameListViewController {
@@ -50,31 +67,49 @@ class GroupDetailViewController: ViewController {
         
         return vc
     }
-    
- 
-    
 }
 
 extension GroupDetailViewController : UIPageViewControllerDataSource {
+    
+    func resetScrollsToTopWithIndex(index : Int) {
+        if index-2 >= 0 {
+            self.viewControllers[index-2].tableView.scrollsToTop = false
+        }
+        if index-1 >= 0 {
+            self.viewControllers[index-1].tableView.scrollsToTop = false
+        }
+        self.viewControllers[index].tableView.scrollsToTop = true
+        
+        if index+1 < self.viewControllers.count {
+            self.viewControllers[index+1].tableView.scrollsToTop = false
+        }
+        if index+2 < self.viewControllers.count {
+            self.viewControllers[index+2].tableView.scrollsToTop = false
+        }
+    }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         
         let vc = viewController as! GameListViewController
         var index = vc.viewModel.pageIndex as Int
+
+        resetScrollsToTopWithIndex(index)
         
         if (index == 0 || index == NSNotFound) {
             return nil
         }
-        
+
         index = index - 1
-        
-        return self.viewControllerAtIndex(index)
+
+        return self.viewControllers[index]
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         
         let vc = viewController as! GameListViewController
         var index = vc.viewModel.pageIndex as Int
+        
+        resetScrollsToTopWithIndex(index)
         
         if (index == NSNotFound) {
             return nil
@@ -85,9 +120,8 @@ extension GroupDetailViewController : UIPageViewControllerDataSource {
         if index == self.viewModel.rounds.count {
             return nil
         }
-        
-        return self.viewControllerAtIndex(index)
-        
+
+        return self.viewControllers[index]        
     }
     
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
@@ -95,6 +129,6 @@ extension GroupDetailViewController : UIPageViewControllerDataSource {
     }
     
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return 0
+        return self.selectedIndex
     }
 }

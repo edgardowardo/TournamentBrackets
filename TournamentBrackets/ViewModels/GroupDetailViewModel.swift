@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RealmSwift
 
-class GroupDetailViewModel {
+struct GroupDetailViewModel {
     
     var realm = try! Realm()
     var rounds : [Int]!

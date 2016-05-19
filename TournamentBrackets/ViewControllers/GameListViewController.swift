@@ -15,8 +15,9 @@ import RxCocoa
 class GameListViewController: ViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    var viewModel : GameListViewModel!
+    @IBOutlet weak var labelRound: UILabel!
     let bag = DisposeBag()
+    var viewModel : GameListViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +27,14 @@ class GameListViewController: ViewController {
     
     func configureTableDataSource() {
         
+        labelRound.text = "ROUND \(viewModel.round)"
         tableView.allowsSelection = false
         tableView.separatorStyle = .None
         tableView.delegate = self
         tableView.registerNib(UINib(nibName: "GameCell", bundle: nil), forCellReuseIdentifier: "GameCell")
         
-        viewModel.games
+        viewModel.gamesInRound
+            .asObservableArray()
             .bindTo(tableView.rx_itemsWithCellIdentifier("GameCell", cellType: GameCell.self)) {row, element, cell in
                 cell.viewModel = self.viewModel.gameViewModels.filter{ (model) in model.index == element.index }.first
             }

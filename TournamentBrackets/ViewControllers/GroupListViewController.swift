@@ -91,7 +91,8 @@ class GroupListViewController: ViewController, UITextFieldDelegate {
             groups.bindTo(tableView.rx_itemsWithCellIdentifier("GroupCell", cellType: UITableViewCell.self))  {row, element, cell in
                 cell.textLabel!.text = element.name
                 let handicapText : String = (element.isHandicap) ? ", handicapped" : ""
-                cell.detailTextLabel?.text = "\(element.schedule.description) \(element.teamCount) teams, \(element.games.count) games\(handicapText)"
+                let rounds = Array(element.games.map{ $0.round }).unique.count
+                cell.detailTextLabel?.text = "\(element.schedule.description) \(element.teamCount) teams, \(element.games.count) games, \(rounds) rounds\(handicapText)"
             }.addDisposableTo(bag)
             
             //
