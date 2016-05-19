@@ -106,7 +106,6 @@
         <!--Losers-->
         <scene sceneID="oQi-5w-iTG">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f8G-0e-jD7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="hee-i8-M5w" customClass="GroupDetailViewController" customModule="TournamentBrackets" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Q15-cU-tOP"/>
@@ -115,10 +114,25 @@
                     <view key="view" contentMode="scaleToFill" id="3pU-q5-veD">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1f8-kj-Pdi">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <connections>
+                                    <segue destination="MST-a8-Fcv" kind="embed" identifier="segueEmbedPageVC" id="kt6-PE-qJH"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Kg6-oU-hi6" firstAttribute="top" secondItem="1f8-kj-Pdi" secondAttribute="bottom" id="Dqa-Gd-UUI"/>
+                            <constraint firstItem="1f8-kj-Pdi" firstAttribute="leading" secondItem="3pU-q5-veD" secondAttribute="leadingMargin" constant="-20" id="ZFY-JY-wNw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1f8-kj-Pdi" secondAttribute="trailing" constant="-20" id="ex6-1m-QyR"/>
+                            <constraint firstItem="1f8-kj-Pdi" firstAttribute="top" secondItem="Q15-cU-tOP" secondAttribute="bottom" id="ode-ep-TUy"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Losers" image="icon-double-e" id="75s-vC-qgi"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f8G-0e-jD7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3642" y="963"/>
         </scene>
@@ -163,7 +177,6 @@
         <!--Item 1-->
         <scene sceneID="JK6-q5-07m">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iXQ-u8-jx4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="v0B-pM-iZM" customClass="GroupDetailViewController" customModule="TournamentBrackets" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4lZ-8r-M8W"/>
@@ -172,12 +185,27 @@
                     <view key="view" contentMode="scaleToFill" id="vVs-Is-NJi">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zaY-xd-fwd">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <connections>
+                                    <segue destination="MST-a8-Fcv" kind="embed" identifier="segueEmbedPageVC" id="0rl-Ic-2aR"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zaY-xd-fwd" firstAttribute="leading" secondItem="vVs-Is-NJi" secondAttribute="leadingMargin" constant="-20" id="JiM-SG-bV2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zaY-xd-fwd" secondAttribute="trailing" constant="-20" id="eN9-6h-QQr"/>
+                            <constraint firstItem="SOs-Zo-Agt" firstAttribute="top" secondItem="zaY-xd-fwd" secondAttribute="bottom" id="rYq-gA-GE3"/>
+                            <constraint firstItem="zaY-xd-fwd" firstAttribute="top" secondItem="4lZ-8r-M8W" secondAttribute="bottom" id="yEi-ls-BEp"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="rqa-Rq-4U4"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iXQ-u8-jx4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3000" y="963"/>
+            <point key="canvasLocation" x="2982" y="963"/>
         </scene>
         <!--Group Tab Bar Controller-->
         <scene sceneID="517-8I-8cK">
@@ -601,15 +629,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g7N-a5-gKJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5171" y="-537"/>
+            <point key="canvasLocation" x="3973" y="1741"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="ZuS-cj-ONo">
             <objects>
-                <pageViewController storyboardIdentifier="GamePagesViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="MST-a8-Fcv" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="MST-a8-Fcv" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kus-9H-snQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4450" y="-537"/>
+            <point key="canvasLocation" x="3294" y="1684.5"/>
         </scene>
     </scenes>
     <resources>
@@ -622,4 +650,7 @@
         <image name="icon-table" width="25" height="25"/>
         <image name="icon-wheelchair" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="0rl-Ic-2aR"/>
+    </inferredMetricsTieBreakers>
 </document>

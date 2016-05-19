@@ -32,6 +32,8 @@ class GameListViewController: ViewController {
         tableView.separatorStyle = .None
         tableView.delegate = self
         tableView.registerNib(UINib(nibName: "GameCell", bundle: nil), forCellReuseIdentifier: "GameCell")
+        let color : UIColor = viewModel.isLoserBracket ? UIColor().loserBackgroundColor : UIColor.clearColor()
+        tableView.backgroundColor = color
         
         viewModel.gamesInRound
             .asObservableArray()

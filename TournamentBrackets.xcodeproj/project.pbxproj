@@ -34,6 +34,7 @@
 		7780D62A1CE5B6890014F393 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7780D6291CE5B6890014F393 /* GameCell.swift */; };
 		7780D62C1CE62A9B0014F393 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7780D62B1CE62A9B0014F393 /* GameViewModel.swift */; };
 		7780D62E1CE701D00014F393 /* Game+Prompts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7780D62D1CE701D00014F393 /* Game+Prompts.swift */; };
+		77839A321CEE81800077FCBD /* UIColor+LoserBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77839A311CEE81800077FCBD /* UIColor+LoserBackgroundColor.swift */; };
 		7793022E1CCFAFD000695321 /* Power.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7793022D1CCFAFD000695321 /* Power.swift */; };
 		779FFCA01CD6A8DD00D48800 /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779FFC9F1CD6A8DC00D48800 /* GroupListViewController.swift */; };
 		779FFCA21CD7D3C600D48800 /* GroupSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779FFCA11CD7D3C600D48800 /* GroupSettingViewController.swift */; };
@@ -105,6 +106,7 @@
 		7780D6291CE5B6890014F393 /* GameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
 		7780D62B1CE62A9B0014F393 /* GameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		7780D62D1CE701D00014F393 /* Game+Prompts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Game+Prompts.swift"; sourceTree = "<group>"; };
+		77839A311CEE81800077FCBD /* UIColor+LoserBackgroundColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+LoserBackgroundColor.swift"; sourceTree = "<group>"; };
 		7793022D1CCFAFD000695321 /* Power.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Power.swift; sourceTree = "<group>"; };
 		779FFC9F1CD6A8DC00D48800 /* GroupListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupListViewController.swift; sourceTree = "<group>"; };
 		779FFCA11CD7D3C600D48800 /* GroupSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupSettingViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				7766D83F1CD102C800DA3FA1 /* Array+Unique.swift */,
 				779FFCA81CDA4AEB00D48800 /* UISegmentedControl+Multiline.swift */,
 				77D2072E1CE119F5009139DB /* UITextField+DoneToolbar.swift */,
+				77839A311CEE81800077FCBD /* UIColor+LoserBackgroundColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -598,6 +601,7 @@
 				779FFCA91CDA4AEB00D48800 /* UISegmentedControl+Multiline.swift in Sources */,
 				774A48D41CC90992006DCD4F /* RootViewController.swift in Sources */,
 				7770C60E1CC0C290008C5A6B /* AppDelegate.swift in Sources */,
+				77839A321CEE81800077FCBD /* UIColor+LoserBackgroundColor.swift in Sources */,
 				7793022E1CCFAFD000695321 /* Power.swift in Sources */,
 				77D3D65E1CC3BFA6001EF359 /* Game.swift in Sources */,
 			);

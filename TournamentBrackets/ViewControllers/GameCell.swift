@@ -23,7 +23,7 @@ class GameCell : UITableViewCell {
         didSet {
             let disposeBag = DisposeBag()
             
-            self.backgroundColor = viewModel.isLoserBracket ? UIColor.flatAsbestosColor().colorWithAlphaComponent(0.3) : UIColor.clearColor()
+            self.backgroundColor = UIColor.clearColor()
             self.indexLabel.text = "\(viewModel.index)"
             self.leftTeamButton.setTitle(viewModel.leftPrompt, forState: .Normal)
             self.rightTeamButton.setTitle(viewModel.rightPrompt, forState: .Normal)

@@ -7,17 +7,16 @@
 //
 
 import Foundation
-import RxSwift
 import RealmSwift
 
 struct GameListViewModel {
     
     private var group : Group!
-    var realm = try! Realm()
-    var gamesInRound : Results<Game>!
-    let gameViewModels : [GameViewModel]!
-    var pageIndex : Int!
     var round : Int!
+    let gameViewModels : [GameViewModel]!
+    var isLoserBracket : Bool = false
+    var gamesInRound : Results<Game>!
+    var pageIndex : Int!
     var isRoundFinished : Bool {
         get {
             return gamesInRound.map{ (g) in g.winner != nil }.reduce(true, combine: { $0 && $1})
@@ -29,6 +28,7 @@ struct GameListViewModel {
         self.group = g
         self.round = round
         self.gameViewModels = gameViewModels
+        self.isLoserBracket = isLoserBracket
         
         self.gamesInRound = g.games
             .filter("round == %@", round)

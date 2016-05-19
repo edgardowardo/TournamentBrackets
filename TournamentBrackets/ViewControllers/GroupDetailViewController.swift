@@ -24,7 +24,8 @@ class GroupDetailViewController: ViewController {
             item.image = UIImage(named: viewModel.mainIconName)
         }
         
-        self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("GamePagesViewController") as! UIPageViewController
+        let color : UIColor = viewModel.isLoserBracket ? UIColor().loserBackgroundColor : UIColor.clearColor()
+        self.pageViewController.view.backgroundColor = color
         self.pageViewController.dataSource = self
         self.viewControllers = self.viewModel.rounds.map{ (index) in self.viewControllerAtIndex(index - viewModel.indexOffset) }
         
@@ -36,22 +37,13 @@ class GroupDetailViewController: ViewController {
             selectedIndex = self.viewControllers.count - 1
         }
         
-        // load all controllers!
+        // load all controllers! and only one scrolling to top!
         for i in 0 ..< self.viewModel.rounds.count {
             self.pageViewController.setViewControllers([viewControllers[i]], direction: .Forward, animated: true, completion: nil)
             viewControllers[i].tableView.scrollsToTop = false
         }
         self.pageViewController.setViewControllers([viewControllers[selectedIndex]], direction: .Forward, animated: true, completion: nil)
         viewControllers[selectedIndex].tableView.scrollsToTop = true
-        
-        // Adjust size
-        if let height = self.navigationController?.navigationBar.frame.size.height {
-            self.pageViewController.view.frame = CGRectMake(0, height * 1.5, self.view.frame.width, self.view.frame.height - height * 2.5)
-        }
-        
-        self.addChildViewController(self.pageViewController)
-        self.view.addSubview(self.pageViewController.view)
-        self.pageViewController.didMoveToParentViewController(self)
     }
     
     func viewControllerAtIndex(index : Int) -> GameListViewController {
@@ -67,6 +59,12 @@ class GroupDetailViewController: ViewController {
         vc.viewModel = gameListViewModel
         
         return vc
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let pageVC = segue.destinationViewController as? UIPageViewController where segue.identifier == "segueEmbedPageVC" {
+            self.pageViewController = pageVC
+        }
     }
 }
 
