@@ -24,12 +24,24 @@ enum ScheduleType : Int {
             }
         }
     }
+
+    var iconName : String {
+        get {
+            switch self {
+            case .RoundRobin : return "icon-roundrobin"
+            case .RoundDoubles : return "icon-robinpairs"
+            case .DoubleElimination : fallthrough
+            case .SingleElimination : return "icon-single-e"
+                
+            }
+        }
+    }    
     
     var description : String {
         get {
             switch self {
             case .RoundRobin : return "Round Robin"
-            case .RoundDoubles : return "Round Doubles"
+            case .RoundDoubles : return "Round Pairs"
             case .SingleElimination : return "Single Elimination"
             case .DoubleElimination : return "Double Elimination"
             }

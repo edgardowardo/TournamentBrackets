@@ -45,6 +45,8 @@
 		77AE56E71CE1DF32006CBF55 /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AE56E61CE1DF32006CBF55 /* GameListViewController.swift */; };
 		77D2072F1CE119F5009139DB /* UITextField+DoneToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D2072E1CE119F5009139DB /* UITextField+DoneToolbar.swift */; };
 		77D3D65E1CC3BFA6001EF359 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D3D65D1CC3BFA6001EF359 /* Game.swift */; };
+		77E035C01CEE0B2200F6B170 /* GroupTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E035BF1CEE0B2200F6B170 /* GroupTabBarController.swift */; };
+		77E035C21CEE0DD600F6B170 /* GroupTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E035C11CEE0DD600F6B170 /* GroupTabViewModel.swift */; };
 		A64ED72E027EAD3DAFD8A26E /* Pods_TournamentBrackets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F128AE826C2D1F7DD48C40 /* Pods_TournamentBrackets.framework */; };
 		B40764EB7C2A8DB84402C15A /* Pods_TournamentBracketsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D34A9EFFAFBDC769CDD1F3 /* Pods_TournamentBracketsTests.framework */; };
 /* End PBXBuildFile section */
@@ -114,6 +116,8 @@
 		77AE56E61CE1DF32006CBF55 /* GameListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
 		77D2072E1CE119F5009139DB /* UITextField+DoneToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+DoneToolbar.swift"; sourceTree = "<group>"; };
 		77D3D65D1CC3BFA6001EF359 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		77E035BF1CEE0B2200F6B170 /* GroupTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTabBarController.swift; sourceTree = "<group>"; };
+		77E035C11CEE0DD600F6B170 /* GroupTabViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTabViewModel.swift; sourceTree = "<group>"; };
 		80D34A9EFFAFBDC769CDD1F3 /* Pods_TournamentBracketsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TournamentBracketsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF922B5D4B34B3FB9ABB81BC /* Pods-TournamentBracketsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TournamentBracketsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TournamentBracketsTests/Pods-TournamentBracketsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D7AE8E80DB60ED1D38CF64F5 /* Pods_TournamentBracketsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TournamentBracketsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				779FFCA51CDA1F6700D48800 /* GroupSettingViewModel.swift */,
+				77E035C11CEE0DD600F6B170 /* GroupTabViewModel.swift */,
 				77225BAB1CEB7F53006D0C2B /* GroupDetailViewModel.swift */,
 				77225BAD1CEB8706006D0C2B /* GameListViewModel.swift */,
 				7780D62B1CE62A9B0014F393 /* GameViewModel.swift */,
@@ -182,9 +187,10 @@
 			isa = PBXGroup;
 			children = (
 				7766D8531CD41AEF00DA3FA1 /* TournamentListViewController.swift */,
-				779FFC9F1CD6A8DC00D48800 /* GroupListViewController.swift */,
 				779FFCA11CD7D3C600D48800 /* GroupSettingViewController.swift */,
 				779FFCAE1CDAC48E00D48800 /* TeamCell.swift */,
+				779FFC9F1CD6A8DC00D48800 /* GroupListViewController.swift */,
+				77E035BF1CEE0B2200F6B170 /* GroupTabBarController.swift */,
 				77225BA91CEB7912006D0C2B /* GroupDetailViewController.swift */,
 				77AE56E61CE1DF32006CBF55 /* GameListViewController.swift */,
 				7780D6271CE5B10A0014F393 /* GameCell.xib */,
@@ -572,10 +578,12 @@
 				77D2072F1CE119F5009139DB /* UITextField+DoneToolbar.swift in Sources */,
 				779FFCAD1CDAB08100D48800 /* Team.swift in Sources */,
 				774A48D71CC916AC006DCD4F /* Wireframe.swift in Sources */,
+				77E035C21CEE0DD600F6B170 /* GroupTabViewModel.swift in Sources */,
 				7780D62C1CE62A9B0014F393 /* GameViewModel.swift in Sources */,
 				779FFCA41CD9480900D48800 /* ScheduleType.swift in Sources */,
 				77AE56E71CE1DF32006CBF55 /* GameListViewController.swift in Sources */,
 				77225BAC1CEB7F53006D0C2B /* GroupDetailViewModel.swift in Sources */,
+				77E035C01CEE0B2200F6B170 /* GroupTabBarController.swift in Sources */,
 				77225BAA1CEB7912006D0C2B /* GroupDetailViewController.swift in Sources */,
 				7766D8541CD41AEF00DA3FA1 /* TournamentListViewController.swift in Sources */,
 				7780D6251CE48DF10014F393 /* GameTree.swift in Sources */,

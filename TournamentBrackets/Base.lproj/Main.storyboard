@@ -58,14 +58,14 @@
                                                     <rect key="frame" x="15" y="5" width="32" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IkB-vL-irF">
                                                     <rect key="frame" x="15" y="25" width="41" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -103,6 +103,102 @@
             </objects>
             <point key="canvasLocation" x="1981" y="-212"/>
         </scene>
+        <!--Losers-->
+        <scene sceneID="oQi-5w-iTG">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f8G-0e-jD7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="hee-i8-M5w" customClass="GroupDetailViewController" customModule="TournamentBrackets" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Q15-cU-tOP"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kg6-oU-hi6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3pU-q5-veD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Losers" image="icon-double-e" id="75s-vC-qgi"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="3642" y="963"/>
+        </scene>
+        <!--Table-->
+        <scene sceneID="geh-Nv-GS7">
+            <objects>
+                <viewController id="yRd-e7-Hoo" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rDr-m6-4cd"/>
+                        <viewControllerLayoutGuide type="bottom" id="RZJ-xN-wiU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zZC-Yh-4vX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Table" image="icon-table" id="fJN-62-BS9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Kc-0v-gt3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4282" y="963"/>
+        </scene>
+        <!--Charts-->
+        <scene sceneID="7QU-ro-PBY">
+            <objects>
+                <viewController id="GN7-9I-WTP" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Bd3-Yf-IXk"/>
+                        <viewControllerLayoutGuide type="bottom" id="esr-44-Alv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="chb-1h-gI2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Charts" image="icon-pie-chart" id="9vc-uY-dj4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p6a-y3-Ew9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4918" y="966"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="JK6-q5-07m">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iXQ-u8-jx4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="v0B-pM-iZM" customClass="GroupDetailViewController" customModule="TournamentBrackets" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4lZ-8r-M8W"/>
+                        <viewControllerLayoutGuide type="bottom" id="SOs-Zo-Agt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vVs-Is-NJi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="rqa-Rq-4U4"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="3000" y="963"/>
+        </scene>
+        <!--Group Tab Bar Controller-->
+        <scene sceneID="517-8I-8cK">
+            <objects>
+                <tabBarController id="ln5-YY-hOM" customClass="GroupTabBarController" customModule="TournamentBrackets" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="u1e-LV-gRo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="v0B-pM-iZM" kind="relationship" relationship="viewControllers" id="i7C-at-bXq"/>
+                        <segue destination="hee-i8-M5w" kind="relationship" relationship="viewControllers" id="I2U-8O-gqi"/>
+                        <segue destination="yRd-e7-Hoo" kind="relationship" relationship="viewControllers" id="BcA-m6-9lx"/>
+                        <segue destination="GN7-9I-WTP" kind="relationship" relationship="viewControllers" id="EMC-e2-eHP"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pRU-53-WbT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3642" y="143"/>
+        </scene>
         <!--Groups-->
         <scene sceneID="Qze-8y-EaV">
             <objects>
@@ -139,14 +235,14 @@
                                                     <rect key="frame" x="15" y="5" width="32" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6GR-1q-NRM">
                                                     <rect key="frame" x="15" y="25" width="31" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -155,7 +251,7 @@
                                             <bool key="isElement" value="YES"/>
                                         </accessibility>
                                         <connections>
-                                            <segue destination="9zz-Qh-tBK" kind="show" identifier="showGroup" id="h7X-u2-Tbo"/>
+                                            <segue destination="ln5-YY-hOM" kind="show" identifier="showGroup" id="yPN-vv-D0K"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -456,24 +552,6 @@
             </objects>
             <point key="canvasLocation" x="3642" y="-537"/>
         </scene>
-        <!--Group Detail View Controller-->
-        <scene sceneID="XsZ-0n-4Eh">
-            <objects>
-                <viewController id="9zz-Qh-tBK" customClass="GroupDetailViewController" customModule="TournamentBrackets" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vgC-f4-2rP"/>
-                        <viewControllerLayoutGuide type="bottom" id="Amg-mx-9BB"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="d0u-ou-zIX">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ujC-Sf-z76" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3626" y="215"/>
-        </scene>
         <!--Game List View Controller-->
         <scene sceneID="ZaR-xG-ouT">
             <objects>
@@ -493,7 +571,7 @@
                                     <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ODa-D6-Bur">
@@ -523,7 +601,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g7N-a5-gKJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4347" y="969"/>
+            <point key="canvasLocation" x="5171" y="-537"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="ZuS-cj-ONo">
@@ -531,14 +609,17 @@
                 <pageViewController storyboardIdentifier="GamePagesViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="MST-a8-Fcv" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kus-9H-snQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3626" y="969"/>
+            <point key="canvasLocation" x="4450" y="-537"/>
         </scene>
     </scenes>
     <resources>
+        <image name="icon-double-e" width="25" height="25"/>
         <image name="icon-open-folder" width="25" height="25"/>
+        <image name="icon-pie-chart" width="25" height="25"/>
         <image name="icon-reset" width="25" height="25"/>
         <image name="icon-shuffle" width="25" height="25"/>
         <image name="icon-sort" width="25" height="25"/>
+        <image name="icon-table" width="25" height="25"/>
         <image name="icon-wheelchair" width="25" height="25"/>
     </resources>
 </document>

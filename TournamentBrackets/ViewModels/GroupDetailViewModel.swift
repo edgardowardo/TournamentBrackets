@@ -7,36 +7,41 @@
 //
 
 import Foundation
-import RxSwift
-import RealmSwift
 
 struct GroupDetailViewModel {
     
-    var realm = try! Realm()
     var rounds : [Int]!
     var group : Group!
-    var showLoserBracket : Variable<Bool> = Variable(false)
+    var isLoserBracket : Bool = false
     let gameViewModels : [GameViewModel]!
-    
-    init(group : Group) {
-        self.group = group
-        rounds = Array(group.games.map{ $0.round }).unique
-        rounds.sortInPlace({ $0 < $1 })
-        
-        gameViewModels = group.games
-            .sorted("index", ascending: true)
-            .map{ (game) in GameViewModel(game: game, gamesCount: group.games.count) }
-        for m in gameViewModels {
-            if let mElimination = m.game.elimination {
-                m.prevLeftGameViewModel = gameViewModels.filter{ (model) in model.index == mElimination.leftGameIndex }.first
-                m.prevRightGameViewModel = gameViewModels.filter{ (model) in model.index == mElimination.rightGameIndex }.first
-            }
+    var indexOffset : Int {
+        get {
+            return (isLoserBracket) ? 2 : 1            
         }
     }
     
-    var title : String {
+    var mainTitle : String {
         get {
-            return group.name
+            if group.schedule == .DoubleElimination {
+                return isLoserBracket ? "Losers" : "Winners"
+            }
+            return group.schedule.description
         }
+    }
+    
+    var mainIconName : String {
+        get {
+            return group.schedule.iconName
+        }
+    }
+    
+    init(group : Group, gameViewModels: [GameViewModel], isLoserBracket : Bool) {
+        self.group = group
+        self.isLoserBracket = isLoserBracket
+        self.gameViewModels = gameViewModels
+        rounds = Array(group.games
+            .filter("elimination == nil || elimination.isLoserBracket == %@", isLoserBracket)
+            .map{ $0.round }).unique
+        rounds.sortInPlace({ $0 < $1 })
     }
 }

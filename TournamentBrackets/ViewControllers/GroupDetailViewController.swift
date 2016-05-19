@@ -13,19 +13,20 @@ class GroupDetailViewController: ViewController {
 
     var pageViewController : UIPageViewController!
     var viewControllers : [GameListViewController]!
-    var viewModel : GroupDetailViewModel! {
-        didSet {
-            self.title = self.viewModel.title
-        }
-    }
+    var viewModel : GroupDetailViewModel!
     var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if let item = tabBarItem {
+            item.title = viewModel.mainTitle
+            item.image = UIImage(named: viewModel.mainIconName)
+        }
         
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("GamePagesViewController") as! UIPageViewController
         self.pageViewController.dataSource = self
-        self.viewControllers = self.viewModel.rounds.map{ (index) in self.viewControllerAtIndex(index - 1) }
+        self.viewControllers = self.viewModel.rounds.map{ (index) in self.viewControllerAtIndex(index - viewModel.indexOffset) }
         
         // scroll to first unfinished or last one
         let unfinished = self.viewControllers.filter{ (vc) in !vc.viewModel.isRoundFinished }.first
@@ -45,7 +46,7 @@ class GroupDetailViewController: ViewController {
         
         // Adjust size
         if let height = self.navigationController?.navigationBar.frame.size.height {
-            self.pageViewController.view.frame = CGRectMake(0, height * 1.5, self.view.frame.width, self.view.frame.height - height * 1.5)
+            self.pageViewController.view.frame = CGRectMake(0, height * 1.5, self.view.frame.width, self.view.frame.height - height * 2.5)
         }
         
         self.addChildViewController(self.pageViewController)
@@ -61,7 +62,7 @@ class GroupDetailViewController: ViewController {
         
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("GameListViewController") as! GameListViewController
         let round = viewModel.rounds[index]
-        var gameListViewModel = GameListViewModel(group: self.viewModel.group, gameViewModels: self.viewModel.gameViewModels, round: round, isLoserBracket: self.viewModel.showLoserBracket.value)
+        var gameListViewModel = GameListViewModel(group: self.viewModel.group, gameViewModels: self.viewModel.gameViewModels, round: round, isLoserBracket: self.viewModel.isLoserBracket)
         gameListViewModel.pageIndex = index
         vc.viewModel = gameListViewModel
         

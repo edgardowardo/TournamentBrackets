@@ -514,22 +514,6 @@
             timestampString = "485342343.711817"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "configureTableDataSource()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TournamentBrackets/ViewControllers/GameListViewController.swift"
-            timestampString = "485342343.711817"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"
             endingLineNumber = "39"
             landmarkName = "configureTableDataSource()"
@@ -543,11 +527,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "TournamentBrackets/ViewControllers/GroupDetailViewController.swift"
-            timestampString = "485340318.230174"
+            timestampString = "485385602.686625"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "pageViewController(_:viewControllerBeforeViewController:)"
             landmarkType = "5">
             <Actions>
@@ -567,11 +551,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "TournamentBrackets/ViewControllers/GroupDetailViewController.swift"
-            timestampString = "485340553.694466"
+            timestampString = "485385602.686625"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "pageViewController(_:viewControllerAfterViewController:)"
             landmarkType = "5">
             <Actions>
@@ -591,11 +575,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TournamentBrackets/ViewControllers/GroupDetailViewController.swift"
-            timestampString = "485340553.694466"
+            timestampString = "485385602.686625"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "presentationCountForPageViewController(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -607,11 +591,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "TournamentBrackets/ViewControllers/GroupDetailViewController.swift"
-            timestampString = "485340553.694466"
+            timestampString = "485385602.686625"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "presentationIndexForPageViewController(_:)"
             landmarkType = "5">
             <Actions>
@@ -631,11 +615,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TournamentBrackets/ViewControllers/GroupDetailViewController.swift"
-            timestampString = "485311443.812937"
+            timestampString = "485385602.686625"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -647,11 +631,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "TournamentBrackets/ViewControllers/GroupDetailViewController.swift"
-            timestampString = "485339974.380155"
+            timestampString = "485385602.686625"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "resetScrollsToTopWithIndex(_:)"
             landmarkType = "5">
             <Actions>
@@ -662,6 +646,100 @@
                   </ActionContent>
                </BreakpointActionProxy>
             </Actions>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TournamentBrackets/ViewControllers/GroupDetailViewController.swift"
+            timestampString = "485380035.399199"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TournamentBrackets/ViewControllers/GameListViewController.swift"
+            timestampString = "485380812.896889"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "configureTableDataSource()"
+            landmarkType = "5">
+            <Actions>
+               <BreakpointActionProxy
+                  ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
+                  <ActionContent
+                     consoleCommand = "po viewModel.round">
+                  </ActionContent>
+               </BreakpointActionProxy>
+               <BreakpointActionProxy
+                  ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
+                  <ActionContent
+                     consoleCommand = "po viewModel.pageIndex">
+                  </ActionContent>
+               </BreakpointActionProxy>
+            </Actions>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TournamentBrackets/ViewControllers/GroupDetailViewController.swift"
+            timestampString = "485385602.686625"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TournamentBrackets.GroupDetailViewController.viewDidLoad () -&gt; ()"
+                  moduleName = "TournamentBrackets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edgardoagno/Documents/TournamentBrackets/TournamentBrackets/ViewControllers/GroupDetailViewController.swift"
+                  timestampString = "485385122.407984"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "2126">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TournamentBrackets.GroupDetailViewController.(viewDidLoad () -&gt; ()).(closure #1)"
+                  moduleName = "TournamentBrackets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edgardoagno/Documents/TournamentBrackets/TournamentBrackets/ViewControllers/GroupDetailViewController.swift"
+                  timestampString = "485385122.408285"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "23">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
