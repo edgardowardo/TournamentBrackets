@@ -87,14 +87,14 @@ class TeamCell : UITableViewCell {
 
 extension TeamCell : UITextFieldDelegate {
     
-    private func saveTextField(textField: UITextField) {
+    private func saveTextField(textField: UITextField, withText text : String) {
         switch textField {
         case self.textName:
-            if let text = textField.text, team = self.team where text.characters.count > 0 {
+            if let team = self.team where text.characters.count > 0 {
                 team.name = text
             }
         case self.textHandicapPoints:
-            if let text = textField.text, seed = Double(text), team = self.team where text.characters.count > 0 {
+            if let seed = Double(text), team = self.team {
                 team.handicap = seed
             }
         default:
@@ -102,16 +102,21 @@ extension TeamCell : UITextFieldDelegate {
         }
     }
     
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        // try to save on every keystroke
+        if let text = textField.text {
+            let newString = (text as NSString).stringByReplacingCharactersInRange(range, withString: string)
+            saveTextField(textField, withText: newString)
+        }
+        return true
+    }
+    
     func textFieldDidBeginEditing(textField: UITextField) {
         NSNotificationCenter.defaultCenter().postNotificationName(Notification.Identifier.CellStartEditing, object: self)
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
-        saveTextField(textField)
-    }
-    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        saveTextField(textField)
         textField.resignFirstResponder()
         return true
     }
