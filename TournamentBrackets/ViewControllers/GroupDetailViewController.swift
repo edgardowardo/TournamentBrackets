@@ -42,6 +42,7 @@ class GroupDetailViewController: ViewController {
             self.pageViewController.setViewControllers([viewControllers[i]], direction: .Forward, animated: true, completion: nil)
             viewControllers[i].tableView.scrollsToTop = false
         }
+        self.loadAdjacentFromIndex(selectedIndex)
         self.pageViewController.setViewControllers([viewControllers[selectedIndex]], direction: .Forward, animated: true, completion: nil)
         viewControllers[selectedIndex].tableView.scrollsToTop = true
     }
@@ -69,6 +70,15 @@ class GroupDetailViewController: ViewController {
 }
 
 extension GroupDetailViewController : UIPageViewControllerDataSource {
+    
+    func loadAdjacentFromIndex(index : Int) {
+        if index+1 < self.viewControllers.count {
+            self.pageViewController.setViewControllers([viewControllers[index+1]], direction: .Forward, animated: true, completion: nil)
+        }
+        if index-1 >= 0 {
+            self.pageViewController.setViewControllers([viewControllers[index-1]], direction: .Reverse, animated: true, completion: nil)
+        }        
+    }
     
     func resetScrollsToTopWithIndex(index : Int) {
         if index-2 >= 0 {
