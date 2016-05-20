@@ -81,6 +81,7 @@ class TeamCell : UITableViewCell {
     @objc private func negate() {
         if let handicapText = self.textHandicapPoints.text, handicap = Double(handicapText) where handicap != 0.0 {
             self.textHandicapPoints.text = "\(-handicap)"
+            saveTextField(textHandicapPoints, withText: textHandicapPoints.text!)
         }
     }
 }

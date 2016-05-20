@@ -17,6 +17,9 @@ class Game : Object {
     dynamic var leftTeam: Team? = nil
     dynamic var rightTeam: Team? = nil
     dynamic var isBye: Bool = false
+    dynamic var leftScore = 0.0
+    dynamic var rightScore = 0.0
+    dynamic var note = ""
 
     dynamic var doubles : Doubles? = nil
     dynamic var elimination : Elimination? = nil

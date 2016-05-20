@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1.0" borderStyle="roundedRect" placeholder="0.0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Mt-J8-pLC">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1.0" borderStyle="roundedRect" placeholder="0.0" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Mt-J8-pLC">
                         <rect key="frame" x="500" y="7" width="60" height="31"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="31" id="bbC-qI-y6k"/>
@@ -25,7 +25,7 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                     </textField>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K60-jC-hbU">
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K60-jC-hbU">
                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="RCv-Ld-gOD"/>
@@ -37,7 +37,7 @@
                             </mask>
                         </variation>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kM-eE-3AD">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="32." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kM-eE-3AD">
                         <rect key="frame" x="0.0" y="12" width="29" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="35" id="CwF-6P-6Lp"/>
@@ -47,7 +47,7 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j0X-dX-xC8">
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j0X-dX-xC8">
                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="Pws-dB-cHM"/>
@@ -59,7 +59,7 @@
                             </mask>
                         </variation>
                     </button>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.0" borderStyle="roundedRect" placeholder="0.0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dhs-m3-7Uy">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.0" borderStyle="roundedRect" placeholder="0.0" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dhs-m3-7Uy">
                         <rect key="frame" x="500" y="7" width="60" height="31"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="4CI-HZ-bPi"/>
@@ -91,11 +91,11 @@
                         <exclude reference="Dhs-m3-7Uy"/>
                     </mask>
                     <mask key="constraints">
-                        <exclude reference="7k7-XY-Til"/>
-                        <exclude reference="yfb-zz-2wP"/>
                         <exclude reference="8LP-IB-Q8l"/>
                         <exclude reference="MRv-86-i8F"/>
                         <exclude reference="gZ7-hb-e3r"/>
+                        <exclude reference="7k7-XY-Til"/>
+                        <exclude reference="yfb-zz-2wP"/>
                         <exclude reference="5Gk-Kf-2nT"/>
                         <exclude reference="Auu-eI-fg4"/>
                         <exclude reference="Q8h-Tp-jLM"/>
@@ -107,9 +107,9 @@
                         <include reference="Dhs-m3-7Uy"/>
                     </mask>
                     <mask key="constraints">
+                        <include reference="8LP-IB-Q8l"/>
                         <include reference="7k7-XY-Til"/>
                         <include reference="yfb-zz-2wP"/>
-                        <include reference="8LP-IB-Q8l"/>
                         <include reference="5Gk-Kf-2nT"/>
                         <include reference="Auu-eI-fg4"/>
                         <include reference="Q8h-Tp-jLM"/>
@@ -122,11 +122,11 @@
                         <include reference="j0X-dX-xC8"/>
                     </mask>
                     <mask key="constraints">
-                        <include reference="MRv-86-i8F"/>
-                        <include reference="uWr-X7-sAz"/>
                         <include reference="FAa-aB-HzP"/>
                         <include reference="JSG-Bj-Tdr"/>
                         <include reference="fm3-ww-ETw"/>
+                        <include reference="MRv-86-i8F"/>
+                        <include reference="uWr-X7-sAz"/>
                         <include reference="fq2-LF-uwA"/>
                         <include reference="gZ7-hb-e3r"/>
                         <include reference="w96-kv-fuq"/>

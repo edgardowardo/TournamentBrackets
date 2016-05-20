@@ -19,7 +19,26 @@ class GameViewModel {
     lazy var disposeBag: DisposeBag? = { return DisposeBag() }()
     var game : Game!
     var gamesCount = 0
-    
+    var leftScore : String = "" {
+        didSet {
+            let score = leftScore.characters.count > 0 ? leftScore : "0"
+            if let s = Double(score) {
+                try! realm.write{
+                    game.leftScore = s
+                }
+            }
+        }
+    }
+    var rightScore : String = "" {
+        didSet {
+            let score = rightScore.characters.count > 0 ? rightScore : "0"
+            if let s = Double(score) {
+                try! realm.write{
+                    game.rightScore = s
+                }
+            }
+        }
+    }
     var prevLeftGameViewModel : GameViewModel? = nil {
         didSet {
             if let prevModel = prevLeftGameViewModel {
@@ -48,6 +67,7 @@ class GameViewModel {
                         try! self.realm.write {
                             self.game.winner = nil
                             self.game.leftTeam = team
+                            self.game.calculateHandicap()
                         }
                     }
                     .addDisposableTo(disposeBag!)
@@ -77,6 +97,7 @@ class GameViewModel {
                         try! self.realm.write {
                             self.game.winner = nil
                             self.game.rightTeam = team
+                            self.game.calculateHandicap()
                         }
                     }
                     .addDisposableTo(disposeBag!)

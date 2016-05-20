@@ -112,6 +112,11 @@ struct GroupSettingViewModel {
         }
     }
     
+    func calculateGameHandicap(game: Game) {
+        guard isHandicap.value else { return }
+        game.calculateHandicap()
+    }
+    
     private func schedule(schedule : ScheduleType, withTeams teams: [Team]) -> [Game] {
         let row : [TeamStruct?] = teams.map{ transfrormTeam($0) }
         switch schedule {
@@ -124,14 +129,18 @@ struct GroupSettingViewModel {
                 } else if let right = game.3 where game.2 == nil {
                     winner = right
                 }
-                return Game(round: game.0, index: game.1, winner: getTeam(winner), leftTeam: getTeam(game.2), rightTeam: getTeam(game.3), isBye: (winner != nil), doubles: nil, elimination: nil)
+                let game = Game(round: game.0, index: game.1, winner: getTeam(winner), leftTeam: getTeam(game.2), rightTeam: getTeam(game.3), isBye: (winner != nil), doubles: nil, elimination: nil)
+                calculateGameHandicap(game)
+                return game
             }
             return games
         case .RoundDoubles:
             let schedules = Scheduler.roundRobinDoubles(1, row: row)
             let games : [Game] = schedules.map{ (game) in
                 let doubles = Doubles(leftTeam2: getTeam(game.3), rightTeam2: getTeam(game.5))
-                return Game(round: game.0, index: game.1, winner: nil, leftTeam: getTeam(game.2), rightTeam: getTeam(game.4), isBye: false, doubles: doubles, elimination: nil)
+                let game =  Game(round: game.0, index: game.1, winner: nil, leftTeam: getTeam(game.2), rightTeam: getTeam(game.4), isBye: false, doubles: doubles, elimination: nil)
+                calculateGameHandicap(game)
+                return game
             }
             return games
         case .SingleElimination:
@@ -140,7 +149,9 @@ struct GroupSettingViewModel {
             valuedgames.sortInPlace{ (g1, g2) -> Bool in return g1.index < g2.index }
             let games : [Game] = valuedgames.map{ (game) in
                 let e = Elimination(isLoserBracket: game.isLoserBracket, leftGameIndex: game.leftGameIndex, rightGameIndex: game.rightGameIndex)
-                return Game(round: game.round, index: game.index, winner: getTeam(game.winner), leftTeam: getTeam(game.left), rightTeam: getTeam(game.right), isBye: game.isBye, doubles: nil, elimination: e)
+                let game = Game(round: game.round, index: game.index, winner: getTeam(game.winner), leftTeam: getTeam(game.left), rightTeam: getTeam(game.right), isBye: game.isBye, doubles: nil, elimination: e)
+                calculateGameHandicap(game)
+                return game
             }
             setPreviousGames(games)
             return games
@@ -151,7 +162,9 @@ struct GroupSettingViewModel {
             let games : [Game] = valuedgames.map{ (game) in
                 let e = Elimination(isLoserBracket: game.isLoserBracket, leftGameIndex: game.leftGameIndex, rightGameIndex: game.rightGameIndex)
                 e.firstLoserIndex = game.firstLoserIndex
-                return Game(round: game.round, index: game.index, winner: getTeam(game.winner), leftTeam: getTeam(game.left), rightTeam: getTeam(game.right), isBye: game.isBye, doubles: nil, elimination: e)
+                let game = Game(round: game.round, index: game.index, winner: getTeam(game.winner), leftTeam: getTeam(game.left), rightTeam: getTeam(game.right), isBye: game.isBye, doubles: nil, elimination: e)
+                calculateGameHandicap(game)
+                return game
             }
             setPreviousGames(games)
             return games
@@ -178,6 +191,39 @@ struct GroupSettingViewModel {
         }
     }
     
+}
+
+///
+/// Game extensions for saving into data store
+///
+extension Game {
+    func calculateHandicap() {
+        guard let left = leftTeam, right = rightTeam else {
+            leftScore = 0.0
+            rightScore = 0.0
+            return
+        }
+        
+        var leftHandicap = left.handicap
+        var rightHandicap = right.handicap
+        
+        if let d = doubles {
+            if let leftHandicap2 = d.leftTeam2?.handicap {
+                leftHandicap = leftHandicap + leftHandicap2
+            }
+            if let rightHandicap2 = d.rightTeam2?.handicap {
+                rightHandicap = rightHandicap + rightHandicap2
+            }
+        }
+        let difference = abs(leftHandicap - rightHandicap)
+        if leftHandicap > rightHandicap {
+            leftScore = difference / 2
+            rightScore = -difference / 2
+        } else if leftHandicap < rightHandicap {
+            leftScore = -difference / 2
+            rightScore = difference / 2
+        }
+    }
 }
 
 ///

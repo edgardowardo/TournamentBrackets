@@ -94,6 +94,9 @@ class GameCell : UITableViewCell {
                 }
                 .addDisposableTo(disposeBag)
             
+            self.leftScoreTextField.text = "\(self.viewModel.game.leftScore)"
+            self.rightScoreTextField.text = "\(self.viewModel.game.rightScore)"
+            
             self.disposeBag = disposeBag
         }
     }
@@ -105,6 +108,16 @@ class GameCell : UITableViewCell {
         leftTeamButton.layer.cornerRadius = leftTeamButton.frame.size.height / 5
         rightTeamButton.backgroundColor = UIColor.flatCloudsColor()
         rightTeamButton.layer.cornerRadius = rightTeamButton.frame.size.height / 5
+        
+        self.leftScoreTextField.delegate = self
+        self.rightScoreTextField.delegate = self
+
+        let clearButton1 = UIBarButtonItem(title: "Clear", style: .Plain, target: self, action: #selector(clear))
+        let clearButton2 = UIBarButtonItem(title: "Clear", style: .Plain, target: self, action: #selector(clear))
+        let negateButton1 = UIBarButtonItem(title: "Negate", style: .Plain, target: self, action: #selector(negate))
+        let negateButton2 = UIBarButtonItem(title: "Negate", style: .Plain, target: self, action: #selector(negate))
+        self.leftScoreTextField.addDoneToolbar([clearButton1], rightbuttons: [negateButton1])
+        self.rightScoreTextField.addDoneToolbar([clearButton2], rightbuttons: [negateButton2])
     }
     
     internal override func prepareForReuse() {
@@ -112,5 +125,38 @@ class GameCell : UITableViewCell {
         
         self.disposeBag = nil
     }
+}
+
+extension GameCell : UITextFieldDelegate {
     
+    private var activeTextField : UITextField {
+        get {
+            return leftScoreTextField.isFirstResponder() ? leftScoreTextField : rightScoreTextField
+        }
+    }
+    
+    @objc private func clear() {
+        activeTextField.text = ""
+    }
+    
+    @objc private func negate() {
+        if let text = activeTextField.text, handicap = Double(text) where handicap != 0.0 {
+            activeTextField.text = "\(-handicap)"
+        }
+    }
+    
+    private func saveTextField(textField: UITextField, withText text : String) {
+        switch textField {
+        case self.leftScoreTextField:
+            viewModel.leftScore = text
+        case self.rightScoreTextField:
+            viewModel.rightScore = text
+        default:
+            break
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        saveTextField(textField, withText: textField.text!)
+    }
 }
