@@ -191,7 +191,13 @@ extension Game {
     var leftPrompt : String {
         get {
             if let l = leftTeam {
-                return l.name
+                if let d = doubles, l2 = d.leftTeam2 {
+                    let first = String.sevenChars(ofString: l.name)
+                    let second = String.sevenChars(ofString: l2.name)
+                    return "\(first)/\(second)"
+                } else {
+                    return l.name
+                }
             } else if let _ = rightTeam where leftTeam == nil && self.isBye {
                 return "BYE"
             } else if let e = elimination, left = e.prevLeftGame, leftE = left.elimination
@@ -207,7 +213,13 @@ extension Game {
     var rightPrompt : String {
         get {
             if let r = rightTeam {
-                return r.name
+                if let d = doubles, r2 = d.rightTeam2 {
+                    let first = String.sevenChars(ofString: r.name)
+                    let second = String.sevenChars(ofString: r2.name)
+                    return "\(first)/\(second)"
+                } else {
+                    return r.name
+                }
             } else if let _ = leftTeam where rightTeam == nil && self.isBye {
                 return "BYE"
             } else if let e = elimination, right = e.prevRightGame, rightE = right.elimination

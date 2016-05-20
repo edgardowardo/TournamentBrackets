@@ -13,6 +13,7 @@
 		77225BAA1CEB7912006D0C2B /* GroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77225BA91CEB7912006D0C2B /* GroupDetailViewController.swift */; };
 		77225BAC1CEB7F53006D0C2B /* GroupDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77225BAB1CEB7F53006D0C2B /* GroupDetailViewModel.swift */; };
 		77225BAE1CEB8706006D0C2B /* GameListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77225BAD1CEB8706006D0C2B /* GameListViewModel.swift */; };
+		773C28721CEF187000E30678 /* String+Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773C28711CEF187000E30678 /* String+Substring.swift */; };
 		774A48D41CC90992006DCD4F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A48D31CC90992006DCD4F /* RootViewController.swift */; };
 		774A48D71CC916AC006DCD4F /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A48D61CC916AC006DCD4F /* Wireframe.swift */; };
 		7766D8401CD102C800DA3FA1 /* Array+Unique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7766D83F1CD102C800DA3FA1 /* Array+Unique.swift */; };
@@ -79,6 +80,7 @@
 		77225BA91CEB7912006D0C2B /* GroupDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDetailViewController.swift; sourceTree = "<group>"; };
 		77225BAB1CEB7F53006D0C2B /* GroupDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDetailViewModel.swift; sourceTree = "<group>"; };
 		77225BAD1CEB8706006D0C2B /* GameListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameListViewModel.swift; sourceTree = "<group>"; };
+		773C28711CEF187000E30678 /* String+Substring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Substring.swift"; sourceTree = "<group>"; };
 		774A48D31CC90992006DCD4F /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		774A48D61CC916AC006DCD4F /* Wireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wireframe.swift; sourceTree = "<group>"; };
 		7766D83F1CD102C800DA3FA1 /* Array+Unique.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Unique.swift"; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				779FFCA81CDA4AEB00D48800 /* UISegmentedControl+Multiline.swift */,
 				77D2072E1CE119F5009139DB /* UITextField+DoneToolbar.swift */,
 				77839A311CEE81800077FCBD /* UIColor+LoserBackgroundColor.swift */,
+				773C28711CEF187000E30678 /* String+Substring.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -603,6 +606,7 @@
 				7770C60E1CC0C290008C5A6B /* AppDelegate.swift in Sources */,
 				77839A321CEE81800077FCBD /* UIColor+LoserBackgroundColor.swift in Sources */,
 				7793022E1CCFAFD000695321 /* Power.swift in Sources */,
+				773C28721CEF187000E30678 /* String+Substring.swift in Sources */,
 				77D3D65E1CC3BFA6001EF359 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

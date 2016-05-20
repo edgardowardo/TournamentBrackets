@@ -41,7 +41,7 @@ enum ScheduleType : Int {
         get {
             switch self {
             case .RoundRobin : return "Round Robin"
-            case .RoundDoubles : return "Round Pairs"
+            case .RoundDoubles : return "Round Doubles"
             case .SingleElimination : return "Single Elimination"
             case .DoubleElimination : return "Double Elimination"
             }
