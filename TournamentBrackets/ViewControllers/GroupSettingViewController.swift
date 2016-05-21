@@ -49,7 +49,7 @@ class GroupSettingViewController: ViewController {
         // Hacky to create multiline title on segmented control
         //
         self.segmentedSchedule.setImageAsMultilineTitle("Round \nRobin", atIndex: 0)
-        self.segmentedSchedule.setImageAsMultilineTitle("Round \nDoubles", atIndex: 1)
+        self.segmentedSchedule.setImageAsMultilineTitle("American \nTournament", atIndex: 1)
         self.segmentedSchedule.setImageAsMultilineTitle("Single \nElimination", atIndex: 2)
         self.segmentedSchedule.setImageAsMultilineTitle("Double \nElimination", atIndex: 3)
         

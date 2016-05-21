@@ -116,20 +116,20 @@
          <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
-            continueAfterRunningActions = "Yes"
+            continueAfterRunningActions = "No"
             filePath = "TournamentBrackets/ViewModels/GameViewModel.swift"
-            timestampString = "485458734.692554"
+            timestampString = "485517382.98255"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "GameViewModel"
             landmarkType = "3">
             <Actions>
                <BreakpointActionProxy
                   ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
                   <ActionContent
-                     consoleCommand = "po &quot;inside realm write...\(self.game.index) team(\(team?.name))&quot;">
+                     consoleCommand = "po &quot;prevLeft.Observation; game.index=\(self.game.index); team=\(team?.name); \(self.game.leftScore)v\(self.game.rightScore)&quot;">
                   </ActionContent>
                </BreakpointActionProxy>
             </Actions>
@@ -142,18 +142,18 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "TournamentBrackets/ViewModels/GameViewModel.swift"
-            timestampString = "485458734.692554"
+            timestampString = "485517572.075858"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "GameViewModel"
             landmarkType = "3">
             <Actions>
                <BreakpointActionProxy
                   ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
                   <ActionContent
-                     consoleCommand = "po &quot;outside realm write...\(self.game.index) team(\(team?.name))&quot;">
+                     consoleCommand = "po &quot;outside.prevLeft.Observation; game.index=\(self.game.index); team=\(team?.name); \(self.game.leftScore)v\(self.game.rightScore)&quot;">
                   </ActionContent>
                </BreakpointActionProxy>
             </Actions>
@@ -213,53 +213,21 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "TournamentBrackets/ViewModels/GameViewModel.swift"
-            timestampString = "485465611.034837"
+            timestampString = "485517673.733567"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "GameViewModel"
             landmarkType = "3">
             <Actions>
                <BreakpointActionProxy
                   ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
                   <ActionContent
-                     consoleCommand = "po &quot;team is \(team)&quot;">
+                     consoleCommand = "po &quot;outside.prevRight.Observation; game.index=\(self.game.index); team=\(team?.name); \(self.game.leftScore)v\(self.game.rightScore)&quot;">
                   </ActionContent>
                </BreakpointActionProxy>
             </Actions>
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TournamentBrackets.GameViewModel.(prevRightGameViewModel.didset : Swift.Optional&lt;TournamentBrackets.GameViewModel&gt;).(closure #1)"
-                  moduleName = "TournamentBrackets"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/edgardoagno/Documents/TournamentBrackets/TournamentBrackets/ViewModels/GameViewModel.swift"
-                  timestampString = "485029512.560764"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "57"
-                  endingLineNumber = "57"
-                  offsetFromSymbolStart = "1022">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TournamentBrackets.GameViewModel.(prevRightGameViewModel.didset : Swift.Optional&lt;TournamentBrackets.GameViewModel&gt;).(closure #1).(closure #1)"
-                  moduleName = "TournamentBrackets"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/edgardoagno/Documents/TournamentBrackets/TournamentBrackets/ViewModels/GameViewModel.swift"
-                  timestampString = "485029512.561084"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "58"
-                  endingLineNumber = "58"
-                  offsetFromSymbolStart = "19">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -282,31 +250,6 @@
                   ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
                   <ActionContent
                      consoleCommand = "po &quot;10. on guard!&quot;">
-                  </ActionContent>
-               </BreakpointActionProxy>
-            </Actions>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            condition = "self.game.index == 10"
-            continueAfterRunningActions = "No"
-            filePath = "TournamentBrackets/ViewModels/GameViewModel.swift"
-            timestampString = "485465611.034837"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "GameViewModel"
-            landmarkType = "3">
-            <Actions>
-               <BreakpointActionProxy
-                  ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
-                  <ActionContent
-                     consoleCommand = "po &quot;after guard&quot;">
                   </ActionContent>
                </BreakpointActionProxy>
             </Actions>
@@ -693,7 +636,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TournamentBrackets/ViewControllers/GameCell.swift"
-            timestampString = "485468566.752302"
+            timestampString = "485522427.845964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "139"
@@ -709,7 +652,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TournamentBrackets/ViewControllers/GameCell.swift"
-            timestampString = "485468566.752302"
+            timestampString = "485522427.845964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "160"
@@ -779,6 +722,190 @@
             startingLineNumber = "84"
             endingLineNumber = "84"
             landmarkName = "negate()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TournamentBrackets/ViewModels/GroupSettingViewModel.swift"
+            timestampString = "485510446.441073"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "schedule(_:withTeams:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TournamentBrackets/ViewModels/GroupSettingViewModel.swift"
+            timestampString = "485511141.744013"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "schedule(_:withTeams:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TournamentBrackets/ViewModels/GameViewModel.swift"
+            timestampString = "485517423.260207"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "GameViewModel"
+            landmarkType = "3">
+            <Actions>
+               <BreakpointActionProxy
+                  ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
+                  <ActionContent
+                     consoleCommand = "po &quot;prevRight.Observation; game.index=\(self.game.index); team=\(team?.name); \(self.game.leftScore)v\(self.game.rightScore)&quot;">
+                  </ActionContent>
+               </BreakpointActionProxy>
+            </Actions>
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TournamentBrackets.GameViewModel.(prevRightGameViewModel.didset : Swift.Optional&lt;TournamentBrackets.GameViewModel&gt;).(closure #1)"
+                  moduleName = "TournamentBrackets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edgardoagno/Documents/TournamentBrackets/TournamentBrackets/ViewModels/GameViewModel.swift"
+                  timestampString = "485519329.348956"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "101"
+                  endingLineNumber = "101"
+                  offsetFromSymbolStart = "2794">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TournamentBrackets.GameViewModel.(prevRightGameViewModel.didset : Swift.Optional&lt;TournamentBrackets.GameViewModel&gt;).(closure #1).(closure #1)"
+                  moduleName = "TournamentBrackets"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/edgardoagno/Documents/TournamentBrackets/TournamentBrackets/ViewModels/GameViewModel.swift"
+                  timestampString = "485519329.349315"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "101"
+                  endingLineNumber = "101"
+                  offsetFromSymbolStart = "548">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "Yes"
+            filePath = "TournamentBrackets/ViewModels/GroupSettingViewModel.swift"
+            timestampString = "485516319.749244"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "calculateHandicap()"
+            landmarkType = "5">
+            <Actions>
+               <BreakpointActionProxy
+                  ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
+                  <ActionContent
+                     consoleCommand = "po &quot;calculatedHandicap@guard 0v0&quot;">
+                  </ActionContent>
+               </BreakpointActionProxy>
+            </Actions>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "Yes"
+            filePath = "TournamentBrackets/ViewModels/GroupSettingViewModel.swift"
+            timestampString = "485519327.9879"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
+            landmarkName = "calculateHandicap()"
+            landmarkType = "5">
+            <Actions>
+               <BreakpointActionProxy
+                  ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
+                  <ActionContent
+                     consoleCommand = "po &quot;calculatedHandicap \(leftScore)v\(rightScore)&quot;">
+                  </ActionContent>
+               </BreakpointActionProxy>
+            </Actions>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TournamentBrackets/ViewModels/GroupSettingViewModel.swift"
+            timestampString = "485519037.167491"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "calculateHandicap()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TournamentBrackets/ViewModels/GroupSettingViewModel.swift"
+            timestampString = "485519327.9879"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
+            landmarkName = "calculateHandicap()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TournamentBrackets/ViewModels/GroupSettingViewModel.swift"
+            timestampString = "485519134.595228"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
+            landmarkName = "calculateHandicap()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

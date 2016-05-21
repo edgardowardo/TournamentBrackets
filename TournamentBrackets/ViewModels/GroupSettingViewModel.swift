@@ -150,7 +150,6 @@ struct GroupSettingViewModel {
             let games : [Game] = valuedgames.map{ (game) in
                 let e = Elimination(isLoserBracket: game.isLoserBracket, leftGameIndex: game.leftGameIndex, rightGameIndex: game.rightGameIndex)
                 let game = Game(round: game.round, index: game.index, winner: getTeam(game.winner), leftTeam: getTeam(game.left), rightTeam: getTeam(game.right), isBye: game.isBye, doubles: nil, elimination: e)
-                calculateGameHandicap(game)
                 return game
             }
             setPreviousGames(games)
@@ -163,7 +162,6 @@ struct GroupSettingViewModel {
                 let e = Elimination(isLoserBracket: game.isLoserBracket, leftGameIndex: game.leftGameIndex, rightGameIndex: game.rightGameIndex)
                 e.firstLoserIndex = game.firstLoserIndex
                 let game = Game(round: game.round, index: game.index, winner: getTeam(game.winner), leftTeam: getTeam(game.left), rightTeam: getTeam(game.right), isBye: game.isBye, doubles: nil, elimination: e)
-                calculateGameHandicap(game)
                 return game
             }
             setPreviousGames(games)
@@ -188,6 +186,7 @@ struct GroupSettingViewModel {
                     g.rightTeam = rightWinner
                 }
             }
+            calculateGameHandicap(g)
         }
     }
     
@@ -222,7 +221,12 @@ extension Game {
         } else if leftHandicap < rightHandicap {
             leftScore = -difference / 2
             rightScore = difference / 2
+        } else {
+            leftScore = 0
+            rightScore = 0
         }
+        
+        return
     }
 }
 
