@@ -72,7 +72,7 @@ class GroupDetailViewController: ViewController {
 extension GroupDetailViewController : UIPageViewControllerDataSource {
     
     func loadAdjacentFromIndex(index : Int) {
-        if index+1 < self.viewControllers.count {
+        if index+1 < self.viewControllers.count && index != 0 {
             self.pageViewController.setViewControllers([viewControllers[index+1]], direction: .Forward, animated: true, completion: nil)
         }
         if index-1 >= 0 {
