@@ -16,7 +16,9 @@ struct TeamStatsListViewModel {
     
     init(group : Group) {
         self.group = group
-        
+    }
+    
+    func loadStatsList() {
         statsList.value = group.teams.map{ (team) -> TeamStats in
             let countPlayed = group.games.filter("leftTeam.seed == %@ || rightTeam.seed == %@", team.seed, team.seed).count
             let countWins = group.games.filter("winner.seed == %@", team.seed).count

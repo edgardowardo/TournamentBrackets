@@ -20,15 +20,17 @@ class TeamStatsListViewController : ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.registerNib(UINib(nibName: "TeamStatsCell", bundle: nil), forCellReuseIdentifier: "TeamStatsCell")
+        tableView.delegate = self
 
-        self.viewModel.statsList
+        viewModel.statsList
             .asObservable()
             .map{ stats in
                 [SectionModel(model: "STANDINGS", items: stats)]
             }
             .bindTo(tableView.rx_itemsWithDataSource(dataSource))
             .addDisposableTo(disposeBag)
+        
+        viewModel.loadStatsList()
     }
     
     static func configureDataSource() -> RxTableViewSectionedReloadDataSource<SectionModel<String, TeamStats>> {
@@ -41,4 +43,10 @@ class TeamStatsListViewController : ViewController {
         return dataSource
     }
 
+}
+
+extension TeamStatsListViewController : UITableViewDelegate {
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        return .None
+    }
 }
