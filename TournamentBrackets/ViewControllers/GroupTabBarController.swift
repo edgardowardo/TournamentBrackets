@@ -24,8 +24,10 @@ class GroupTabBarController : UITabBarController {
             for (index, vc) in viewControllers.enumerate() {
                 if let groupDetailVC = vc as? GroupDetailViewController {
                     groupDetailVC.viewModel = GroupDetailViewModel(group: viewModel.group, gameViewModels: viewModel.gameViewModels, isLoserBracket: (index == 1))
+                } else if let teamStatsVC = vc as? TeamStatsListViewController {
+                    teamStatsVC.viewModel = TeamStatsListViewModel(group: viewModel.group)
                 }
-            }            
+            }
             if viewModel.group.schedule != .DoubleElimination {
                 var newVCs = viewControllers
                 newVCs.removeAtIndex(1)

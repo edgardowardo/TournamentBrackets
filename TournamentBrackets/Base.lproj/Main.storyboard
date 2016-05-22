@@ -139,7 +139,7 @@
         <!--Table-->
         <scene sceneID="geh-Nv-GS7">
             <objects>
-                <viewController id="yRd-e7-Hoo" sceneMemberID="viewController">
+                <viewController id="yRd-e7-Hoo" customClass="TeamStatsListViewController" customModule="TournamentBrackets" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rDr-m6-4cd"/>
                         <viewControllerLayoutGuide type="bottom" id="RZJ-xN-wiU"/>
@@ -147,9 +147,19 @@
                     <view key="view" contentMode="scaleToFill" id="zZC-Yh-4vX">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="m0C-t7-7or">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Table" image="icon-table" id="fJN-62-BS9"/>
+                    <connections>
+                        <outlet property="tableView" destination="m0C-t7-7or" id="xRE-SE-Jqs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Kc-0v-gt3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -346,8 +356,14 @@
                                                             <rect key="frame" x="0.0" y="16" width="584" height="30"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="0.0" y="16" width="384" height="30"/>
+                                                            </variation>
                                                         </textField>
                                                     </subviews>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="384" height="63"/>
+                                                    </variation>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NQj-AX-K0P">
                                                     <rect key="frame" x="0.0" y="73" width="584" height="62"/>
@@ -360,8 +376,14 @@
                                                                 <segment title="Single Elimination"/>
                                                                 <segment title="Double Elimination"/>
                                                             </segments>
+                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="0.0" y="0.0" width="384" height="64"/>
+                                                            </variation>
                                                         </segmentedControl>
                                                     </subviews>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="73" width="384" height="63"/>
+                                                    </variation>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="AEG-x0-KYx">
                                                     <rect key="frame" x="0.0" y="145" width="584" height="63"/>
@@ -371,11 +393,20 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
+                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="0.0" y="0.0" width="384" height="31"/>
+                                                            </variation>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QYb-82-F6F" customClass="AKPickerView">
                                                             <rect key="frame" x="0.0" y="32" width="584" height="31"/>
+                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="0.0" y="31" width="384" height="31"/>
+                                                            </variation>
                                                         </view>
                                                     </subviews>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="146" width="384" height="62"/>
+                                                    </variation>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1kq-7J-fHZ">
                                                     <rect key="frame" x="0.0" y="218" width="584" height="62"/>
@@ -391,8 +422,14 @@
                                                                     <state key="normal" title="Shuffle" image="icon-shuffle">
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
+                                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                        <rect key="frame" x="5" y="0.0" width="66" height="63"/>
+                                                                    </variation>
                                                                 </button>
                                                             </subviews>
+                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="0.0" y="0.0" width="77" height="63"/>
+                                                            </variation>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pRK-Yj-CYe">
                                                             <rect key="frame" x="117" y="0.0" width="117" height="62"/>
@@ -405,8 +442,14 @@
                                                                     <state key="normal" title="Sort" image="icon-sort">
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
+                                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                        <rect key="frame" x="13" y="0.0" width="50" height="63"/>
+                                                                    </variation>
                                                                 </button>
                                                             </subviews>
+                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="77" y="0.0" width="77" height="63"/>
+                                                            </variation>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cUb-vM-Hvx">
                                                             <rect key="frame" x="234" y="0.0" width="116" height="62"/>
@@ -418,8 +461,14 @@
                                                                     <state key="normal" title="Reset" image="icon-reset">
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
+                                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                        <rect key="frame" x="9" y="0.0" width="58" height="63"/>
+                                                                    </variation>
                                                                 </button>
                                                             </subviews>
+                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="154" y="0.0" width="76" height="63"/>
+                                                            </variation>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="IFk-Di-F00">
                                                             <rect key="frame" x="350" y="0.0" width="117" height="62"/>
@@ -432,8 +481,14 @@
                                                                     <state key="normal" title="Import" image="icon-open-folder">
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
+                                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                        <rect key="frame" x="7" y="0.0" width="63" height="63"/>
+                                                                    </variation>
                                                                 </button>
                                                             </subviews>
+                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="230" y="0.0" width="77" height="63"/>
+                                                            </variation>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ieH-x3-9CZ">
                                                             <rect key="frame" x="467" y="0.0" width="117" height="62"/>
@@ -447,10 +502,19 @@
                                                                     <state key="normal" title="Handicap" image="icon-wheelchair">
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
+                                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="77" height="63"/>
+                                                                    </variation>
                                                                 </button>
                                                             </subviews>
+                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="307" y="0.0" width="77" height="63"/>
+                                                            </variation>
                                                         </stackView>
                                                     </subviews>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="218" width="384" height="63"/>
+                                                    </variation>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1Yf-VD-qqq">
                                                     <rect key="frame" x="0.0" y="290" width="584" height="63"/>
@@ -463,13 +527,25 @@
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
+                                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="53" height="63"/>
+                                                                    </variation>
                                                                 </label>
                                                             </subviews>
+                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="166" y="0.0" width="53" height="63"/>
+                                                            </variation>
                                                         </stackView>
                                                     </subviews>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="291" width="384" height="63"/>
+                                                    </variation>
                                                 </stackView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                <rect key="frame" x="8" y="8" width="384" height="354"/>
+                                            </variation>
                                         </stackView>
                                     </subviews>
                                     <constraints>
@@ -507,6 +583,9 @@
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
+                                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                        <rect key="frame" x="0.0" y="12" width="29" height="21"/>
+                                                                    </variation>
                                                                 </label>
                                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Team name" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="W4h-tm-Qb4">
                                                                     <rect key="frame" x="39" y="7" width="451" height="31"/>
@@ -515,6 +594,9 @@
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                        <rect key="frame" x="39" y="7" width="251" height="31"/>
+                                                                    </variation>
                                                                 </textField>
                                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nrN-v2-9cm">
                                                                     <rect key="frame" x="500" y="7" width="60" height="31"/>
@@ -524,10 +606,19 @@
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                        <rect key="frame" x="300" y="7" width="60" height="31"/>
+                                                                    </variation>
                                                                 </textField>
                                                             </subviews>
+                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="0.0" y="0.0" width="360" height="44"/>
+                                                            </variation>
                                                         </stackView>
                                                     </subviews>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="20" y="0.0" width="360" height="44"/>
+                                                    </variation>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
