@@ -21,12 +21,20 @@ struct TeamStatsListViewModel {
     func loadStatsList() {
 
         var unindexed = group.teams.map{ (team) -> TeamStats in
-            let countPlayed = group.games.filter("leftTeam.seed == %@ || rightTeam.seed == %@", team.seed, team.seed)
-                .filter("winner != nil").count
-            let countGames = group.games.filter("leftTeam.seed == %@ || rightTeam.seed == %@", team.seed, team.seed).count
-            let countWins = group.games.filter("winner.seed == %@", team.seed).count
-            let countLost = group.games.filter("leftTeam.seed == %@ || rightTeam.seed == %@", team.seed, team.seed)
-                .filter("winner != nil && winner.seed != %@", team.seed).count
+            let countPlayed = group.games
+                .filter("winner != nil")
+                .filter("leftTeam.seed == %@ || rightTeam.seed == %@ || doubles.leftTeam2.seed == %@ || doubles.rightTeam2.seed == %@", team.seed, team.seed, team.seed, team.seed)
+                .count
+            let countGames = group.games
+                .filter("leftTeam.seed == %@ || rightTeam.seed == %@ || doubles.leftTeam2.seed == %@ || doubles.rightTeam2.seed == %@", team.seed, team.seed, team.seed, team.seed)
+                .count
+            let countWins = group.games
+                .filter { (game) in game.winner?.seed == team.seed || game.winner2?.seed == team.seed }
+                .count
+            let countLost = group.games
+                .filter("leftTeam.seed == %@ || rightTeam.seed == %@ || doubles.leftTeam2.seed == %@ || doubles.rightTeam2.seed == %@", team.seed, team.seed, team.seed, team.seed)
+                .filter { (game) in game.winner != nil && !(game.winner?.seed == team.seed || game.winner2?.seed == team.seed) }
+                .count
             
             return TeamStats(oldseed: team.seed, seed: 0, name: team.name, countPlayed: countPlayed, countGames: countGames, countWins: countWins, countLost: countLost, pointsFor: 0.0, pointsAgainst: 0.0, pointsDifference: 0.0)
         }
@@ -37,5 +45,28 @@ struct TeamStatsListViewModel {
         }
         
         statsList.value = indexed
+    }
+}
+
+extension Game {
+    var winner2: Team? {
+        get {
+            if let winner1 = winner {
+                if let d = doubles {
+                    if let left = leftTeam where  winner1.seed == left.seed {
+                        return d.leftTeam2
+                        
+                    } else if let right = rightTeam where winner1.seed == right.seed {
+                        return d.rightTeam2
+                    } else {
+                        return nil
+                    }
+                } else {
+                    return nil
+                }
+            } else {
+                return nil
+            }
+        }
     }
 }

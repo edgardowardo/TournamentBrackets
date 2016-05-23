@@ -1044,11 +1044,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TournamentBrackets/ViewModels/TeamStatsListViewModel.swift"
-            timestampString = "485695367.80384"
+            timestampString = "485698227.464421"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "loadStatsList()"
             landmarkType = "5">
          </BreakpointContent>
