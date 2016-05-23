@@ -36,9 +36,31 @@ struct TeamStatsListViewModel {
                 .filter { (game) in game.winner != nil && !(game.winner?.seed == team.seed || game.winner2?.seed == team.seed) }
                 .count
             
-            return TeamStats(oldseed: team.seed, seed: 0, name: team.name, countPlayed: countPlayed, countGames: countGames, countWins: countWins, countLost: countLost, pointsFor: 0, pointsAgainst: 0, pointsDifference: 0)
+            let pointsForLeft = group.games
+                .filter("leftTeam.seed == %@ || doubles.leftTeam2.seed == %@", team.seed, team.seed)
+                .map { (game) -> Int in game.leftScore }
+                .reduce(0, combine: {  $0 + $1 })
+            let pointsForRight = group.games
+                .filter("rightTeam.seed == %@ || doubles.rightTeam2.seed == %@", team.seed, team.seed)
+                .map { (game) -> Int in game.rightScore }
+                .reduce(0, combine: {  $0 + $1 })
+            let pointsFor = pointsForLeft + pointsForRight
+            
+            let pointsAgainstLeft = group.games
+                .filter("leftTeam.seed == %@ || doubles.leftTeam2.seed == %@", team.seed, team.seed)
+                .map { (game) -> Int in game.rightScore }
+                .reduce(0, combine: {  $0 + $1 })
+            let pointsAgainstRight = group.games
+                .filter("rightTeam.seed == %@ || doubles.rightTeam2.seed == %@", team.seed, team.seed)
+                .map { (game) -> Int in game.leftScore }
+                .reduce(0, combine: {  $0 + $1 })
+            let pointsAgainst = pointsAgainstLeft + pointsAgainstRight
+            let pointDifference = pointsFor - pointsAgainst
+            
+            return TeamStats(oldseed: team.seed, seed: 0, name: team.name, countPlayed: countPlayed, countGames: countGames, countWins: countWins, countLost: countLost, pointsFor: pointsFor, pointsAgainst: pointsAgainst, pointsDifference: pointDifference)
         }
-        unindexed.sortInPlace{ (g1, g2) in g1.countWins > g2.countWins }
+        let factor = 1000
+        unindexed.sortInPlace{ (g1, g2) in g1.countWins * factor + g1.pointsDifference > g2.countWins * factor + g2.pointsDifference }
         var indexed = [TeamStats]()
         for (i, e) in unindexed.enumerate() {
             indexed.append(TeamStats(oldseed: e.oldseed, seed: i+1, name: e.name, countPlayed: e.countPlayed, countGames: e.countGames, countWins: e.countWins, countLost: e.countLost, pointsFor: e.pointsFor, pointsAgainst: e.pointsAgainst, pointsDifference: e.pointsDifference))
