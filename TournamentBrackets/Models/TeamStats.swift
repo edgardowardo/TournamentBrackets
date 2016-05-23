@@ -13,6 +13,7 @@ struct TeamStats {
     var seed : Int
     var name : String
     var countPlayed : Int
+    var countGames : Int
     var countWins : Int
     var countLost : Int
     var pointsFor : Double

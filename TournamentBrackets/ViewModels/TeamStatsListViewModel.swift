@@ -21,16 +21,19 @@ struct TeamStatsListViewModel {
     func loadStatsList() {
 
         var unindexed = group.teams.map{ (team) -> TeamStats in
-            let countPlayed = group.games.filter("leftTeam.seed == %@ || rightTeam.seed == %@", team.seed, team.seed).count
+            let countPlayed = group.games.filter("leftTeam.seed == %@ || rightTeam.seed == %@", team.seed, team.seed)
+                .filter("winner != nil").count
+            let countGames = group.games.filter("leftTeam.seed == %@ || rightTeam.seed == %@", team.seed, team.seed).count
             let countWins = group.games.filter("winner.seed == %@", team.seed).count
-            let countLost = group.games.filter("leftTeam.seed == %@ || rightTeam.seed == %@", team.seed, team.seed).filter("winner != nil").count
+            let countLost = group.games.filter("leftTeam.seed == %@ || rightTeam.seed == %@", team.seed, team.seed)
+                .filter("winner != nil && winner.seed != %@", team.seed).count
             
-            return TeamStats(oldseed: team.seed, seed: 0, name: team.name, countPlayed: countPlayed, countWins: countWins, countLost: countLost, pointsFor: 0.0, pointsAgainst: 0.0, pointsDifference: 0.0)
+            return TeamStats(oldseed: team.seed, seed: 0, name: team.name, countPlayed: countPlayed, countGames: countGames, countWins: countWins, countLost: countLost, pointsFor: 0.0, pointsAgainst: 0.0, pointsDifference: 0.0)
         }
         unindexed.sortInPlace{ (g1, g2) in g1.countWins > g2.countWins }
         var indexed = [TeamStats]()
         for (i, e) in unindexed.enumerate() {
-            indexed.append(TeamStats(oldseed: e.oldseed, seed: i+1, name: e.name, countPlayed: e.countPlayed, countWins: e.countWins, countLost: e.countLost, pointsFor: e.pointsFor, pointsAgainst: e.pointsAgainst, pointsDifference: e.pointsDifference))
+            indexed.append(TeamStats(oldseed: e.oldseed, seed: i+1, name: e.name, countPlayed: e.countPlayed, countGames: e.countGames, countWins: e.countWins, countLost: e.countLost, pointsFor: e.pointsFor, pointsAgainst: e.pointsAgainst, pointsDifference: e.pointsDifference))
         }
         
         statsList.value = indexed
