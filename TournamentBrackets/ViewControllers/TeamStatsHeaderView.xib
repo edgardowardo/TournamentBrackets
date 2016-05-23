@@ -11,13 +11,13 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rank" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAM-Bm-Sqd">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="RANK" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAM-Bm-Sqd">
                     <rect key="frame" x="72" y="0.0" width="160" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="IPw-Ki-J3Y"/>
                         <constraint firstAttribute="width" constant="67" id="Mi3-R4-6PC"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                     <variation key="heightClass=compact">
@@ -26,12 +26,12 @@
                         </mask>
                     </variation>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Team Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="izi-pc-ioN">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TEAM NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="izi-pc-ioN">
                     <rect key="frame" x="72" y="0.0" width="160" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="46n-6F-epr"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -41,7 +41,7 @@
                         <constraint firstAttribute="width" constant="50" id="9Lo-fF-WhM"/>
                         <constraint firstAttribute="height" constant="21" id="Paj-5i-tqv"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -51,7 +51,7 @@
                         <constraint firstAttribute="width" constant="50" id="e47-cz-imu"/>
                         <constraint firstAttribute="height" constant="21" id="mMn-YR-ChO"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -61,40 +61,40 @@
                         <constraint firstAttribute="width" constant="50" id="ULq-85-Z8r"/>
                         <constraint firstAttribute="height" constant="21" id="c0f-sV-kuC"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VxQ-4F-aL8">
                     <rect key="frame" x="233" y="-8" width="112" height="21"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="22/P" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVa-eD-tUP">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22/P" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVa-eD-tUP">
                             <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="42" id="LuK-tu-dWP"/>
                                 <constraint firstAttribute="height" constant="21" id="xAd-WX-GsI"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="W" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPr-en-VYh">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="W" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPr-en-VYh">
                             <rect key="frame" x="52" y="0.0" width="25" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="krX-sL-bne"/>
                                 <constraint firstAttribute="width" constant="25" id="nDl-OX-VnE"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="L" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAd-wb-41G">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAd-wb-41G">
                             <rect key="frame" x="87" y="0.0" width="25" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="MQt-SX-2X5"/>
                                 <constraint firstAttribute="width" constant="25" id="niz-8j-RB9"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -130,15 +130,15 @@
                     <exclude reference="GdW-mR-kFn"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="cvE-PF-nKD"/>
-                    <exclude reference="djF-TC-3sy"/>
-                    <exclude reference="JSq-eU-ftJ"/>
-                    <exclude reference="bcc-qN-qmI"/>
-                    <exclude reference="b1k-Rc-D9b"/>
-                    <exclude reference="yFR-4d-CQs"/>
                     <exclude reference="7Ag-7U-r7d"/>
                     <exclude reference="VdC-7l-I3V"/>
                     <exclude reference="sMf-sk-SRK"/>
+                    <exclude reference="b1k-Rc-D9b"/>
+                    <exclude reference="yFR-4d-CQs"/>
+                    <exclude reference="JSq-eU-ftJ"/>
+                    <exclude reference="bcc-qN-qmI"/>
+                    <exclude reference="cvE-PF-nKD"/>
+                    <exclude reference="djF-TC-3sy"/>
                 </mask>
             </variation>
             <variation key="heightClass=compact">
@@ -151,20 +151,20 @@
                     <include reference="VxQ-4F-aL8"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="WJm-Dv-R8T"/>
-                    <include reference="uuw-nQ-CwB"/>
-                    <include reference="8G0-zh-ZyX"/>
-                    <include reference="JeX-44-clz"/>
-                    <include reference="66k-40-ipH"/>
-                    <include reference="djF-TC-3sy"/>
-                    <include reference="iBO-UW-cax"/>
-                    <include reference="JSq-eU-ftJ"/>
-                    <include reference="bcc-qN-qmI"/>
-                    <include reference="b1k-Rc-D9b"/>
-                    <include reference="yFR-4d-CQs"/>
                     <include reference="7Ag-7U-r7d"/>
                     <include reference="VdC-7l-I3V"/>
                     <include reference="sMf-sk-SRK"/>
+                    <include reference="b1k-Rc-D9b"/>
+                    <include reference="yFR-4d-CQs"/>
+                    <include reference="JSq-eU-ftJ"/>
+                    <include reference="bcc-qN-qmI"/>
+                    <include reference="8G0-zh-ZyX"/>
+                    <include reference="JeX-44-clz"/>
+                    <include reference="WJm-Dv-R8T"/>
+                    <include reference="uuw-nQ-CwB"/>
+                    <include reference="66k-40-ipH"/>
+                    <include reference="djF-TC-3sy"/>
+                    <include reference="iBO-UW-cax"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -178,7 +178,7 @@
                 <outlet property="labelPointsDifference" destination="GdW-mR-kFn" id="sK0-jQ-Vu6"/>
                 <outlet property="labelPointsFor" destination="RGS-Yh-XcY" id="dz1-OL-IKm"/>
             </connections>
-            <point key="canvasLocation" x="458" y="511"/>
+            <point key="canvasLocation" x="479" y="537"/>
         </view>
     </objects>
 </document>
