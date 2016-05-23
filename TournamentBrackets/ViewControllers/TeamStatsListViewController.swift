@@ -30,6 +30,10 @@ class TeamStatsListViewController : ViewController {
             .bindTo(tableView.rx_itemsWithDataSource(dataSource))
             .addDisposableTo(disposeBag)
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         viewModel.loadStatsList()
     }
     

@@ -34,13 +34,13 @@ struct TeamStatsViewModel {
     
     var seedDelta : String {
         let diff = abs(teamstats.seed - oldseed)
-        return "\(diff)"
+        return diff > 0 ? "\(diff)" : ""
     }
 
     init(teamstats : TeamStats) {
         self.teamstats = teamstats
         
-        self.oldseed = teamstats.seed
+        self.oldseed = teamstats.oldseed
         self.seed = "\(teamstats.seed)"
         self.name = teamstats.name
         self.countPlayed = "\(teamstats.countPlayed)"
