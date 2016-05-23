@@ -43,7 +43,7 @@ struct TeamStatsViewModel {
         self.oldseed = teamstats.oldseed
         self.seed = "\(teamstats.seed)"
         self.name = teamstats.name
-        self.countPlayed = "\(teamstats.countPlayed)/\(teamstats.countGames)"
+        self.countPlayed = "\(teamstats.countPlayed)"
         self.countWins = "\(teamstats.countWins)"
         self.countLost = "\(teamstats.countLost)"
         self.pointsFor = "\(Int(teamstats.pointsFor))"
