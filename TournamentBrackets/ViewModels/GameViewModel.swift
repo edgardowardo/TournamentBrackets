@@ -22,7 +22,7 @@ class GameViewModel {
     var leftScore : String = "" {
         didSet {
             let score = leftScore.characters.count > 0 ? leftScore : "0"
-            if let s = Double(score) {
+            if let s = Int(score) {
                 try! realm.write{
                     game.leftScore = s
                 }
@@ -32,7 +32,7 @@ class GameViewModel {
     var rightScore : String = "" {
         didSet {
             let score = rightScore.characters.count > 0 ? rightScore : "0"
-            if let s = Double(score) {
+            if let s = Int(score) {
                 try! realm.write{
                     game.rightScore = s
                 }

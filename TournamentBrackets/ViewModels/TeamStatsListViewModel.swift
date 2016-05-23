@@ -36,7 +36,7 @@ struct TeamStatsListViewModel {
                 .filter { (game) in game.winner != nil && !(game.winner?.seed == team.seed || game.winner2?.seed == team.seed) }
                 .count
             
-            return TeamStats(oldseed: team.seed, seed: 0, name: team.name, countPlayed: countPlayed, countGames: countGames, countWins: countWins, countLost: countLost, pointsFor: 0.0, pointsAgainst: 0.0, pointsDifference: 0.0)
+            return TeamStats(oldseed: team.seed, seed: 0, name: team.name, countPlayed: countPlayed, countGames: countGames, countWins: countWins, countLost: countLost, pointsFor: 0, pointsAgainst: 0, pointsDifference: 0)
         }
         unindexed.sortInPlace{ (g1, g2) in g1.countWins > g2.countWins }
         var indexed = [TeamStats]()

@@ -79,7 +79,7 @@ class TeamCell : UITableViewCell {
     }
     
     @objc private func negate() {
-        if let handicapText = self.textHandicapPoints.text, handicap = Double(handicapText) where handicap != 0.0 {
+        if let handicapText = self.textHandicapPoints.text, handicap = Int(handicapText) where handicap != 0 {
             self.textHandicapPoints.text = "\(-handicap)"
             saveTextField(textHandicapPoints, withText: textHandicapPoints.text!)
         }
@@ -95,7 +95,7 @@ extension TeamCell : UITextFieldDelegate {
                 team.name = text
             }
         case self.textHandicapPoints:
-            if let seed = Double(text), team = self.team {
+            if let seed = Int(text), team = self.team {
                 team.handicap = seed
             }
         default:

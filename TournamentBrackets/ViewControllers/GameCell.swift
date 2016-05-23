@@ -140,7 +140,7 @@ extension GameCell : UITextFieldDelegate {
     }
     
     @objc private func negate() {
-        if let text = activeTextField.text, handicap = Double(text) where handicap != 0.0 {
+        if let text = activeTextField.text, handicap = Int(text) where handicap != 0 {
             activeTextField.text = "\(-handicap)"
         }
     }

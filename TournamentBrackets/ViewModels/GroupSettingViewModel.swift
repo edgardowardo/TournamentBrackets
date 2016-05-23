@@ -12,7 +12,7 @@ import RealmSwift
 
 struct TeamStruct {
     var name = ""
-    var handicap = 0.0
+    var handicap = 0
     var seed = 0
 }
 
@@ -198,8 +198,8 @@ struct GroupSettingViewModel {
 extension Game {
     func calculateHandicap() {
         guard let left = leftTeam, right = rightTeam else {
-            leftScore = 0.0
-            rightScore = 0.0
+            leftScore = 0
+            rightScore = 0
             return
         }
         
