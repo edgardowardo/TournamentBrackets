@@ -21,7 +21,6 @@ class TeamStatsCell : UITableViewCell {
     @IBOutlet weak var labelPointsFor: UILabel!
     @IBOutlet weak var labelPointsAgainst: UILabel!
     @IBOutlet weak var labelPointsDifference: UILabel!
-    @IBOutlet weak var teamStack: UIStackView!
     
     var viewModel : TeamStatsViewModel! {
         didSet {
@@ -37,30 +36,4 @@ class TeamStatsCell : UITableViewCell {
             labelPointsDifference.text = viewModel.pointsDifference
         }
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(rotated), name: UIDeviceOrientationDidChangeNotification, object: nil)
-        
-        if UIDevice.currentDevice().orientation.isLandscape.boolValue {
-            rotated()
-        }
-    }
-    
-    func rotated() {
-        if(UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation)) {
-            teamStack.addArrangedSubview(labelPointsFor)
-            teamStack.addArrangedSubview(labelPointsAgainst)
-            teamStack.addArrangedSubview(labelPointsDifference)
-        }
-        
-        if(UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation)) {
-            teamStack.removeArrangedSubview(labelPointsFor)
-            teamStack.removeArrangedSubview(labelPointsAgainst)
-            teamStack.removeArrangedSubview(labelPointsDifference)
-        }
-        
-    }
-    
 }

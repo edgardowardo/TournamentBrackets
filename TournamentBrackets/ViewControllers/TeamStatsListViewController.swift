@@ -56,6 +56,10 @@ extension TeamStatsListViewController : UITableViewDataSource {
         }
         return view
     }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 36.0
+    }
 }
 
 extension TeamStatsListViewController : UITableViewDelegate {
