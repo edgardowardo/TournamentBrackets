@@ -13,7 +13,6 @@ import RealmSwift
 
 class TeamStatsListViewController : ViewController {
 
-    let dataSource = TeamStatsListViewController.configureDataSource()
     var viewModel : TeamStatsListViewModel!
     @IBOutlet weak var tableView: UITableView!
 
@@ -21,32 +20,42 @@ class TeamStatsListViewController : ViewController {
         super.viewDidLoad()
         
         tableView.delegate = self
-
-        viewModel.statsList
-            .asObservable()
-            .map{ stats in
-                [SectionModel(model: "STANDINGS", items: stats)]
-            }
-            .bindTo(tableView.rx_itemsWithDataSource(dataSource))
-            .addDisposableTo(disposeBag)
-        
+        tableView.dataSource = self
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.loadStatsList()
+        tableView.reloadData()
+    }
+}
+
+extension TeamStatsListViewController : UITableViewDataSource {
+
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
     }
     
-    static func configureDataSource() -> RxTableViewSectionedReloadDataSource<SectionModel<String, TeamStats>> {
-        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, TeamStats>>()
-        dataSource.configureCell = { (_, tv, ip, stat: TeamStats) in
-            let cell = tv.dequeueReusableCellWithIdentifier("TeamStatsCell") as! TeamStatsCell
-            cell.viewModel = TeamStatsViewModel(teamstats: stat)
-            return cell
-        }
-        return dataSource
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.statsList.value.count
     }
-
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("TeamStatsCell") as! TeamStatsCell
+        let stat = viewModel.statsList.value[indexPath.row]
+        cell.viewModel = TeamStatsViewModel(teamstats: stat)
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UINib(nibName: "TeamStatsHeaderView", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as? TeamStatsHeaderView
+        if viewModel.group.schedule == .SingleElimination || viewModel.group.schedule == .DoubleElimination {
+            view?.labelPlayed.text = "P"
+        } else {
+            view?.labelPlayed.text = "\(viewModel.countGames)/P"
+        }
+        return view
+    }
 }
 
 extension TeamStatsListViewController : UITableViewDelegate {

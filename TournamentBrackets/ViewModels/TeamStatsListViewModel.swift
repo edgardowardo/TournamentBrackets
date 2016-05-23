@@ -13,19 +13,20 @@ struct TeamStatsListViewModel {
     
     var statsList: Variable<[TeamStats]> = Variable([])
     var group : Group!
+    var countGames : Int!
     
     init(group : Group) {
         self.group = group
     }
     
-    func loadStatsList() {
+    mutating func loadStatsList() {
 
         var unindexed = group.teams.map{ (team) -> TeamStats in
             let countPlayed = group.games
                 .filter("winner != nil")
                 .filter("leftTeam.seed == %@ || rightTeam.seed == %@ || doubles.leftTeam2.seed == %@ || doubles.rightTeam2.seed == %@", team.seed, team.seed, team.seed, team.seed)
                 .count
-            let countGames = group.games
+            self.countGames = group.games
                 .filter("leftTeam.seed == %@ || rightTeam.seed == %@ || doubles.leftTeam2.seed == %@ || doubles.rightTeam2.seed == %@", team.seed, team.seed, team.seed, team.seed)
                 .count
             let countWins = group.games

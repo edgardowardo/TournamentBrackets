@@ -54,6 +54,8 @@
 		77D3D65E1CC3BFA6001EF359 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D3D65D1CC3BFA6001EF359 /* Game.swift */; };
 		77E035C01CEE0B2200F6B170 /* GroupTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E035BF1CEE0B2200F6B170 /* GroupTabBarController.swift */; };
 		77E035C21CEE0DD600F6B170 /* GroupTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E035C11CEE0DD600F6B170 /* GroupTabViewModel.swift */; };
+		77E54B701CF391CA00A0E393 /* TeamStatsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77E54B6F1CF391CA00A0E393 /* TeamStatsHeaderView.xib */; };
+		77E54B721CF39B7F00A0E393 /* TeamStatsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E54B711CF39B7F00A0E393 /* TeamStatsHeaderView.swift */; };
 		A64ED72E027EAD3DAFD8A26E /* Pods_TournamentBrackets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F128AE826C2D1F7DD48C40 /* Pods_TournamentBrackets.framework */; };
 		B40764EB7C2A8DB84402C15A /* Pods_TournamentBracketsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D34A9EFFAFBDC769CDD1F3 /* Pods_TournamentBracketsTests.framework */; };
 /* End PBXBuildFile section */
@@ -132,6 +134,8 @@
 		77D3D65D1CC3BFA6001EF359 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		77E035BF1CEE0B2200F6B170 /* GroupTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTabBarController.swift; sourceTree = "<group>"; };
 		77E035C11CEE0DD600F6B170 /* GroupTabViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTabViewModel.swift; sourceTree = "<group>"; };
+		77E54B6F1CF391CA00A0E393 /* TeamStatsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamStatsHeaderView.xib; sourceTree = "<group>"; };
+		77E54B711CF39B7F00A0E393 /* TeamStatsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamStatsHeaderView.swift; sourceTree = "<group>"; };
 		80D34A9EFFAFBDC769CDD1F3 /* Pods_TournamentBracketsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TournamentBracketsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF922B5D4B34B3FB9ABB81BC /* Pods-TournamentBracketsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TournamentBracketsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TournamentBracketsTests/Pods-TournamentBracketsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D7AE8E80DB60ED1D38CF64F5 /* Pods_TournamentBracketsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TournamentBracketsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,6 +218,8 @@
 				7780D6271CE5B10A0014F393 /* GameCell.xib */,
 				7780D6291CE5B6890014F393 /* GameCell.swift */,
 				77D095D21CF1FDCA002F681E /* TeamStatsListViewController.swift */,
+				77E54B6F1CF391CA00A0E393 /* TeamStatsHeaderView.xib */,
+				77E54B711CF39B7F00A0E393 /* TeamStatsHeaderView.swift */,
 				77D095D01CF1F986002F681E /* TeamStatsCell.swift */,
 			);
 			path = ViewControllers;
@@ -445,6 +451,7 @@
 				7770C6181CC0C290008C5A6B /* LaunchScreen.storyboard in Resources */,
 				7770C6151CC0C290008C5A6B /* Assets.xcassets in Resources */,
 				7770C6131CC0C290008C5A6B /* Main.storyboard in Resources */,
+				77E54B701CF391CA00A0E393 /* TeamStatsHeaderView.xib in Resources */,
 				7780D6281CE5B10A0014F393 /* GameCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -595,6 +602,7 @@
 			files = (
 				779FFCA01CD6A8DD00D48800 /* GroupListViewController.swift in Sources */,
 				7766D8401CD102C800DA3FA1 /* Array+Unique.swift in Sources */,
+				77E54B721CF39B7F00A0E393 /* TeamStatsHeaderView.swift in Sources */,
 				77D095D51CF2002A002F681E /* TeamStatsListViewModel.swift in Sources */,
 				771E19631CC27DEF00125F9E /* Scheduler.swift in Sources */,
 				77D2072F1CE119F5009139DB /* UITextField+DoneToolbar.swift in Sources */,
