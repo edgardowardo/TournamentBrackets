@@ -163,74 +163,79 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Oul-3J-XpO">
                                                     <rect key="frame" x="0.0" y="0.0" width="568" height="44"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Dyc-hT-OZI">
-                                                            <rect key="frame" x="0.0" y="12" width="67" height="21"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ymK-gG-wi5">
+                                                            <rect key="frame" x="-20" y="-8" width="269" height="61"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVI-hG-X59">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="25" height="21"/>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Dyc-hT-OZI">
+                                                                    <rect key="frame" x="20" y="20" width="67" height="21"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVI-hG-X59">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="25" height="21"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="21" id="1s2-J4-3nk"/>
+                                                                                <constraint firstAttribute="width" constant="25" id="gO4-Tt-ENX"/>
+                                                                            </constraints>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                            <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="25" height="21"/>
+                                                                            </variation>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="↑" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="91c-b3-MR0">
+                                                                            <rect key="frame" x="25" y="0.0" width="17" height="21"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="17" id="4Bm-e7-m0A"/>
+                                                                                <constraint firstAttribute="height" constant="21" id="6AE-V2-66V"/>
+                                                                            </constraints>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <color key="textColor" red="0.62352941179999999" green="0.20392156859999999" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                            <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
+                                                                                <rect key="frame" x="25" y="0.0" width="17" height="21"/>
+                                                                            </variation>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywr-Po-XdJ">
+                                                                            <rect key="frame" x="42" y="0.0" width="25" height="21"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="25" id="MvW-8M-WKe"/>
+                                                                                <constraint firstAttribute="height" constant="21" id="l6b-aa-Mnp"/>
+                                                                            </constraints>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                            <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
+                                                                                <rect key="frame" x="42" y="0.0" width="25" height="21"/>
+                                                                            </variation>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <variation key="heightClass=compact">
+                                                                        <mask key="subviews">
+                                                                            <include reference="KVI-hG-X59"/>
+                                                                            <include reference="91c-b3-MR0"/>
+                                                                            <include reference="ywr-Po-XdJ"/>
+                                                                        </mask>
+                                                                    </variation>
+                                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                                        <mask key="subviews">
+                                                                            <include reference="KVI-hG-X59"/>
+                                                                            <include reference="91c-b3-MR0"/>
+                                                                            <include reference="ywr-Po-XdJ"/>
+                                                                        </mask>
+                                                                    </variation>
+                                                                </stackView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team 32" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLQ-ff-qTD">
+                                                                    <rect key="frame" x="109" y="20" width="140" height="21"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="21" id="1s2-J4-3nk"/>
-                                                                        <constraint firstAttribute="width" constant="25" id="gO4-Tt-ENX"/>
+                                                                        <constraint firstAttribute="height" constant="21" id="dNb-AA-2wI"/>
+                                                                        <constraint firstAttribute="width" priority="999" constant="160" id="kiK-57-jRy"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
-                                                                    <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="25" height="21"/>
-                                                                    </variation>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="↑" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="91c-b3-MR0">
-                                                                    <rect key="frame" x="25" y="0.0" width="17" height="21"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="17" id="4Bm-e7-m0A"/>
-                                                                        <constraint firstAttribute="height" constant="21" id="6AE-V2-66V"/>
-                                                                    </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <color key="textColor" red="0.62352941179999999" green="0.20392156859999999" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                    <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
-                                                                        <rect key="frame" x="25" y="0.0" width="17" height="21"/>
-                                                                    </variation>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywr-Po-XdJ">
-                                                                    <rect key="frame" x="42" y="0.0" width="25" height="21"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="25" id="MvW-8M-WKe"/>
-                                                                        <constraint firstAttribute="height" constant="21" id="l6b-aa-Mnp"/>
-                                                                    </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                    <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
-                                                                        <rect key="frame" x="42" y="0.0" width="25" height="21"/>
-                                                                    </variation>
                                                                 </label>
                                                             </subviews>
-                                                            <variation key="heightClass=compact">
-                                                                <mask key="subviews">
-                                                                    <include reference="KVI-hG-X59"/>
-                                                                    <include reference="91c-b3-MR0"/>
-                                                                    <include reference="ywr-Po-XdJ"/>
-                                                                </mask>
-                                                            </variation>
-                                                            <variation key="heightClass=regular-widthClass=compact">
-                                                                <mask key="subviews">
-                                                                    <include reference="KVI-hG-X59"/>
-                                                                    <include reference="91c-b3-MR0"/>
-                                                                    <include reference="ywr-Po-XdJ"/>
-                                                                </mask>
-                                                            </variation>
                                                         </stackView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team 32" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLQ-ff-qTD">
-                                                            <rect key="frame" x="139" y="12" width="140" height="21"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="21" id="dNb-AA-2wI"/>
-                                                                <constraint firstAttribute="width" constant="140" id="kiK-57-jRy"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHP-73-TfJ">
                                                             <rect key="frame" x="350" y="12" width="25" height="21"/>
                                                             <constraints>
@@ -301,8 +306,6 @@
                                                     </variation>
                                                     <variation key="heightClass=compact">
                                                         <mask key="subviews">
-                                                            <include reference="Dyc-hT-OZI"/>
-                                                            <include reference="NLQ-ff-qTD"/>
                                                             <include reference="cHP-73-TfJ"/>
                                                             <include reference="F8z-ZN-P3g"/>
                                                             <include reference="k3I-rr-6IP"/>
@@ -313,8 +316,6 @@
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="subviews">
-                                                            <include reference="Dyc-hT-OZI"/>
-                                                            <include reference="NLQ-ff-qTD"/>
                                                             <include reference="cHP-73-TfJ"/>
                                                             <include reference="F8z-ZN-P3g"/>
                                                             <include reference="k3I-rr-6IP"/>
