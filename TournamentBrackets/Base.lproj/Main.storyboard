@@ -850,7 +850,7 @@
                                 <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ODa-D6-Bur">
                                     <rect key="frame" x="0.0" y="108" width="600" height="117"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <string key="text">Games are shown per round. As the tournament progress, you can swipe to the right to move to the next round of schedules. Click a team to select a winner and rotate to landscape to edit scores.</string>
+                                    <string key="text">Games are shown per round. As the tournament progress, swipe right to move the next round of schedules. Click a team to select a winner and rotate landscape to edit scores or draw a game.</string>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>

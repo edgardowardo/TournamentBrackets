@@ -29,6 +29,8 @@ class GameCell : UITableViewCell {
             self.rightTeamButton.setTitle(viewModel.rightPrompt, forState: .Normal)
             self.leftTeamButton.enabled = viewModel.leftPrompt != "BYE"
             self.rightTeamButton.enabled = viewModel.rightPrompt != "BYE"
+            self.leftScoreTextField.enabled = !(viewModel.leftPrompt == "BYE" || viewModel.rightPrompt == "BYE")
+            self.rightScoreTextField.enabled = !(viewModel.leftPrompt == "BYE" || viewModel.rightPrompt == "BYE")
             
             self.viewModel.leftTeam
                 .asObservable()
@@ -49,6 +51,7 @@ class GameCell : UITableViewCell {
                 .subscribeNext { [unowned self] winner in
                     
                     let winningColor = self.viewModel.isFinalElimination ? UIColor.flatCarrotColor().colorWithAlphaComponent(4.0) : UIColor.flatEmeraldColor().colorWithAlphaComponent(0.75)
+                    let drawnColor = UIColor.flatPeterRiverColor()
                     let winningTextColor = UIColor.whiteColor()
                     let losingColor = UIColor.flatCloudsColor()
                     let losingTextColor = UIColor.init(colorLiteralRed: 0.0, green: 0.478431, blue: 1.0, alpha: 1.0)
@@ -67,10 +70,17 @@ class GameCell : UITableViewCell {
                             self.rightTeamButton.setTitleColor(winningTextColor, forState: .Normal)
                         }
                     } else {
-                        self.leftTeamButton.backgroundColor = losingColor
-                        self.leftTeamButton.setTitleColor(losingTextColor, forState: .Normal)
-                        self.rightTeamButton.backgroundColor = losingColor
-                        self.rightTeamButton.setTitleColor(losingTextColor, forState: .Normal)
+                        if self.viewModel.game.isDraw {
+                            self.leftTeamButton.backgroundColor = drawnColor
+                            self.leftTeamButton.setTitleColor(winningTextColor, forState: .Normal)
+                            self.rightTeamButton.backgroundColor = drawnColor
+                            self.rightTeamButton.setTitleColor(winningTextColor, forState: .Normal)
+                        } else {
+                            self.leftTeamButton.backgroundColor = losingColor
+                            self.leftTeamButton.setTitleColor(losingTextColor, forState: .Normal)
+                            self.rightTeamButton.backgroundColor = losingColor
+                            self.rightTeamButton.setTitleColor(losingTextColor, forState: .Normal)
+                        }
                     }
                     
                     self.leftTeamButton.setTitleColor(disabledTextColor, forState: .Disabled)
@@ -114,10 +124,12 @@ class GameCell : UITableViewCell {
 
         let clearButton1 = UIBarButtonItem(title: "Clear", style: .Plain, target: self, action: #selector(clear))
         let clearButton2 = UIBarButtonItem(title: "Clear", style: .Plain, target: self, action: #selector(clear))
+        let drawButton1 = UIBarButtonItem(title: "Draw", style: .Plain, target: self, action: #selector(drawn))
+        let drawButton2 = UIBarButtonItem(title: "Draw", style: .Plain, target: self, action: #selector(drawn))
         let negateButton1 = UIBarButtonItem(title: "Negate", style: .Plain, target: self, action: #selector(negate))
         let negateButton2 = UIBarButtonItem(title: "Negate", style: .Plain, target: self, action: #selector(negate))
-        self.leftScoreTextField.addDoneToolbar([clearButton1], rightbuttons: [negateButton1])
-        self.rightScoreTextField.addDoneToolbar([clearButton2], rightbuttons: [negateButton2])
+        self.leftScoreTextField.addDoneToolbar([clearButton1, drawButton1], rightbuttons: [negateButton1])
+        self.rightScoreTextField.addDoneToolbar([clearButton2, drawButton2], rightbuttons: [negateButton2])
     }
     
     internal override func prepareForReuse() {
@@ -133,6 +145,11 @@ extension GameCell : UITextFieldDelegate {
         get {
             return leftScoreTextField.isFirstResponder() ? leftScoreTextField : rightScoreTextField
         }
+    }
+
+    @objc private func drawn() {
+        viewModel.setDrawn()
+        activeTextField.resignFirstResponder()
     }
     
     @objc private func clear() {

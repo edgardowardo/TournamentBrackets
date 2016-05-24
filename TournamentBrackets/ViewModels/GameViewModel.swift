@@ -155,6 +155,9 @@ class GameViewModel {
                         self.game.winner = team
                     }
                 }
+                try! self.realm.write {
+                    self.game.isDraw = false
+                }
             }
             .addDisposableTo(self.disposeBag!)
         
@@ -167,6 +170,9 @@ class GameViewModel {
                         self.game.winner = team
                     }
                 }
+                try! self.realm.write {
+                    self.game.isDraw = false
+                }                
             }
             .addDisposableTo(self.disposeBag!)
     }
@@ -186,6 +192,18 @@ class GameViewModel {
         self.winner.value = rightTeam.value
         try! self.realm.write {
             self.game.winner = self.winner.value
+        }
+    }
+    
+    func setDrawn() {
+        guard let _ = leftTeam.value, _ = rightTeam.value else { return }
+        
+        self.leftScore = ""
+        self.rightScore = ""
+        self.winner.value = nil
+        try! self.realm.write {
+            self.game.winner = nil
+            self.game.isDraw = true
         }
     }
 }
