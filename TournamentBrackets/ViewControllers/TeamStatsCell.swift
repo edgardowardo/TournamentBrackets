@@ -18,6 +18,7 @@ class TeamStatsCell : UITableViewCell {
     @IBOutlet weak var labelPlayed: UILabel!
     @IBOutlet weak var labelWon: UILabel!
     @IBOutlet weak var labelLost: UILabel!
+    @IBOutlet weak var labelDrawn: UILabel!
     @IBOutlet weak var labelPointsFor: UILabel!
     @IBOutlet weak var labelPointsAgainst: UILabel!
     @IBOutlet weak var labelPointsDifference: UILabel!
@@ -31,6 +32,7 @@ class TeamStatsCell : UITableViewCell {
             labelPlayed.text = viewModel.countPlayed
             labelWon.text = viewModel.countWins
             labelLost.text = viewModel.countLost
+            labelDrawn.text = viewModel.countDrawn
             labelPointsFor.text = viewModel.pointsFor
             labelPointsAgainst.text = viewModel.pointsAgainst
             labelPointsDifference.text = viewModel.pointsDifference

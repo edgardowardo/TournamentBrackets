@@ -15,6 +15,7 @@ struct TeamStats {
     var countPlayed : Int
     var countGames : Int
     var countWins : Int
+    var countDraws : Int
     var countLost : Int
     var pointsFor : Int
     var pointsAgainst : Int

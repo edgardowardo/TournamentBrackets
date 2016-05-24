@@ -267,6 +267,16 @@
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkE-Rg-A1Y">
+                                                            <rect key="frame" x="70" y="0.0" width="25" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="RjJ-ZJ-eRU"/>
+                                                                <constraint firstAttribute="width" constant="25" id="hV3-ml-xUO"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="220" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkc-2A-sqk">
@@ -369,6 +379,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="labelDirection" destination="91c-b3-MR0" id="Mug-a8-Adt"/>
+                                            <outlet property="labelDrawn" destination="bkE-Rg-A1Y" id="baI-0D-9iz"/>
                                             <outlet property="labelLost" destination="k3I-rr-6IP" id="kix-Qd-f61"/>
                                             <outlet property="labelPlayed" destination="cHP-73-TfJ" id="c1y-5j-fX4"/>
                                             <outlet property="labelPointsAgainst" destination="lAe-Pn-WPx" id="zfq-SZ-p9t"/>

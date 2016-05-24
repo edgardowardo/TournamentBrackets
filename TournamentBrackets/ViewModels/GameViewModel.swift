@@ -67,6 +67,7 @@ class GameViewModel {
                         try! self.realm.write {
                             self.game.winner = nil
                             self.game.leftTeam = team
+                            self.game.isDraw = false
                             self.game.calculateHandicap()
                         }
                     }
@@ -97,6 +98,7 @@ class GameViewModel {
                         try! self.realm.write {
                             self.game.winner = nil
                             self.game.rightTeam = team
+                            self.game.isDraw = false                            
                             self.game.calculateHandicap()
                         }
                     }
@@ -155,9 +157,6 @@ class GameViewModel {
                         self.game.winner = team
                     }
                 }
-                try! self.realm.write {
-                    self.game.isDraw = false
-                }
             }
             .addDisposableTo(self.disposeBag!)
         
@@ -170,9 +169,6 @@ class GameViewModel {
                         self.game.winner = team
                     }
                 }
-                try! self.realm.write {
-                    self.game.isDraw = false
-                }                
             }
             .addDisposableTo(self.disposeBag!)
     }
@@ -183,6 +179,7 @@ class GameViewModel {
         self.winner.value = leftTeam.value
         try! self.realm.write {
             self.game.winner = self.winner.value
+            self.game.isDraw = false
         }
     }
     
@@ -192,6 +189,7 @@ class GameViewModel {
         self.winner.value = rightTeam.value
         try! self.realm.write {
             self.game.winner = self.winner.value
+            self.game.isDraw = false
         }
     }
     

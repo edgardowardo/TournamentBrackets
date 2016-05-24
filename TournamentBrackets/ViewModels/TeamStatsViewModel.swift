@@ -16,6 +16,7 @@ struct TeamStatsViewModel {
     var countPlayed : String
     var countWins : String
     var countLost : String
+    var countDrawn : String
     var pointsFor : String
     var pointsAgainst : String
     var pointsDifference : String
@@ -46,6 +47,7 @@ struct TeamStatsViewModel {
         self.countPlayed = "\(teamstats.countPlayed)"
         self.countWins = "\(teamstats.countWins)"
         self.countLost = "\(teamstats.countLost)"
+        self.countDrawn = "\(teamstats.countDraws)"
         self.pointsFor = "\(Int(teamstats.pointsFor))"
         self.pointsAgainst = "\(Int(teamstats.pointsAgainst))"
         self.pointsDifference = "\(Int(teamstats.pointsDifference))"
