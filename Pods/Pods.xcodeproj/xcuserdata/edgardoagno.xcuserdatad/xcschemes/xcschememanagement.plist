@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Charts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -87,17 +92,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>12B75670387331698CFEF9AA15A33CD6</key>
+		<key>0527F59F8BC399C0DCB77C8F3521ED55</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>16A202E41A9F551AF7FF4E98FAA95773</key>
+		<key>2137135BF0972EA25F3F2F0D75AE89B7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>283F743503C4266CC95607D2C00D6267</key>
+		<key>28B607BAFE7E8BE96D1A8DD7BED54567</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,12 +112,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>52257197FE18E66BDE1655294437D147</key>
+		<key>43FC78A91408E492245421A31812C89F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>575330CDDD2B122055402AD0B30603D5</key>
+		<key>45019734F0980AEBBD32E4CACC3C8527</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>555F268C3B2C01CE07A5F5396B72950A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,22 +132,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AE428C8F4252FBF0EE812746C05646D9</key>
+		<key>86FCAFBE3ACE0BF6FEB45151E8D15D55</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BFDD348D04142393FAD0061293BCF7FE</key>
+		<key>AB56C9F952A69FA0121FC43736557987</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CC4FA24DB8EC7FD92ED0582FBF208A94</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D6D6986E824D22DCF8C5639C1B9E4279</key>
+		<key>BD37FCE6B3E2B8183E845415414FB67A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -152,12 +157,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E94A69EDD2D73C4F269F28490C018661</key>
+		<key>ECA6513BBE840E34D0B40F562252A464</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ECA6513BBE840E34D0B40F562252A464</key>
+		<key>F831852D7F125168B1EF17FC76AB893C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA073A2B6A40241050D91303EE6DF561</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -15,6 +15,7 @@ target 'TournamentBrackets' do
     pod 'MBProgressHUD'
     pod 'VTAcknowledgementsViewController'
     pod 'UIColor+FlatColors'
+    pod 'Charts/Realm'
     shared_pods
 end
 

@@ -1,5 +1,9 @@
 PODS:
   - AKPickerView (0.2.7)
+  - Charts/Core (2.2.4)
+  - Charts/Realm (2.2.4):
+    - Charts/Core
+    - RealmSwift (~> 0.97)
   - MBProgressHUD (0.9.2)
   - Nimble (4.0.1)
   - Quick (0.9.2)
@@ -24,6 +28,7 @@ PODS:
 
 DEPENDENCIES:
   - AKPickerView
+  - Charts/Realm
   - MBProgressHUD
   - Nimble
   - Quick
@@ -38,6 +43,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AKPickerView: 125372e36fcc372216127600a541f14dcdbb7993
+  Charts: a9e735c83c6d376ade20f6612dcf0ba217394a49
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   Nimble: 0f3c8b8b084cda391209c3c5efbb48bedeeb920a
   Quick: 18d057bc66451eedd5d1c8dc99ba2a5db6e60226

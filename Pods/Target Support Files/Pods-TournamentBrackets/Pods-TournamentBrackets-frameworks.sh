@@ -85,6 +85,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-TournamentBrackets/AKPickerView.framework"
+  install_framework "Pods-TournamentBrackets/Charts.framework"
   install_framework "Pods-TournamentBrackets/MBProgressHUD.framework"
   install_framework "Pods-TournamentBrackets/Realm.framework"
   install_framework "Pods-TournamentBrackets/RealmSwift.framework"
@@ -98,6 +99,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-TournamentBrackets/AKPickerView.framework"
+  install_framework "Pods-TournamentBrackets/Charts.framework"
   install_framework "Pods-TournamentBrackets/MBProgressHUD.framework"
   install_framework "Pods-TournamentBrackets/Realm.framework"
   install_framework "Pods-TournamentBrackets/RealmSwift.framework"
