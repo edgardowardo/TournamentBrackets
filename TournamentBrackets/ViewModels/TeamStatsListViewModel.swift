@@ -61,7 +61,11 @@ struct TeamStatsListViewModel {
             return TeamStats(oldseed: team.seed, seed: 0, name: team.name, countPlayed: countPlayed, countGames: countGames, countWins: countWins, countLost: countLost, pointsFor: pointsFor, pointsAgainst: pointsAgainst, pointsDifference: pointDifference)
         }
         let factor = 1000
-        unindexed.sortInPlace{ (g1, g2) in g1.countWins * factor + g1.pointsDifference > g2.countWins * factor + g2.pointsDifference }
+        let diff = unindexed.map{ $0.countPlayed }.reduce(0, combine: { $0 + $1 })
+        if diff > 0 {
+            unindexed.sortInPlace{ (g1, g2) in g1.countWins * factor + g1.pointsDifference > g2.countWins * factor + g2.pointsDifference }
+        }
+        
         var indexed = [TeamStats]()
         for (i, e) in unindexed.enumerate() {
             indexed.append(TeamStats(oldseed: e.oldseed, seed: i+1, name: e.name, countPlayed: e.countPlayed, countGames: e.countGames, countWins: e.countWins, countLost: e.countLost, pointsFor: e.pointsFor, pointsAgainst: e.pointsAgainst, pointsDifference: e.pointsDifference))
