@@ -22,10 +22,12 @@ class GroupTabBarController : UITabBarController {
         
         if let viewControllers = self.viewControllers {
             for (index, vc) in viewControllers.enumerate() {
-                if let groupDetailVC = vc as? GroupDetailViewController {
-                    groupDetailVC.viewModel = GroupDetailViewModel(group: viewModel.group, gameViewModels: viewModel.gameViewModels, isLoserBracket: (index == 1))
-                } else if let teamStatsVC = vc as? TeamStatsListViewController {
-                    teamStatsVC.viewModel = TeamStatsListViewModel(group: viewModel.group)
+                if let c = vc as? GroupDetailViewController {
+                    c.viewModel = GroupDetailViewModel(group: viewModel.group, gameViewModels: viewModel.gameViewModels, isLoserBracket: (index == 1))
+                } else if let c = vc as? TeamStatsListViewController {
+                    c.viewModel = TeamStatsListViewModel(group: viewModel.group)
+                } else if let c = vc as? ChartsViewController {
+                    c.viewModel = ChartsViewModel(group: viewModel.group)
                 }
             }
             if viewModel.group.schedule != .DoubleElimination {

@@ -11,7 +11,7 @@ import RxSwift
 
 struct TeamStatsListViewModel {
     
-    var statsList: Variable<[TeamStats]> = Variable([])
+    var statsList: [TeamStats] = []
     var group : Group!
     var countGames : Int!
     
@@ -76,7 +76,7 @@ struct TeamStatsListViewModel {
             indexed.append(TeamStats(oldseed: e.oldseed, seed: i+1, name: e.name, countPlayed: e.countPlayed, countGames: e.countGames, countWins: e.countWins, countDraws: e.countDraws, countLost: e.countLost, pointsFor: e.pointsFor, pointsAgainst: e.pointsAgainst, pointsDifference: e.pointsDifference))
         }
         
-        statsList.value = indexed
+        statsList = indexed
     }
 }
 

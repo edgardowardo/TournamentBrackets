@@ -37,12 +37,12 @@ extension TeamStatsListViewController : UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.statsList.value.count
+        return viewModel.statsList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TeamStatsCell") as! TeamStatsCell
-        let stat = viewModel.statsList.value[indexPath.row]
+        let stat = viewModel.statsList[indexPath.row]
         cell.viewModel = TeamStatsViewModel(teamstats: stat)
         return cell
     }
