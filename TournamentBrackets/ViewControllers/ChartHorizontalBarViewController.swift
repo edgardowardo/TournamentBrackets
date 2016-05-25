@@ -25,5 +25,65 @@ class ChartHorizontalBarViewController : ChartBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         labelSubtitle.text = "\(viewModel.chartType)"
+   
+        setup()
+        setData()
+        chart.animate(yAxisDuration: 2.5)
+    }
+    
+    func setData() {
+        viewModel.reload()
+        
+        var yVals = [BarChartDataEntry]()
+        for (i, y) in viewModel.yAxis.enumerate() {
+            yVals.append(BarChartDataEntry(value: y, xIndex: i))
+        }
+        let dataset = BarChartDataSet(yVals: yVals, label: "")
+        let data = BarChartData(xVals: viewModel.xAxis, dataSets: [dataset])
+        chart.data = data
+    }    
+    
+    func setup() {
+
+        chart.descriptionText = ""
+        chart.noDataTextDescription = "You need to provide data for the chart."
+        chart.drawGridBackgroundEnabled = false
+        chart.dragEnabled = true
+        chart.setScaleEnabled(true)
+        chart.pinchZoomEnabled = false
+        chart.xAxis.labelPosition = .Bottom
+        chart.rightAxis.enabled = false
+        
+        
+        chart.drawBarShadowEnabled = false
+        chart.drawValueAboveBarEnabled = true
+        chart.maxVisibleValueCount = 60
+        
+        let xAxis = chart.xAxis
+        xAxis.labelPosition = .Bottom;
+        xAxis.labelFont = UIFont.systemFontOfSize(10.0)
+        xAxis.drawAxisLineEnabled = true
+        xAxis.drawGridLinesEnabled = true
+        xAxis.gridLineWidth = 0.3
+        
+        let leftAxis = chart.leftAxis;
+        leftAxis.labelFont = UIFont.systemFontOfSize(10.0)
+        leftAxis.drawAxisLineEnabled = true
+        leftAxis.drawGridLinesEnabled = true
+        leftAxis.gridLineWidth = 0.3
+        leftAxis.resetCustomAxisMin()
+        
+        let rightAxis = chart.rightAxis
+        rightAxis.enabled = true
+        rightAxis.labelFont = UIFont.systemFontOfSize(10.0)
+        rightAxis.drawAxisLineEnabled = true
+        rightAxis.drawGridLinesEnabled = false
+        rightAxis.resetCustomAxisMin()
+        
+        chart.legend.position = .BelowChartLeft
+        chart.legend.form = .Square
+        chart.legend.formSize = 8.0
+        chart.legend.font = UIFont(name: "HelveticaNeue-Light", size: 11.0)!
+        chart.legend.xEntrySpace = 4.0
     }
 }
