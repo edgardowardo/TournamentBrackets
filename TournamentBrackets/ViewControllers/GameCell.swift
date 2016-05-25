@@ -50,7 +50,7 @@ class GameCell : UITableViewCell {
                 .asObservable()
                 .subscribeNext { [unowned self] winner in
                     
-                    let winningColor = self.viewModel.isFinalElimination ? UIColor.flatCarrotColor().colorWithAlphaComponent(4.0) : UIColor.flatEmeraldColor().colorWithAlphaComponent(0.75)
+                    let winningColor = self.viewModel.isFinalElimination ? UIColor.flatCarrotColor() : UIColor.flatEmeraldColor()
                     let drawnColor = UIColor.flatPeterRiverColor()
                     let winningTextColor = UIColor.whiteColor()
                     let losingColor = UIColor.flatCloudsColor()

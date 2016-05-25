@@ -11,13 +11,13 @@ import RxSwift
 
 struct ChartsHorizontalBarViewModel {
     
-    var statsList: Variable<[TeamStats]> = Variable([])
     var group : Group
     var chartType : TournamentChart
+    var helper: TeamStatsListViewModel
     
-    init(group : Group, chartType : TournamentChart) {
+    init(group : Group, chartType : TournamentChart, helper : TeamStatsListViewModel) {
         self.group = group
         self.chartType = chartType
+        self.helper = helper
     }
-    
 }

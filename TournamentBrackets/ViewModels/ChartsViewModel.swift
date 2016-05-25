@@ -10,12 +10,12 @@ import Foundation
 import RxSwift
 
 struct ChartsViewModel {
-    
-    var statsList: Variable<[TeamStats]> = Variable([])
-    var group : Group!
+
+    var helper: TeamStatsListViewModel
+    var group: Group!
     
     init(group : Group) {
         self.group = group
+        self.helper = TeamStatsListViewModel(group: group)
     }
-    
 }

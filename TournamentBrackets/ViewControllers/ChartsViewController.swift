@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ChartBaseViewController : UIViewController {
+class ChartBaseViewController : ViewController {
     var pageIndex : Int {
         get {
             return 0
@@ -47,11 +47,11 @@ class ChartsViewController : UIViewController {
             fallthrough
         case .Conceded:
             let vc = storyboard.instantiateViewControllerWithIdentifier("ChartPieViewController") as! ChartPieViewController
-            vc.viewModel = ChartsPieViewModel(group: viewModel.group, chartType: chart)
+            vc.viewModel = ChartsPieViewModel(group: viewModel.group, chartType: chart, helper: viewModel.helper)
             return vc
         case .PlayedPerTeam:
             let vc = storyboard.instantiateViewControllerWithIdentifier("ChartHorizontalBarViewController") as! ChartHorizontalBarViewController
-            vc.viewModel = ChartsHorizontalBarViewModel(group: viewModel.group, chartType: chart)
+            vc.viewModel = ChartsHorizontalBarViewModel(group: viewModel.group, chartType: chart, helper: viewModel.helper)
             return vc
         }
     }

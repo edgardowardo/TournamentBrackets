@@ -19,7 +19,7 @@ struct GameListViewModel {
     var pageIndex : Int!
     var isRoundFinished : Bool {
         get {
-            return gamesInRound.map{ (g) in g.winner != nil }.reduce(true, combine: { $0 && $1})
+            return gamesInRound.map{ (g) in g.winner != nil || g.isDraw }.reduce(true, combine: { $0 && $1})
         }
     }
     
