@@ -35,6 +35,16 @@ struct ChartsPieViewModel {
         }
     }
     
+    var holeText : String {
+        get {
+            if chartType == .Played {
+                return "\(group.games.count) games in total"
+            } else {
+                return ""
+            }
+        }
+    }
+    
     mutating func loadData() {
         switch chartType {
         case .Played:

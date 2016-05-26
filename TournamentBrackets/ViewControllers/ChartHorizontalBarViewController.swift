@@ -43,14 +43,22 @@ class ChartHorizontalBarViewController : ChartBaseViewController {
         let dataset = BarChartDataSet(yVals: yVals, label: "\(viewModel.chartType)")
         let data = BarChartData(xVals: viewModel.xAxis, dataSets: [dataset])
         if viewModel.yAxisMaxValue > 0 {
-            chart.leftYAxisRenderer.yAxis?.axisMaxValue = Double(viewModel.yAxisMaxValue)
-            chart.rightYAxisRenderer.yAxis?.axisMaxValue = Double(viewModel.yAxisMaxValue)
-        }        
+            chart.leftAxis.axisMaxValue = Double(viewModel.yAxisMaxValue)
+            chart.rightAxis.axisMaxValue = Double(viewModel.yAxisMaxValue)
+        }
+        let f = NSNumberFormatter()
+        f.maximumFractionDigits = 0
+        data.setValueFormatter(f)
+        
         chart.data = data
         self.chart.animate(yAxisDuration: 0.75, easingOption: .EaseOutBack)
     }
     
     func setup() {
+        let f = NSNumberFormatter()
+        f.maximumFractionDigits = 0
+        chart.leftYAxisRenderer.yAxis?.valueFormatter = f
+        chart.rightYAxisRenderer.yAxis?.valueFormatter = f
 
         chart.descriptionText = ""
         chart.noDataTextDescription = "You need to provide data for the chart."

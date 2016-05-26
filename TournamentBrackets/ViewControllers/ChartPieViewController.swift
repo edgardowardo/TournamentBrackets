@@ -48,13 +48,14 @@ class ChartPieViewController : ChartBaseViewController {
         let data = PieChartData(xVals: viewModel.xAxis, dataSet: dataset)
         let formatter = NSNumberFormatter()
         formatter.numberStyle = .PercentStyle
-        formatter.maximumFractionDigits = 1
+        formatter.maximumFractionDigits = 0
         formatter.multiplier = 1
         formatter.percentSymbol = ""
         data.setValueFormatter(formatter)
         data.setValueFont(UIFont(name: "HelveticaNeue-Light", size: 11.0))
         data.setValueTextColor(UIColor.whiteColor())
         chart.data = data
+        chart.centerText = viewModel.holeText
         self.chart.animate(xAxisDuration: 0.75, easingOption: .EaseOutBack)
     }
     
@@ -65,7 +66,7 @@ class ChartPieViewController : ChartBaseViewController {
         chart.transparentCircleRadiusPercent = 0.61
         chart.descriptionText = ""
         chart.setExtraOffsets(left: 5.0, top: 10.0, right: 5.0, bottom: 5.0)
-        chart.drawCenterTextEnabled = false
+        chart.drawCenterTextEnabled = true
         chart.rotationAngle = 0.0;
         chart.rotationEnabled = true
         chart.highlightPerTapEnabled = true
