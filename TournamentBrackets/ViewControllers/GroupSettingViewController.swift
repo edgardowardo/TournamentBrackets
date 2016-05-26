@@ -37,7 +37,7 @@ class GroupSettingViewController: ViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        DefaultWireframe.delay(0.25) { 
+        backgroundThread(0.1, background: nil) {
             self.textGroupName.becomeFirstResponder()
         }
     }
