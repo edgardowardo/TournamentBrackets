@@ -33,12 +33,10 @@ struct ChartsHorizontalBarViewModel {
         }
     }
     
-    mutating func reload() {
-        helper.loadStatsList()
+    mutating func loadData() {
         if chartType == .PlayedPerTeam {
             xAxis = helper.statsList.map{ $0.name }
             yAxis = helper.statsList.map{ Double($0.countPlayed) }
-            
         }
     }
 }

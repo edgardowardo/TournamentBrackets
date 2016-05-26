@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import RxDataSources
 import RealmSwift
-import MBProgressHUD
 
 class TeamStatsListViewController : ViewController {
 
@@ -46,15 +45,6 @@ class TeamStatsListViewController : ViewController {
         }
     }
     
-    func showHud(text text : String) {
-        let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
-        hud.dimBackground = true
-        hud.labelText = text
-    }
-    
-    func hideHud() {
-        MBProgressHUD.hideAllHUDsForView(view, animated: true)
-    }
 }
 
 extension TeamStatsListViewController : UITableViewDataSource {

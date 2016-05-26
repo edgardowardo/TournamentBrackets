@@ -35,9 +35,7 @@ struct ChartsPieViewModel {
         }
     }
     
-    mutating func reload() {
-        helper.loadStatsList()
-        
+    mutating func loadData() {
         switch chartType {
         case .Played:
             xAxis = ["Played", "Not played yet"]
@@ -68,6 +66,46 @@ extension TournamentChart {
         get {
             if self == .Played {
                 return [UIColor.flatEmeraldColor(), UIColor.flatConcreteColor()]
+
+                
+                
+                
+            } else if self == .Conceded {
+                return
+                    [
+                        UIColor.flatConcreteColor(),
+                        UIColor.flatAsbestosColor(),
+                        UIColor.flatWetAsphaltColor(),
+                        UIColor.flatMidnightBlueColor(),
+                        UIColor.flatAmethystColor(),
+                        UIColor.flatWisteriaColor(),
+                        UIColor.flatPeterRiverColor(),
+                        UIColor.flatBelizeHoleColor(),
+                        UIColor.flatWetAsphaltColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatMidnightBlueColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatPeterRiverColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatBelizeHoleColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatConcreteColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatAsbestosColor().colorWithAlphaComponent(0.5),
+
+
+                        
+                        UIColor.flatTurquoiseColor(),
+                        UIColor.flatGreenSeaColor(),
+                        UIColor.flatEmeraldColor(),
+                        UIColor.flatNephritisColor(),
+                        UIColor.flatOrangeColor(),
+                        UIColor.flatCarrotColor(),
+                        UIColor.flatPumpkinColor(),
+                        UIColor.flatAlizarinColor(),
+                        UIColor.flatPomegranateColor(),
+                        UIColor.flatTurquoiseColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatGreenSeaColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatEmeraldColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatNephritisColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatAmethystColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatWisteriaColor().colorWithAlphaComponent(0.5)
+                ]
             } else {
                 return
                     [

@@ -25,14 +25,19 @@ class ChartHorizontalBarViewController : ChartBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         labelSubtitle.text = "\(viewModel.chartType)"
-   
-        setup()
-        setData()
-        chart.animate(yAxisDuration: 0.75)
+        setup()        
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.setData()
+        self.chart.animate(yAxisDuration: 0.75, easingOption: .EaseOutBack)
+    }    
+    
     func setData() {
-        viewModel.reload()
+        viewModel.loadData()
+        
         var yVals = [BarChartDataEntry]()
         for (i, y) in viewModel.yAxis.enumerate() {
             yVals.append(BarChartDataEntry(value: y, xIndex: i))

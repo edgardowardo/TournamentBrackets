@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MBProgressHUD
 
 class ChartBaseViewController : ViewController {
     var pageIndex : Int {
@@ -17,18 +18,38 @@ class ChartBaseViewController : ViewController {
     }
 }
 
-class ChartsViewController : UIViewController {
+class ChartsViewController : ViewController {
     
     var viewModel : ChartsViewModel!
     var pageViewController : UIPageViewController!
     var viewControllers : [ChartBaseViewController]!
+    var reload : Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewControllers = TournamentChart.all.map{ (chart) in viewControllerForTournamentChart(chart) }
-        self.pageViewController.dataSource = self
-        self.pageViewController.setViewControllers([viewControllers[0]], direction: .Forward, animated: true, completion: nil)
+        
+        viewModel.group.games
+            .asObservableArray()
+            .subscribeNext{ _ in
+                self.reload = true
+            }.addDisposableTo(disposeBag)
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if reload {
+            showHud(text: "Drawing...")
+            backgroundThread(0.05, background: nil, completion: {
+                self.viewModel.helper.loadStatsList()
+                self.viewControllers = TournamentChart.all.map{ (chart) in self.viewControllerForTournamentChart(chart) }
+                self.pageViewController.dataSource = self
+                self.pageViewController.setViewControllers([self.viewControllers[0]], direction: .Forward, animated: true, completion: nil)
+                self.reload = false
+                self.hideHud()
+            })
+        }
+    }    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let pageVC = segue.destinationViewController as? UIPageViewController where segue.identifier == "segueEmbedPageVC" {

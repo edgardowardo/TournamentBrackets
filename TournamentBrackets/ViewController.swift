@@ -7,9 +7,8 @@
 //
 
 import Foundation
-#if !RX_NO_MODULE
-    import RxSwift
-#endif
+import MBProgressHUD
+import RxSwift
 
 class ViewController: UIViewController {
     #if TRACE_RESOURCES
@@ -89,4 +88,15 @@ class ViewController: UIViewController {
             }
         #endif
     }
+    
+    func showHud(text text : String) {
+        let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
+        hud.dimBackground = true
+        hud.labelText = text
+    }
+    
+    func hideHud() {
+        MBProgressHUD.hideAllHUDsForView(view, animated: true)
+    }
+    
 }

@@ -26,21 +26,17 @@ class ChartPieViewController : ChartBaseViewController {
         super.viewDidLoad()
         labelSubtitle.text = "\(viewModel.chartType)"
         setup()
-        
-        viewModel.group.games
-            .asObservableArray()
-            .subscribeNext{ _ in
-                self.setData()
-                self.chart.animate(xAxisDuration: 0.75, easingOption: .EaseOutBack)
-            }.addDisposableTo(disposeBag)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.setData()
+        self.chart.animate(xAxisDuration: 0.75, easingOption: .EaseOutBack)
     }
     
     func setData() {
-        viewModel.reload()
+        viewModel.loadData()
         
         var yVals = [BarChartDataEntry]()
         for (i, y) in viewModel.yAxis.enumerate() {
