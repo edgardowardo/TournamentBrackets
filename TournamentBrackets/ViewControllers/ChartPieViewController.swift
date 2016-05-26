@@ -30,13 +30,12 @@ class ChartPieViewController : ChartBaseViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.setData()
-        self.chart.animate(xAxisDuration: 0.75, easingOption: .EaseOutBack)
     }
     
     func setData() {
         viewModel.loadData()
+        guard viewModel.xAxis.count > 0 && viewModel.yAxis.count > 0 else { return }
         
         var yVals = [BarChartDataEntry]()
         for (i, y) in viewModel.yAxis.enumerate() {
@@ -56,6 +55,7 @@ class ChartPieViewController : ChartBaseViewController {
         data.setValueFont(UIFont(name: "HelveticaNeue-Light", size: 11.0))
         data.setValueTextColor(UIColor.whiteColor())
         chart.data = data
+        self.chart.animate(xAxisDuration: 0.75, easingOption: .EaseOutBack)
     }
     
     func setup()  {

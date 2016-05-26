@@ -46,14 +46,23 @@ struct ChartsPieViewModel {
             let notplayed = total - played
             yAxis = [Double(played), Double(notplayed)]
         case .Won:
-            xAxis = helper.statsList.map{ $0.name }
-            yAxis = helper.statsList.map{ Double($0.countWins) }
+            let stats = helper.statsList.sort({ (s1, s2) in s1.countWins > s2.countWins })
+            let total = stats.map{ return $0.countWins }.reduce(0, combine: { $0 + $1 })
+            guard total > 0 else { xAxis = []; yAxis = []; break }
+            xAxis = stats.map{ $0.name }
+            yAxis = stats.map{ Double($0.countWins) }
         case .Earned:
-            xAxis = helper.statsList.map{ $0.name }
-            yAxis = helper.statsList.map{ Double($0.pointsFor) }
+            let stats = helper.statsList.sort({ (s1, s2) in s1.pointsFor > s2.pointsFor })
+            let total = stats.map{ return $0.pointsFor }.reduce(0, combine: { $0 + $1 })
+            guard total > 0 else { xAxis = []; yAxis = []; break }
+            xAxis = stats.map{ $0.name }
+            yAxis = stats.map{ Double($0.pointsFor) }
         case .Conceded:
-            xAxis = helper.statsList.map{ $0.name }
-            yAxis = helper.statsList.map{ Double($0.pointsAgainst) }
+            let stats = helper.statsList.sort({ (s1, s2) in s1.pointsAgainst > s2.pointsAgainst })
+            let total = stats.map{ return $0.pointsAgainst }.reduce(0, combine: { $0 + $1 })
+            guard total > 0 else { xAxis = []; yAxis = []; break }
+            xAxis = stats.map{ $0.name }
+            yAxis = stats.map{ Double($0.pointsAgainst) }
         default:
             xAxis = group.teams.map{ $0.name }
             yAxis = xAxis.map{ _ in return 0.0 }
@@ -66,10 +75,6 @@ extension TournamentChart {
         get {
             if self == .Played {
                 return [UIColor.flatEmeraldColor(), UIColor.flatConcreteColor()]
-
-                
-                
-                
             } else if self == .Conceded {
                 return
                     [
@@ -81,14 +86,14 @@ extension TournamentChart {
                         UIColor.flatWisteriaColor(),
                         UIColor.flatPeterRiverColor(),
                         UIColor.flatBelizeHoleColor(),
-                        UIColor.flatWetAsphaltColor().colorWithAlphaComponent(0.5),
-                        UIColor.flatMidnightBlueColor().colorWithAlphaComponent(0.5),
-                        UIColor.flatPeterRiverColor().colorWithAlphaComponent(0.5),
-                        UIColor.flatBelizeHoleColor().colorWithAlphaComponent(0.5),
                         UIColor.flatConcreteColor().colorWithAlphaComponent(0.5),
                         UIColor.flatAsbestosColor().colorWithAlphaComponent(0.5),
-
-
+                        UIColor.flatWetAsphaltColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatMidnightBlueColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatAmethystColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatWisteriaColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatPeterRiverColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatBelizeHoleColor().colorWithAlphaComponent(0.5),
                         
                         UIColor.flatTurquoiseColor(),
                         UIColor.flatGreenSeaColor(),
@@ -103,8 +108,11 @@ extension TournamentChart {
                         UIColor.flatGreenSeaColor().colorWithAlphaComponent(0.5),
                         UIColor.flatEmeraldColor().colorWithAlphaComponent(0.5),
                         UIColor.flatNephritisColor().colorWithAlphaComponent(0.5),
-                        UIColor.flatAmethystColor().colorWithAlphaComponent(0.5),
-                        UIColor.flatWisteriaColor().colorWithAlphaComponent(0.5)
+                        UIColor.flatOrangeColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatCarrotColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatPumpkinColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatAlizarinColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatPomegranateColor().colorWithAlphaComponent(0.5)
                 ]
             } else {
                 return
@@ -113,32 +121,37 @@ extension TournamentChart {
                         UIColor.flatGreenSeaColor(),
                         UIColor.flatEmeraldColor(),
                         UIColor.flatNephritisColor(),
-                        UIColor.flatPeterRiverColor(),
-                        UIColor.flatBelizeHoleColor(),
-                        UIColor.flatAmethystColor(),
-                        UIColor.flatWisteriaColor(),
-                        UIColor.flatWetAsphaltColor(),
-                        UIColor.flatMidnightBlueColor(),
                         UIColor.flatOrangeColor(),
                         UIColor.flatCarrotColor(),
                         UIColor.flatPumpkinColor(),
                         UIColor.flatAlizarinColor(),
                         UIColor.flatPomegranateColor(),
-                        UIColor.flatConcreteColor(),
-                        UIColor.flatAsbestosColor(),
-                        
                         UIColor.flatTurquoiseColor().colorWithAlphaComponent(0.5),
                         UIColor.flatGreenSeaColor().colorWithAlphaComponent(0.5),
                         UIColor.flatEmeraldColor().colorWithAlphaComponent(0.5),
                         UIColor.flatNephritisColor().colorWithAlphaComponent(0.5),
-                        UIColor.flatPeterRiverColor().colorWithAlphaComponent(0.5),
-                        UIColor.flatBelizeHoleColor().colorWithAlphaComponent(0.5),
-                        UIColor.flatAmethystColor().colorWithAlphaComponent(0.5),
-                        UIColor.flatWisteriaColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatOrangeColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatCarrotColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatPumpkinColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatAlizarinColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatPomegranateColor().colorWithAlphaComponent(0.5),
+                        
+                        UIColor.flatConcreteColor(),
+                        UIColor.flatAsbestosColor(),
+                        UIColor.flatWetAsphaltColor(),
+                        UIColor.flatMidnightBlueColor(),
+                        UIColor.flatAmethystColor(),
+                        UIColor.flatWisteriaColor(),
+                        UIColor.flatPeterRiverColor(),
+                        UIColor.flatBelizeHoleColor(),
+                        UIColor.flatConcreteColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatAsbestosColor().colorWithAlphaComponent(0.5),
                         UIColor.flatWetAsphaltColor().colorWithAlphaComponent(0.5),
                         UIColor.flatMidnightBlueColor().colorWithAlphaComponent(0.5),
-                        UIColor.flatOrangeColor().colorWithAlphaComponent(0.5),
-                        UIColor.flatCarrotColor().colorWithAlphaComponent(0.5)
+                        UIColor.flatAmethystColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatWisteriaColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatPeterRiverColor().colorWithAlphaComponent(0.5),
+                        UIColor.flatBelizeHoleColor().colorWithAlphaComponent(0.5)
                 ]
             }
         }

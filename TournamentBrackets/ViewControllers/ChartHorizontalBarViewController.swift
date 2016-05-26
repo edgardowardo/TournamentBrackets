@@ -30,10 +30,8 @@ class ChartHorizontalBarViewController : ChartBaseViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.setData()
-        self.chart.animate(yAxisDuration: 0.75, easingOption: .EaseOutBack)
-    }    
+    }
     
     func setData() {
         viewModel.loadData()
@@ -49,6 +47,7 @@ class ChartHorizontalBarViewController : ChartBaseViewController {
             chart.rightYAxisRenderer.yAxis?.axisMaxValue = Double(viewModel.yAxisMaxValue)
         }        
         chart.data = data
+        self.chart.animate(yAxisDuration: 0.75, easingOption: .EaseOutBack)
     }
     
     func setup() {
