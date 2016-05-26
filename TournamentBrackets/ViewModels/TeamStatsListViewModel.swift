@@ -62,7 +62,7 @@ struct TeamStatsListViewModel {
             let pointsAgainst = pointsAgainstLeft + pointsAgainstRight
             let pointDifference = pointsFor - pointsAgainst
             
-            return TeamStats(oldseed: team.seed, seed: 0, name: team.name, countPlayed: countPlayed, countGames: countGames, countWins: countWins, countDraws:  countDraws, countLost: countLost, pointsFor: pointsFor, pointsAgainst: pointsAgainst, pointsDifference: pointDifference)
+            return TeamStats(oldseed: team.seed, seed: 0, name: team.name, handicap: team.handicap, countPlayed: countPlayed, countGames: countGames, countWins: countWins, countDraws:  countDraws, countLost: countLost, pointsFor: pointsFor, pointsAgainst: pointsAgainst, pointsDifference: pointDifference)
         }
         let winfactor = 1000000
         let drawfactor = 500000
@@ -73,7 +73,7 @@ struct TeamStatsListViewModel {
         
         var indexed = [TeamStats]()
         for (i, e) in unindexed.enumerate() {
-            indexed.append(TeamStats(oldseed: e.oldseed, seed: i+1, name: e.name, countPlayed: e.countPlayed, countGames: e.countGames, countWins: e.countWins, countDraws: e.countDraws, countLost: e.countLost, pointsFor: e.pointsFor, pointsAgainst: e.pointsAgainst, pointsDifference: e.pointsDifference))
+            indexed.append(TeamStats(oldseed: e.oldseed, seed: i+1, name: e.name, handicap: e.handicap, countPlayed: e.countPlayed, countGames: e.countGames, countWins: e.countWins, countDraws: e.countDraws, countLost: e.countLost, pointsFor: e.pointsFor, pointsAgainst: e.pointsAgainst, pointsDifference: e.pointsDifference))
         }
         
         statsList = indexed

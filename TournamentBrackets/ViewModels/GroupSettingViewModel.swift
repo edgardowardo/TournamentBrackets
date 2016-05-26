@@ -50,6 +50,23 @@ struct GroupSettingViewModel {
         }
     }
     
+    func copyTeams(teams: [TeamStats], options: HandicapCopyOptions) {
+        switch options {
+        case .Copy:
+            let copiedteams = teams.map{ (t) -> Team in
+                let team = Team(name: t.name, seed: t.seed, isHandicap: false)
+                team.handicap = t.handicap
+                return team
+            }
+            self.teams.value = copiedteams
+        case .None:
+            break
+        case .Recalculate:
+            // TODO: recalculate from scores. Fold the range, map median and bell curve to assign handicaps.
+            break
+        }
+    }
+    
     func saveWithTournament(tournament : Tournament) -> Group {
         let group = Group()
         group.name = self.name

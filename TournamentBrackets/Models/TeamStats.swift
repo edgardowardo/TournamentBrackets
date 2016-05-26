@@ -12,6 +12,7 @@ struct TeamStats {
     var oldseed : Int
     var seed : Int
     var name : String
+    var handicap : Int
     var countPlayed : Int
     var countGames : Int
     var countWins : Int
@@ -20,4 +21,8 @@ struct TeamStats {
     var pointsFor : Int
     var pointsAgainst : Int
     var pointsDifference : Int
+}
+
+enum HandicapCopyOptions {
+    case None, Copy, Recalculate
 }

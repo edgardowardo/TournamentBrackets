@@ -61,6 +61,10 @@
 		77E035C21CEE0DD600F6B170 /* GroupTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E035C11CEE0DD600F6B170 /* GroupTabViewModel.swift */; };
 		77E54B701CF391CA00A0E393 /* TeamStatsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77E54B6F1CF391CA00A0E393 /* TeamStatsHeaderView.xib */; };
 		77E54B721CF39B7F00A0E393 /* TeamStatsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E54B711CF39B7F00A0E393 /* TeamStatsHeaderView.swift */; };
+		77F987FF1CF7713B00DDC3D4 /* TeamsImportListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F987FE1CF7713B00DDC3D4 /* TeamsImportListViewController.swift */; };
+		77F988011CF7793E00DDC3D4 /* TeamsImportListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F988001CF7793E00DDC3D4 /* TeamsImportListViewModel.swift */; };
+		77F988031CF77BD300DDC3D4 /* TeamsImportItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F988021CF77BD300DDC3D4 /* TeamsImportItemCell.swift */; };
+		77F988051CF77D1C00DDC3D4 /* TeamsImportItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F988041CF77D1C00DDC3D4 /* TeamsImportItemViewModel.swift */; };
 		A64ED72E027EAD3DAFD8A26E /* Pods_TournamentBrackets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F128AE826C2D1F7DD48C40 /* Pods_TournamentBrackets.framework */; };
 		B40764EB7C2A8DB84402C15A /* Pods_TournamentBracketsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D34A9EFFAFBDC769CDD1F3 /* Pods_TournamentBracketsTests.framework */; };
 /* End PBXBuildFile section */
@@ -146,6 +150,10 @@
 		77E035C11CEE0DD600F6B170 /* GroupTabViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTabViewModel.swift; sourceTree = "<group>"; };
 		77E54B6F1CF391CA00A0E393 /* TeamStatsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamStatsHeaderView.xib; sourceTree = "<group>"; };
 		77E54B711CF39B7F00A0E393 /* TeamStatsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamStatsHeaderView.swift; sourceTree = "<group>"; };
+		77F987FE1CF7713B00DDC3D4 /* TeamsImportListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsImportListViewController.swift; sourceTree = "<group>"; };
+		77F988001CF7793E00DDC3D4 /* TeamsImportListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsImportListViewModel.swift; sourceTree = "<group>"; };
+		77F988021CF77BD300DDC3D4 /* TeamsImportItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsImportItemCell.swift; sourceTree = "<group>"; };
+		77F988041CF77D1C00DDC3D4 /* TeamsImportItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsImportItemViewModel.swift; sourceTree = "<group>"; };
 		80D34A9EFFAFBDC769CDD1F3 /* Pods_TournamentBracketsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TournamentBracketsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF922B5D4B34B3FB9ABB81BC /* Pods-TournamentBracketsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TournamentBracketsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TournamentBracketsTests/Pods-TournamentBracketsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D7AE8E80DB60ED1D38CF64F5 /* Pods_TournamentBracketsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TournamentBracketsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,6 +205,8 @@
 			isa = PBXGroup;
 			children = (
 				779FFCA51CDA1F6700D48800 /* GroupSettingViewModel.swift */,
+				77F988001CF7793E00DDC3D4 /* TeamsImportListViewModel.swift */,
+				77F988041CF77D1C00DDC3D4 /* TeamsImportItemViewModel.swift */,
 				77E035C11CEE0DD600F6B170 /* GroupTabViewModel.swift */,
 				77225BAB1CEB7F53006D0C2B /* GroupDetailViewModel.swift */,
 				77225BAD1CEB8706006D0C2B /* GameListViewModel.swift */,
@@ -217,6 +227,8 @@
 				7766D8531CD41AEF00DA3FA1 /* TournamentListViewController.swift */,
 				779FFCA11CD7D3C600D48800 /* GroupSettingViewController.swift */,
 				779FFCAE1CDAC48E00D48800 /* TeamCell.swift */,
+				77F987FE1CF7713B00DDC3D4 /* TeamsImportListViewController.swift */,
+				77F988021CF77BD300DDC3D4 /* TeamsImportItemCell.swift */,
 				779FFC9F1CD6A8DC00D48800 /* GroupListViewController.swift */,
 				77E035BF1CEE0B2200F6B170 /* GroupTabBarController.swift */,
 				77225BA91CEB7912006D0C2B /* GroupDetailViewController.swift */,
@@ -615,6 +627,7 @@
 				771E19631CC27DEF00125F9E /* Scheduler.swift in Sources */,
 				77D2072F1CE119F5009139DB /* UITextField+DoneToolbar.swift in Sources */,
 				779FFCAD1CDAB08100D48800 /* Team.swift in Sources */,
+				77F987FF1CF7713B00DDC3D4 /* TeamsImportListViewController.swift in Sources */,
 				77D095D91CF20593002F681E /* TeamStatsViewModel.swift in Sources */,
 				77E035C21CEE0DD600F6B170 /* GroupTabViewModel.swift in Sources */,
 				7780D62C1CE62A9B0014F393 /* GameViewModel.swift in Sources */,
@@ -626,12 +639,15 @@
 				7772C6971CF5CD4000E602A2 /* TournamentChart.swift in Sources */,
 				7766D8541CD41AEF00DA3FA1 /* TournamentListViewController.swift in Sources */,
 				77D095D11CF1F986002F681E /* TeamStatsCell.swift in Sources */,
+				77F988011CF7793E00DDC3D4 /* TeamsImportListViewModel.swift in Sources */,
 				7780D6251CE48DF10014F393 /* GameTree.swift in Sources */,
+				77F988031CF77BD300DDC3D4 /* TeamsImportItemCell.swift in Sources */,
 				779FFCAF1CDAC48F00D48800 /* TeamCell.swift in Sources */,
 				7766D8521CD3A44400DA3FA1 /* Group.swift in Sources */,
 				7772C68D1CF5A1FC00E602A2 /* ChartHorizontalBarViewController.swift in Sources */,
 				7780D62A1CE5B6890014F393 /* GameCell.swift in Sources */,
 				7772C6931CF5AFA000E602A2 /* ChartsPieViewModel.swift in Sources */,
+				77F988051CF77D1C00DDC3D4 /* TeamsImportItemViewModel.swift in Sources */,
 				779FFCA21CD7D3C600D48800 /* GroupSettingViewController.swift in Sources */,
 				779FFCA61CDA1F6700D48800 /* GroupSettingViewModel.swift in Sources */,
 				77D095D71CF20321002F681E /* TeamStats.swift in Sources */,

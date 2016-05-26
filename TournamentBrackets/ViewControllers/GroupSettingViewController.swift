@@ -227,6 +227,18 @@ class GroupSettingViewController: ViewController {
         }
     }
     
+    @IBAction func unwindToGroupSetting(segue: UIStoryboardSegue) {
+        if let s = segue.sourceViewController as? TeamStatsListViewController, vm = s.viewModel where segue.identifier == "unwindToGroupSettingAndSave" {
+            
+            // TODO: Ask copy, or recalculate or clear handicaps
+            // TODO: resolve team count inconsistency as per setTeamCountSchedule
+            
+            //pickerTeamCount.selectItem(<#T##item: UInt##UInt#>, animated: <#T##Bool#>)
+            //viewModel.teamCount = vm.statsList.count
+            viewModel.copyTeams(vm.statsList, options: .Copy)
+        }
+    }
+    
     //
     // Notification handlers. I know bad smell. Will revisit when understand more Rx implementationof this!
     //
