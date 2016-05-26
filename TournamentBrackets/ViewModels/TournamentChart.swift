@@ -17,7 +17,7 @@ enum TournamentChart : Int, CustomStringConvertible {
             case .Played:
                 return "GAMES PLAYED"
             case .PlayedPerTeam:
-                return "GAMED PLAYED PER TEAM"
+                return "GAMES PLAYED PER TEAM"
             case .Won:
                 return "GAMES WON"
             case .Earned:

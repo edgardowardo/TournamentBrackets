@@ -28,20 +28,23 @@ class ChartHorizontalBarViewController : ChartBaseViewController {
    
         setup()
         setData()
-        chart.animate(yAxisDuration: 2.5)
+        chart.animate(yAxisDuration: 0.75)
     }
     
     func setData() {
         viewModel.reload()
-        
         var yVals = [BarChartDataEntry]()
         for (i, y) in viewModel.yAxis.enumerate() {
             yVals.append(BarChartDataEntry(value: y, xIndex: i))
         }
-        let dataset = BarChartDataSet(yVals: yVals, label: "")
+        let dataset = BarChartDataSet(yVals: yVals, label: "\(viewModel.chartType)")
         let data = BarChartData(xVals: viewModel.xAxis, dataSets: [dataset])
+        if viewModel.yAxisMaxValue > 0 {
+            chart.leftYAxisRenderer.yAxis?.axisMaxValue = Double(viewModel.yAxisMaxValue)
+            chart.rightYAxisRenderer.yAxis?.axisMaxValue = Double(viewModel.yAxisMaxValue)
+        }        
         chart.data = data
-    }    
+    }
     
     func setup() {
 
@@ -52,8 +55,7 @@ class ChartHorizontalBarViewController : ChartBaseViewController {
         chart.setScaleEnabled(true)
         chart.pinchZoomEnabled = false
         chart.xAxis.labelPosition = .Bottom
-        chart.rightAxis.enabled = false
-        
+        chart.rightAxis.enabled = false        
         
         chart.drawBarShadowEnabled = false
         chart.drawValueAboveBarEnabled = true

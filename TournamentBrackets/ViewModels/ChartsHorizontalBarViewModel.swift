@@ -23,6 +23,16 @@ struct ChartsHorizontalBarViewModel {
         self.helper = helper
     }
     
+    var yAxisMaxValue : Double {
+        get {
+            if group.schedule == .RoundRobin || group.schedule == .RoundDoubles {
+                return Double(helper.countGames)
+            } else {
+                return 0.0
+            }
+        }
+    }
+    
     mutating func reload() {
         helper.loadStatsList()
         if chartType == .PlayedPerTeam {

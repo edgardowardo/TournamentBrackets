@@ -31,7 +31,7 @@ class ChartPieViewController : ChartBaseViewController {
             .asObservableArray()
             .subscribeNext{ _ in
                 self.setData()
-                self.chart.animate(xAxisDuration: 1.4, easingOption: .EaseOutBack)
+                self.chart.animate(xAxisDuration: 0.75, easingOption: .EaseOutBack)
             }.addDisposableTo(disposeBag)
     }
     
