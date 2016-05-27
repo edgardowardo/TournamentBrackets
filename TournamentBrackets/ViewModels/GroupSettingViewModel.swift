@@ -19,11 +19,12 @@ struct TeamStruct {
 struct GroupSettingViewModel {
 
     var realm = try! Realm()
-    var name : String
+    var name : Variable<String> = Variable("")
     var scheduleType : Variable<ScheduleType>   = Variable(.RoundRobin)
     var isSorting : Variable<Bool> = Variable(false)
     var isHandicap : Variable<Bool> = Variable(true)
     var teams: Variable<[Team]> = Variable([])
+//    var teamsCount : Variable<Int> = Variable(2)
     var teamCount = 2 {
         didSet {
             
@@ -53,7 +54,7 @@ struct GroupSettingViewModel {
     
     mutating func saveWithTournament(tournament : Tournament) {
         group = Group()
-        group.name = self.name
+        group.name = self.name.value
         group.schedule = self.scheduleType.value
         group.teamCount = self.teamCount
         group.isHandicap = self.isHandicap.value
@@ -103,10 +104,21 @@ struct GroupSettingViewModel {
     }
     
     init(group : Group) {
-        self.name = group.name
-        self.scheduleType.value = group.schedule
-        self.teamCount = group.schedule.allowedTeamCounts.first!
+        self.group = group
+        self.name.value = group.name
         self.isHandicap.value = group.isHandicap
+//        self.scheduleType.value = group.schedule
+//        if group.teams.count > 0 {
+//            self.teamCount = group.teams.count
+//            let teamList = group.teams.map{ (t) -> Team in
+//                let team = Team(name: t.name, seed: t.seed, isHandicap: t.isHandicapped)
+//                team.handicap = t.handicap
+//                return team
+//            }
+//            self.teams.value = teamList
+//        } else {
+//            self.teamCount = group.schedule.allowedTeamCounts.first!
+//        }
     }
     
     private func transfrormTeam(team : Team) -> TeamStruct {

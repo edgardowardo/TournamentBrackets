@@ -43,6 +43,10 @@ class GroupSettingViewController: ViewController {
         }
     }
     
+    @IBAction func cancel() {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,77 +64,55 @@ class GroupSettingViewController: ViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GroupSettingViewController.methodOfReceivedNotification_CellStartEditing(_:)), name: TeamCell.Notification.Identifier.CellStartEditing, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GroupSettingViewController.methodOfReceivedNotification_PreviousCellTextField(_:)), name: TeamCell.Notification.Identifier.PreviousCellTextField, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GroupSettingViewController.methodOfReceivedNotification_NextCellTextField(_:)), name: TeamCell.Notification.Identifier.NextCellTextField, object: nil)
+
+        //
+        // Edit or insert mode
+        //
+        if let first = navigationController?.viewControllers.first where first == self {
+            let b = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(cancel))
+            self.navigationItem.leftBarButtonItem = b
+        } else {
+            self.viewModel = GroupSettingViewModel(group: Group())
+        }
         
-        
-        self.viewModel = GroupSettingViewModel(group: Group())
         self.pickerTeamCount.delegate = self
         self.pickerTeamCount.dataSource = self
         
         //
-        // View Model Observations
+        // Setup observers
         //
-        self.viewModel.teams
-            .asObservable()
-            .map{ teams in
-                [SectionModel(model: "", items: teams)]
-            }
-            .bindTo(tableView.rx_itemsWithDataSource(dataSource))
-            .addDisposableTo(disposeBag)
+        setupScheduleTypeObserver()
+        setupTeamsCountObserver()
+        setupTableViewObserver()
         
+        setupGroupNameObserver()
+        setupButtonHandicapObserver()
+        setupButtonSortingObserver()
+        setupButtonObservers()
         
-        self.viewModel.isHandicap
-            .asObservable()
-            .subscribeNext { (value) in
-                let tintColor = (value) ? UIColor.flatPeterRiverColor() : UIColor.darkGrayColor()
-                self.buttonHandicap.tintColor = tintColor
-                self.buttonHandicap.setTitleColor(tintColor, forState: .Normal)
-                self.viewModel.setTeamsHandicap(value)
-                self.tableView.reloadData()
-            }
-            .addDisposableTo(disposeBag)
-
-        self.viewModel.isSorting
-            .asObservable()
-            .subscribeNext { (value) in
-                let tintColor = (value) ? UIColor.flatPeterRiverColor() : UIColor.darkGrayColor()
-                self.buttonSort.tintColor = tintColor
-                self.buttonSort.setTitleColor(tintColor, forState: .Normal)
-                self.tableView.setEditing(value, animated: true)
-            }
-            .addDisposableTo(disposeBag)
-        
-        //
-        // Control bindings
-        //
-        self.textGroupName
-            .rx_text
-            .asObservable()
-            .map{ (something) in something.characters.count > 0 }
-            .bindTo(self.buttonSave.rx_enabled)
-            .addDisposableTo(disposeBag)
-        
-        self.textGroupName
-            .rx_text
-            .asObservable()
-            .subscribeNext{ (name) in
-                self.viewModel.name = name
-            }
-            .addDisposableTo(disposeBag)
-        
-        func setTeamCountSchedule(schedule : ScheduleType, withOldSchedule oldschedule : ScheduleType) {
-            let oldindex = Int(self.pickerTeamCount.selectedItem)
-            var oldteamcount = oldschedule.allowedTeamCounts[oldindex]
+    }
+    
+    func setTeamCountSchedule(schedule : ScheduleType, withOldSchedule oldschedule : ScheduleType) {
+        let oldindex = Int(self.pickerTeamCount.selectedItem)
+        var oldteamcount = oldschedule.allowedTeamCounts[oldindex]
+        if let newindex = schedule.allowedTeamCounts.indexOf(oldteamcount) {
+            self.pickerTeamCount.selectItem(UInt(newindex), animated: true)
+        } else {
+            oldteamcount = oldteamcount - 1
             if let newindex = schedule.allowedTeamCounts.indexOf(oldteamcount) {
                 self.pickerTeamCount.selectItem(UInt(newindex), animated: true)
             } else {
-                oldteamcount = oldteamcount - 1
-                if let newindex = schedule.allowedTeamCounts.indexOf(oldteamcount) {
-                    self.pickerTeamCount.selectItem(UInt(newindex), animated: true)
-                } else {
-                    self.pickerTeamCount.selectItem(UInt(0), animated: true)
-                }
+                self.pickerTeamCount.selectItem(UInt(0), animated: true)
             }
         }
+    }
+    
+    private func setupScheduleTypeObserver() {
+        self.viewModel.scheduleType
+            .asObservable()
+            .map{ $0.rawValue }
+            .bindTo(segmentedSchedule.rx_value)
+            .addDisposableTo(disposeBag)
         
         self.segmentedSchedule
             .rx_value
@@ -143,24 +125,114 @@ class GroupSettingViewController: ViewController {
             .subscribeNext{ _ in
                 let schedule = ScheduleType(rawValue: self.segmentedSchedule.selectedSegmentIndex)!
                 if schedule == .RoundDoubles {
-                    setTeamCountSchedule(schedule, withOldSchedule: ScheduleType.RoundRobin)
+                    self.setTeamCountSchedule(schedule, withOldSchedule: ScheduleType.RoundRobin)
                     self.pickerTeamCount.reloadData()
                 } else {
                     self.pickerTeamCount.reloadData()
-                    setTeamCountSchedule(schedule, withOldSchedule: ScheduleType.RoundDoubles)
+                    self.setTeamCountSchedule(schedule, withOldSchedule: ScheduleType.RoundDoubles)
                 }
             }
-        .addDisposableTo(disposeBag)
+            .addDisposableTo(disposeBag)
         
         self.segmentedSchedule
             .rx_value
             .asObservable()
-            .filter{ $0 > -1 }
+//            .filter{ $0 > -1 }
             .subscribeNext({ (value) in
                 self.viewModel.scheduleType.value = ScheduleType(rawValue: value)!
             })
             .addDisposableTo(disposeBag)
-
+    }
+    
+    func setupTeamsCountObserver() {
+//        self.viewModel.teamsCount
+//            .asObservable()
+//            .subscribeNext { (value) in
+//                //               self.pickerTeamCount.selectItem(UInt(0), animated: true)
+//            }
+//            .addDisposableTo(disposeBag)
+    }
+    
+    func setupTableViewObserver() {
+        self.viewModel.teams
+            .asObservable()
+            .map{ teams in
+                [SectionModel(model: "", items: teams)]
+            }
+            .bindTo(tableView.rx_itemsWithDataSource(dataSource))
+            .addDisposableTo(disposeBag)
+        
+        self.tableView.rx_itemMoved
+            .subscribeNext{  (fromIndexPath, toIndexPath) in
+                self.viewModel.moveElement(fromIndexPath, toIndexPath: toIndexPath)
+            }
+            .addDisposableTo(disposeBag)
+    }
+    
+    private func setupGroupNameObserver() {
+        self.viewModel.name
+            .asObservable()
+            .bindTo(textGroupName.rx_text)
+            .addDisposableTo(disposeBag)
+        
+        self.textGroupName
+            .rx_text
+            .asObservable()
+            .map{ (something) in something.characters.count > 0 }
+            .bindTo(self.buttonSave.rx_enabled)
+            .addDisposableTo(disposeBag)
+        
+        self.textGroupName
+            .rx_text
+            .asObservable()
+            .subscribeNext{ (name) in
+                self.viewModel.name.value = name
+            }
+            .addDisposableTo(disposeBag)
+    }
+    
+    private func setupButtonHandicapObserver() {
+        self.buttonHandicap
+            .rx_tap
+            .asObservable()
+            .subscribeNext { _ in
+                self.viewModel.isHandicap.value = !self.viewModel.isHandicap.value
+            }
+            .addDisposableTo(disposeBag)
+        
+        self.viewModel.isHandicap
+            .asObservable()
+            .subscribeNext { (value) in
+                let tintColor = (value) ? UIColor.flatPeterRiverColor() : UIColor.darkGrayColor()
+                self.buttonHandicap.tintColor = tintColor
+                self.buttonHandicap.setTitleColor(tintColor, forState: .Normal)
+                self.viewModel.setTeamsHandicap(value)
+                self.tableView.reloadData()
+            }
+            .addDisposableTo(disposeBag)
+    }
+    
+    private func setupButtonSortingObserver() {
+        self.buttonSort
+            .rx_tap
+            .asObservable()
+            .subscribeNext { _ in
+                self.viewModel.isSorting.value = !self.viewModel.isSorting.value
+            }
+            .addDisposableTo(disposeBag)
+        
+        self.viewModel.isSorting
+            .asObservable()
+            .subscribeNext { (value) in
+                let tintColor = (value) ? UIColor.flatPeterRiverColor() : UIColor.darkGrayColor()
+                self.buttonSort.tintColor = tintColor
+                self.buttonSort.setTitleColor(tintColor, forState: .Normal)
+                self.tableView.setEditing(value, animated: true)
+            }
+            .addDisposableTo(disposeBag)
+    }
+    
+    private func setupButtonObservers() {
         self.buttonShuffle
             .rx_tap
             .asObservable()
@@ -176,30 +248,7 @@ class GroupSettingViewController: ViewController {
                 self.viewModel.reset()
             }
             .addDisposableTo(disposeBag)
-        
-        self.buttonHandicap
-            .rx_tap
-            .asObservable()
-            .subscribeNext { _ in
-                self.viewModel.isHandicap.value = !self.viewModel.isHandicap.value
-            }
-            .addDisposableTo(disposeBag)
-        
-        self.buttonSort
-            .rx_tap
-            .asObservable()
-            .subscribeNext { _ in
-                self.viewModel.isSorting.value = !self.viewModel.isSorting.value
-            }
-            .addDisposableTo(disposeBag)
-        
-        self.tableView.rx_itemMoved
-            .subscribeNext{  (fromIndexPath, toIndexPath) in
-                self.viewModel.moveElement(fromIndexPath, toIndexPath: toIndexPath)
-            }
-            .addDisposableTo(disposeBag)
     }
-    
     
     static func configureDataSource() -> RxTableViewSectionedReloadDataSource<SectionModel<String, Team>> {
         let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, Team>>()

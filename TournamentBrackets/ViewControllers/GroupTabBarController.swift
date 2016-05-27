@@ -20,6 +20,9 @@ class GroupTabBarController : UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let b = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(edit))
+        self.navigationItem.rightBarButtonItem = b
+        
         if let viewControllers = self.viewControllers {
             for (index, vc) in viewControllers.enumerate() {
                 if let c = vc as? GroupDetailViewController {
@@ -36,5 +39,13 @@ class GroupTabBarController : UITabBarController {
                 setViewControllers(newVCs, animated: false)
             }
         }
+    }
+    
+    @IBAction func edit(sender: AnyObject) {
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("GroupSettingViewController") as! GroupSettingViewController
+        vc.viewModel = GroupSettingViewModel(group: viewModel.group)
+        //        vc.tournament = TODO: pass this into the viewModel
+        let nc = UINavigationController(rootViewController: vc)
+        presentViewController(nc, animated: true, completion: nil)
     }
 }
