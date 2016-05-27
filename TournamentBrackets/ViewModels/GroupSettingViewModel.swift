@@ -60,7 +60,7 @@ struct GroupSettingViewModel {
         group.teams = List(self.teams.value)
         group.games = List(schedule(group.schedule, withTeams: self.teams.value))
         try! self.realm.write {
-            tournament.groups.append(group)
+            tournament.groups.insert(group, atIndex: 0)
             self.realm.add(tournament, update: true)
         }
     }
