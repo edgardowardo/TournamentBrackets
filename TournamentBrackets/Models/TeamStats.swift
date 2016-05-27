@@ -22,7 +22,3 @@ struct TeamStats {
     var pointsAgainst : Int
     var pointsDifference : Int
 }
-
-enum HandicapCopyOptions {
-    case None, Copy, Recalculate
-}

@@ -38,6 +38,7 @@ class GroupSettingViewController: ViewController {
         super.viewDidAppear(animated)
         
         backgroundThread(0.1, background: nil) {
+            guard self.textGroupName.text?.characters.count == 0 else { return }
             self.textGroupName.becomeFirstResponder()
         }
     }
@@ -220,22 +221,27 @@ class GroupSettingViewController: ViewController {
     }
         
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let _ = segue.destinationViewController as? GroupListViewController, tournament = self.tournament {
-            let _ = self.viewModel.saveWithTournament(tournament)
-            // TODO: this group may be automatically shown after unwind
-            //            d.group = group
+        if let _ = segue.destinationViewController as? GroupListViewController, tournament = self.tournament where segue.identifier == "unwindToGroupAndSave" {
+            self.viewModel.saveWithTournament(tournament)
         }
     }
     
     @IBAction func unwindToGroupSetting(segue: UIStoryboardSegue) {
         if let s = segue.sourceViewController as? TeamStatsListViewController, vm = s.viewModel where segue.identifier == "unwindToGroupSettingAndSave" {
-            
-            // TODO: Ask copy, or recalculate or clear handicaps
-            // TODO: resolve team count inconsistency as per setTeamCountSchedule
-            
-            //pickerTeamCount.selectItem(<#T##item: UInt##UInt#>, animated: <#T##Bool#>)
-            //viewModel.teamCount = vm.statsList.count
-            viewModel.copyTeams(vm.statsList, options: .Copy)
+            var newstatsList = vm.statsList
+            var newcount = newstatsList.count
+            if let newindex = viewModel.scheduleType.value.allowedTeamCounts.indexOf(newcount) {
+                self.pickerTeamCount.selectItem(UInt(newindex), animated: true)
+            } else {
+                newcount = newcount - 1
+                newstatsList.removeLast()
+                if let newindex = viewModel.scheduleType.value.allowedTeamCounts.indexOf(newcount) {
+                    self.pickerTeamCount.selectItem(UInt(newindex), animated: true)
+                } else {
+                    self.pickerTeamCount.selectItem(UInt(0), animated: true)
+                }
+            }
+            viewModel.copyTeams(newstatsList)
         }
     }
     

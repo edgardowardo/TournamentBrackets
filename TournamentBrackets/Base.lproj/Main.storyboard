@@ -806,7 +806,7 @@
                                                                         <rect key="frame" x="7" y="0.0" width="63" height="63"/>
                                                                     </variation>
                                                                     <connections>
-                                                                        <segue destination="FbV-fh-I1S" kind="show" id="zS4-Fc-Xfh"/>
+                                                                        <segue destination="FbV-fh-I1S" kind="show" identifier="segueTeamImport" id="zS4-Fc-Xfh"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
@@ -994,7 +994,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="QCn-Ng-gsd">
                             <color key="tintColor" red="0.043137254901960784" green="0.33725490196078434" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="qpw-ei-RmD" kind="unwind" unwindAction="unwindToGroupList:" id="nMn-Wy-mac"/>
+                                <segue destination="qpw-ei-RmD" kind="unwind" identifier="unwindToGroupAndSave" unwindAction="unwindToGroupList:" id="nMn-Wy-mac"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

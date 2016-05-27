@@ -120,14 +120,25 @@ class GroupListViewController: ViewController, UITextFieldDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let d = segue.destinationViewController as? GroupSettingViewController where segue.identifier == "addGroup" {
             d.tournament = self.tournament
-        } else if let d = segue.destinationViewController as? GroupTabBarController, cell = sender as? UITableViewCell, indexPath = tableView.indexPathForCell(cell), tournament = self.tournament where segue.identifier == "showGroup" {
-        
-            let group = tournament.groups.sorted("time", ascending: false)[indexPath.row]
-            d.viewModel = GroupTabViewModel(group: group)
+        } else if let d = segue.destinationViewController as? GroupTabBarController, tournament = self.tournament where segue.identifier == "showGroup" {
+            var group : Group?
+            if let cell = sender as? UITableViewCell, indexPath = tableView.indexPathForCell(cell) {
+                group = tournament.groups.sorted("time", ascending: false)[indexPath.row]
+            } else if let vc = sender as? GroupSettingViewController, g = vc.viewModel.group {
+                group = g
+            }
+            if let g = group {
+                d.viewModel = GroupTabViewModel(group: g)
+            }
         }
     }
     
     @IBAction func unwindToGroupList(segue: UIStoryboardSegue) {
+        backgroundThread(0.1, background: nil) {
+            if let sender = segue.sourceViewController as? GroupSettingViewController where segue.identifier == "unwindToGroupAndSave" {
+                self.performSegueWithIdentifier("showGroup", sender: sender)
+            }
+        }
     }
     
     @IBAction func editTapped(sender: AnyObject) {
