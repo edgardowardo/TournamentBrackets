@@ -14,7 +14,7 @@ class Group : Object {
     dynamic var time: NSTimeInterval = NSDate().timeIntervalSinceReferenceDate
     dynamic var name = ""
     dynamic var scheduleType = 0
-    dynamic var teamCount = 0
+    dynamic var teamCount = 4 // TODO: REMOVE THIS LATER! Since it only serves as default of teams.count 
     dynamic var isHandicap = false
     var teams = List<Team>()
     var games = List<Game>()

@@ -92,7 +92,7 @@ class GroupListViewController: ViewController, UITextFieldDelegate {
                 cell.textLabel!.text = element.name
                 let handicapText : String = (element.isHandicap) ? ", handicapped" : ""
                 let rounds = Array(element.games.map{ $0.round }).unique.count
-                cell.detailTextLabel?.text = "\(element.schedule.description) \(element.teamCount) teams, \(element.games.count) games, \(rounds) rounds\(handicapText)"
+                cell.detailTextLabel?.text = "\(element.schedule.description) \(element.teams.count) teams, \(element.games.count) games, \(rounds) rounds\(handicapText)"
             }.addDisposableTo(bag)
             
             //

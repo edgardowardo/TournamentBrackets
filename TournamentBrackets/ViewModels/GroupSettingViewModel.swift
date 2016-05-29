@@ -24,14 +24,19 @@ struct GroupSettingViewModel {
     var isSorting : Variable<Bool> = Variable(false)
     var isHandicap : Variable<Bool> = Variable(true)
     var teams: Variable<[Team]> = Variable([])
-//    var teamsCount : Variable<Int> = Variable(2)
-    var teamCount = 2 {
+    var group : Group!
+    var teamCountValue : Int {
+        get {
+            return self.scheduleType.value.allowedTeamCounts[teamCountIndex]
+        }
+    }
+    var teamCountIndex : Int = 0 {
         didSet {
-            
             //
             // Don't just delete the old teams. It may contain text inputs. Combine with the new ones if adding.
             //
             var oldTeams = self.teams.value
+            let teamCount = teamCountValue
             
             //
             // add to list
@@ -50,13 +55,16 @@ struct GroupSettingViewModel {
             self.teams.value = oldTeams
         }
     }
-    var group : Group!
+    
+    func getAllowedTeamCountText(index : Int) -> String {
+        return "  \( scheduleType.value.allowedTeamCounts[index] )  "
+    }
     
     mutating func saveWithTournament(tournament : Tournament) {
         group = Group()
         group.name = self.name.value
         group.schedule = self.scheduleType.value
-        group.teamCount = self.teamCount
+        group.teamCount = teamCountValue
         group.isHandicap = self.isHandicap.value
         group.teams = List(self.teams.value)
         group.games = List(schedule(group.schedule, withTeams: self.teams.value))
@@ -89,7 +97,7 @@ struct GroupSettingViewModel {
     }
     
     func reset() {
-        let newTeams = (0 ..< teamCount).map{ (value) in Team(name: "Team \(value + 1 )", seed: value + 1, isHandicap : self.isHandicap.value) }
+        let newTeams = (0 ..< teamCountValue).map{ (value) in Team(name: "Team \(value + 1 )", seed: value + 1, isHandicap : self.isHandicap.value) }
         self.teams.value = newTeams
     }
     
@@ -107,18 +115,17 @@ struct GroupSettingViewModel {
         self.group = group
         self.name.value = group.name
         self.isHandicap.value = group.isHandicap
-//        self.scheduleType.value = group.schedule
-//        if group.teams.count > 0 {
-//            self.teamCount = group.teams.count
-//            let teamList = group.teams.map{ (t) -> Team in
-//                let team = Team(name: t.name, seed: t.seed, isHandicap: t.isHandicapped)
-//                team.handicap = t.handicap
-//                return team
-//            }
-//            self.teams.value = teamList
-//        } else {
-//            self.teamCount = group.schedule.allowedTeamCounts.first!
-//        }
+        self.scheduleType.value = group.schedule
+        self.teamCountIndex = group.schedule.allowedTeamCounts.indexOf(group.teamCount)!
+
+        if group.teams.count == teamCountValue {
+            let teamList = group.teams.map{ (t) -> Team in
+                let team = Team(name: t.name, seed: t.seed, isHandicap: t.isHandicapped)
+                team.handicap = t.handicap
+                return team
+            }
+            self.teams.value = teamList
+        }
     }
     
     private func transfrormTeam(team : Team) -> TeamStruct {

@@ -82,32 +82,19 @@ class GroupSettingViewController: ViewController {
         // Setup observers
         //
         setupScheduleTypeObserver()
-        setupTeamsCountObserver()
         setupTableViewObserver()
         
         setupGroupNameObserver()
         setupButtonHandicapObserver()
         setupButtonSortingObserver()
         setupButtonObservers()
+
+        self.pickerTeamCount.selectItem(UInt(viewModel.teamCountIndex), animated: true)
         
     }
     
-    func setTeamCountSchedule(schedule : ScheduleType, withOldSchedule oldschedule : ScheduleType) {
-        let oldindex = Int(self.pickerTeamCount.selectedItem)
-        var oldteamcount = oldschedule.allowedTeamCounts[oldindex]
-        if let newindex = schedule.allowedTeamCounts.indexOf(oldteamcount) {
-            self.pickerTeamCount.selectItem(UInt(newindex), animated: true)
-        } else {
-            oldteamcount = oldteamcount - 1
-            if let newindex = schedule.allowedTeamCounts.indexOf(oldteamcount) {
-                self.pickerTeamCount.selectItem(UInt(newindex), animated: true)
-            } else {
-                self.pickerTeamCount.selectItem(UInt(0), animated: true)
-            }
-        }
-    }
-    
     private func setupScheduleTypeObserver() {
+        
         self.viewModel.scheduleType
             .asObservable()
             .map{ $0.rawValue }
@@ -117,40 +104,37 @@ class GroupSettingViewController: ViewController {
         self.segmentedSchedule
             .rx_value
             .asObservable()
-            .map{ (value) -> Int in
-                let schedule = ScheduleType(rawValue: value)!
-                return schedule.allowedTeamCounts.count
-            }
+            .map{ (value) -> (Int) in return (ScheduleType(rawValue: value)!.allowedTeamCounts.count) }
             .distinctUntilChanged()
-            .subscribeNext{ _ in
-                let schedule = ScheduleType(rawValue: self.segmentedSchedule.selectedSegmentIndex)!
-                if schedule == .RoundDoubles {
-                    self.setTeamCountSchedule(schedule, withOldSchedule: ScheduleType.RoundRobin)
-                    self.pickerTeamCount.reloadData()
-                } else {
-                    self.pickerTeamCount.reloadData()
-                    self.setTeamCountSchedule(schedule, withOldSchedule: ScheduleType.RoundDoubles)
-                }
+            .subscribeNext{ (x) in
+                let oldTeamCountValue = self.viewModel.teamCountValue
+                backgroundThread(0.1, completion: {
+                    let s = self.viewModel.scheduleType.value
+                    if s != .RoundDoubles {
+                        self.pickerTeamCount.reloadData()
+                    }
+                    if let index = s.allowedTeamCounts.indexOf(oldTeamCountValue) {
+                        self.pickerTeamCount.selectItem(UInt(index), animated: true)
+                    } else {
+                        let newTeamCountValue = oldTeamCountValue - 1
+                        let index = s.allowedTeamCounts.indexOf(newTeamCountValue)
+                        self.pickerTeamCount.selectItem(UInt(index!), animated: true)
+                    }
+                    if s == .RoundDoubles {
+                        self.pickerTeamCount.reloadData()
+                    }
+                })
             }
             .addDisposableTo(disposeBag)
+        
         
         self.segmentedSchedule
             .rx_value
             .asObservable()
-//            .filter{ $0 > -1 }
             .subscribeNext({ (value) in
                 self.viewModel.scheduleType.value = ScheduleType(rawValue: value)!
             })
             .addDisposableTo(disposeBag)
-    }
-    
-    func setupTeamsCountObserver() {
-//        self.viewModel.teamsCount
-//            .asObservable()
-//            .subscribeNext { (value) in
-//                //               self.pickerTeamCount.selectItem(UInt(0), animated: true)
-//            }
-//            .addDisposableTo(disposeBag)
     }
     
     func setupTableViewObserver() {
@@ -297,7 +281,6 @@ class GroupSettingViewController: ViewController {
     //
     // Notification handlers. I know bad smell. Will revisit when understand more Rx implementationof this!
     //
-    //
     @objc private func methodOfReceivedNotification_PreviousCellTextField(notification : NSNotification) {
         if let currentcell = notification.object as? TeamCell, indexPath = tableView.indexPathForCell(currentcell) {
             let nextindexpath = NSIndexPath(forRow: indexPath.row - 1, inSection: indexPath.section)
@@ -336,17 +319,14 @@ extension GroupSettingViewController : UITableViewDelegate {
 extension GroupSettingViewController : AKPickerViewDelegate, AKPickerViewDataSource {
  
     func pickerView(pickerView: AKPickerView!, didSelectItem item: Int) {
-        let schedule = ScheduleType(rawValue: self.segmentedSchedule.selectedSegmentIndex)!
-        self.viewModel.teamCount = schedule.allowedTeamCounts[item]
+        viewModel.teamCountIndex = item
     }
     
     func pickerView(pickerView: AKPickerView!, titleForItem item: Int) -> String! {
-        let schedule = ScheduleType(rawValue: self.segmentedSchedule.selectedSegmentIndex)!
-        return "  \(schedule.allowedTeamCounts[item])  "
+        return viewModel.getAllowedTeamCountText(item)
     }
     
     func numberOfItemsInPickerView(pickerView: AKPickerView!) -> UInt {
-        let schedule = ScheduleType(rawValue: self.segmentedSchedule.selectedSegmentIndex)!
-        return UInt(schedule.allowedTeamCounts.count)
+        return UInt(viewModel.scheduleType.value.allowedTeamCounts.count)
     }
 }
