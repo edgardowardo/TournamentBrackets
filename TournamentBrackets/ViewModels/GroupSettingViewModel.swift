@@ -74,6 +74,23 @@ struct GroupSettingViewModel {
         }
     }
     
+    func updateGroup() {
+        try! self.realm.write {
+            group.name = self.name.value
+            group.schedule = self.scheduleType.value
+            group.teamCount = teamCountValue
+            group.isHandicap = self.isHandicap.value
+            self.realm.delete(group.teams)
+            self.realm.delete(group.games)
+            for t in self.teams.value {
+                group.teams.append(t)
+            }
+            for g in schedule(group.schedule, withTeams: self.teams.value) {
+                group.games.append(g)
+            }
+        }
+    }
+    
     func copyTeams(teams: [TeamStats]) {
         let copiedteams = teams.map{ (t) -> Team in
             let team = Team(name: t.name, seed: t.seed, isHandicap: false)

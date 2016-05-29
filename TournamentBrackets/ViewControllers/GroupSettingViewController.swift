@@ -254,8 +254,12 @@ class GroupSettingViewController: ViewController {
     }
         
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let _ = segue.destinationViewController as? GroupListViewController, tournament = self.tournament where segue.identifier == "unwindToGroupAndSave" {
-            self.viewModel.saveWithTournament(tournament)
+        if let _ = segue.destinationViewController as? GroupListViewController where segue.identifier == "unwindToGroupAndSave" {
+            if let tournament = self.tournament {
+                self.viewModel.saveWithTournament(tournament)
+            } else {
+                self.viewModel.updateGroup()
+            }
         }
     }
     

@@ -603,22 +603,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TournamentBrackets/ViewModels/GroupSettingViewModel.swift"
-            timestampString = "486247017.60501"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "saveWithTournament(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "TournamentBrackets/ViewModels/GameViewModel.swift"
             timestampString = "485458734.692554"
             startingColumnNumber = "9223372036854775807"
@@ -977,11 +961,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TournamentBrackets/ViewControllers/GroupSettingViewController.swift"
-            timestampString = "486246457.733545"
+            timestampString = "486254345.347679"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
             landmarkName = "GroupSettingViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -1040,14 +1024,30 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TournamentBrackets/ViewModels/GroupSettingViewModel.swift"
-            timestampString = "486246457.733545"
+            filePath = "TournamentBrackets/ViewControllers/GroupSettingViewController.swift"
+            timestampString = "486254668.580898"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "GroupSettingViewModel"
-            landmarkType = "3">
+            startingLineNumber = "257"
+            endingLineNumber = "257"
+            landmarkName = "prepareForSegue(_:sender:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TournamentBrackets/ViewModels/GroupSettingViewModel.swift"
+            timestampString = "486255289.779083"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "updateGroup()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
