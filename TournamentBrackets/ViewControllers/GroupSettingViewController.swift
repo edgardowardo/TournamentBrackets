@@ -43,6 +43,16 @@ class GroupSettingViewController: ViewController {
         }
     }
     
+    @IBAction func update() {
+        let alert = UIAlertController(title: "Save", message: "Saving will clear game progress. Continue?", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+        alert.addAction( UIAlertAction(title: "Continue", style: .Destructive) { (_) in
+            self.viewModel.updateGroup()
+            self.performSegueWithIdentifier("unwindToGroupAndSave", sender: self)
+            })
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func cancel() {
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -66,12 +76,19 @@ class GroupSettingViewController: ViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GroupSettingViewController.methodOfReceivedNotification_NextCellTextField(_:)), name: TeamCell.Notification.Identifier.NextCellTextField, object: nil)
 
         //
-        // Edit or insert mode
+        // Edit or
         //
         if let first = navigationController?.viewControllers.first where first == self {
+            self.navigationItem.rightBarButtonItems?.removeAtIndex(0)
+            let u = UIBarButtonItem(barButtonSystemItem: .Save, target: self, action: #selector(update))
+            self.navigationItem.rightBarButtonItem = u
             let b = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(cancel))
             self.navigationItem.leftBarButtonItem = b
+            self.title = "Update Group"            
         } else {
+            //
+            // Insert mode
+            //
             self.viewModel = GroupSettingViewModel(group: Group())
         }
         
@@ -257,8 +274,6 @@ class GroupSettingViewController: ViewController {
         if let _ = segue.destinationViewController as? GroupListViewController where segue.identifier == "unwindToGroupAndSave" {
             if let tournament = self.tournament {
                 self.viewModel.saveWithTournament(tournament)
-            } else {
-                self.viewModel.updateGroup()
             }
         }
     }

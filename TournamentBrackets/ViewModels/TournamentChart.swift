@@ -21,9 +21,9 @@ enum TournamentChart : Int, CustomStringConvertible {
             case .Won:
                 return "GAMES WON"
             case .Earned:
-                return "POINTS EARNED"
+                return "POINTS FOR"
             case .Conceded:
-                return "POINTS CONCEDED"
+                return "POINTS AGAINST"
             }
         }
     }

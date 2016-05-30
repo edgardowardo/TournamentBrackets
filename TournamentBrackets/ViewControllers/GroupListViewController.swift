@@ -135,7 +135,8 @@ class GroupListViewController: ViewController, UITextFieldDelegate {
     
     @IBAction func unwindToGroupList(segue: UIStoryboardSegue) {
         backgroundThread(0.1, background: nil) {
-            if let sender = segue.sourceViewController as? GroupSettingViewController where segue.identifier == "unwindToGroupAndSave" {
+            if let sender = segue.sourceViewController as? GroupSettingViewController where segue.identifier == "unwindToGroupAndSave" && sender.viewModel.isGroupUpdated {
+                
                 self.performSegueWithIdentifier("showGroup", sender: sender)
             }
         }

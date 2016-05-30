@@ -25,6 +25,7 @@ struct GroupSettingViewModel {
     var isHandicap : Variable<Bool> = Variable(true)
     var teams: Variable<[Team]> = Variable([])
     var group : Group!
+    var isGroupUpdated = false // as in not new
     var teamCountValue : Int {
         get {
             return self.scheduleType.value.allowedTeamCounts[teamCountIndex]
@@ -74,7 +75,8 @@ struct GroupSettingViewModel {
         }
     }
     
-    func updateGroup() {
+    mutating func updateGroup() {
+        isGroupUpdated = true
         try! self.realm.write {
             group.name = self.name.value
             group.schedule = self.scheduleType.value
