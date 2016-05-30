@@ -134,8 +134,11 @@ class GroupSettingViewController: ViewController {
                         self.pickerTeamCount.selectItem(UInt(index), animated: true)
                     } else {
                         let newTeamCountValue = oldTeamCountValue - 1
-                        let index = s.allowedTeamCounts.indexOf(newTeamCountValue)
-                        self.pickerTeamCount.selectItem(UInt(index!), animated: true)
+                        if let index = s.allowedTeamCounts.indexOf(newTeamCountValue) {
+                            self.pickerTeamCount.selectItem(UInt(index), animated: true)
+                        } else {
+                            self.pickerTeamCount.selectItem(UInt(0), animated: true)
+                        }
                     }
                     if s == .RoundDoubles {
                         self.pickerTeamCount.reloadData()
