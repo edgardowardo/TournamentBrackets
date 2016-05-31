@@ -9,10 +9,9 @@
 import UIKit
 
 import UIColor_FlatColors
-
+import GoogleMobileAds
 import RxSwift
 import RxCocoa
-
 import RealmSwift
 import RxRealm
 
@@ -21,6 +20,7 @@ class TournamentListViewController: ViewController, UITextFieldDelegate {
     let realm = try! Realm()
     let bag = DisposeBag()
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var bannerView: GADBannerView!
     
     // MARK: - Text field delegate -
     
@@ -64,6 +64,10 @@ class TournamentListViewController: ViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.reloadInputViews()
+        
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.loadRequest(GADRequest())
         
         //
         // Observe the list

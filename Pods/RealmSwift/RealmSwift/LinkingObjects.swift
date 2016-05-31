@@ -22,12 +22,33 @@ import Realm
 /// :nodoc:
 /// Internal class. Do not use directly. Used for reflection and initialization
 public class LinkingObjectsBase: NSObject, NSFastEnumeration {
-    internal var rlmResults: RLMResults
     internal let objectClassName: String
     internal let propertyName: String
 
-    init(results: RLMResults, fromClassName objectClassName: String, property propertyName: String) {
-        self.rlmResults = results
+    private var cachedRLMResults: RLMResults?
+    private var object: RLMWeakObjectHandle?
+    private var property: RLMProperty?
+
+    internal func attachTo(object object: RLMObjectBase, property: RLMProperty) {
+        self.object = RLMWeakObjectHandle(object: object)
+        self.property = property
+        self.cachedRLMResults = nil
+    }
+
+    internal var rlmResults: RLMResults {
+        if cachedRLMResults == nil {
+            if let object = self.object, property = self.property {
+                cachedRLMResults = RLMDynamicGet(object.object, property)! as? RLMResults
+                self.object = nil
+                self.property = nil
+            } else {
+                cachedRLMResults = RLMResults.emptyDetachedResults()
+            }
+        }
+        return cachedRLMResults!
+    }
+
+    init(fromClassName objectClassName: String, property propertyName: String) {
         self.objectClassName = objectClassName
         self.propertyName = propertyName
     }
@@ -43,40 +64,54 @@ public class LinkingObjectsBase: NSObject, NSFastEnumeration {
 }
 
 /**
- LinkingObjects is an auto-updating container type that represents a collection of objects that
- link to a given object.
+ `LinkingObjects` is an auto-updating container type. It represents a collection of objects that
+ link to its parent object.
 
- LinkingObjects can be queried with the same predicates as `List<T>` and `Results<T>`.
+ `LinkingObjects` can be queried with the same predicates as `List<T>` and `Results<T>`.
 
- LinkingObjects always reflect the current state of the Realm on the current thread,
+ `LinkingObjects` always reflects the current state of the Realm on the current thread,
  including during write transactions on the current thread. The one exception to
  this is when using `for...in` enumeration, which will always enumerate over the
- linking objects when the enumeration is begun, even if some of them are deleted or
- modified to no longer link to the target object during the enumeration.
+ linking objects that were present when the enumeration is begun, even if some of them
+ are deleted or modified to no longer link to the target object during the enumeration.
 
- LinkingObjects can only be used as a property on `Object` models. The property must
+ `LinkingObjects` can only be used as a property on `Object` models. Properties of this type must
  be declared as `let` and cannot be `dynamic`.
  */
 public final class LinkingObjects<T: Object>: LinkingObjectsBase {
-    /// Element type contained in this collection.
+    /// The element type contained in this collection.
     public typealias Element = T
 
     // MARK: Properties
 
-    /// Returns the Realm these linking objects are associated with.
+    /// The Realm which manages this linking objects collection, or `nil` if the collection is unmanaged.
     public var realm: Realm? { return rlmResults.attached ? Realm(rlmResults.realm) : nil }
 
-    /// Returns the number of objects in these linking objects.
+    /// Indicates if the linking objects collection is no longer valid.
+    ///
+    /// The linking objects collection becomes invalid if `invalidate` is called on the containing `realm`.
+    ///
+    /// An invalidated linking objects can be accessed, but will always be empty.
+    public var invalidated: Bool { return rlmResults.invalidated }
+
+    /// The number of objects in the linking objects.
     public var count: Int { return Int(rlmResults.count) }
 
     // MARK: Initializers
 
+    /**
+     Creates an instance of a `LinkingObjects`. This initializer should only be called when
+     declaring a property on a Realm model.
+
+     - parameter type:         The type of the object owning the property this `LinkingObjects` should refer to.
+     - parameter propertyName: The property name of the property this `LinkingObjects` should refer to.
+    */
     public init(fromType type: T.Type, property propertyName: String) {
         let className = (T.self as Object.Type).className()
-        super.init(results: RLMResults.emptyDetachedResults(), fromClassName: className, property: propertyName)
+        super.init(fromClassName: className, property: propertyName)
     }
 
-    /// Returns a human-readable description of the objects contained in these linking objects.
+    /// Returns a description of the objects contained within the linking objects.
     public override var description: String {
         let type = "LinkingObjects<\(rlmResults.objectClassName)>"
         return gsub("RLMResults <0x[a-z0-9]+>", template: type, string: rlmResults.description) ?? type
@@ -99,7 +134,7 @@ public final class LinkingObjects<T: Object>: LinkingObjectsBase {
      Returns the index of the first object matching the given predicate,
      or `nil` if no objects match.
 
-     - parameter predicate: The predicate to filter the objects.
+     - parameter predicate: The predicate with which to filter the objects.
 
      - returns: The index of the first matching object, or `nil` if no objects match.
      */
@@ -111,7 +146,7 @@ public final class LinkingObjects<T: Object>: LinkingObjectsBase {
      Returns the index of the first object matching the given predicate,
      or `nil` if no objects match.
 
-     - parameter predicateFormat: The predicate format string which can accept variable arguments.
+     - parameter predicateFormat: A predicate format string, optionally followed by a variable number of arguments.
 
      - returns: The index of the first matching object, or `nil` if no objects match.
      */
@@ -136,44 +171,43 @@ public final class LinkingObjects<T: Object>: LinkingObjectsBase {
         }
     }
 
-    /// Returns the first object in the collection, or `nil` if empty.
+    /// Returns the first object in the linking objects collection, or `nil` if the collection is empty.
     public var first: T? { return unsafeBitCast(rlmResults.firstObject(), Optional<T>.self) }
 
-    /// Returns the last object in the collection, or `nil` if empty.
+    /// Returns the last object in the linking objects collection, or `nil` if collection is empty.
     public var last: T? { return unsafeBitCast(rlmResults.lastObject(), Optional<T>.self) }
 
     // MARK: KVC
 
     /**
-     Returns an Array containing the results of invoking `valueForKey(_:)` using key on each of the
+     Returns an `Array` containing the results of invoking `valueForKey(_:)` with `key` on each of the linking objects
      collection's objects.
 
      - parameter key: The name of the property.
 
-     - returns: Array containing the results of invoking `valueForKey(_:)` using key on each of the
-       collection's objects.
+     - returns: An `Array` containing the results.
      */
     public override func valueForKey(key: String) -> AnyObject? {
         return rlmResults.valueForKey(key)
     }
 
     /**
-     Returns an Array containing the results of invoking `valueForKeyPath(_:)` using keyPath on each of the
-     collection's objects.
+     Returns an `Array` containing the results of invoking `valueForKeyPath(_:)` with `keyPath` on each of the linking
+     objects collection's objects.
 
      - parameter keyPath: The key path to the property.
 
-     - returns: Array containing the results of invoking `valueForKeyPath(_:)` using keyPath on each of the
-       collection's objects.
+     - returns: An `Array` containing the results.
      */
     public override func valueForKeyPath(keyPath: String) -> AnyObject? {
         return rlmResults.valueForKeyPath(keyPath)
     }
 
     /**
-     Invokes `setValue(_:forKey:)` on each of the collection's objects using the specified value and key.
+     Invokes `setValue(_:forKey:)` on each of the linking objects collection's objects using the specified `value` and
+     `key`.
 
-     - warning: This method can only be called during a write transaction.
+     - warning: This method may only be called during a write transaction.
 
      - parameter value: The object value.
      - parameter key:   The name of the property.
@@ -185,22 +219,22 @@ public final class LinkingObjects<T: Object>: LinkingObjectsBase {
     // MARK: Filtering
 
     /**
-     Filters the collection to the objects that match the given predicate.
+     Returns all the objects matching the given predicate in the linking objects collection.
 
-     - parameter predicateFormat: The predicate format string which can accept variable arguments.
+     - parameter predicateFormat: A predicate format string, optionally followed by a variable number of arguments.
 
-     - returns: Results containing objects that match the given predicate.
+     - returns: A `Results` object containing the results.
      */
     public func filter(predicateFormat: String, _ args: AnyObject...) -> Results<T> {
         return Results<T>(rlmResults.objectsWithPredicate(NSPredicate(format: predicateFormat, argumentArray: args)))
     }
 
     /**
-     Filters the collection to the objects that match the given predicate.
+     Returns all the objects matching the given predicate in the linking objects collection.
 
-     - parameter predicate: The predicate to filter the objects.
+     - parameter predicate: The predicate with which to filter the objects.
 
-     - returns: Results containing objects that match the given predicate.
+     - returns: A `Results` object containing the results.
      */
     public func filter(predicate: NSPredicate) -> Results<T> {
         return Results<T>(rlmResults.objectsWithPredicate(predicate))
@@ -209,23 +243,23 @@ public final class LinkingObjects<T: Object>: LinkingObjectsBase {
     // MARK: Sorting
 
     /**
-     Returns `Results` with elements sorted by the given property name.
+     Returns a `Results` containing the linking objects collection's elements sorted by the given property name.
 
      - parameter property:  The property name to sort by.
-     - parameter ascending: The direction to sort by.
+     - parameter ascending: The direction to sort in.
 
-     - returns: `Results` with elements sorted by the given property name.
+     - returns: A `Results` object.
      */
     public func sorted(property: String, ascending: Bool = true) -> Results<T> {
         return sorted([SortDescriptor(property: property, ascending: ascending)])
     }
 
     /**
-     Returns `Results` with elements sorted by the given sort descriptors.
+     Returns a `Results` containing the linking objects collection's elements sorted by the given sort descriptors.
 
-     - parameter sortDescriptors: `SortDescriptor`s to sort by.
+     - parameter sortDescriptors: A sequence of `SortDescriptor`s to sort by.
 
-     - returns: `Results` with elements sorted by the given sort descriptors.
+     - returns: A `Results` object.
      */
     public func sorted<S: SequenceType where S.Generator.Element == SortDescriptor>(sortDescriptors: S) -> Results<T> {
         return Results<T>(rlmResults.sortedResultsUsingDescriptors(sortDescriptors.map { $0.rlmSortDescriptorValue }))
@@ -234,55 +268,55 @@ public final class LinkingObjects<T: Object>: LinkingObjectsBase {
     // MARK: Aggregate Operations
 
     /**
-     Returns the minimum value of the given property.
+     Returns the minimum (lowest) value of the given property among all the objects represented by the linking objects
+     collection.
 
-     - warning: Only names of properties of a type conforming to the `MinMaxType` protocol can be used.
+     - warning: Only a property whose type conforms to the `MinMaxType` protocol can be specified.
 
-     - parameter property: The name of a property conforming to `MinMaxType` to look for a minimum on.
+     - parameter property: The name of a property whose minimum value is desired.
 
-     - returns: The minimum value for the property amongst objects in the collection, or `nil` if the collection
-       is empty.
+     - returns: The minimum value of the property, or `nil` if the collection is empty.
      */
     public func min<U: MinMaxType>(property: String) -> U? {
         return rlmResults.minOfProperty(property) as! U?
     }
 
     /**
-     Returns the maximum value of the given property.
+     Returns the maximum (highest) value of the given property among all the objects represented by the linking objects
+     collection.
 
-     - warning: Only names of properties of a type conforming to the `MinMaxType` protocol can be used.
+     - warning: Only a property whose type conforms to the `MinMaxType` protocol can be specified.
 
-     - parameter property: The name of a property conforming to `MinMaxType` to look for a maximum on.
+     - parameter property: The name of a property whose minimum value is desired.
 
-     - returns: The maximum value for the property amongst objects in the collection, or `nil` if the collection
-       is empty.
+     - returns: The maximum value of the property, or `nil` if the collection is empty.
      */
     public func max<U: MinMaxType>(property: String) -> U? {
         return rlmResults.maxOfProperty(property) as! U?
     }
 
     /**
-     Returns the sum of the given property for objects in the collection.
+     Returns the sum of the values of a given property over all the objects represented by the linking objects
+     collection.
 
-     - warning: Only names of properties of a type conforming to the `AddableType` protocol can be used.
+     - warning: Only a property whose type conforms to the `AddableType` protocol can be specified.
 
-     - parameter property: The name of a property conforming to `AddableType` to calculate sum on.
+     - parameter property: The name of a property whose values should be summed.
 
-     - returns: The sum of the given property over all objects in the collection.
+     - returns: The sum of the given property.
      */
     public func sum<U: AddableType>(property: String) -> U {
         return rlmResults.sumOfProperty(property) as AnyObject as! U
     }
 
     /**
-     Returns the average of the given property for objects in the collection.
+     Returns the average value of a given property over all the objects represented by the linking objects collection.
 
-     - warning: Only names of properties of a type conforming to the `AddableType` protocol can be used.
+     - warning: Only the name of a property whose type conforms to the `AddableType` protocol can be specified.
 
-     - parameter property: The name of a property conforming to `AddableType` to calculate average on.
+     - parameter property: The name of a property whose average value should be calculated.
 
-     - returns: The average of the given property over all objects in the collection, or `nil` if the collection
-       is empty.
+     - returns: The average value of the given property, or `nil` if the collection is empty.
      */
     public func average<U: AddableType>(property: String) -> U? {
         return rlmResults.averageOfProperty(property) as! U?
@@ -291,81 +325,20 @@ public final class LinkingObjects<T: Object>: LinkingObjectsBase {
     // MARK: Notifications
 
     /**
-     Register a block to be called each time the LinkingObjects changes.
+     Registers a block to be called each time the linking objects collection changes.
 
-     The block will be asynchronously called with the initial set of objects, and then
-     called again after each write transaction which changes either any of the
-     objects in the collection, or which objects are in the collection.
+     The block will be asynchronously called with the initial linking objects collection,
+     and then called again after each write transaction which changes either any
+     of the objects in the collection, or which objects are in the collection.
 
-     If an error occurs the block will be called with `nil` for the linkingObjects
-     parameter and a non-`nil` error. Currently the only errors that can occur are
-     when opening the Realm on the background worker thread fails.
+     The `change` parameter that is passed to the block reports, in the form of indices within the
+     collection, which of the objects were added, removed, or modified during each write transaction. See the
+     `RealmCollectionChange` documentation for more information on the change information supplied and an example of how
+     to use it to update a `UITableView`.
 
-     At the time when the block is called, the LinkingObjects object will be fully
+     At the time when the block is called, the linking objects collection will be fully
      evaluated and up-to-date, and as long as you do not perform a write transaction
-     on the same thread or explicitly call realm.refresh(), accessing it will never
-     perform blocking work.
-
-     Notifications are delivered via the standard run loop, and so can't be
-     delivered while the run loop is blocked by other activity. When
-     notifications can't be delivered instantly, multiple notifications may be
-     coalesced into a single notification. This can include the notification
-     with the initial results. For example, the following code performs a write
-     transaction immediately after adding the notification block, so there is no
-     opportunity for the initial notification to be delivered first. As a
-     result, the initial notification will reflect the state of the Realm after
-     the write transaction.
-
-     let dog = realm.objects(Dog).first!
-     let owners = dog.owners
-     print("owners.count: \(owners.count)") // => 0
-     let token = owners.addNotificationBlock { (owners, error) in
-         // Only fired once for the example
-         print("owners.count: \(owners.count)") // will only print "owners.count: 1"
-     }
-     try! realm.write {
-         realm.add(Person.self, value: ["name": "Mark", dogs: [dog]])
-     }
-     // end of runloop execution context
-
-     You must retain the returned token for as long as you want updates to continue
-     to be sent to the block. To stop receiving updates, call stop() on the token.
-
-     - warning: This method cannot be called during a write transaction, or when
-     the source realm is read-only.
-
-     - parameter block: The block to be called with the evaluated linking objects.
-     - returns: A token which must be held for as long as you want query results to be delivered.
-     */
-    @available(*, deprecated=1, message="Use addNotificationBlock with changes")
-    @warn_unused_result(message="You must hold on to the NotificationToken returned from addNotificationBlock")
-    public func addNotificationBlock(block: (linkingObjects: LinkingObjects<T>?, error: NSError?) -> ())
-        -> NotificationToken {
-        return rlmResults.addNotificationBlock { results, changes, error in
-            if results != nil {
-                block(linkingObjects: self, error: nil)
-            } else {
-                block(linkingObjects: nil, error: error)
-            }
-        }
-    }
-
-    /**
-     Register a block to be called each time the LinkingObjects changes.
-
-     The block will be asynchronously called with the initial set of objects, and then
-     called again after each write transaction which changes either any of the
-     objects in the collection, or which objects are in the collection.
-
-     This version of this method reports which of the objects in the collection were
-     added, removed, or modified in each write transaction as indices within the
-     collection. See the RealmCollectionChange documentation for more information on
-     the change information supplied and an example of how to use it to update
-     a UITableView.
-
-     At the time when the block is called, the LinkingObjects object will be fully
-     evaluated and up-to-date, and as long as you do not perform a write transaction
-     on the same thread or explicitly call realm.refresh(), accessing it will never
+     on the same thread or explicitly call `realm.refresh()`, accessing it will never
      perform blocking work.
 
      Notifications are delivered via the standard run loop, and so can't be
@@ -378,35 +351,35 @@ public final class LinkingObjects<T: Object>: LinkingObjectsBase {
      result, the initial notification will reflect the state of the Realm after
      the write transaction.
 
-     let dog = realm.objects(Dog).first!
-     let owners = dog.owners
-     print("owners.count: \(owners.count)") // => 0
-     let token = owners.addNotificationBlock { (changes: RealmCollectionChange) in
-         switch changes {
-             case .Initial(let owners):
-                 // Will print "owners.count: 1"
-                 print("owners.count: \(owners.count)")
-                 break
-             case .Update:
-                 // Will not be hit in this example
-                 break
-             case .Error:
-                 break
+         let dog = realm.objects(Dog).first!
+         let owners = dog.owners
+         print("owners.count: \(owners.count)") // => 0
+         let token = owners.addNotificationBlock { (changes: RealmCollectionChange) in
+             switch changes {
+                 case .Initial(let owners):
+                     // Will print "owners.count: 1"
+                     print("owners.count: \(owners.count)")
+                     break
+                 case .Update:
+                     // Will not be hit in this example
+                     break
+                 case .Error:
+                     break
+             }
          }
-     }
-     try! realm.write {
-         realm.add(Person.self, value: ["name": "Mark", dogs: [dog]])
-     }
-     // end of runloop execution context
+         try! realm.write {
+             realm.add(Person.self, value: ["name": "Mark", dogs: [dog]])
+         }
+         // end of runloop execution context
 
      You must retain the returned token for as long as you want updates to continue
-     to be sent to the block. To stop receiving updates, call stop() on the token.
+     to be sent to the block. To stop receiving updates, call `stop()` on the token.
 
      - warning: This method cannot be called during a write transaction, or when
-     the source realm is read-only.
+     the containing Realm is read-only.
 
-     - parameter block: The block to be called with the evaluated linking objects and change information.
-     - returns: A token which must be held for as long as you want updates to be delivered.
+     - parameter block: The block to be called whenever a change occurs.
+     - returns: A token which must be retained for as long as you want updates to be delivered.
      */
     @warn_unused_result(message="You must hold on to the NotificationToken returned from addNotificationBlock")
     public func addNotificationBlock(block: (RealmCollectionChange<LinkingObjects> -> Void)) -> NotificationToken {
@@ -427,12 +400,12 @@ extension LinkingObjects: RealmCollectionType {
     // MARK: Collection Support
 
     /// The position of the first element in a non-empty collection.
-    /// Identical to endIndex in an empty collection.
+    /// Identical to `endIndex` in an empty collection.
     public var startIndex: Int { return 0 }
 
     /// The collection's "past the end" position.
-    /// endIndex is not a valid argument to subscript, and is always reachable from startIndex by
-    /// zero or more applications of successor().
+    /// `endIndex` is not a valid argument to subscript, and is always reachable from `startIndex` by
+    /// zero or more applications of `successor()`.
     public var endIndex: Int { return count }
 
     /// :nodoc:

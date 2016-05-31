@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 let formatter: NSDateFormatter = {
     let f = NSDateFormatter()
@@ -38,6 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         pageController.pageIndicatorTintColor = UIColor.lightGrayColor()
         pageController.currentPageIndicatorTintColor = UIColor.blackColor()
         pageController.backgroundColor = UIColor.clearColor()
+        
+        // Use Firebase library to configure APIs
+        FIRApp.configure()
         
         return true
     }

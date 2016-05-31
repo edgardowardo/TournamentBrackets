@@ -53,9 +53,7 @@ extension UIControl {
                 observer.on(.Next())
             }
             
-            return AnonymousDisposable {
-                controlTarget.dispose()
-            }
+            return AnonymousDisposable(controlTarget.dispose)
         }.takeUntil(rx_deallocated)
         
         return ControlEvent(events: source)
@@ -80,11 +78,8 @@ extension UIControl {
                     }
                 }
                 
-                return AnonymousDisposable {
-                    controlTarget.dispose()
-                }
+                return AnonymousDisposable(controlTarget.dispose)
             }
-            .distinctUntilChanged()
             .takeUntil((control as! NSObject).rx_deallocated)
 
         let bindingObserver = UIBindingObserver(UIElement: control, binding: setter)

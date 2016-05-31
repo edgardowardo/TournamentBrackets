@@ -13,9 +13,12 @@ target 'TournamentBrackets' do
     pod 'AKPickerView'
     pod 'RealmSwift'
     pod 'MBProgressHUD'
-    pod 'VTAcknowledgementsViewController'
     pod 'UIColor+FlatColors'
     pod 'Charts/Realm'
+    pod 'Firebase'
+    pod 'Firebase/AdMob'
+    pod 'VTAcknowledgementsViewController'
+
     shared_pods
 end
 
@@ -29,7 +32,3 @@ target 'TournamentBracketsUITests' do
     pod 'Nimble'
 end
 
-post_install do | installer |
-    require 'fileutils'
-    FileUtils.cp_r('Pods/Target Support Files/Pods-TournamentBrackets/Pods-TournamentBrackets-acknowledgements.plist', 'Pods-acknowledgements.plist', :remove_destination => true)
-end

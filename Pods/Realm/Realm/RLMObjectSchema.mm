@@ -34,7 +34,7 @@ using namespace realm;
 
 // private properties
 @interface RLMObjectSchema ()
-@property (nonatomic, readwrite) NSDictionary RLM_GENERIC(id, RLMProperty *) *allPropertiesByName;
+@property (nonatomic, readwrite) NSDictionary<id, RLMProperty *> *allPropertiesByName;
 @property (nonatomic, readwrite) NSString *className;
 @end
 
@@ -42,6 +42,7 @@ using namespace realm;
     // table accessor optimization
     realm::TableRef _table;
     NSArray *_propertiesInDeclaredOrder;
+    NSArray *_swiftGenericProperties;
 }
 
 - (instancetype)initWithClassName:(NSString *)objectClassName objectClass:(Class)objectClass properties:(NSArray *)properties {
@@ -161,13 +162,9 @@ using namespace realm;
     }
 
     for (RLMProperty *prop in schema.properties) {
-        RLMPropertyType type = prop.type;
-        if (prop.optional && !RLMPropertyTypeIsNullable(type)) {
-            NSString *error = [NSString stringWithFormat:@"Only 'string', 'binary', and 'object' properties can be made optional, and property '%@' is of type '%@'.", prop.name, RLMTypeToString(type)];
-            if (prop.type == RLMPropertyTypeAny && isSwift) {
-                error = [error stringByAppendingString:@"\nIf this is a 'String?' property, it must be declared as 'NSString?' instead."];
-            }
-            @throw RLMException(@"%@", error);
+        if (prop.optional && !RLMPropertyTypeIsNullable(prop.type)) {
+            @throw RLMException(@"Only 'string', 'binary', and 'object' properties can be made optional, and property '%@' is of type '%@'.",
+                                prop.name, RLMTypeToString(prop.type));
         }
     }
 
@@ -196,6 +193,7 @@ using namespace realm;
         if (isSwiftClass) {
             prop = [[RLMProperty alloc] initSwiftPropertyWithName:propertyName
                                                           indexed:[indexed containsObject:propertyName]
+                                           linkPropertyDescriptor:linkingObjectsProperties[propertyName]
                                                          property:props[i]
                                                          instance:swiftObjectInstance];
         }
@@ -332,6 +330,7 @@ using namespace realm;
     schema->_computedProperties = _computedProperties;
     schema->_allPropertiesByName = _allPropertiesByName;
     schema->_primaryKeyProperty = _primaryKeyProperty;
+    schema->_swiftGenericProperties = _swiftGenericProperties;
 
     // _table not copied as it's realm::Group-specific
     return schema;
@@ -443,6 +442,35 @@ using namespace realm;
         }];
     }
     return _propertiesInDeclaredOrder;
+}
+
+- (NSArray *)swiftGenericProperties {
+    if (_swiftGenericProperties) {
+        return _swiftGenericProperties;
+    }
+
+    // This check isn't semantically required, but avoiding accessing the local
+    // static helps perf in the obj-c case
+    if (!_isSwiftClass) {
+        return _swiftGenericProperties = @[];
+    }
+
+    // Check if it's a swift class using the obj-c API
+    static Class s_swiftObjectClass = NSClassFromString(@"RealmSwiftObject");
+    if (![_accessorClass isSubclassOfClass:s_swiftObjectClass]) {
+        return _swiftGenericProperties = @[];
+    }
+
+    NSMutableArray *genericProperties = [NSMutableArray new];
+    for (RLMProperty *prop in _properties) {
+        if (prop->_swiftIvar || prop->_type == RLMPropertyTypeArray) {
+            [genericProperties addObject:prop];
+        }
+    }
+    // Currently all computed properties are Swift generics
+    [genericProperties addObjectsFromArray:_computedProperties];
+
+    return _swiftGenericProperties = genericProperties;
 }
 
 @end

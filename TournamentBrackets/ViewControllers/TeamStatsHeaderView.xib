@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -66,7 +66,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VxQ-4F-aL8">
-                    <rect key="frame" x="233" y="-8" width="112" height="21"/>
+                    <rect key="frame" x="233" y="-8" width="147" height="21"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22/P" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVa-eD-tUP">
                             <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
@@ -98,8 +98,8 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAd-wb-41G">
-                            <rect key="frame" x="87" y="0.0" width="25" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="D" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAd-wb-41G">
+                            <rect key="frame" x="122" y="0.0" width="25" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="MQt-SX-2X5"/>
                                 <constraint firstAttribute="width" constant="25" id="niz-8j-RB9"/>
