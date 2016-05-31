@@ -155,7 +155,9 @@ extension NSURLSession {
             let t = task
             t.resume()
 
-            return AnonymousDisposable(task.cancel)
+            return AnonymousDisposable {
+                task.cancel()
+            }
         }
     }
 

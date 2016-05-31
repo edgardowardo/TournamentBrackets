@@ -17,7 +17,6 @@
 /**
  For more information take a look at `DelegateProxyType`.
  */
-@available(iOS 8.0, *)
 public class RxSearchControllerDelegateProxy
     : DelegateProxy
     , DelegateProxyType

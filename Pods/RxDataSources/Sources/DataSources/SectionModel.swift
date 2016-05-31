@@ -34,6 +34,6 @@ public struct SectionModel<Section, ItemType>
 extension SectionModel {
     public init(original: SectionModel<Section, Item>, items: [Item]) {
         self.model = original.model
-        self.items = items
+        self.items = original.items
     }
 }

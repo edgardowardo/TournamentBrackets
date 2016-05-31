@@ -8,11 +8,10 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/Charts
+//  https://github.com/danielgindi/ios-charts
 //
 
 import Foundation
-import CoreGraphics
 
 @objc
 public protocol IRadarChartDataSet: ILineRadarChartDataSet

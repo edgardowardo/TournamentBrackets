@@ -9,7 +9,7 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/Charts
+//  https://github.com/danielgindi/ios-charts
 //
 
 import Foundation
@@ -64,19 +64,7 @@ public class ChartDataSet: ChartBaseDataSet
     /// the last end value used for calcMinMax
     internal var _lastEnd: Int = 0
     
-    /// the array of y-values that this DataSet represents.
-    public var yVals: [ChartDataEntry]
-    {
-        get
-        {
-            return _yVals
-        }
-        set
-        {
-            _yVals = newValue
-            notifyDataSetChanged()
-        }
-    }
+    public var yVals: [ChartDataEntry] { return _yVals }
     
     /// Use this method to tell the data set that the underlying data has changed
     public override func notifyDataSetChanged()
@@ -110,7 +98,7 @@ public class ChartDataSet: ChartBaseDataSet
         _yMin = DBL_MAX
         _yMax = -DBL_MAX
         
-        for i in start.stride(through: endValue, by: 1)
+        for i in start ... endValue
         {
             let e = _yVals[i]
             
@@ -152,20 +140,6 @@ public class ChartDataSet: ChartBaseDataSet
         else { return Double.NaN }
     }
     
-    /// - returns: all of the y values of the Entry objects at the given xIndex. Returns NaN if no value is at the given x-index.
-    public override func yValsForXIndex(x: Int) -> [Double]
-    {
-        let entries = self.entriesForXIndex(x)
-        
-        var yVals = [Double]()
-        for e in entries
-        {
-            yVals.append(e.value)
-        }
-        
-        return yVals
-    }
-    
     /// - returns: the entry object found at the given index (not x-index!)
     /// - throws: out of bounds
     /// if `i` is out of bounds, it may throw an out-of-bounds exception
@@ -195,9 +169,7 @@ public class ChartDataSet: ChartBaseDataSet
         return entryForXIndex(x, rounding: .Closest)
     }
     
-    /// - returns: all Entry objects found at the given xIndex with binary search.
-    /// An empty array if no Entry object at that index.
-    public override func entriesForXIndex(x: Int) -> [ChartDataEntry]
+    public func entriesForXIndex(x: Int) -> [ChartDataEntry]
     {
         var entries = [ChartDataEntry]()
         
@@ -206,7 +178,7 @@ public class ChartDataSet: ChartBaseDataSet
         
         while (low <= high)
         {
-            var m = (high + low) / 2
+            var m = Int((high + low) / 2)
             var entry = _yVals[m]
             
             if (x == entry.xIndex)
@@ -231,19 +203,15 @@ public class ChartDataSet: ChartBaseDataSet
                     
                     m += 1
                 }
-                
-                break
+            }
+            
+            if (x > _yVals[m].xIndex)
+            {
+                low = m + 1
             }
             else
             {
-                if (x > _yVals[m].xIndex)
-                {
-                    low = m + 1
-                }
-                else
-                {
-                    high = m - 1
-                }
+                high = m - 1
             }
         }
         

@@ -9,7 +9,7 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/Charts
+//  https://github.com/danielgindi/ios-charts
 //
 
 import Foundation
@@ -329,14 +329,7 @@ public class ChartData: NSObject
     /// - returns: the x-values the chart represents
     public var xVals: [String?]
     {
-        get
-        {
-            return _xVals
-        }
-        set
-        {
-            _xVals = newValue
-        }
+        return _xVals
     }
     
     ///Adds a new x-value to the chart data.
@@ -439,18 +432,7 @@ public class ChartData: NSObject
         }
         else
         {
-            // The value of the highlighted entry could be NaN - if we are not interested in highlighting a specific value.
-        
-            let entries = _dataSets[highlight.dataSetIndex].entriesForXIndex(highlight.xIndex)
-            for e in entries
-            {
-                if e.value == highlight.value || isnan(highlight.value)
-                {
-                    return e
-                }
-            }
-            
-            return nil
+            return _dataSets[highlight.dataSetIndex].entryForXIndex(highlight.xIndex)
         }
     }
     
@@ -928,15 +910,5 @@ public class ChartData: NSObject
     /// MARK: - ObjC compatibility
     
     /// - returns: the average length (in characters) across all values in the x-vals array
-    public var xValsObjc: [NSObject]
-    {
-        get
-        {
-            return ChartUtils.bridgedObjCGetStringArray(swift: _xVals);
-        }
-        set
-        {
-            _xVals = ChartUtils.bridgedObjCGetStringArray(objc: newValue)
-        }
-    }
+    public var xValsObjc: [NSObject] { return ChartUtils.bridgedObjCGetStringArray(swift: _xVals); }
 }

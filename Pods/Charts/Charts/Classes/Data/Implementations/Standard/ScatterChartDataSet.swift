@@ -8,7 +8,7 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/Charts
+//  https://github.com/danielgindi/ios-charts
 //
 
 import Foundation
@@ -16,8 +16,8 @@ import CoreGraphics
 
 public class ScatterChartDataSet: LineScatterCandleRadarChartDataSet, IScatterChartDataSet
 {
-    @objc(ScatterShape)
-    public enum Shape: Int
+    @objc
+    public enum ScatterShape: Int
     {
         case Square
         case Circle
@@ -32,7 +32,7 @@ public class ScatterChartDataSet: LineScatterCandleRadarChartDataSet, IScatterCh
     
     // The type of shape that is set to be drawn where the values are at
     // **default**: .Square
-    public var scatterShape = ScatterChartDataSet.Shape.Square
+    public var scatterShape = ScatterChartDataSet.ScatterShape.Square
     
     // The radius of the hole in the shape (applies to Square, Circle and Triangle)
     // **default**: 0.0

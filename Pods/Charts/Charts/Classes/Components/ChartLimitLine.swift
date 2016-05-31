@@ -9,7 +9,7 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/Charts
+//  https://github.com/danielgindi/ios-charts
 //
 
 import Foundation
@@ -20,8 +20,8 @@ import CoreGraphics
 /// It allows the displaying of an additional line in the chart that marks a certain maximum / limit on the specified axis (x- or y-axis).
 public class ChartLimitLine: ChartComponentBase
 {
-    @objc(ChartLimitLabelPosition)
-    public enum LabelPosition: Int
+    @objc
+    public enum ChartLimitLabelPosition: Int
     {
         case LeftTop
         case LeftBottom
@@ -39,8 +39,7 @@ public class ChartLimitLine: ChartComponentBase
     public var valueTextColor = NSUIColor.blackColor()
     public var valueFont = NSUIFont.systemFontOfSize(13.0)
     public var label = ""
-    public var drawLabelEnabled = true
-    public var labelPosition = LabelPosition.RightTop
+    public var labelPosition = ChartLimitLabelPosition.RightTop
     
     public override init()
     {

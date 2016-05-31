@@ -1,9 +1,8 @@
 PODS:
   - AKPickerView (0.2.7)
-  - Charts/Core (2.2.5)
-  - Charts/Realm (2.2.5):
-    - Charts/Core
-    - RealmSwift (~> 0.97)
+  - Charts (2.2.4):
+    - Charts/Core (= 2.2.4)
+  - Charts/Core (2.2.4)
   - Firebase (3.2.0):
     - Firebase/Core (= 3.2.0)
   - Firebase/AdMob (3.2.0):
@@ -33,40 +32,37 @@ PODS:
   - Realm/Headers (0.103.2)
   - RealmSwift (0.103.2):
     - Realm (= 0.103.2)
-  - RxBlocking (2.5.0):
-    - RxSwift (~> 2.5)
-  - RxCocoa (2.5.0):
-    - RxSwift (~> 2.5)
-  - RxDataSources (0.8.1):
+  - RxCocoa (2.4):
+    - RxSwift (~> 2.4)
+  - RxDataSources (0.8):
     - RxCocoa (~> 2.2)
     - RxSwift (~> 2.2)
-  - RxRealm (0.1.4):
-    - RealmSwift (~> 0.100)
+  - RxRealm (0.1.3):
+    - RealmSwift (~> 0.99)
     - RxSwift
-  - RxSwift (2.5.0)
+  - RxSwift (2.4)
   - UIColor+FlatColors (0.0.2)
-  - VTAcknowledgementsViewController (1.1)
+  - VTAcknowledgementsViewController (0.17)
 
 DEPENDENCIES:
   - AKPickerView
-  - Charts/Realm
+  - Charts (= 2.2.4)
   - Firebase
   - Firebase/AdMob
   - MBProgressHUD
   - Nimble
   - Quick
   - RealmSwift
-  - RxBlocking
-  - RxCocoa
-  - RxDataSources
-  - RxRealm
-  - RxSwift
+  - RxCocoa (= 2.4)
+  - RxDataSources (= 0.8)
+  - RxRealm (= 0.1.3)
+  - RxSwift (= 2.4)
   - UIColor+FlatColors
-  - VTAcknowledgementsViewController
+  - VTAcknowledgementsViewController (= 0.17)
 
 SPEC CHECKSUMS:
   AKPickerView: 125372e36fcc372216127600a541f14dcdbb7993
-  Charts: b48fcc8d7190de910ff9e9748f5360c8ea7856e5
+  Charts: a9e735c83c6d376ade20f6612dcf0ba217394a49
   Firebase: 6d4012da1598732a2b43f16d8355eca90f94ed59
   FirebaseAnalytics: 6f75b04e6bfb8e0b6e9ef298e04c24eea3b13863
   FirebaseInstanceID: d014d574053a2fe84478f12f7bae96979e7051bb
@@ -79,14 +75,13 @@ SPEC CHECKSUMS:
   Quick: 18d057bc66451eedd5d1c8dc99ba2a5db6e60226
   Realm: 448f0416079fe5b0ed947e7d86f3c4e1c75826cb
   RealmSwift: 8a45cc8f02dfac093b72a3b5a01d567e27e15891
-  RxBlocking: 595d9ab56dde6b00beaa5aba40e95b150d2135f1
-  RxCocoa: e1b1562e57a554d0fb2aabf9d71b637f177257c7
-  RxDataSources: 4a87345847d66ef84ecc10bdfa189190f3cd6b12
-  RxRealm: aee2585d973eb00554ca1691e12cfa8248c4616f
-  RxSwift: 402b41a50e922a0368fc14cb3bc9f4427920e8ae
+  RxCocoa: 7d6cd877de99f5640306b3d6cf87f580c1d91b61
+  RxDataSources: 8755a221c065930a75cf24020f6f2c63713c486e
+  RxRealm: 6327a9d3cd0e0f89961c39c3813a2e9511e85f27
+  RxSwift: 67b9ef4e8b34fb394e200e754c6a09cc16559f94
   UIColor+FlatColors: 6c699df7a575281794c688c64cee6c44fd1f93b4
-  VTAcknowledgementsViewController: 44da49d57a1dbf414e653688793a130d24af151e
+  VTAcknowledgementsViewController: 6056f5f5e5ed995bbf0581bed6ddd29355ca9a80
 
-PODFILE CHECKSUM: 083d86b009201b7d8c3cd75e36fccb58b6e79f6a
+PODFILE CHECKSUM: 52d98d8681fbc11718e897d4607af5521ca8214e
 
 COCOAPODS: 1.0.0

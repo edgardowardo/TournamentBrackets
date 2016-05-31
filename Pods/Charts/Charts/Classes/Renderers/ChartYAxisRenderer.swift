@@ -8,7 +8,7 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/Charts
+//  https://github.com/danielgindi/ios-charts
 //
 
 import Foundation
@@ -89,12 +89,12 @@ public class ChartYAxisRenderer: ChartAxisRendererBase
         }
         
         // Normalize interval
-        let intervalMagnitude = ChartUtils.roundToNextSignificant(number: pow(10.0, Double(Int(log10(interval)))))
-        let intervalSigDigit = Int(interval / intervalMagnitude)
+        let intervalMagnitude = ChartUtils.roundToNextSignificant(number: pow(10.0, floor(log10(interval))))
+        let intervalSigDigit = (interval / intervalMagnitude)
         if (intervalSigDigit > 5)
         {
             // Use one order of magnitude higher, to avoid intervals like 0.9 or 90
-            interval = floor(10.0 * Double(intervalMagnitude))
+            interval = floor(10.0 * intervalMagnitude)
         }
         
         // force label count
@@ -133,16 +133,13 @@ public class ChartYAxisRenderer: ChartAxisRendererBase
             }
             else
             {
-                let first = interval == 0.0 ? 0.0 : ceil(Double(yMin) / interval) * interval
-                let last = interval == 0.0 ? 0.0 : ChartUtils.nextUp(floor(Double(yMax) / interval) * interval)
+                let first = ceil(Double(yMin) / interval) * interval
+                let last = ChartUtils.nextUp(floor(Double(yMax) / interval) * interval)
                 
                 var n = 0
-                if interval != 0.0 && last != first
+                for _ in first.stride(through: last, by: interval)
                 {
-                    for _ in first.stride(through: last, by: interval)
-                    {
-                        n += 1
-                    }
+                    n += 1
                 }
                 
                 if (yAxis.entries.count < n)
@@ -452,7 +449,7 @@ public class ChartYAxisRenderer: ChartAxisRendererBase
             let label = l.label
             
             // if drawing the limit-value label is enabled
-            if (l.drawLabelEnabled && label.characters.count > 0)
+            if (label.characters.count > 0)
             {
                 let labelLineHeight = l.valueFont.lineHeight
                 

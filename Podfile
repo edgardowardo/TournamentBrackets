@@ -5,19 +5,18 @@ def shared_pods
 end
 
 target 'TournamentBrackets' do
-    pod 'RxRealm'
-    pod 'RxSwift'
-    pod 'RxCocoa'
-    pod 'RxBlocking'
-    pod 'RxDataSources'
+    pod 'RxRealm', '0.1.3'
+    pod 'RxSwift', '2.4'
+    pod 'RxCocoa', '2.4'
+    pod 'RxDataSources', '0.8'
     pod 'AKPickerView'
     pod 'RealmSwift'
     pod 'MBProgressHUD'
     pod 'UIColor+FlatColors'
-    pod 'Charts/Realm'
+    pod 'Charts', '2.2.4'
     pod 'Firebase'
     pod 'Firebase/AdMob'
-    pod 'VTAcknowledgementsViewController'
+    pod 'VTAcknowledgementsViewController', '0.17'
 
     shared_pods
 end

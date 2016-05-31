@@ -10,16 +10,22 @@ import Foundation
 import UIKit
 import RxDataSources
 import RealmSwift
+import GoogleMobileAds
 
 class TeamStatsListViewController : ViewController {
 
     var viewModel : TeamStatsListViewModel!
+    @IBOutlet weak var bannerView : GADBannerView!
     @IBOutlet weak var tableView: UITableView!
     // Reload only happens on fresh data as per viewDidLoad and viewWillAppear
     var reload : Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self.tabBarController
+        bannerView.loadRequest(GADRequest())
         
         tableView.delegate = self
         tableView.dataSource = self

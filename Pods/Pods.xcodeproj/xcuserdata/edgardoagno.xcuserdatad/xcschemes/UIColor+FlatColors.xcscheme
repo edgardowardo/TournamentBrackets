@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BCC2C67E061494C0FCA97E3E4D614D9E"
+               BlueprintIdentifier = "C53284C23208FDC5EE1A2408968F83FC"
                BuildableName = "UIColor_FlatColors.framework"
                BlueprintName = "UIColor+FlatColors"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BCC2C67E061494C0FCA97E3E4D614D9E"
+            BlueprintIdentifier = "C53284C23208FDC5EE1A2408968F83FC"
             BuildableName = "UIColor_FlatColors.framework"
             BlueprintName = "UIColor+FlatColors"
             ReferencedContainer = "container:Pods.xcodeproj">

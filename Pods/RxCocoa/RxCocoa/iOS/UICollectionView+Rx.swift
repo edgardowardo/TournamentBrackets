@@ -112,7 +112,7 @@ extension UICollectionView {
     For more information take a look at `DelegateProxyType` protocol documentation.
     */
     public var rx_dataSource: DelegateProxy {
-        return RxCollectionViewDataSourceProxy.proxyForObject(self)
+        return proxyForObject(RxCollectionViewDataSourceProxy.self, self)
     }
     
     /**
@@ -125,7 +125,8 @@ extension UICollectionView {
     */
     public func rx_setDataSource(dataSource: UICollectionViewDataSource)
         -> Disposable {
-        return RxCollectionViewDataSourceProxy.installForwardDelegate(dataSource, retainDelegate: false, onProxyForObject: self)
+        let proxy = proxyForObject(RxCollectionViewDataSourceProxy.self, self)
+        return installDelegate(proxy, delegate: dataSource, retainDelegate: false, onProxyForObject: self)
     }
    
     /**

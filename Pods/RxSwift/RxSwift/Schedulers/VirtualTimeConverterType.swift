@@ -96,20 +96,32 @@ extension VirtualTimeComparison {
      lhs < rhs.
     */
     var lessThen: Bool {
-        return self == .LessThan
+        if case .LessThan = self {
+            return true
+        }
+
+        return false
     }
 
     /**
     lhs > rhs
     */
     var greaterThan: Bool {
-        return self == .GreaterThan
+        if case .GreaterThan = self {
+            return true
+        }
+
+        return false
     }
 
     /**
      lhs == rhs
     */
     var equal: Bool {
-        return self == .Equal
+        if case .Equal = self {
+            return true
+        }
+
+        return false
     }
 }

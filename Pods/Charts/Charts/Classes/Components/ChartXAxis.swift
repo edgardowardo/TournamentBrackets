@@ -9,7 +9,7 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/Charts
+//  https://github.com/danielgindi/ios-charts
 //
 
 import Foundation
@@ -17,8 +17,8 @@ import CoreGraphics
 
 public class ChartXAxis: ChartAxisBase
 {
-    @objc(XAxisLabelPosition)
-    public enum LabelPosition: Int
+    @objc
+    public enum XAxisLabelPosition: Int
     {
         case Top
         case Bottom
@@ -83,7 +83,7 @@ public class ChartXAxis: ChartAxisBase
     }
     
     /// the position of the x-labels relative to the chart
-    public var labelPosition = LabelPosition.Top
+    public var labelPosition = XAxisLabelPosition.Top
     
     /// if set to true, word wrapping the labels will be enabled.
     /// word wrapping is done using `(value width * labelRotatedWidth)`

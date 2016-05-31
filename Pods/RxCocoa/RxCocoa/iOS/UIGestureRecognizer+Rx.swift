@@ -15,15 +15,15 @@ import RxSwift
 
 
 // This should be only used from `MainScheduler`
-class GestureTarget<Recognizer: UIGestureRecognizer>: RxTarget {
-    typealias Callback = (Recognizer) -> Void
+class GestureTarget: RxTarget {
+    typealias Callback = (UIGestureRecognizer) -> Void
     
     let selector = #selector(ControlTarget.eventHandler(_:))
     
-    weak var gestureRecognizer: Recognizer?
+    weak var gestureRecognizer: UIGestureRecognizer?
     var callback: Callback?
     
-    init(_ gestureRecognizer: Recognizer, callback: Callback) {
+    init(_ gestureRecognizer: UIGestureRecognizer, callback: Callback) {
         self.gestureRecognizer = gestureRecognizer
         self.callback = callback
         
@@ -51,15 +51,13 @@ class GestureTarget<Recognizer: UIGestureRecognizer>: RxTarget {
     }
 }
 
-extension UIGestureRecognizer: Reactive  { }
-
-extension Reactive where Self: UIGestureRecognizer {
+extension UIGestureRecognizer {
     
     /**
     Reactive wrapper for gesture recognizer events.
     */
-    public var rx_event: ControlEvent<Self> {
-        let source: Observable<Self> = Observable.create { [weak self] observer in
+    public var rx_event: ControlEvent<UIGestureRecognizer> {
+        let source: Observable<UIGestureRecognizer> = Observable.create { [weak self] observer in
             MainScheduler.ensureExecutingOnScheduler()
 
             guard let control = self else {

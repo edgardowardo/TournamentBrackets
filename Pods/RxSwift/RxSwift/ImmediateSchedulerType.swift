@@ -35,6 +35,8 @@ extension ImmediateSchedulerType {
         
         recursiveScheduler.schedule(state)
         
-        return AnonymousDisposable(recursiveScheduler.dispose)
+        return AnonymousDisposable {
+            recursiveScheduler.dispose()
+        }
     }
 }

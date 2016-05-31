@@ -8,12 +8,11 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/Charts
+//  https://github.com/danielgindi/ios-charts
 //
 
 import Foundation
 import CoreGraphics
-
 
 @objc
 public protocol ILineChartDataSet: ILineRadarChartDataSet
@@ -22,33 +21,25 @@ public protocol ILineChartDataSet: ILineRadarChartDataSet
     
     // MARK: - Styling functions and accessors
     
-    /// The drawing mode for this line dataset
-    ///
-    /// **default**: Linear
-    var mode: LineChartDataSet.Mode { get set }
-    
     /// Intensity for cubic lines (min = 0.05, max = 1)
     ///
     /// **default**: 0.2
     var cubicIntensity: CGFloat { get set }
     
-    @available(*, deprecated=1.0, message="Use `mode` instead.")
+    /// If true, cubic lines are drawn instead of linear
     var drawCubicEnabled: Bool { get set }
     
-    @available(*, deprecated=1.0, message="Use `mode` instead.")
+    /// - returns: true if drawing cubic lines is enabled, false if not.
     var isDrawCubicEnabled: Bool { get }
     
-    @available(*, deprecated=1.0, message="Use `mode` instead.")
+    /// If true, stepped lines are drawn instead of linear
     var drawSteppedEnabled: Bool { get set }
     
-    @available(*, deprecated=1.0, message="Use `mode` instead.")
+    /// - returns: true if drawing stepped lines is enabled, false if not.
     var isDrawSteppedEnabled: Bool { get }
 
     /// The radius of the drawn circles.
     var circleRadius: CGFloat { get set }
-    
-    /// The hole radius of the drawn circles.
-    var circleHoleRadius: CGFloat { get set }
     
     var circleColors: [NSUIColor] { get set }
     
@@ -70,7 +61,7 @@ public protocol ILineChartDataSet: ILineRadarChartDataSet
     var isDrawCirclesEnabled: Bool { get }
     
     /// The color of the inner circle (the circle-hole).
-    var circleHoleColor: NSUIColor? { get set }
+    var circleHoleColor: NSUIColor { get set }
     
     /// True if drawing circles for this DataSet is enabled, false if not
     var drawCircleHoleEnabled: Bool { get set }
