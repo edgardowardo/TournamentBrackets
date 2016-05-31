@@ -23,7 +23,8 @@ class TeamStatsListViewController : ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716" // Test!
+        //bannerView.adUnitID = "ca-app-pub-8499873478400384/8183934759"
         bannerView.rootViewController = self.tabBarController
         bannerView.loadRequest(GADRequest())
         
