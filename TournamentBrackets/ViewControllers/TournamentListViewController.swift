@@ -62,6 +62,9 @@ class TournamentListViewController: ViewController, UITextFieldDelegate {
         super.viewDidLoad()
         self.reloadInputViews()
         
+        let b = UIBarButtonItem(image: UIImage(named: "icon-info"), style: .Plain, target: self, action: #selector(showAcknowledgements))
+        self.navigationItem.leftBarButtonItem = b
+                
         //
         // Observe the list
         //
@@ -98,6 +101,13 @@ class TournamentListViewController: ViewController, UITextFieldDelegate {
             let tourneys = realm.objects(Tournament).sorted("time", ascending: false)
             d.tournament = tourneys[indexPath.row]
         }
+    }
+    
+    func showAcknowledgements() {
+        let plist = NSBundle.mainBundle().pathForResource("Pods-acknowledgements", ofType: "plist")
+        let acks = TBAcknowledgementsViewController(acknowledgementsPlistPath: plist)
+        let acksNav = UINavigationController(rootViewController: acks!)
+        self.presentViewController(acksNav, animated: true, completion: nil)
     }
     
     @IBAction func addTap(sender: AnyObject) {
