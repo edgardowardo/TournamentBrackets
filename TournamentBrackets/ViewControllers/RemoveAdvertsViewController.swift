@@ -10,10 +10,11 @@ import Foundation
 import UIKit
 import RxSwift
 
-class RemoveAdvertsViewController: ViewController {
+class RemoveAdvertsViewController: UIViewController {
  
     @IBOutlet weak var buttonRemoveAdverts: UIButton!
     @IBOutlet weak var buttonRestore: UIButton!
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()

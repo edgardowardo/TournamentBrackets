@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import GoogleMobileAds
 
 class GroupDetailViewController: ViewController {
 
@@ -16,15 +15,9 @@ class GroupDetailViewController: ViewController {
     var viewControllers : [GameListViewController]!
     var viewModel : GroupDetailViewModel!
     var selectedIndex = 0
-    @IBOutlet weak var bannerView: GADBannerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716" // Test!
-        //bannerView.adUnitID = "ca-app-pub-8499873478400384/8183934759"
-        bannerView.rootViewController = self.tabBarController
-        bannerView.loadRequest(GADRequest())
         
         if let item = tabBarItem {
             item.title = viewModel.mainTitle

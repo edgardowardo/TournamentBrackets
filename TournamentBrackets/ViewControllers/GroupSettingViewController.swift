@@ -12,7 +12,6 @@ import UIKit
 
 import UIColor_FlatColors
 import AKPickerView
-import GoogleMobileAds
 import RxSwift
 import RxCocoa
 import RxDataSources
@@ -33,7 +32,6 @@ class GroupSettingViewController: ViewController {
     @IBOutlet weak var buttonImport: UIButton!
     @IBOutlet weak var buttonHandicap: UIButton!
     @IBOutlet weak var buttonSave: UIBarButtonItem!
-    @IBOutlet weak var bannerView: GADBannerView!
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -61,10 +59,6 @@ class GroupSettingViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716" // Test!
-        //bannerView.adUnitID = "ca-app-pub-8499873478400384/8183934759"
-        bannerView.rootViewController = self
-        bannerView.loadRequest(GADRequest())
         view.backgroundColor = UIColor.whiteColor()
         
         //

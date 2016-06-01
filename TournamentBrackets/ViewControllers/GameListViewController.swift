@@ -12,7 +12,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class GameListViewController: ViewController {
+class GameListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var labelRound: UILabel!

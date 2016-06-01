@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import MBProgressHUD
-import GoogleMobileAds
 
 class ChartBaseViewController : ViewController {
     var pageIndex : Int {
@@ -22,18 +21,12 @@ class ChartBaseViewController : ViewController {
 class ChartsViewController : ViewController {
     
     var viewModel : ChartsViewModel!
-    @IBOutlet weak var bannerView: GADBannerView!    
     var pageViewController : UIPageViewController!
     var viewControllers : [ChartBaseViewController]!
     var reload : Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716" // Test!
-        //bannerView.adUnitID = "ca-app-pub-8499873478400384/8183934759"
-        bannerView.rootViewController = self.tabBarController
-        bannerView.loadRequest(GADRequest())
         
         viewModel.group.games
             .asObservableArray()

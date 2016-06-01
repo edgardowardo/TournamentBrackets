@@ -9,6 +9,8 @@
 import Foundation
 import MBProgressHUD
 import RxSwift
+import RealmSwift
+import GoogleMobileAds
 
 class ViewController: UIViewController {
     #if TRACE_RESOURCES
@@ -19,12 +21,45 @@ class ViewController: UIViewController {
     #endif
     #endif
     
+    let realm = try! Realm()
     var disposeBag = DisposeBag()
+    @IBOutlet var constraintTableViewToSuperView: NSLayoutConstraint!
+    @IBOutlet weak var advertView: UIView!
+    @IBOutlet weak var buttonRemoveAdvert: UIButton!
+    @IBOutlet weak var bannerView: GADBannerView!
+    
+    // MARK: - View lifecycle -
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if AppObject.sharedInstance?.isAdsShown == false {
+            self.removeAds()
+        }
+    }
     
     override func viewDidLoad() {
         #if TRACE_RESOURCES
             print("Number of start resources = \(resourceCount)")
         #endif
+
+        if let bv = bannerView, button = buttonRemoveAdvert where AppObject.sharedInstance?.isAdsShown == true {
+            //bannerView.adUnitID = "ca-app-pub-8499873478400384/8183934759" // Live ID
+            bv.rootViewController =  (self.tabBarController) ?? self  //(self.tabBarController == nil) ? self : self.tabBarController
+            bv.loadRequest(GADRequest())
+            button.backgroundColor = UIColor.flatAlizarinColor()
+        }
+        
+        //
+        // Observe AppObject
+        //
+        realm.objects(AppObject)
+            .asObservableArray()
+            .subscribeNext { (objects) in
+                if let a = objects.first where a.isAdsShown == false {
+                    self.removeAds()
+                }
+            }
+            .addDisposableTo(disposeBag)
     }
     
     deinit {
@@ -97,6 +132,15 @@ class ViewController: UIViewController {
     
     func hideHud() {
         MBProgressHUD.hideAllHUDsForView(view, animated: true)
+    }
+    
+    func removeAds() {
+        guard let av = advertView, c = constraintTableViewToSuperView else { return }
+        
+        backgroundThread(background: nil) {
+            av.hidden = true
+            c.active = true
+        }
     }
     
 }

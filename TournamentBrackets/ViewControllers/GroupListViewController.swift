@@ -13,14 +13,11 @@ import RxSwift
 import RxCocoa
 import RealmSwift
 import RxRealm
-import GoogleMobileAds
 
 class GroupListViewController: ViewController, UITextFieldDelegate {
     
-    let realm = try! Realm()
     let bag = DisposeBag()
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var bannerView: GADBannerView!
     var tournament : Tournament? = nil {
         didSet {
             if let t = tournament {
@@ -69,12 +66,7 @@ class GroupListViewController: ViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716" // Test!
-        //bannerView.adUnitID = "ca-app-pub-8499873478400384/8183934759"
-        bannerView.rootViewController = self
-        bannerView.loadRequest(GADRequest())
-        
+
         if let tournament = tournament {
             //
             // Observe changes for the title
