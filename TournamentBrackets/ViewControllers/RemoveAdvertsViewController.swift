@@ -22,6 +22,10 @@ class RemoveAdvertsViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = b
         self.title = "Remove Adverts"
         
+        let cornerRadius = buttonRemoveAdverts.frame.size.height / 5
+        buttonRemoveAdverts.layer.cornerRadius = cornerRadius
+        buttonRestore.layer.cornerRadius = cornerRadius
+        
         self.buttonRemoveAdverts
             .rx_tap
             .asObservable()

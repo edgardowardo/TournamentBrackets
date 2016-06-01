@@ -37,31 +37,104 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ay5-Dq-4Bn">
-                                <rect key="frame" x="20" y="64" width="560" height="149"/>
-                                <string key="text">Tournament Scheduler relies on your support to fund its development. If you find it useful, please consider supporting the app by leaving a donation. Any donation given will also remove all advertisements from the app. </string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TdS-y7-Kll">
-                                <rect key="frame" x="73" y="315" width="320" height="50"/>
-                                <color key="backgroundColor" red="0.78823529410000004" green="0.27450980390000002" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="REMOVE ADVERTS">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srU-fs-Vqq">
-                                <rect key="frame" x="73" y="237" width="320" height="50"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srU-fs-Vqq">
+                                <rect key="frame" x="140" y="530" width="320" height="50"/>
+                                <color key="backgroundColor" red="0.35686274509803922" green="0.72941176470588232" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="hna-Xl-xat"/>
+                                    <constraint firstAttribute="height" constant="50" id="rfe-sz-IGy"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="RESTORE PURCHASE">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="hna-Xl-xat"/>
+                                    </mask>
+                                </variation>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TournamentScheduler-Clear@1024" translatesAutoresizingMaskIntoConstraints="NO" id="udU-KB-ODF">
+                                <rect key="frame" x="250" y="72" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="ENm-DO-nRE"/>
+                                    <constraint firstAttribute="height" constant="100" id="f2n-4T-hIE"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TdS-y7-Kll">
+                                <rect key="frame" x="140" y="472" width="320" height="50"/>
+                                <color key="backgroundColor" red="0.78823529410000004" green="0.27450980390000002" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="bib-xU-Eey"/>
+                                    <constraint firstAttribute="width" constant="320" id="u8P-AE-QM8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="REMOVE ADVERTS £3.99">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="u8P-AE-QM8"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Ay5-Dq-4Bn">
+                                <rect key="frame" x="20" y="180" width="560" height="284"/>
+                                <string key="text">Tournament Scheduler relies on your support to fund its development. The app is totally free for you to use without any limitation or reservation. If you find it useful, please consider leaving a donation in the form of advert removal. Yes, you are paying for advertisements to be removed. This one-off payment is less than the amount you would pay for couple of beer. Cheers to that!</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TdS-y7-Kll" firstAttribute="top" secondItem="Ay5-Dq-4Bn" secondAttribute="bottom" constant="8" id="0o9-eK-4Jg"/>
+                            <constraint firstItem="Ay5-Dq-4Bn" firstAttribute="trailing" secondItem="ugd-0k-Orm" secondAttribute="trailingMargin" id="3dM-kc-6ov"/>
+                            <constraint firstItem="srU-fs-Vqq" firstAttribute="leading" secondItem="TdS-y7-Kll" secondAttribute="trailing" constant="13" id="5RI-MV-FbA"/>
+                            <constraint firstItem="srU-fs-Vqq" firstAttribute="top" secondItem="Ay5-Dq-4Bn" secondAttribute="bottom" constant="8" id="682-4J-Tdm"/>
+                            <constraint firstItem="srU-fs-Vqq" firstAttribute="top" secondItem="TdS-y7-Kll" secondAttribute="bottom" constant="8" id="7Pg-il-PCX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="srU-fs-Vqq" secondAttribute="trailing" constant="-1" id="Fgi-Vy-TIV"/>
+                            <constraint firstItem="srU-fs-Vqq" firstAttribute="centerX" secondItem="ugd-0k-Orm" secondAttribute="centerX" id="FuS-gU-YOZ"/>
+                            <constraint firstItem="udU-KB-ODF" firstAttribute="centerX" secondItem="ugd-0k-Orm" secondAttribute="centerX" id="Th2-of-Bi7"/>
+                            <constraint firstItem="TdS-y7-Kll" firstAttribute="top" secondItem="Ay5-Dq-4Bn" secondAttribute="bottom" constant="8" id="Ut5-8H-8Av"/>
+                            <constraint firstItem="udU-KB-ODF" firstAttribute="top" secondItem="jbQ-vK-7C9" secondAttribute="bottom" constant="8" id="XN0-7z-Bbe"/>
+                            <constraint firstItem="Ay5-Dq-4Bn" firstAttribute="top" secondItem="udU-KB-ODF" secondAttribute="bottom" constant="8" id="XQq-rP-dBU"/>
+                            <constraint firstItem="srU-fs-Vqq" firstAttribute="top" secondItem="TdS-y7-Kll" secondAttribute="bottom" constant="8" id="hqP-LA-xdS"/>
+                            <constraint firstItem="TdS-y7-Kll" firstAttribute="top" secondItem="Ay5-Dq-4Bn" secondAttribute="bottom" constant="8" id="hs2-yC-vRW"/>
+                            <constraint firstItem="TdS-y7-Kll" firstAttribute="leading" secondItem="ugd-0k-Orm" secondAttribute="leadingMargin" id="iCG-Qg-njz"/>
+                            <constraint firstItem="Ay5-Dq-4Bn" firstAttribute="centerX" secondItem="ugd-0k-Orm" secondAttribute="centerX" id="nME-f1-Gtp"/>
+                            <constraint firstItem="TdS-y7-Kll" firstAttribute="centerX" secondItem="ugd-0k-Orm" secondAttribute="centerX" id="qLF-8c-0f1"/>
+                            <constraint firstItem="oYE-LR-2Hi" firstAttribute="top" secondItem="TdS-y7-Kll" secondAttribute="bottom" constant="20" id="qsc-ts-h4d"/>
+                            <constraint firstItem="srU-fs-Vqq" firstAttribute="width" secondItem="TdS-y7-Kll" secondAttribute="width" id="tHa-6C-T6z"/>
+                            <constraint firstItem="oYE-LR-2Hi" firstAttribute="top" secondItem="srU-fs-Vqq" secondAttribute="bottom" constant="20" id="wxQ-Tq-ccA"/>
+                            <constraint firstItem="Ay5-Dq-4Bn" firstAttribute="leading" secondItem="ugd-0k-Orm" secondAttribute="leadingMargin" id="yEp-P5-QIG"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Ut5-8H-8Av"/>
+                                <exclude reference="iCG-Qg-njz"/>
+                                <exclude reference="qsc-ts-h4d"/>
+                                <exclude reference="5RI-MV-FbA"/>
+                                <exclude reference="682-4J-Tdm"/>
+                                <exclude reference="Fgi-Vy-TIV"/>
+                                <exclude reference="tHa-6C-T6z"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="Ut5-8H-8Av"/>
+                                <include reference="iCG-Qg-njz"/>
+                                <exclude reference="qLF-8c-0f1"/>
+                                <include reference="qsc-ts-h4d"/>
+                                <include reference="5RI-MV-FbA"/>
+                                <include reference="682-4J-Tdm"/>
+                                <exclude reference="7Pg-il-PCX"/>
+                                <include reference="Fgi-Vy-TIV"/>
+                                <exclude reference="FuS-gU-YOZ"/>
+                                <exclude reference="hqP-LA-xdS"/>
+                                <include reference="tHa-6C-T6z"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="SNr-Gp-fYK"/>
                     <connections>
@@ -71,7 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YoK-om-zyq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1250" y="1741"/>
+            <point key="canvasLocation" x="1250" y="1740"/>
         </scene>
         <!--Tournaments-->
         <scene sceneID="ExX-UD-rjZ">
@@ -1025,11 +1098,14 @@
                                                             <rect key="frame" x="0.0" y="16" width="584" height="30"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="0.0" y="16" width="384" height="30"/>
-                                                            </variation>
                                                         </textField>
                                                     </subviews>
+                                                    <variation key="heightClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="584" height="63"/>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="384" height="63"/>
+                                                    </variation>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NQj-AX-K0P">
                                                     <rect key="frame" x="0.0" y="73" width="584" height="62"/>
@@ -1042,13 +1118,13 @@
                                                                 <segment title="Single Elimination"/>
                                                                 <segment title="Double Elimination"/>
                                                             </segments>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="0.0" y="0.0" width="384" height="63"/>
+                                                            <variation key="heightClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="0.0" y="0.0" width="584" height="64"/>
                                                             </variation>
                                                         </segmentedControl>
                                                     </subviews>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="73" width="384" height="62"/>
+                                                    <variation key="heightClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="73" width="584" height="63"/>
                                                     </variation>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="AEG-x0-KYx">
@@ -1059,19 +1135,19 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="0.0" y="0.0" width="384" height="32"/>
+                                                            <variation key="heightClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="0.0" y="0.0" width="584" height="31"/>
                                                             </variation>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QYb-82-F6F" customClass="AKPickerView">
                                                             <rect key="frame" x="0.0" y="32" width="584" height="31"/>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="0.0" y="32" width="384" height="31"/>
+                                                            <variation key="heightClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="0.0" y="31" width="584" height="31"/>
                                                             </variation>
                                                         </view>
                                                     </subviews>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="145" width="384" height="63"/>
+                                                    <variation key="heightClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="146" width="584" height="62"/>
                                                     </variation>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1kq-7J-fHZ">
@@ -1088,13 +1164,13 @@
                                                                     <state key="normal" title="Shuffle" image="icon-shuffle">
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
-                                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                        <rect key="frame" x="5" y="0.0" width="66" height="62"/>
+                                                                    <variation key="heightClass=compact" misplaced="YES">
+                                                                        <rect key="frame" x="25" y="0.0" width="66" height="63"/>
                                                                     </variation>
                                                                 </button>
                                                             </subviews>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="0.0" y="0.0" width="77" height="62"/>
+                                                            <variation key="heightClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="0.0" y="0.0" width="117" height="63"/>
                                                             </variation>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pRK-Yj-CYe">
@@ -1108,13 +1184,13 @@
                                                                     <state key="normal" title="Sort" image="icon-sort">
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
-                                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                        <rect key="frame" x="13" y="0.0" width="50" height="62"/>
+                                                                    <variation key="heightClass=compact" misplaced="YES">
+                                                                        <rect key="frame" x="33" y="0.0" width="50" height="63"/>
                                                                     </variation>
                                                                 </button>
                                                             </subviews>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="77" y="0.0" width="77" height="62"/>
+                                                            <variation key="heightClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="117" y="0.0" width="117" height="63"/>
                                                             </variation>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cUb-vM-Hvx">
@@ -1127,13 +1203,13 @@
                                                                     <state key="normal" title="Reset" image="icon-reset">
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
-                                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                        <rect key="frame" x="9" y="0.0" width="58" height="62"/>
+                                                                    <variation key="heightClass=compact" misplaced="YES">
+                                                                        <rect key="frame" x="29" y="0.0" width="58" height="63"/>
                                                                     </variation>
                                                                 </button>
                                                             </subviews>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="154" y="0.0" width="76" height="62"/>
+                                                            <variation key="heightClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="234" y="0.0" width="116" height="63"/>
                                                             </variation>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="IFk-Di-F00">
@@ -1147,16 +1223,16 @@
                                                                     <state key="normal" title="Import" image="icon-open-folder">
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
-                                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                        <rect key="frame" x="7" y="0.0" width="63" height="62"/>
+                                                                    <variation key="heightClass=compact" misplaced="YES">
+                                                                        <rect key="frame" x="27" y="0.0" width="63" height="63"/>
                                                                     </variation>
                                                                     <connections>
                                                                         <segue destination="FbV-fh-I1S" kind="show" identifier="segueTeamImport" id="zS4-Fc-Xfh"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="230" y="0.0" width="77" height="62"/>
+                                                            <variation key="heightClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="350" y="0.0" width="117" height="63"/>
                                                             </variation>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ieH-x3-9CZ">
@@ -1171,18 +1247,18 @@
                                                                     <state key="normal" title="Handicap" image="icon-wheelchair">
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
-                                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="77" height="62"/>
+                                                                    <variation key="heightClass=compact" misplaced="YES">
+                                                                        <rect key="frame" x="19" y="0.0" width="79" height="63"/>
                                                                     </variation>
                                                                 </button>
                                                             </subviews>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="307" y="0.0" width="77" height="62"/>
+                                                            <variation key="heightClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="467" y="0.0" width="117" height="63"/>
                                                             </variation>
                                                         </stackView>
                                                     </subviews>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="218" width="384" height="62"/>
+                                                    <variation key="heightClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="218" width="584" height="63"/>
                                                     </variation>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1Yf-VD-qqq">
@@ -1196,19 +1272,25 @@
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
+                                                                    <variation key="heightClass=compact" misplaced="YES">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="53" height="63"/>
+                                                                    </variation>
                                                                 </label>
                                                             </subviews>
+                                                            <variation key="heightClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="266" y="0.0" width="53" height="63"/>
+                                                            </variation>
+                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="166" y="0.0" width="53" height="63"/>
+                                                            </variation>
                                                         </stackView>
                                                     </subviews>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="290" width="384" height="63"/>
+                                                    <variation key="heightClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="291" width="584" height="63"/>
                                                     </variation>
                                                 </stackView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                <rect key="frame" x="8" y="8" width="384" height="353"/>
-                                            </variation>
                                         </stackView>
                                     </subviews>
                                     <constraints>
@@ -1246,6 +1328,9 @@
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
+                                                                    <variation key="heightClass=compact" misplaced="YES">
+                                                                        <rect key="frame" x="0.0" y="12" width="29" height="21"/>
+                                                                    </variation>
                                                                 </label>
                                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Team name" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="W4h-tm-Qb4">
                                                                     <rect key="frame" x="39" y="7" width="451" height="31"/>
@@ -1254,6 +1339,12 @@
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                                    <variation key="heightClass=compact" misplaced="YES">
+                                                                        <rect key="frame" x="39" y="7" width="451" height="31"/>
+                                                                    </variation>
+                                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                        <rect key="frame" x="39" y="7" width="251" height="31"/>
+                                                                    </variation>
                                                                 </textField>
                                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nrN-v2-9cm">
                                                                     <rect key="frame" x="500" y="7" width="60" height="31"/>
@@ -1263,16 +1354,16 @@
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                                    <variation key="heightClass=compact" misplaced="YES">
+                                                                        <rect key="frame" x="500" y="7" width="60" height="31"/>
+                                                                    </variation>
+                                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                        <rect key="frame" x="300" y="7" width="60" height="31"/>
+                                                                    </variation>
                                                                 </textField>
                                                             </subviews>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="0.0" y="0.0" width="360" height="44"/>
-                                                            </variation>
                                                         </stackView>
                                                     </subviews>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="20" y="0.0" width="360" height="44"/>
-                                                    </variation>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
@@ -1593,6 +1684,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="TournamentScheduler-Clear@1024" width="512" height="512"/>
         <image name="icon-double-e" width="25" height="25"/>
         <image name="icon-open-folder" width="25" height="25"/>
         <image name="icon-pie-chart" width="25" height="25"/>
