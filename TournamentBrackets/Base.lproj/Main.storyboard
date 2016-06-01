@@ -25,6 +25,54 @@
             </objects>
             <point key="canvasLocation" x="1250" y="-212"/>
         </scene>
+        <!--Remove Adverts View Controller-->
+        <scene sceneID="oBa-kB-4Ze">
+            <objects>
+                <viewController id="6fG-sX-uHF" customClass="RemoveAdvertsViewController" customModule="TournamentBrackets" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jbQ-vK-7C9"/>
+                        <viewControllerLayoutGuide type="bottom" id="oYE-LR-2Hi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ugd-0k-Orm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ay5-Dq-4Bn">
+                                <rect key="frame" x="20" y="64" width="560" height="149"/>
+                                <string key="text">Tournament Scheduler relies on your support to fund its development. If you find it useful, please consider supporting the app by leaving a donation. Any donation given will also remove all advertisements from the app. </string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TdS-y7-Kll">
+                                <rect key="frame" x="73" y="315" width="320" height="50"/>
+                                <color key="backgroundColor" red="0.78823529410000004" green="0.27450980390000002" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="REMOVE ADVERTS">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srU-fs-Vqq">
+                                <rect key="frame" x="73" y="237" width="320" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="RESTORE PURCHASE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="SNr-Gp-fYK"/>
+                    <connections>
+                        <outlet property="buttonRemoveAdverts" destination="TdS-y7-Kll" id="Wcr-oI-Fy3"/>
+                        <outlet property="buttonRestore" destination="srU-fs-Vqq" id="Syn-fL-t5z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YoK-om-zyq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1250" y="1741"/>
+        </scene>
         <!--Tournaments-->
         <scene sceneID="ExX-UD-rjZ">
             <objects>
@@ -38,7 +86,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="L5s-4Y-jVL">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="550"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AVr-ys-dzD">
                                     <rect key="frame" x="0.0" y="130" width="600" height="90"/>
@@ -84,24 +132,61 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iwt-dA-d7Z" customClass="GADBannerView">
-                                <rect key="frame" x="140" y="550" width="320" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KAu-hz-DMY">
+                                <rect key="frame" x="140" y="500" width="320" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ju7-Pb-KmP">
+                                        <rect key="frame" x="0.0" y="-1" width="320" height="50"/>
+                                        <color key="backgroundColor" red="0.78823529410000004" green="0.27450980390000002" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="REMOVE ADVERTS">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="rq7-vs-lZh" kind="presentation" id="gxA-hg-hEG"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Il-d7-aMY" customClass="GADBannerView">
+                                        <rect key="frame" x="0.0" y="49" width="320" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="FDZ-dc-OUp"/>
+                                            <constraint firstAttribute="width" constant="320" id="c5h-8j-Xgd"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="adUnitID" value="ca-app-pub-3940256099942544/2934735716"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Nmk-HQ-0yx"/>
-                                    <constraint firstAttribute="width" constant="320" id="v45-uj-7J7"/>
+                                    <constraint firstAttribute="trailing" secondItem="0Il-d7-aMY" secondAttribute="trailing" id="1si-Zh-qnw"/>
+                                    <constraint firstItem="0Il-d7-aMY" firstAttribute="leading" secondItem="KAu-hz-DMY" secondAttribute="leading" id="HKE-On-kX9"/>
+                                    <constraint firstItem="0Il-d7-aMY" firstAttribute="top" secondItem="Ju7-Pb-KmP" secondAttribute="bottom" id="QZG-kw-wD9"/>
+                                    <constraint firstAttribute="height" constant="100" id="YGA-LI-Jm5"/>
+                                    <constraint firstAttribute="width" constant="320" id="YvX-sz-bzY"/>
+                                    <constraint firstItem="Ju7-Pb-KmP" firstAttribute="top" secondItem="KAu-hz-DMY" secondAttribute="top" constant="-1" id="gi8-Oq-9ho"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ju7-Pb-KmP" secondAttribute="trailing" id="idP-FL-APC"/>
+                                    <constraint firstItem="Ju7-Pb-KmP" firstAttribute="leading" secondItem="KAu-hz-DMY" secondAttribute="leading" id="npB-WI-m3G"/>
+                                    <constraint firstAttribute="bottom" secondItem="0Il-d7-aMY" secondAttribute="bottom" constant="1" id="nye-D2-TP0"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="L5s-4Y-jVL" firstAttribute="leading" secondItem="oR3-4L-Ohj" secondAttribute="leadingMargin" constant="-20" id="E9H-r5-AKN"/>
-                            <constraint firstItem="Iwt-dA-d7Z" firstAttribute="top" secondItem="L5s-4Y-jVL" secondAttribute="bottom" id="Lq7-83-sug"/>
+                            <constraint firstItem="KAu-hz-DMY" firstAttribute="top" secondItem="L5s-4Y-jVL" secondAttribute="bottom" id="ThA-TV-mLL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="L5s-4Y-jVL" secondAttribute="trailing" constant="-20" id="VEj-c9-ktx"/>
+                            <constraint firstItem="xrL-xO-KNG" firstAttribute="top" secondItem="L5s-4Y-jVL" secondAttribute="bottom" id="XSC-7v-tqN"/>
                             <constraint firstItem="L5s-4Y-jVL" firstAttribute="top" secondItem="oR3-4L-Ohj" secondAttribute="topMargin" id="dLx-ZT-rDx"/>
-                            <constraint firstItem="Iwt-dA-d7Z" firstAttribute="centerX" secondItem="oR3-4L-Ohj" secondAttribute="centerX" id="lxc-9w-Vqa"/>
-                            <constraint firstItem="xrL-xO-KNG" firstAttribute="top" secondItem="Iwt-dA-d7Z" secondAttribute="bottom" id="mDp-N1-eSj"/>
+                            <constraint firstItem="xrL-xO-KNG" firstAttribute="top" secondItem="KAu-hz-DMY" secondAttribute="bottom" id="gKA-aB-WFe"/>
+                            <constraint firstItem="KAu-hz-DMY" firstAttribute="centerX" secondItem="oR3-4L-Ohj" secondAttribute="centerX" id="ic3-Co-rEA"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="XSC-7v-tqN"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Tournaments" id="rAJ-Xh-8ak">
                         <barButtonItem key="backBarButtonItem" title=" " id="mdo-yG-vrn"/>
@@ -112,13 +197,32 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="bannerView" destination="Iwt-dA-d7Z" id="HzJ-1e-TSz"/>
+                        <outlet property="advertView" destination="KAu-hz-DMY" id="c4f-Pd-ntB"/>
+                        <outlet property="bannerView" destination="0Il-d7-aMY" id="jUz-xO-pVv"/>
+                        <outlet property="buttonRemoveAdvert" destination="Ju7-Pb-KmP" id="Cj4-Qo-mfz"/>
+                        <outlet property="constraintTableViewToSuperView" destination="XSC-7v-tqN" id="WCU-XE-zNe"/>
                         <outlet property="tableView" destination="L5s-4Y-jVL" id="oPF-xe-qyT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RVR-sm-Xl8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1981" y="-212"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="f7G-Q1-sLP">
+            <objects>
+                <navigationController id="rq7-vs-lZh" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8ND-CP-rbg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="6fG-sX-uHF" kind="relationship" relationship="rootViewController" id="4di-dN-hy4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JQL-sC-e0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1250" y="963"/>
         </scene>
         <!--Losers-->
         <scene sceneID="oQi-5w-iTG">
@@ -761,17 +865,11 @@
                                                                 <segment title="Single Elimination"/>
                                                                 <segment title="Double Elimination"/>
                                                             </segments>
-                                                            <variation key="heightClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="0.0" y="0.0" width="584" height="63"/>
-                                                            </variation>
                                                             <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                                 <rect key="frame" x="0.0" y="0.0" width="384" height="63"/>
                                                             </variation>
                                                         </segmentedControl>
                                                     </subviews>
-                                                    <variation key="heightClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="73" width="584" height="62"/>
-                                                    </variation>
                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                         <rect key="frame" x="0.0" y="73" width="384" height="62"/>
                                                     </variation>
@@ -784,26 +882,17 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
-                                                            <variation key="heightClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="0.0" y="0.0" width="584" height="32"/>
-                                                            </variation>
                                                             <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                                 <rect key="frame" x="0.0" y="0.0" width="384" height="32"/>
                                                             </variation>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QYb-82-F6F" customClass="AKPickerView">
                                                             <rect key="frame" x="0.0" y="32" width="584" height="31"/>
-                                                            <variation key="heightClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="0.0" y="32" width="584" height="31"/>
-                                                            </variation>
                                                             <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                                 <rect key="frame" x="0.0" y="32" width="384" height="31"/>
                                                             </variation>
                                                         </view>
                                                     </subviews>
-                                                    <variation key="heightClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="145" width="584" height="63"/>
-                                                    </variation>
                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                         <rect key="frame" x="0.0" y="145" width="384" height="63"/>
                                                     </variation>
@@ -822,17 +911,11 @@
                                                                     <state key="normal" title="Shuffle" image="icon-shuffle">
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
-                                                                    <variation key="heightClass=compact" misplaced="YES">
-                                                                        <rect key="frame" x="25" y="0.0" width="66" height="62"/>
-                                                                    </variation>
                                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                                         <rect key="frame" x="5" y="0.0" width="66" height="62"/>
                                                                     </variation>
                                                                 </button>
                                                             </subviews>
-                                                            <variation key="heightClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="0.0" y="0.0" width="117" height="62"/>
-                                                            </variation>
                                                             <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                                 <rect key="frame" x="0.0" y="0.0" width="77" height="62"/>
                                                             </variation>
@@ -848,17 +931,11 @@
                                                                     <state key="normal" title="Sort" image="icon-sort">
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
-                                                                    <variation key="heightClass=compact" misplaced="YES">
-                                                                        <rect key="frame" x="33" y="0.0" width="50" height="62"/>
-                                                                    </variation>
                                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                                         <rect key="frame" x="13" y="0.0" width="50" height="62"/>
                                                                     </variation>
                                                                 </button>
                                                             </subviews>
-                                                            <variation key="heightClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="117" y="0.0" width="117" height="62"/>
-                                                            </variation>
                                                             <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                                 <rect key="frame" x="77" y="0.0" width="77" height="62"/>
                                                             </variation>
@@ -873,17 +950,11 @@
                                                                     <state key="normal" title="Reset" image="icon-reset">
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
-                                                                    <variation key="heightClass=compact" misplaced="YES">
-                                                                        <rect key="frame" x="29" y="0.0" width="58" height="62"/>
-                                                                    </variation>
                                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                                         <rect key="frame" x="9" y="0.0" width="58" height="62"/>
                                                                     </variation>
                                                                 </button>
                                                             </subviews>
-                                                            <variation key="heightClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="234" y="0.0" width="116" height="62"/>
-                                                            </variation>
                                                             <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                                 <rect key="frame" x="154" y="0.0" width="76" height="62"/>
                                                             </variation>
@@ -899,9 +970,6 @@
                                                                     <state key="normal" title="Import" image="icon-open-folder">
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
-                                                                    <variation key="heightClass=compact" misplaced="YES">
-                                                                        <rect key="frame" x="27" y="0.0" width="63" height="62"/>
-                                                                    </variation>
                                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                                         <rect key="frame" x="7" y="0.0" width="63" height="62"/>
                                                                     </variation>
@@ -910,9 +978,6 @@
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
-                                                            <variation key="heightClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="350" y="0.0" width="117" height="62"/>
-                                                            </variation>
                                                             <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                                 <rect key="frame" x="230" y="0.0" width="77" height="62"/>
                                                             </variation>
@@ -929,25 +994,16 @@
                                                                     <state key="normal" title="Handicap" image="icon-wheelchair">
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
-                                                                    <variation key="heightClass=compact" misplaced="YES">
-                                                                        <rect key="frame" x="19" y="0.0" width="79" height="62"/>
-                                                                    </variation>
                                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                                         <rect key="frame" x="0.0" y="0.0" width="77" height="62"/>
                                                                     </variation>
                                                                 </button>
                                                             </subviews>
-                                                            <variation key="heightClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="467" y="0.0" width="117" height="62"/>
-                                                            </variation>
                                                             <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                                 <rect key="frame" x="307" y="0.0" width="77" height="62"/>
                                                             </variation>
                                                         </stackView>
                                                     </subviews>
-                                                    <variation key="heightClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="218" width="584" height="62"/>
-                                                    </variation>
                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                         <rect key="frame" x="0.0" y="218" width="384" height="62"/>
                                                     </variation>
@@ -967,9 +1023,6 @@
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
-                                                    <variation key="heightClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="290" width="584" height="63"/>
-                                                    </variation>
                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                         <rect key="frame" x="0.0" y="290" width="384" height="63"/>
                                                     </variation>

@@ -21,6 +21,9 @@ class TournamentListViewController: ViewController, UITextFieldDelegate {
     let bag = DisposeBag()
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var bannerView: GADBannerView!
+    @IBOutlet var constraintTableViewToSuperView: NSLayoutConstraint!
+    @IBOutlet weak var advertView: UIView!
+    @IBOutlet weak var buttonRemoveAdvert: UIButton!
     
     // MARK: - Text field delegate -
     
@@ -61,14 +64,32 @@ class TournamentListViewController: ViewController, UITextFieldDelegate {
     
     // MARK: - View lifecycle -
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if AppObject.sharedInstance?.isAdsShown == false {
+            self.removeAds()
+        }
+    }    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.reloadInputViews()
         
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716" // Test!
         //bannerView.adUnitID = "ca-app-pub-8499873478400384/8183934759"
         bannerView.rootViewController = self
         bannerView.loadRequest(GADRequest())
+        
+        //
+        // Observe AppObject
+        //
+        realm.objects(AppObject)
+            .asObservableArray()
+            .subscribeNext { (objects) in
+                if let a = objects.first where a.isAdsShown == false {
+                    self.removeAds()
+                }
+            }
+            .addDisposableTo(disposeBag)
         
         //
         // Observe the list
@@ -112,5 +133,10 @@ class TournamentListViewController: ViewController, UITextFieldDelegate {
         self.textField.text = ""
         self.textField.hidden = false
         self.textField.becomeFirstResponder()
+    }
+    
+    func removeAds() {
+        self.advertView.hidden = true
+        self.constraintTableViewToSuperView.active = true
     }
 }

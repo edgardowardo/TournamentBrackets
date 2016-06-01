@@ -44,6 +44,8 @@
 		7780D62E1CE701D00014F393 /* Game+Prompts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7780D62D1CE701D00014F393 /* Game+Prompts.swift */; };
 		77839A321CEE81800077FCBD /* UIColor+LoserBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77839A311CEE81800077FCBD /* UIColor+LoserBackgroundColor.swift */; };
 		7793022E1CCFAFD000695321 /* Power.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7793022D1CCFAFD000695321 /* Power.swift */; };
+		779D0E131CFEDF240020D612 /* AppObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779D0E121CFEDF240020D612 /* AppObject.swift */; };
+		779D0E151CFEE5170020D612 /* RemoveAdvertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779D0E141CFEE5170020D612 /* RemoveAdvertsViewController.swift */; };
 		779FFCA01CD6A8DD00D48800 /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779FFC9F1CD6A8DC00D48800 /* GroupListViewController.swift */; };
 		779FFCA21CD7D3C600D48800 /* GroupSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779FFCA11CD7D3C600D48800 /* GroupSettingViewController.swift */; };
 		779FFCA41CD9480900D48800 /* ScheduleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779FFCA31CD9480900D48800 /* ScheduleType.swift */; };
@@ -130,6 +132,8 @@
 		7780D62D1CE701D00014F393 /* Game+Prompts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Game+Prompts.swift"; sourceTree = "<group>"; };
 		77839A311CEE81800077FCBD /* UIColor+LoserBackgroundColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+LoserBackgroundColor.swift"; sourceTree = "<group>"; };
 		7793022D1CCFAFD000695321 /* Power.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Power.swift; sourceTree = "<group>"; };
+		779D0E121CFEDF240020D612 /* AppObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppObject.swift; sourceTree = "<group>"; };
+		779D0E141CFEE5170020D612 /* RemoveAdvertsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveAdvertsViewController.swift; sourceTree = "<group>"; };
 		779FFC9F1CD6A8DC00D48800 /* GroupListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupListViewController.swift; sourceTree = "<group>"; };
 		779FFCA11CD7D3C600D48800 /* GroupSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupSettingViewController.swift; sourceTree = "<group>"; };
 		779FFCA31CD9480900D48800 /* ScheduleType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleType.swift; sourceTree = "<group>"; };
@@ -254,6 +258,7 @@
 				7772C68E1CF5AB4E00E602A2 /* ChartsViewController.swift */,
 				7772C68A1CF5A1B900E602A2 /* ChartPieViewController.swift */,
 				7772C68C1CF5A1FC00E602A2 /* ChartHorizontalBarViewController.swift */,
+				779D0E141CFEE5170020D612 /* RemoveAdvertsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -334,6 +339,7 @@
 		77D3D65C1CC3BF30001EF359 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				779D0E121CFEDF240020D612 /* AppObject.swift */,
 				7766D84A1CD2435F00DA3FA1 /* Tournament.swift */,
 				7766D8511CD3A44400DA3FA1 /* Group.swift */,
 				77D3D65D1CC3BFA6001EF359 /* Game.swift */,
@@ -641,6 +647,7 @@
 				77E035C01CEE0B2200F6B170 /* GroupTabBarController.swift in Sources */,
 				77225BAA1CEB7912006D0C2B /* GroupDetailViewController.swift in Sources */,
 				7772C6971CF5CD4000E602A2 /* TournamentChart.swift in Sources */,
+				779D0E131CFEDF240020D612 /* AppObject.swift in Sources */,
 				7766D8541CD41AEF00DA3FA1 /* TournamentListViewController.swift in Sources */,
 				77D095D11CF1F986002F681E /* TeamStatsCell.swift in Sources */,
 				77F988011CF7793E00DDC3D4 /* TeamsImportListViewModel.swift in Sources */,
@@ -658,6 +665,7 @@
 				77225BAE1CEB8706006D0C2B /* GameListViewModel.swift in Sources */,
 				7772C6951CF5AFDD00E602A2 /* ChartsHorizontalBarViewModel.swift in Sources */,
 				7766D84B1CD2435F00DA3FA1 /* Tournament.swift in Sources */,
+				779D0E151CFEE5170020D612 /* RemoveAdvertsViewController.swift in Sources */,
 				7770C6101CC0C290008C5A6B /* ViewController.swift in Sources */,
 				779FFCA91CDA4AEB00D48800 /* UISegmentedControl+Multiline.swift in Sources */,
 				7770C60E1CC0C290008C5A6B /* AppDelegate.swift in Sources */,
