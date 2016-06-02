@@ -18,6 +18,7 @@ class RemoveAdvertsViewController: UIViewController {
     }
     @IBOutlet weak var buttonRemoveAdverts: UIButton!
     @IBOutlet weak var buttonRestore: UIButton!
+    @IBOutlet weak var imageIcon: UIImageView!
     let disposeBag = DisposeBag()
     var products : [String : SKProduct] = [String : SKProduct]()
     var hud : MBProgressHUD?
@@ -37,7 +38,8 @@ class RemoveAdvertsViewController: UIViewController {
         let b = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(cancel))
         self.navigationItem.leftBarButtonItem = b
         self.title = "Remove Adverts"
-        
+        let imageCornerRadius = self.imageIcon.frame.size.height / 5
+        self.imageIcon.layer.cornerRadius = imageCornerRadius
         let cornerRadius = buttonRemoveAdverts.frame.size.height / 5
         buttonRemoveAdverts.layer.cornerRadius = cornerRadius
         buttonRestore.layer.cornerRadius = cornerRadius
