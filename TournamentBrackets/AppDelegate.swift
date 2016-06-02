@@ -16,6 +16,7 @@ let formatter: NSDateFormatter = {
     return f
 }()
 
+let font11 = UIFont(name: "RoundedEleganceNew-Regular", size: 11)!
 let font15 = UIFont(name: "RoundedEleganceNew-Regular", size: 15)!
 let font17 = UIFont(name: "RoundedEleganceNew-Regular", size: 17)!
 let font20 = UIFont(name: "RoundedEleganceNew-Regular", size: 20)!
@@ -61,14 +62,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITextField.appearanceWhenContainedInInstancesOfClasses([UIView.self]).font = font17
         UILabel.appearanceWhenContainedInInstancesOfClasses([UIButton.self]).font = font15
         UITabBar.appearance().tintColor = UIColor.flatCarrotColor()
+        UITabBarItem.appearance().setTitleTextAttributes([NSFontAttributeName: font11], forState: .Normal)
         UISegmentedControl.appearance().tintColor = UIColor.flatCarrotColor()
-        
-        
-//        UITextField.appearanceWhenContainedInInstancesOfClasses([UITableViewCell.self]).tintColor = UIColor.darkGrayColor()
-//        UITableViewHeaderFooterView.appearance().tintColor = UIColor.flatCloudsColor()
-//        UILabel.appearanceWhenContainedInInstancesOfClasses([UITableViewHeaderFooterView.self]).font = font15
-//        UILabel.appearanceWhenContainedInInstancesOfClasses([UITableViewCell.self]).tintColor = UIColor.flatAsbestosColor()
-//        UILabel.appearanceWhenContainedInInstancesOfClasses([UITableViewHeaderFooterView.self]).tintColor = UIColor.flatAsbestosColor()
         
     }
 }
