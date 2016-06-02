@@ -95,6 +95,9 @@ class GroupSettingViewController: ViewController {
         
         self.pickerTeamCount.delegate = self
         self.pickerTeamCount.dataSource = self
+        self.pickerTeamCount.font = font17
+        self.pickerTeamCount.highlightedFont = font25
+        self.pickerTeamCount.highlightedTextColor = UIColor.flatCarrotColor()
         
         //
         // Setup observers
@@ -208,7 +211,7 @@ class GroupSettingViewController: ViewController {
         self.viewModel.isHandicap
             .asObservable()
             .subscribeNext { (value) in
-                let tintColor = (value) ? UIColor.flatPeterRiverColor() : UIColor.darkGrayColor()
+                let tintColor = (value) ? UIColor.flatCarrotColor() : UIColor.darkGrayColor()
                 self.buttonHandicap.tintColor = tintColor
                 self.buttonHandicap.setTitleColor(tintColor, forState: .Normal)
                 self.viewModel.setTeamsHandicap(value)
@@ -229,7 +232,7 @@ class GroupSettingViewController: ViewController {
         self.viewModel.isSorting
             .asObservable()
             .subscribeNext { (value) in
-                let tintColor = (value) ? UIColor.flatPeterRiverColor() : UIColor.darkGrayColor()
+                let tintColor = (value) ? UIColor.flatCarrotColor() : UIColor.darkGrayColor()
                 self.buttonSort.tintColor = tintColor
                 self.buttonSort.setTitleColor(tintColor, forState: .Normal)
                 self.tableView.setEditing(value, animated: true)

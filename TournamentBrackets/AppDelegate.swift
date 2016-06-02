@@ -21,6 +21,7 @@ let font11 = UIFont(name: "RoundedEleganceNew-Regular", size: 11)!
 let font15 = UIFont(name: "RoundedEleganceNew-Regular", size: 15)!
 let font17 = UIFont(name: "RoundedEleganceNew-Regular", size: 17)!
 let font20 = UIFont(name: "RoundedEleganceNew-Regular", size: 20)!
+let font25 = UIFont(name: "RoundedEleganceNew-Regular", size: 25)!
 
 func backgroundThread(delay: Double = 0.0, background: (() -> Void)? = nil, completion: (() -> Void)? = nil) {
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {
@@ -61,11 +62,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: font20, NSForegroundColorAttributeName : UIColor.whiteColor()]
 
         UITextField.appearanceWhenContainedInInstancesOfClasses([UIView.self]).font = font17
+        UILabel.appearanceWhenContainedInInstancesOfClasses([UITableViewHeaderFooterView.self]).font = font17
         UILabel.appearanceWhenContainedInInstancesOfClasses([UIButton.self]).font = font15
         UITabBar.appearance().tintColor = UIColor.flatCarrotColor()
         UITabBarItem.appearance().setTitleTextAttributes([NSFontAttributeName: font11], forState: .Normal)
         UISegmentedControl.appearance().tintColor = UIColor.flatCarrotColor()
-        
     }
 }
 
