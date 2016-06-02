@@ -18,7 +18,7 @@ struct TeamsImportItemViewModel {
     }
     var detailText : String! {
         get {
-            return "\(group.schedule) \(group.teams.count) teams"
+            return "\(group.schedule.description) \(group.teams.count) teams"
         }
     }
     init(group : Group) {

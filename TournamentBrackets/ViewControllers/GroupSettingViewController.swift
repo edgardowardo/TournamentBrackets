@@ -96,6 +96,7 @@ class GroupSettingViewController: ViewController {
         self.pickerTeamCount.delegate = self
         self.pickerTeamCount.dataSource = self
         self.pickerTeamCount.font = font17
+        self.pickerTeamCount.textColor = UIColor.lightGrayColor()
         self.pickerTeamCount.highlightedFont = font25
         self.pickerTeamCount.highlightedTextColor = UIColor.flatCarrotColor()
         
