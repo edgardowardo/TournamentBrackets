@@ -16,6 +16,10 @@ let formatter: NSDateFormatter = {
     return f
 }()
 
+let font15 = UIFont(name: "RoundedEleganceNew-Regular", size: 15)!
+let font17 = UIFont(name: "RoundedEleganceNew-Regular", size: 17)!
+let font20 = UIFont(name: "RoundedEleganceNew-Regular", size: 20)!
+
 func backgroundThread(delay: Double = 0.0, background: (() -> Void)? = nil, completion: (() -> Void)? = nil) {
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {
         if(background != nil){ background!(); }
@@ -35,18 +39,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        FIRApp.configure()
+        AppObject.loadAppData()
+        reskinApp(application)
+        return true
+    }
+    
+    func reskinApp(application: UIApplication) {
+        
+        application.statusBarStyle = .LightContent
+        
         let pageController = UIPageControl.appearance()
         pageController.pageIndicatorTintColor = UIColor.lightGrayColor()
         pageController.currentPageIndicatorTintColor = UIColor.blackColor()
         pageController.backgroundColor = UIColor.clearColor()
         
-        // Use Firebase library to configure APIs
-        FIRApp.configure()
-        
-        AppObject.loadAppData()
-        
-        return true
-    }
+        UINavigationBar.appearance().barTintColor = UIColor.flatCarrotColor()
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: font20, NSForegroundColorAttributeName : UIColor.whiteColor()]
 
+        UITextField.appearanceWhenContainedInInstancesOfClasses([UIView.self]).font = font17
+        UILabel.appearanceWhenContainedInInstancesOfClasses([UIButton.self]).font = font15
+
+//        UITableViewHeaderFooterView.appearance().tintColor = UIColor.flatCloudsColor()
+//        UILabel.appearanceWhenContainedInInstancesOfClasses([UITableViewHeaderFooterView.self]).font = font15
+//        UILabel.appearanceWhenContainedInInstancesOfClasses([UITableViewCell.self]).tintColor = UIColor.flatAsbestosColor()
+//        UILabel.appearanceWhenContainedInInstancesOfClasses([UITableViewHeaderFooterView.self]).tintColor = UIColor.flatAsbestosColor()
+//        UITextField.appearanceWhenContainedInInstancesOfClasses([UIView.self]).tintColor = UIColor.darkGrayColor()
+        
+    }
 }
 

@@ -8,6 +8,15 @@
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Rounded_Elegance.ttf">
+            <string>RoundedEleganceNew-Regular</string>
+            <string>RoundedEleganceNew-Regular</string>
+            <string>RoundedEleganceNew-Regular</string>
+            <string>RoundedEleganceNew-Regular</string>
+            <string>RoundedEleganceNew-Regular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="vaf-V6-dFu">
@@ -81,8 +90,8 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Ay5-Dq-4Bn">
                                 <rect key="frame" x="20" y="180" width="560" height="284"/>
                                 <string key="text">Tournament Scheduler relies on your support to fund its development. The app is totally free for you to use without any limitation or reservation. If you find it useful, please consider leaving a donation in the form of advert removal. Yes, you are paying for advertisements to be removed. This one-off payment is less than the amount you would pay for couple of pints. Cheers to that!</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" name="RoundedEleganceNew-Regular" family="Rounded Elegance" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -161,14 +170,26 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="L5s-4Y-jVL">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AVr-ys-dzD">
+                                <view key="tableFooterView" contentMode="scaleToFill" id="P1h-ak-vkU">
                                     <rect key="frame" x="0.0" y="130" width="600" height="90"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <string key="text">You can add tournaments using the ‘+’ button above. Each tournament can be renamed or deleted and may contain several groups of schedules.</string>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9un-7C-DP1">
+                                            <rect key="frame" x="8" y="0.0" width="584" height="90"/>
+                                            <string key="text">You can add tournaments using the ‘+’ button above. Each tournament can be renamed or deleted and may contain several groups of schedules.</string>
+                                            <fontDescription key="fontDescription" name="RoundedEleganceNew-Regular" family="Rounded Elegance" pointSize="15"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="9un-7C-DP1" firstAttribute="leading" secondItem="P1h-ak-vkU" secondAttribute="leading" constant="8" id="15A-gF-LWs"/>
+                                        <constraint firstAttribute="trailing" secondItem="9un-7C-DP1" secondAttribute="trailing" constant="8" id="QdH-Dp-9S8"/>
+                                        <constraint firstItem="9un-7C-DP1" firstAttribute="top" secondItem="P1h-ak-vkU" secondAttribute="top" id="nWu-Ia-1Aq"/>
+                                        <constraint firstAttribute="bottom" secondItem="9un-7C-DP1" secondAttribute="bottom" id="v3i-Ye-0cR"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="LVE-8t-Asu" detailTextLabel="IkB-vL-irF" style="IBUITableViewCellStyleSubtitle" id="ZgT-q1-xHh">
                                         <rect key="frame" x="0.0" y="86" width="600" height="44"/>
@@ -178,17 +199,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LVE-8t-Asu">
-                                                    <rect key="frame" x="15" y="5" width="32" height="20"/>
+                                                    <rect key="frame" x="15" y="6" width="29" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="RoundedEleganceNew-Regular" family="Rounded Elegance" pointSize="16"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IkB-vL-irF">
-                                                    <rect key="frame" x="15" y="25" width="41" height="14"/>
+                                                    <rect key="frame" x="15" y="24" width="38" height="13"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                                                    <color key="textColor" red="0.80784313730000001" green="0.43529411759999997" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -939,15 +960,26 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6P8-1M-hZ2">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n43-Qh-9AK">
+                                <view key="tableFooterView" contentMode="scaleToFill" id="dDb-wK-gP1">
                                     <rect key="frame" x="0.0" y="130" width="600" height="90"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <string key="text">You can add groups using the ‘+’ button above. A group can be scheduled with round robin, american, single elimination and double elimination.</string>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                    <string key="userLabel">You can add groups from the ‘+’ button above. A group can be scheduled with round robin, round doubles, single elimination and double elimination forms.</string>
-                                </label>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3kc-ns-Dvm">
+                                            <rect key="frame" x="16" y="0.0" width="568" height="90"/>
+                                            <string key="text">You can add groups using the ‘+’ button above. A group can be scheduled with round robin, american, single elimination and double elimination.</string>
+                                            <fontDescription key="fontDescription" name="RoundedEleganceNew-Regular" family="Rounded Elegance" pointSize="15"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="3kc-ns-Dvm" secondAttribute="trailing" constant="16" id="ESi-ra-j5e"/>
+                                        <constraint firstItem="3kc-ns-Dvm" firstAttribute="top" secondItem="dDb-wK-gP1" secondAttribute="top" id="I1v-88-qlH"/>
+                                        <constraint firstAttribute="bottom" secondItem="3kc-ns-Dvm" secondAttribute="bottom" id="ndE-td-2VL"/>
+                                        <constraint firstItem="3kc-ns-Dvm" firstAttribute="leading" secondItem="dDb-wK-gP1" secondAttribute="leading" constant="16" id="r7Q-Gw-TJS"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GroupCell" textLabel="ftn-qX-7JD" detailTextLabel="6GR-1q-NRM" style="IBUITableViewCellStyleSubtitle" id="tmt-5d-419">
                                         <rect key="frame" x="0.0" y="86" width="600" height="44"/>
@@ -957,17 +989,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ftn-qX-7JD">
-                                                    <rect key="frame" x="15" y="5" width="32" height="20"/>
+                                                    <rect key="frame" x="15" y="6" width="29" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="RoundedEleganceNew-Regular" family="Rounded Elegance" pointSize="16"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6GR-1q-NRM">
-                                                    <rect key="frame" x="15" y="25" width="31" height="14"/>
+                                                    <rect key="frame" x="15" y="24" width="28" height="13"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                                                    <color key="textColor" red="0.80784313730000001" green="0.43529411759999997" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1677,10 +1709,10 @@
         <image name="icon-wheelchair" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yPN-vv-D0K"/>
+        <segue reference="gxA-hg-hEG"/>
         <segue reference="7dP-Zc-5UO"/>
+        <segue reference="yPN-vv-D0K"/>
         <segue reference="BcA-m6-9lx"/>
         <segue reference="0rl-Ic-2aR"/>
-        <segue reference="rKH-Mw-mBj"/>
     </inferredMetricsTieBreakers>
 </document>

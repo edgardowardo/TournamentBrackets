@@ -55,6 +55,7 @@
 		779FFCA91CDA4AEB00D48800 /* UISegmentedControl+Multiline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779FFCA81CDA4AEB00D48800 /* UISegmentedControl+Multiline.swift */; };
 		779FFCAD1CDAB08100D48800 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779FFCAC1CDAB08100D48800 /* Team.swift */; };
 		779FFCAF1CDAC48F00D48800 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779FFCAE1CDAC48E00D48800 /* TeamCell.swift */; };
+		77AA022E1CFFB4A900E6428F /* Rounded_Elegance.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77AA022D1CFFAECC00E6428F /* Rounded_Elegance.ttf */; };
 		77AE56E71CE1DF32006CBF55 /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AE56E61CE1DF32006CBF55 /* GameListViewController.swift */; };
 		77B845861CFE2FE900EFCC76 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 77B845851CFE2FE900EFCC76 /* GoogleService-Info.plist */; };
 		77D095D11CF1F986002F681E /* TeamStatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D095D01CF1F986002F681E /* TeamStatsCell.swift */; };
@@ -145,6 +146,7 @@
 		779FFCA81CDA4AEB00D48800 /* UISegmentedControl+Multiline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Multiline.swift"; sourceTree = "<group>"; };
 		779FFCAC1CDAB08100D48800 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		779FFCAE1CDAC48E00D48800 /* TeamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
+		77AA022D1CFFAECC00E6428F /* Rounded_Elegance.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rounded_Elegance.ttf; sourceTree = "<group>"; };
 		77AE56E61CE1DF32006CBF55 /* GameListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
 		77B845851CFE2FE900EFCC76 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		77D095D01CF1F986002F681E /* TeamStatsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamStatsCell.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				7770C6111CC0C290008C5A6B /* Main.storyboard */,
 				7770C6141CC0C290008C5A6B /* Assets.xcassets */,
 				7770C6161CC0C290008C5A6B /* LaunchScreen.storyboard */,
+				77AA022D1CFFAECC00E6428F /* Rounded_Elegance.ttf */,
 				771D5B4E1CFF9A0C00FF46B3 /* Pods-acknowledgements.plist */,
 				7770C6191CC0C290008C5A6B /* Info.plist */,
 			);
@@ -486,6 +489,7 @@
 				7770C6151CC0C290008C5A6B /* Assets.xcassets in Resources */,
 				771D5B4F1CFF9A0C00FF46B3 /* Pods-acknowledgements.plist in Resources */,
 				7770C6131CC0C290008C5A6B /* Main.storyboard in Resources */,
+				77AA022E1CFFB4A900E6428F /* Rounded_Elegance.ttf in Resources */,
 				77E54B701CF391CA00A0E393 /* TeamStatsHeaderView.xib in Resources */,
 				7780D6281CE5B10A0014F393 /* GameCell.xib in Resources */,
 				77B845861CFE2FE900EFCC76 /* GoogleService-Info.plist in Resources */,
