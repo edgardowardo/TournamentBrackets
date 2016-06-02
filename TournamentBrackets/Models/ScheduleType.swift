@@ -25,6 +25,17 @@ enum ScheduleType : Int {
         }
     }
 
+    var iconNameTrue : String {
+        get {
+            switch self {
+            case .RoundRobin : return "icon-roundrobin"
+            case .RoundDoubles : return "icon-robinpairs"
+            case .DoubleElimination : return "icon-double-e"
+            case .SingleElimination : return "icon-single-e"                
+            }
+        }
+    }
+    
     var iconName : String {
         get {
             switch self {

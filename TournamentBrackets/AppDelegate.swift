@@ -60,12 +60,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UITextField.appearanceWhenContainedInInstancesOfClasses([UIView.self]).font = font17
         UILabel.appearanceWhenContainedInInstancesOfClasses([UIButton.self]).font = font15
-
+        UITabBar.appearance().tintColor = UIColor.flatCarrotColor()
+        UISegmentedControl.appearance().tintColor = UIColor.flatCarrotColor()
+        
+        
+//        UITextField.appearanceWhenContainedInInstancesOfClasses([UITableViewCell.self]).tintColor = UIColor.darkGrayColor()
 //        UITableViewHeaderFooterView.appearance().tintColor = UIColor.flatCloudsColor()
 //        UILabel.appearanceWhenContainedInInstancesOfClasses([UITableViewHeaderFooterView.self]).font = font15
 //        UILabel.appearanceWhenContainedInInstancesOfClasses([UITableViewCell.self]).tintColor = UIColor.flatAsbestosColor()
 //        UILabel.appearanceWhenContainedInInstancesOfClasses([UITableViewHeaderFooterView.self]).tintColor = UIColor.flatAsbestosColor()
-//        UITextField.appearanceWhenContainedInInstancesOfClasses([UIView.self]).tintColor = UIColor.darkGrayColor()
         
     }
 }

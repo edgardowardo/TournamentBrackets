@@ -88,6 +88,9 @@ class GroupListViewController: ViewController, UITextFieldDelegate {
                 let handicapText : String = (element.isHandicap) ? ", handicapped" : ""
                 let rounds = Array(element.games.map{ $0.round }).unique.count
                 cell.detailTextLabel?.text = "\(element.schedule.description) \(element.teams.count) teams, \(element.games.count) games, \(rounds) rounds\(handicapText)"
+                cell.imageView?.image = UIImage(named: "\(element.schedule.iconNameTrue)")
+                cell.imageView?.image = (cell.imageView?.image?.imageWithRenderingMode(.AlwaysTemplate))!
+                cell.imageView?.tintColor = UIColor.flatCarrotColor()
             }.addDisposableTo(bag)
             
             //
