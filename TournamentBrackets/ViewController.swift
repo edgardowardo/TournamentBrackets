@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         #endif
 
         if let bv = bannerView, button = buttonRemoveAdvert where AppObject.sharedInstance?.isAdsShown == true {
-            bannerView.adUnitID = "ca-app-pub-8499873478400384/8183934759" // Live ID
+            bannerView.adUnitID = "ca-app-pub-8499873478400384/2377099953" // Live ID
             bv.rootViewController =  (self.tabBarController) ?? self
             bv.loadRequest(GADRequest())
             button.backgroundColor = UIColor.flatAlizarinColor()

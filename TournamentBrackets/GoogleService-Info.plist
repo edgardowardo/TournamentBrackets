@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>494496184126-msnrhsa5c3jcavj4l2hepq6c92g5m8d4.apps.googleusercontent.com</string>
+	<string>759080050531-fumgilceba3fvplnj9nsar94eg51h5c1.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.494496184126-msnrhsa5c3jcavj4l2hepq6c92g5m8d4</string>
+	<string>com.googleusercontent.apps.759080050531-fumgilceba3fvplnj9nsar94eg51h5c1</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAkR6MprxheRm3dhlrUb9oorQl91U8nFAw</string>
+	<string>AIzaSyAefZZTMGCpRkHACa8uWsy4CKvmKq00yts</string>
 	<key>GCM_SENDER_ID</key>
-	<string>494496184126</string>
+	<string>759080050531</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.edgardoagno.socialtournament</string>
+	<string>com.edgardoagno.TournamentBracket</string>
 	<key>PROJECT_ID</key>
-	<string>admob-app-id-5370069152</string>
+	<string>admob-app-id-9900366755</string>
 	<key>STORAGE_BUCKET</key>
-	<string>admob-app-id-5370069152.appspot.com</string>
+	<string>admob-app-id-9900366755.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:494496184126:ios:3d897c7562e0272e</string>
+	<string>1:759080050531:ios:a9bfdc13f154c66d</string>
 	<key>DATABASE_URL</key>
-	<string>https://admob-app-id-5370069152.firebaseio.com</string>
+	<string>https://admob-app-id-9900366755.firebaseio.com</string>
 </dict>
 </plist>

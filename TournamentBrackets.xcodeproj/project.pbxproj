@@ -19,6 +19,7 @@
 		77225BAE1CEB8706006D0C2B /* GameListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77225BAD1CEB8706006D0C2B /* GameListViewModel.swift */; };
 		7730BA391D0084ED0038A151 /* AnotherLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7730BA381D0084ED0038A151 /* AnotherLaunchScreen.storyboard */; };
 		773C28721CEF187000E30678 /* String+Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773C28711CEF187000E30678 /* String+Substring.swift */; };
+		774D1E371D00DE8500B8CDD1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 774D1E361D00DE8500B8CDD1 /* GoogleService-Info.plist */; };
 		7755E9CD1D008920001DC7A3 /* TournamentScheduler-clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7755E9CC1D008920001DC7A3 /* TournamentScheduler-clear@2x.png */; };
 		7766D8401CD102C800DA3FA1 /* Array+Unique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7766D83F1CD102C800DA3FA1 /* Array+Unique.swift */; };
 		7766D8421CD1216900DA3FA1 /* Test_01SchedulerSpec_RoundRobin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7766D8411CD1216900DA3FA1 /* Test_01SchedulerSpec_RoundRobin.swift */; };
@@ -58,7 +59,6 @@
 		779FFCAF1CDAC48F00D48800 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779FFCAE1CDAC48E00D48800 /* TeamCell.swift */; };
 		77AA022E1CFFB4A900E6428F /* Rounded_Elegance.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77AA022D1CFFAECC00E6428F /* Rounded_Elegance.ttf */; };
 		77AE56E71CE1DF32006CBF55 /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AE56E61CE1DF32006CBF55 /* GameListViewController.swift */; };
-		77B845861CFE2FE900EFCC76 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 77B845851CFE2FE900EFCC76 /* GoogleService-Info.plist */; };
 		77D095D11CF1F986002F681E /* TeamStatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D095D01CF1F986002F681E /* TeamStatsCell.swift */; };
 		77D095D31CF1FDCA002F681E /* TeamStatsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D095D21CF1FDCA002F681E /* TeamStatsListViewController.swift */; };
 		77D095D51CF2002A002F681E /* TeamStatsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D095D41CF2002A002F681E /* TeamStatsListViewModel.swift */; };
@@ -105,6 +105,7 @@
 		77225BAD1CEB8706006D0C2B /* GameListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameListViewModel.swift; sourceTree = "<group>"; };
 		7730BA381D0084ED0038A151 /* AnotherLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AnotherLaunchScreen.storyboard; sourceTree = "<group>"; };
 		773C28711CEF187000E30678 /* String+Substring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Substring.swift"; sourceTree = "<group>"; };
+		774D1E361D00DE8500B8CDD1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7755E9CC1D008920001DC7A3 /* TournamentScheduler-clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TournamentScheduler-clear@2x.png"; sourceTree = "<group>"; };
 		7766D83F1CD102C800DA3FA1 /* Array+Unique.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Unique.swift"; sourceTree = "<group>"; };
 		7766D8411CD1216900DA3FA1 /* Test_01SchedulerSpec_RoundRobin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test_01SchedulerSpec_RoundRobin.swift; sourceTree = "<group>"; };
@@ -150,7 +151,6 @@
 		779FFCAE1CDAC48E00D48800 /* TeamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
 		77AA022D1CFFAECC00E6428F /* Rounded_Elegance.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rounded_Elegance.ttf; sourceTree = "<group>"; };
 		77AE56E61CE1DF32006CBF55 /* GameListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
-		77B845851CFE2FE900EFCC76 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		77D095D01CF1F986002F681E /* TeamStatsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamStatsCell.swift; sourceTree = "<group>"; };
 		77D095D21CF1FDCA002F681E /* TeamStatsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamStatsListViewController.swift; sourceTree = "<group>"; };
 		77D095D41CF2002A002F681E /* TeamStatsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamStatsListViewModel.swift; sourceTree = "<group>"; };
@@ -303,7 +303,7 @@
 				7766D84D1CD275ED00DA3FA1 /* ViewModels */,
 				7766D8501CD39E2000DA3FA1 /* ViewControllers */,
 				771E19621CC27DEF00125F9E /* Scheduler.swift */,
-				77B845851CFE2FE900EFCC76 /* GoogleService-Info.plist */,
+				774D1E361D00DE8500B8CDD1 /* GoogleService-Info.plist */,
 				7770C60D1CC0C290008C5A6B /* AppDelegate.swift */,
 				7770C60F1CC0C290008C5A6B /* ViewController.swift */,
 				7770C6111CC0C290008C5A6B /* Main.storyboard */,
@@ -452,6 +452,7 @@
 				TargetAttributes = {
 					7770C6091CC0C28F008C5A6B = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = LGLDN3729L;
 					};
 					7770C61D1CC0C290008C5A6B = {
 						CreatedOnToolsVersion = 7.3;
@@ -490,13 +491,13 @@
 			files = (
 				7770C6151CC0C290008C5A6B /* Assets.xcassets in Resources */,
 				771D5B4F1CFF9A0C00FF46B3 /* Pods-acknowledgements.plist in Resources */,
+				774D1E371D00DE8500B8CDD1 /* GoogleService-Info.plist in Resources */,
 				7770C6131CC0C290008C5A6B /* Main.storyboard in Resources */,
 				77AA022E1CFFB4A900E6428F /* Rounded_Elegance.ttf in Resources */,
 				7730BA391D0084ED0038A151 /* AnotherLaunchScreen.storyboard in Resources */,
 				77E54B701CF391CA00A0E393 /* TeamStatsHeaderView.xib in Resources */,
 				7780D6281CE5B10A0014F393 /* GameCell.xib in Resources */,
 				7755E9CD1D008920001DC7A3 /* TournamentScheduler-clear@2x.png in Resources */,
-				77B845861CFE2FE900EFCC76 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -831,9 +832,10 @@
 			baseConfigurationReference = 31CF82C10F534108DCCC4EF0 /* Pods-TournamentBrackets.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = TournamentBrackets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.edgardoagno.socialtournament;
+				PRODUCT_BUNDLE_IDENTIFIER = com.edgardoagno.TournamentBracket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -843,9 +845,10 @@
 			baseConfigurationReference = 860DBBC33E38534A9B943713 /* Pods-TournamentBrackets.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = TournamentBrackets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.edgardoagno.socialtournament;
+				PRODUCT_BUNDLE_IDENTIFIER = com.edgardoagno.TournamentBracket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
