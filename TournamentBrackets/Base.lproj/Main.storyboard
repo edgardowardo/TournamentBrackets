@@ -29,6 +29,8 @@
             <string>RoundedEleganceNew-Regular</string>
             <string>RoundedEleganceNew-Regular</string>
             <string>RoundedEleganceNew-Regular</string>
+            <string>RoundedEleganceNew-Regular</string>
+            <string>RoundedEleganceNew-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1607,12 +1609,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6e-E6-mr2">
-                                <rect key="frame" x="279" y="28" width="42" height="21"/>
+                                <rect key="frame" x="277" y="28" width="46" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="2YV-or-RaH"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="RoundedEleganceNew-Regular" family="Rounded Elegance" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lv7-M7-xOy" customClass="PieChartView" customModule="Charts">
@@ -1652,12 +1654,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2e-Ux-s4d">
-                                <rect key="frame" x="279" y="28" width="42" height="21"/>
+                                <rect key="frame" x="277" y="28" width="46" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="l8N-5k-gTf"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="RoundedEleganceNew-Regular" family="Rounded Elegance" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CJX-CB-T5n" customClass="HorizontalBarChartView" customModule="Charts">
@@ -1762,10 +1764,10 @@
         <image name="icon-wheelchair" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tQy-dK-qZp"/>
         <segue reference="BcA-m6-9lx"/>
         <segue reference="yPN-vv-D0K"/>
         <segue reference="7dP-Zc-5UO"/>
-        <segue reference="0rl-Ic-2aR"/>
+        <segue reference="kt6-PE-qJH"/>
+        <segue reference="F5P-gh-y15"/>
     </inferredMetricsTieBreakers>
 </document>

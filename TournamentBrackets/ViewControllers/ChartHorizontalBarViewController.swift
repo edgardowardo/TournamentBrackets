@@ -75,13 +75,13 @@ class ChartHorizontalBarViewController : ChartBaseViewController {
         
         let xAxis = chart.xAxis
         xAxis.labelPosition = .Bottom;
-        xAxis.labelFont = UIFont.systemFontOfSize(10.0)
+        xAxis.labelFont = font9
         xAxis.drawAxisLineEnabled = true
         xAxis.drawGridLinesEnabled = true
         xAxis.gridLineWidth = 0.3
         
         let leftAxis = chart.leftAxis;
-        leftAxis.labelFont = UIFont.systemFontOfSize(10.0)
+        leftAxis.labelFont = font9
         leftAxis.drawAxisLineEnabled = true
         leftAxis.drawGridLinesEnabled = true
         leftAxis.gridLineWidth = 0.3
@@ -89,7 +89,7 @@ class ChartHorizontalBarViewController : ChartBaseViewController {
         
         let rightAxis = chart.rightAxis
         rightAxis.enabled = true
-        rightAxis.labelFont = UIFont.systemFontOfSize(10.0)
+        rightAxis.labelFont = font9
         rightAxis.drawAxisLineEnabled = true
         rightAxis.drawGridLinesEnabled = false
         rightAxis.resetCustomAxisMin()
@@ -97,7 +97,7 @@ class ChartHorizontalBarViewController : ChartBaseViewController {
         chart.legend.position = .BelowChartLeft
         chart.legend.form = .Square
         chart.legend.formSize = 8.0
-        chart.legend.font = UIFont(name: "HelveticaNeue-Light", size: 11.0)!
+        chart.legend.font = font11
         chart.legend.xEntrySpace = 4.0
     }
 }

@@ -16,6 +16,7 @@ let formatter: NSDateFormatter = {
     return f
 }()
 
+let font9 = UIFont(name: "RoundedEleganceNew-Regular", size: 9)!
 let font11 = UIFont(name: "RoundedEleganceNew-Regular", size: 11)!
 let font15 = UIFont(name: "RoundedEleganceNew-Regular", size: 15)!
 let font17 = UIFont(name: "RoundedEleganceNew-Regular", size: 17)!

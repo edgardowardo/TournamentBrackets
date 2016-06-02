@@ -38,7 +38,7 @@ struct ChartsPieViewModel {
     var holeText : String {
         get {
             if chartType == .Played {
-                return "\(group.games.count) games in total"
+                return "\(group.games.count) games"
             } else {
                 return ""
             }

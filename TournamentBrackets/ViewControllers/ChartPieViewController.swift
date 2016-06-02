@@ -52,10 +52,11 @@ class ChartPieViewController : ChartBaseViewController {
         formatter.multiplier = 1
         formatter.percentSymbol = ""
         data.setValueFormatter(formatter)
-        data.setValueFont(UIFont(name: "HelveticaNeue-Light", size: 11.0))
+        data.setValueFont(font11)
         data.setValueTextColor(UIColor.whiteColor())
         chart.data = data
-        chart.centerText = viewModel.holeText
+        chart.centerAttributedText = NSMutableAttributedString(string: viewModel.holeText, attributes: [NSFontAttributeName: font15, NSForegroundColorAttributeName : UIColor.darkGrayColor()])        
+        chart.legend.font = font9
         self.chart.animate(xAxisDuration: 0.75, easingOption: .EaseOutBack)
     }
     
