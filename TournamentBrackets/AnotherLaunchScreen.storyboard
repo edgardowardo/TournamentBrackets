@@ -21,38 +21,27 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright © 2016 EDGARDO AGNO. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
                                 <rect key="frame" x="20" y="559" width="560" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="OSM-yS-QIG"/>
+                                    <constraint firstAttribute="height" constant="21" id="C4s-iP-td9"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.83529411760000005" green="0.45882352939999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tournament Scheduler" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="GJd-Yh-RWb">
-                                <rect key="frame" x="20" y="508" width="560" height="43"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TournamentScheduler-rounded.png" translatesAutoresizingMaskIntoConstraints="NO" id="fHs-S5-OqQ">
+                                <rect key="frame" x="140" y="140" width="320" height="320"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="r53-41-L42"/>
+                                    <constraint firstAttribute="height" constant="320" id="KwQ-ZF-IRS"/>
+                                    <constraint firstAttribute="width" constant="320" id="vJa-KC-TNC"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="36"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TournamentScheduler-clear@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="fHs-S5-OqQ">
-                                <rect key="frame" x="20" y="20" width="560" height="475"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="obG-Y5-kRd" firstAttribute="top" secondItem="GJd-Yh-RWb" secondAttribute="bottom" constant="8" id="3uJ-P3-R8c"/>
-                            <constraint firstItem="GJd-Yh-RWb" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="5hA-e8-O3m"/>
-                            <constraint firstItem="fHs-S5-OqQ" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="8Ri-LI-sq1"/>
-                            <constraint firstItem="obG-Y5-kRd" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="BzX-Dd-h0e"/>
-                            <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="Nmu-Ar-Y9w"/>
-                            <constraint firstItem="fHs-S5-OqQ" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="OKR-Ln-bg0"/>
-                            <constraint firstItem="fHs-S5-OqQ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="Sp2-4W-FgT"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="20" id="f4K-a5-1Fg"/>
-                            <constraint firstItem="GJd-Yh-RWb" firstAttribute="top" secondItem="fHs-S5-OqQ" secondAttribute="bottom" constant="13" id="iQh-WA-C1M"/>
-                            <constraint firstItem="obG-Y5-kRd" firstAttribute="top" secondItem="GJd-Yh-RWb" secondAttribute="bottom" constant="8" id="sok-4m-Efc"/>
-                            <constraint firstItem="GJd-Yh-RWb" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="wum-yT-sND"/>
+                            <constraint firstItem="fHs-S5-OqQ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="D1Y-aL-sFh"/>
+                            <constraint firstItem="obG-Y5-kRd" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="EAu-x7-X5c"/>
+                            <constraint firstItem="fHs-S5-OqQ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="UtY-UZ-ayn"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="20" id="n5F-k3-pPE"/>
+                            <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="uOL-db-pEb"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -62,6 +51,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="TournamentScheduler-clear@2x.png" width="512" height="512"/>
+        <image name="TournamentScheduler-rounded.png" width="527" height="527"/>
     </resources>
 </document>

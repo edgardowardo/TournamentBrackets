@@ -288,20 +288,58 @@ class GroupSettingViewController: ViewController {
     
     @IBAction func unwindToGroupSetting(segue: UIStoryboardSegue) {
         if let s = segue.sourceViewController as? TeamStatsListViewController, vm = s.viewModel where segue.identifier == "unwindToGroupSettingAndSave" {
-            var newstatsList = vm.statsList
-            var newcount = newstatsList.count
-            if let newindex = viewModel.scheduleType.value.allowedTeamCounts.indexOf(newcount) {
-                self.pickerTeamCount.selectItem(UInt(newindex), animated: true)
+            
+            backgroundThread(0.5, background: nil, completion: {
+                let alert = UIAlertController(title: "Copy", message: "Would you like to add or override to the existing teams?", preferredStyle: .Alert)
+                alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+                alert.addAction( UIAlertAction(title: "Override", style: .Destructive) { (_) in
+                    self.addOrOverrideTeams(false, toSourceViewModel: vm)
+                    })
+                alert.addAction( UIAlertAction(title: "Add", style: .Default) { (_) in
+                    self.addOrOverrideTeams(true, toSourceViewModel: vm)
+                    })
+                self.presentViewController(alert, animated: true, completion: nil)
+            })
+        }
+    }
+    
+    func addOrOverrideTeams(isAdd : Bool, toSourceViewModel vm : TeamStatsListViewModel) {
+        
+        var statsList = vm.statsList
+        let additionalcount = (isAdd) ? viewModel.teams.value.count : 0
+        var totalcount = statsList.count + additionalcount
+        
+        if let newindex = viewModel.scheduleType.value.allowedTeamCounts.indexOf(totalcount) {
+            self.pickerTeamCount.selectItem(UInt(newindex), animated: true)
+        } else {
+            if totalcount > 32 {
+                totalcount = 32
+                let startofrange = 32 - viewModel.teams.value.count
+                let r = startofrange..<statsList.count
+                statsList.removeRange(r)
+                
+                selectTeamCount(32)
             } else {
-                newcount = newcount - 1
-                newstatsList.removeLast()
-                if let newindex = viewModel.scheduleType.value.allowedTeamCounts.indexOf(newcount) {
+                if let newindex = viewModel.scheduleType.value.allowedTeamCounts.indexOf(totalcount) {
                     self.pickerTeamCount.selectItem(UInt(newindex), animated: true)
                 } else {
-                    self.pickerTeamCount.selectItem(UInt(0), animated: true)
+                    totalcount = totalcount - 1
+                    statsList.removeLast()
+                    
+                    selectTeamCount(totalcount)
                 }
             }
-            viewModel.copyTeams(newstatsList)
+        }
+        
+        viewModel.copyTeams(statsList)        
+    }
+    
+    
+    func selectTeamCount(count : Int) {
+        if let newindex = viewModel.scheduleType.value.allowedTeamCounts.indexOf(count) {
+            self.pickerTeamCount.selectItem(UInt(newindex), animated: true)
+        } else {
+            self.pickerTeamCount.selectItem(UInt(0), animated: true)
         }
     }
     

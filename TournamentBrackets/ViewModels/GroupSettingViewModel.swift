@@ -94,12 +94,15 @@ struct GroupSettingViewModel {
     }
     
     func copyTeams(teams: [TeamStats]) {
-        let copiedteams = teams.map{ (t) -> Team in
-            let team = Team(name: t.name, seed: t.seed, isHandicap: false)
-            team.handicap = t.handicap
-            return team
+        let startindex = self.teams.value.count - teams.count
+        
+        for i in 0..<teams.count {
+            let ts = teams[i]
+            let team = self.teams.value[startindex + i]
+            
+            team.name = ts.name
+            team.handicap = ts.handicap
         }
-        self.teams.value = copiedteams
     }
     
     func setTeamsHandicap(isHandicap : Bool) {
