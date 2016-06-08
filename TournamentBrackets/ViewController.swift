@@ -138,7 +138,7 @@ class ViewController: UIViewController {
         guard let av = advertView, c = constraintTableViewToSuperView else { return }
         
         backgroundThread(background: nil) {
-            av.hidden = true
+            av.removeFromSuperview()
             c.active = true
         }
     }
