@@ -48,6 +48,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        if let data    = NSData(contentsOfURL: url), group   = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [String: AnyObject] {
+            GroupImporter().importGroup(group)
+        }
+        return true
+    }
+    
     func reskinApp(application: UIApplication) {
         
         application.statusBarStyle = .LightContent

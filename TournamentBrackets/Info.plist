@@ -6,6 +6,24 @@
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
 	<string>Tournament</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeIconFiles</key>
+			<array>
+				<string>Icon-40@3x.png</string>
+				<string>Icon-60@3x.png</string>
+				<string>/Users/edgardoagno/Documents/TournamentBrackets/TournamentBrackets/Assets.xcassets/AppIcon.appiconset/Icon-60@3x.png</string>
+				<string>Icon-60@3x</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>SCHD</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.edgardoagno.schd</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -44,5 +62,31 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UTImportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+				<string>public.text</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Tournament Group</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.edgardoagno.schd</string>
+			<key>UTTypeSize320IconFile</key>
+			<string>Icon-60@3x</string>
+			<key>UTTypeSize64IconFile</key>
+			<string>Icon-60@3x</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>schd</string>
+					<string>SCHD</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>

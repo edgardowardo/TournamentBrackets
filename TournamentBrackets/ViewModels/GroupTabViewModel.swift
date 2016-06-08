@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct GroupTabViewModel {
  
     var group : Group!
     let gameViewModels : [GameViewModel]!
+    var realm = try! Realm()
 
     init(group : Group) {
         self.group = group
@@ -32,5 +34,9 @@ struct GroupTabViewModel {
             return group.name
         }
     }
-}
     
+    func share() -> NSData {
+        let d = group.toDictionary()
+        return NSKeyedArchiver.archivedDataWithRootObject(d)
+    }
+}

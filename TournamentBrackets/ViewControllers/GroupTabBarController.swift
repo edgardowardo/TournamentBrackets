@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MessageUI
 
 class GroupTabBarController : UITabBarController {
     
@@ -21,7 +22,8 @@ class GroupTabBarController : UITabBarController {
         super.viewDidLoad()
         
         let b = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(edit))
-        self.navigationItem.rightBarButtonItem = b
+        let s = UIBarButtonItem(image: UIImage(named: "icon-share-white"), style: .Plain, target: self, action: #selector(share))
+        self.navigationItem.rightBarButtonItems = [b,s]
         
         if let viewControllers = self.viewControllers {
             for (index, vc) in viewControllers.enumerate() {
@@ -40,12 +42,31 @@ class GroupTabBarController : UITabBarController {
             }
         }
     }
+
+    @IBAction func share(sender: AnyObject) {
+        guard MFMailComposeViewController.canSendMail() else { return }
+        let name = viewModel.group.name
+        let vc = MFMailComposeViewController()
+        let html = "<p>Hello there!</p><p>Here is a copy of \(name).</p><p>You will need <a href=\"https://itunes.apple.com/gb/app/tournament-scheduler/id1091203816?mt=8.\">Tournament Scheduler</a>&nbsp;to open it.&nbsp;</p>"
+        vc.navigationBar.tintColor = UIColor.whiteColor()
+        vc.mailComposeDelegate = self
+        vc.setSubject("Tournament Scheduler - \(name)")
+        vc.setMessageBody(html, isHTML: true)
+        vc.addAttachmentData(viewModel.share(), mimeType: "text", fileName: "group.schd")
+        self.presentViewController(vc, animated: true) { UIApplication.sharedApplication().statusBarStyle = .LightContent }
+    }
     
     @IBAction func edit(sender: AnyObject) {
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("GroupSettingViewController") as! GroupSettingViewController
         vc.viewModel = GroupSettingViewModel(group: viewModel.group)
-        //        vc.tournament = TODO: pass this into the viewModel
         let nc = UINavigationController(rootViewController: vc)
         presentViewController(nc, animated: true, completion: nil)
+    }
+}
+
+extension GroupTabBarController : MFMailComposeViewControllerDelegate {
+    func mailComposeController(controller: MFMailComposeViewController,
+                               didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
     }
 }
