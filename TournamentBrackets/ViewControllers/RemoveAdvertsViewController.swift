@@ -137,6 +137,15 @@ extension RemoveAdvertsViewController : SKPaymentTransactionObserver {
     }
 }
 
+extension SKProduct {
+    func localizedPrice() -> String {
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = .CurrencyStyle
+        formatter.locale = self.priceLocale
+        return formatter.stringFromNumber(self.price)!
+    }
+}
+
 extension RemoveAdvertsViewController : SKProductsRequestDelegate {
     func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
         hideHud()
@@ -147,6 +156,8 @@ extension RemoveAdvertsViewController : SKProductsRequestDelegate {
                 switch p.productIdentifier {
                 case Product.NoAdverts.rawValue :
                     UIView.animateWithDuration(0.35, animations: { () -> Void in
+                        let title = "REMOVE ADVERTS \(p.localizedPrice())"
+                        self.buttonRemoveAdverts.setTitle(title, forState: .Normal)
                         self.buttonRemoveAdverts.alpha = 1.0
                         self.buttonRemoveAdverts.enabled = true
                         self.buttonRestore.alpha = 1.0

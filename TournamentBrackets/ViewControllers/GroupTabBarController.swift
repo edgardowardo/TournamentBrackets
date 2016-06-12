@@ -9,9 +9,11 @@
 import Foundation
 import UIKit
 import MessageUI
+import GoogleMobileAds
 
 class GroupTabBarController : UITabBarController {
     
+    var interstitial: GADInterstitial!
     var viewModel : GroupTabViewModel! {
         didSet {
             self.title = self.viewModel.title
@@ -41,6 +43,11 @@ class GroupTabBarController : UITabBarController {
                 setViewControllers(newVCs, animated: false)
             }
         }
+        
+        if AppObject.sharedInstance?.isAdsShown == true {
+            loadInterstitial()
+            showInterstitial()
+        }
     }
 
     @IBAction func share(sender: AnyObject) {
@@ -61,6 +68,27 @@ class GroupTabBarController : UITabBarController {
         vc.viewModel = GroupSettingViewModel(group: viewModel.group)
         let nc = UINavigationController(rootViewController: vc)
         presentViewController(nc, animated: true, completion: nil)
+    }
+}
+
+extension GroupTabBarController : GADInterstitialDelegate {
+    func interstitialDidFailToReceiveAdWithError(interstitial: GADInterstitial, error: GADRequestError) {
+        print("\(error.localizedDescription)")
+    }
+    func loadInterstitial() {
+        //interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910") // TEST
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-8499873478400384/2491617153") // LIVE
+        interstitial?.delegate = self
+        let r = GADRequest()
+        r.testDevices = [kGADSimulatorID]
+        interstitial?.loadRequest(GADRequest())
+    }
+    func showInterstitial() {
+        backgroundThread(2.0) { 
+            if self.interstitial?.isReady == true {
+                self.interstitial?.presentFromRootViewController(self)
+            }
+        }
     }
 }
 
