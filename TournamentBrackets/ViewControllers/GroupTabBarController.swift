@@ -85,7 +85,7 @@ extension GroupTabBarController : GADInterstitialDelegate {
     }
     func showInterstitial() {
         backgroundThread(3.0) {
-            if let top = self.navigationController?.topViewController where top == self && self.interstitial?.isReady == true {
+            if let top = self.navigationController?.visibleViewController where top == self && self.interstitial?.isReady == true {
                 self.interstitial?.presentFromRootViewController(self)
             }
         }
