@@ -1,6 +1,6 @@
 # Tournament Brackets 
 
-Used by coaches, tournament and league organisers, Tournament Brackets generates fixtures from a set of teams in the following forms:
+Used by sports coaches, tournament and league organisers, Tournament Brackets generates fixtures from a set of teams in the following forms:
 - [Round Robin](https://en.wikipedia.org/wiki/Round-robin_tournament)
 - American Tournament - doubles partners are paired round robin.
 - [Single Elimination](https://en.wikipedia.org/wiki/Single-elimination_tournament)
