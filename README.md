@@ -1,6 +1,6 @@
 # Tournament Brackets 
 
-Schedules fixtures from a set of teams in the following forms
+Schedules fixtures from a set of teams in the following forms:
 - [Round Robin](https://en.wikipedia.org/wiki/Round-robin_tournament)
 - American Tournament - Paired Round Robins
 - [Single Elimination](https://en.wikipedia.org/wiki/Single-elimination_tournament)
